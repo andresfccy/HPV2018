@@ -1,7 +1,7 @@
 ﻿{
     "inscription": {
         "description": "Diligencia el siguiente formulario para inscribirte al <b>Módulo Presencial - Habilidades para la Vida</b>",
-        "innerPanel": "Selecciona tu tipo de documento e ingresa el número de documento o solamente el código de beneficiario con el cual te encuentras registrado en los programas <b>Jóvenes en Acción</b> o <b>Ingreso Social</b> y tu fecha de nacimiento.",
+        "innerPanel": "Selecciona tu tipo de documento e ingresa el número de documento o solamente el código de beneficiario con el cual te encuentras registrado en los programas <b>Jóvenes en Acción</b> y tu fecha de nacimiento.",
         "explaination": "Indica un campo requerido",
         "participantValidation": "Validar participante",
         "documentType": "Tipo de documento",
