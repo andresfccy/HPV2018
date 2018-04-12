@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HPV_Servicios.AdmParametro.HPVServiciosAdmParametro_JSON" CodeBehind="HPVServiciosAdmParametro_JSON.svc.cs" %>

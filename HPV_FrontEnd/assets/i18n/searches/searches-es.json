@@ -1,0 +1,58 @@
+﻿{
+    "searches": {
+        "title": "Consulta de inscritos",
+        "schedulesTitle": "Consulta de horarios",
+        "userTitle": "Inscrito",
+        "search": "Buscar en la lista (Búsqueda por: Cédula, Nombre, Apellido, Email, Ciudad, Código)",
+        "schedulesSearch": "Buscar por...",
+        "schedulesParameter": "Parámetro de búsqueda",
+        "schedulesAddParameter": "Agregar Parámetro",
+        "showing": "Mostrando",
+        "of": "inscritos por página",
+        "sendSearch": "Buscar",
+
+        "seasson": "Período",
+        "docNumber": "Número de documento",
+        "benefCode": "Código beneficiario",
+        "email": "Correo",
+        "name": "Nombre",
+        "city": "Municipio",
+        "select": "Consultar",
+
+        "back": "Volver a la lista",
+        "table": {
+            "userData": "Datos del inscrito",
+            "name": "Nombre completo",
+            "docType": "Tipo de documento",
+            "doc": "Documento",
+            "benefCode": "Código de beneficiario",
+            "email": "Correo electrónico",
+            "inscriptionData": "Datos de la inscripción",
+            "dpto": "Departamento",
+            "city": "Municipio",
+            "facilitator": "Facilitador",
+            "day": "Día",
+            "schedule": "Horario",
+            "group": "Grupo",
+            "place": "Lugar",
+            "address": "Dirección",
+            "inscriptionDate": "Fecha de inscripción",
+            "observations": "Observaciones"
+        },
+        "schedules": {
+            "facilitator": "Facilitador",
+            "department": "Departamento",
+            "city": "Ciudad",
+            "day": "Día",
+            "schedule": "Horario",
+            "group": "Grupo",
+            "place": "Lugar",
+            "address": "Dirección",
+            "quota": "Cupos"
+        },
+        "messages": {
+            "init": "Utiliza los filtros para comenzar la búsqueda.",
+            "noResults": "No se encontraron resultados con los parámetros de búsqueda seleccionados."
+        }
+    }
+}

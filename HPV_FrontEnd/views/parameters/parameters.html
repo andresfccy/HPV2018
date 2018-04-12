@@ -1,0 +1,380 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div>
+        <uib-accordion>
+            <uib-accordion-group is-open="status.open1">
+                <uib-accordion-heading>
+                    {{'parameters.season'|translate}} *
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                </uib-accordion-heading>
+                <form id="form"
+                      name="form">
+                    <div ng-init="ctrl.initializeForm(form,1)"></div>
+                    <div class="col-lg-4">
+                        <div class="form-group" feedback>
+                            <label for="name" class="blueLabel">{{'parameters.name'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'parameters.name'|translate}}"
+                                   id="name"
+                                   name="name"
+                                   ng-model="ctrl.season.Nombre"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form.name.$error"
+                                 ng-if="form.name.$touched">
+                                <div ng-message="required">{{'parameters.error.nameRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group" feedback>
+                            <label for="number" class="blueLabel">{{'parameters.number'|translate}} *</label>
+                            <input class="form-control"
+                                   type="number"
+                                   placeholder="{{'parameters.number'|translate}}"
+                                   id="number"
+                                   name="number"
+                                   ng-model="ctrl.season.Numero"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form.number.$error"
+                                 ng-if="form.number.$touched">
+                                <div ng-message="required">{{'parameters.error.numberRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group" feedback>
+                            <label for="state" class="blueLabel">{{'parameters.state'|translate}} *</label>
+                            <select class="form-control"
+                                    placeholder="{{'parameters.state'|translate}}"
+                                    id="state"
+                                    name="state"
+                                    ng-model="ctrl.season.Estado"
+                                    ng-options="item.Valor as item.Descripcion for item in ctrl.seasonStates"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form.state.$error"
+                                 ng-if="form.state.$touched">
+                                <div ng-message="required">{{'parameters.error.stateRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="sinceDate" class="blueLabel">{{'parameters.sinceDate'|translate}} *</label>
+                            <p class="input-group" feedback>
+                                <input type="text"
+                                       id="sinceDate"
+                                       name="sinceDate"
+                                       class="form-control"
+                                       ng-model="ctrl.season.FechaInicioNum"
+                                       uib-datepicker-popup="yyyy/MM/dd"
+                                       placeholder="aaaa/mm/dd"
+                                       is-open="dateOpenedFI"
+                                       max-date="ctrl.season.FechaFinNum"
+                                       datepicker-options="ctrl.dateOptions"
+                                       close-text="{{'parameters.close'|translate}}"
+                                       alt-input-formats="ctrl.altInputFormats"
+                                       title="{{'parameters.error.sinceDateRequired'|translate}}"
+                                       ng-required="true" />
+                                <span class="input-group-btn">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="dateOpenedFI=!dateOpenedFI">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="validation-messages"
+                                     ng-messages="form.sinceDate.$error"
+                                     ng-if="form.sinceDate.$touched">
+                                    <div ng-message="required">{{'parameters.error.sinceDateRequired'|translate}}</div>
+                                    <div ng-message="date">{{'parameters.error.sinceDateDate'|translate}}</div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="untilDate" class="blueLabel">{{'parameters.untilDate'|translate}} *</label>
+                            <p class="input-group" feedback>
+                                <input type="text"
+                                       id="untilDate"
+                                       name="untilDate"
+                                       class="form-control"
+                                       ng-model="ctrl.season.FechaFinNum"
+                                       uib-datepicker-popup="yyyy/MM/dd"
+                                       placeholder="aaaa/mm/dd"
+                                       is-open="dateOpenedFF"
+                                       min-date="ctrl.season.FechaInicioNum"
+                                       max-date="ctrl.maxDateFF"
+                                       datepicker-options="ctrl.dateOptions"
+                                       ng-disabled="ctrl.sent"
+                                       close-text="{{'parameters.close'|translate}}"
+                                       alt-input-formats="ctrl.altInputFormats"
+                                       title="{{'parameters.error.untilDateRequired'|translate}}"
+                                       ng-required="true" />
+                                <span class="input-group-btn">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="dateOpenedFF=!dateOpenedFF">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="validation-messages"
+                                     ng-messages="form.untilDate.$error"
+                                     ng-if="form.untilDate.$touched">
+                                    <div ng-message="required">{{'parameters.error.untilDateRequired'|translate}}</div>
+                                    <div ng-message="date">{{'parameters.error.untilDateDate'|translate}}</div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 little-margin-bottom">
+                        <div class="form-group">
+                            <label for="workshopDate" class="blueLabel">{{'parameters.workshopDate'|translate}}</label>
+                            <p class="input-group">
+                                <input type="text"
+                                       id="workshopDate"
+                                       name="workshopDate"
+                                       class="form-control"
+                                       ng-model="ctrl.season.FechaIniTallerNum"
+                                       uib-datepicker-popup="yyyy/MM/dd"
+                                       placeholder="aaaa/mm/dd"
+                                       is-open="dateOpenedFT"
+                                       max-date="ctrl.maxDateFT"
+                                       datepicker-options="ctrl.dateOptions"
+                                       ng-disabled="ctrl.sent"
+                                       close-text="{{'parameters.close'|translate}}"
+                                       alt-input-formats="ctrl.altInputFormats"
+                                       title="{{'parameters.error.workshopDateRequired'|translate}}" />
+                                <span class="input-group-btn">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="dateOpenedFT=!dateOpenedFT">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="validation-messages"
+                                     ng-messages="form.workshopDate.$error"
+                                     ng-if="form.workshopDate.$touched">
+                                    <div ng-message="date">{{'parameters.error.workshopDateDate'|translate}}</div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button class="btn btn-danger"
+                                type="reset"
+                                ng-click="ctrl.resetSeasonForm()">
+                            {{'parameters.cancel'|translate}}
+                        </button>
+                        <button class="btn btn-success pull-right"
+                                type="submit"
+                                ng-if="!ctrl.seasonInList()"
+                                ng-click="ctrl.addSeason()">
+                            {{'parameters.addSeason'|translate}}
+                        </button>
+                        <button class="btn btn-info pull-right"
+                                type="submit"
+                                ng-if="ctrl.seasonInList()"
+                                ng-click="ctrl.saveChangesSeason()">
+                            {{'parameters.saveChangesSeason'|translate}}
+                        </button>
+                        <hr class="col-lg-12" />
+
+                        
+                    </div>
+                </form>
+
+                
+
+                <table class="table table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{'parameters.name'|translate}}</th>
+                            <th>{{'parameters.number'|translate}}</th>
+                            <th>{{'parameters.state'|translate}}</th>
+                            <th>{{'parameters.sinceDate'|translate}}</th>
+                            <th>{{'parameters.untilDate'|translate}}</th>
+                            <th>{{'parameters.workshopDate'|translate}}</th>
+                            <th>{{'parameters.edit'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ctrl.seasons">
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.Nombre}}</td>
+                            <td>{{item.Numero}}</td>
+                            <td>{{item.Estado}}</td>
+                            <td>{{item.FechaInicio}}</td>
+                            <td>{{item.FechaFin}}</td>
+                            <td>{{item.FechaIniTaller}}</td>
+                            <td>
+                                <a href="#"
+                                   class="glyphicon glyphicon-edit"
+                                   ng-click="ctrl.selectSeasonFromList(item)"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </uib-accordion-group>
+
+            <uib-accordion-group is-open="status.open2">
+                <uib-accordion-heading>
+                    {{'parameters.parameters'|translate}} *
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                </uib-accordion-heading>
+                <form id="form"
+                      name="form2">
+                    <div ng-init="ctrl.initializeForm(form2,2)"></div>
+                    <div class="col-lg-6">
+                        <div class="form-group" feedback>
+                            <label for="name" class="blueLabel">{{'parameters.name'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'parameters.name'|translate}}"
+                                   id="name"
+                                   name="name"
+                                   ng-model="ctrl.parameter.Nombre"
+                                   ng-disabled="ctrl.parameterInList()"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form2.name.$error"
+                                 ng-if="form2.name.$touched">
+                                <div ng-message="required">{{'parameters.error.nameRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="blueLabel col-lg-12">{{'parameters.state'|translate}} *</label>
+                        <div class="btn-group">
+                            <label class="btn btn-default"
+                                   ng-class="{'btn-success': ctrl.parameter.EstadoNum==1}"
+                                   ng-model="ctrl.parameter.EstadoNum"
+                                   uib-btn-radio="1">{{'parameters.active'|translate}}</label>
+                            <label class="btn btn-default"
+                                   ng-class="{'btn-danger': ctrl.parameter.EstadoNum==0}"
+                                   ng-model="ctrl.parameter.EstadoNum"
+                                   uib-btn-radio="0">{{'parameters.innactive'|translate}}</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" feedback>
+                            <label for="value" class="blueLabel">{{'parameters.value'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'parameters.value'|translate}}"
+                                   id="value"
+                                   name="value"
+                                   ng-model="ctrl.parameter.Valor"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form2.value.$error"
+                                 ng-if="form2.value.$touched">
+                                <div ng-message="required">{{'parameters.error.valueRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" feedback>
+                            <label for="description" class="blueLabel">{{'parameters.description'|translate}} *</label>
+                            <textarea class="form-control"
+                                   placeholder="{{'parameters.description'|translate}}"
+                                   id="description"
+                                   name="description"
+                                   ng-model="ctrl.parameter.Descripcion"
+                                   required>
+                                </textarea>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form2.description.$error"
+                                 ng-if="form2.description.$touched">
+                                <div ng-message="required">{{'parameters.error.descriptionRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button class="btn btn-danger"
+                                type="reset"
+                                ng-click="ctrl.resetParameterForm()">
+                            {{'parameters.cancel'|translate}}
+                        </button>
+                        <button class="btn btn-success pull-right"
+                                type="submit"
+                                ng-if="!ctrl.parameterInList()"
+                                ng-click="ctrl.addParameter()">
+                            {{'parameters.addParameter'|translate}}
+                        </button>
+                        <button class="btn btn-info pull-right"
+                                type="submit"
+                                ng-if="ctrl.parameterInList()"
+                                ng-click="ctrl.saveChangesParameter()">
+                            {{'parameters.saveChangesParameter'|translate}}
+                        </button>
+                        <hr class="col-lg-12" />
+                    </div>
+                </form>
+                <div class="col-lg-12">
+                    <div class="pull-right">
+                        <uib-pagination boundary-links="true"
+                                        total-items="ctrl.total"
+                                        items-per-page="maxResultsPerPage"
+                                        max-size="ctrl.maxSize"
+                                        previous-text="&lsaquo;"
+                                        next-text="&rsaquo;"
+                                        first-text="&laquo;"
+                                        last-text="&raquo;"
+                                        rotate="false"
+                                        ng-model="ctrl.currentPage">
+                        </uib-pagination>
+                    </div>
+                    <div class="col-lg-12 text-right">
+                        <span>{{'parameters.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'parameters.of'|translate}}</span> <!--{{ctrl.parameters.length}}<span>{{'parameters.elements'|translate}}</span>-->
+                    </div>
+                </div>
+                <table class="table table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{'parameters.name'|translate}}</th>
+                            <th>{{'parameters.value'|translate}}</th>
+                            <th>{{'parameters.state'|translate}}</th>
+                            <th>{{'parameters.edit'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ctrl.filtered | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.Nombre}}</td>
+                            <td>{{item.Valor}}</td>
+                            <td>{{item.Estado}}</td>
+                            <td>
+                                <a href="#"
+                                   class="glyphicon glyphicon-edit"
+                                   ng-click="ctrl.selectParameterFromList(item)"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </uib-accordion-group>
+
+        </uib-accordion>
+    </div>
+</article>

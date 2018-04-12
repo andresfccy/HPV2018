@@ -1,0 +1,1 @@
+module.exports = require("npm:astral-angular-annotate@0.0.2/annotate.js");

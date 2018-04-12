@@ -1,0 +1,64 @@
+﻿<article ng-init="ctrl.initialize()">
+    <p>Inicie sesión mediante su cuenta.</p>
+    <p><strong>¡Cuidado!, no revele información electrónica a desconocidos.</strong></p>
+    <p class="text-info text-right"><span class="text-danger">*</span> Indica un campo requerido</p>
+    <div>
+        <div class="panel panel-default panel-ps">
+            <div class="panel-heading">
+                <h3 class="panel-title">Inicio de sesión</h3>
+            </div>
+            <div class="panel-body">
+                <form name="loginForm"
+                      id="loginForm"
+                      class="col-md-6 col-md-offset-3 form-horizontal">
+                    <div class="form-group"
+                         ng-init="ctrl.initializeForm(loginForm)"
+                         feedback>
+                        <label class="control-label"
+                               for="user">{{'sessions.username'|translate}}*</label>
+                        <input class="form-control"
+                               type="text"
+                               placeholder="{{'sessions.username'|translate}}"
+                               id="username"
+                               name="username"
+                               ng-model="ctrl.user.AliasUsuario"
+                               required>
+                        <div class="validation-messages"
+                             ng-messages="loginForm.username.$error"
+                             ng-if="loginForm.username.$touched">
+                            <div ng-message="required">{{'users.error.usernameRequired'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         feedback>
+                        <label class="control-label"
+                               for="pass">{{'sessions.password'|translate}}*</label>
+                        <input class="form-control"
+                               type="password"
+                               placeholder="{{'sessions.password'|translate}}"
+                               id="password"
+                               name="password"
+                               ng-model="ctrl.user.Clave"
+                               required>
+                        <div class="validation-messages"
+                             ng-messages="loginForm.password.$error"
+                             ng-if="loginForm.password.$touched">
+                            <div ng-message="required">{{'users.error.passwordRequired'|translate}}</div>
+                        </div>
+                        <div>
+                            <a ui-sref="retrievePassword">
+                                {{'sessions.retrievePass.retrieve'|translate}}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control"
+                               type="submit"
+                               ng-click="ctrl.login()"
+                               value="Ingresar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</article>

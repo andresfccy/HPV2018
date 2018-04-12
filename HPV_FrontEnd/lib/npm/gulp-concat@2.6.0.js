@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-concat@2.6.0/index");

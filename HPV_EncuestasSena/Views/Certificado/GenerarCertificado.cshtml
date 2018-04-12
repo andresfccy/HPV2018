@@ -1,0 +1,40 @@
+﻿`@using HPV_EncuestasSena.Models
+@model InscripcionModel 
+@{
+    ViewBag.Title = "GenerarCertificado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<body>
+    @using (Html.BeginForm("GenerarCertificado", "Certificado", FormMethod.Post, new { @id = "contenedor1", @class = "formulario" }))
+    {
+        <div class="col-xs-4" style="height: 550px">
+            <img src="~/Images/Joven_ok.png" class=" img-responsive">
+        </div>
+        @Html.HiddenFor(model => model.Nombre);
+        @Html.HiddenFor(model => model.PrimerApellido);
+        @Html.HiddenFor(model => model.SegundoApellido);
+        @Html.HiddenFor(model => model.NumeroDocumento);
+        @Html.HiddenFor(model => model.Mensaje);
+        @Html.HiddenFor(model => model.NombreEncuesta);
+        <div class="col-lg-8" style="text-align:left; margin-top:40px">
+            
+            <div class="contenedortext">
+                Gracias <strong style="font-weight:bolder">@Html.Label(Model.Nombre + " " + Model.PrimerApellido + " " + Model.SegundoApellido)</strong> @string.Format("{0}@ ", "identificad")con documento de identidad número:
+                <strong style="font-weight:bolder">@Html.Label(Model.NumeroDocumento)</strong>, tus respuestas a la @Html.Label(Model.Mensaje) del curso virtual se han registrado exitosamente.
+            </div>
+        </div>        
+    <div class="col-lg-8" style="text-align:left; margin-top:40px">
+        <div class="contenedortext">
+            Recuerda descargar el soporte de esta confirmación y enviarlo a tu instructor del SENA como evidencia de la actividad "@Html.Label(Model.NombreEncuesta)"
+            del <strong style="font-weight:bolder">Curso Virtual de Habilidades para la vida</strong>.
+        </div>
+    </div>
+
+        <div id="boton" class="col-lg-6" >
+            <input type="submit" value="Descarga tu soporte" id="DescargarPdf" />
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿<article ng-init="ctrl.initialize()">
+    <p translate="inscription.description" translate-compile></p>
+    <p class="text-info text-right"><span class="text-danger">*</span> {{'inscription.explaination'|translate}}</p>
+
+    <form class="panel panel-default panel-ps no-padding"
+          name="form_validation"
+          id="form_validation">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'certificate.title'|translate}}</h3>
+        </div>
+        <div class="panel-body">
+            <div ng-init="ctrl.initializeForm(form_validation)"></div>
+            <div class="col-sm-12"><p translate>inscription.innerPanel</p></div>
+            <div class="col-sm-3">
+                <div class="form-group" feedback>
+                    <label for="docType" class="control-label">
+                        {{'inscription.documentType'|translate}}
+                    </label>
+                    <ui-select ng-model="ctrl.participant.TipoDocumento"
+                               theme="bootstrap"
+                               id="docType"
+                               name="docType">
+                        <ui-select-match placeholder="{{'inscription.selectDocType'|translate}}"
+                                         allow-clear="true">
+                            {{$select.selected.Descripcion}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in ctrl.docTypes | propsFilter: {Valor: $select.search, Descripcion: $select.search}">
+                            <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="participantDocument">{{'inscription.document'|translate}}</label>
+                    <input class="form-control"
+                           type="number"
+                           placeholder="0"
+                           id="participantDocument"
+                           name="participantDocument"
+                           ng-model="ctrl.participant.Documento">
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="benefCode">{{'inscription.benefCode'|translate}}</label>
+                    <input class="form-control"
+                           type="number"
+                           placeholder="{{'inscription.benefCode'|translate}}"
+                           id="benefCode"
+                           name="benefCode"
+                           ng-model="ctrl.participant.CodigoBeneficiario">
+                </div>
+            </div>
+
+            <div class="col-sm-3 little-margin-bottom">
+                <label for="birthDate">
+                    {{'inscription.birthDate'|translate}}
+                    <span class="text-danger">*</span>
+                </label>
+                <p class="input-group" feedback>
+                    <input type="text"
+                           title="Ingresa tu fecha de nacimiento"
+                           name="participantBirthDate"
+                           class="form-control"
+                           ng-model="ctrl.participant.FechaNum"
+                           uib-datepicker-popup="yyyy/MM/dd"
+                           placeholder="aaaa/mm/dd"
+                           is-open="birthDateOpened"
+                           datepicker-options="ctrl.dateOptions"
+                           ng-required="true"
+                           close-text="{{'inscription.close'|translate}}"
+                           alt-input-formats="ctrl.altInputFormats"
+                           required />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="birthDateOpened=!birthDateOpened">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                    <div class="validation-messages"
+                         ng-messages="form_validation.participantBirthDate.$error"
+                         ng-if="form_validation.participantBirthDate.$touched">
+                        <div ng-message="required">{{'inscription.error.dateIsRequired'|translate}}</div>
+                        <div ng-message="valid">{{'inscription.error.dateNoFormat'|translate}}</div>
+                    </div>
+                </p>
+            </div>
+        </div> 
+        <div class="panel-footer clearfix">
+            <div class="col-sm-12">
+                <button type="submit"
+                        class="btn btn-success pull-right"
+                        ng-click="ctrl.generateCertificate()">
+                    {{'certificate.generate'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</article>

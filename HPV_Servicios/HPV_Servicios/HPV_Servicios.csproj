@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{222D1860-28FF-48A9-829F-9ABEF6009C3E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HPV_Servicios</RootNamespace>
+    <AssemblyName>HPV_Servicios</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.32.3879.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.32.3879.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\MigraDoc.Rendering.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering, Version=1.32.3879.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.2602.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\PdfSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.2602.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdmEspacioFisico\HPVServiciosAdmEspacioFisico.svc" />
+    <Content Include="AdmEspacioFisico\HPVServiciosAdmEspacioFisico_JSON.svc" />
+    <Content Include="AdmParametro\HPVServiciosAdmParametro.svc" />
+    <Content Include="AdmParametro\HPVServiciosAdmParametro_JSON.svc" />
+    <Content Include="AdmRol\HPVServiciosAdmRol.svc" />
+    <Content Include="AdmRol\HPVServiciosAdmRol_JSON.svc" />
+    <Content Include="AdmUsuario\HPVServiciosAdmUsuario.svc" />
+    <Content Include="AdmUsuario\HPVServiciosAdmUsuario_JSON.svc" />
+    <Content Include="Alistamiento\HPVServiciosAli.svc" />
+    <Content Include="Alistamiento\HPVServiciosAli_JSON.svc" />
+    <Content Include="Asistencia\HPVServiciosAsistencia.svc" />
+    <Content Include="Asistencia\HPVServiciosAsistencia_JSON.svc" />
+    <Content Include="CasosDeExito\HPVServiciosCasosDeExito.svc" />
+    <Content Include="CasosDeExito\HPVServiciosCasosDeExito_JSON.svc" />
+    <Content Include="Consulta\HPVServicioConsulta.svc" />
+    <Content Include="Consulta\HPVServiciosConsulta_JSON.svc" />
+    <Content Include="Entregable\AdjuntarEntregable.aspx" />
+    <Content Include="Entregable\ConsultarEntregable.aspx" />
+    <Content Include="FechaCorte\HPVServiciosFechaCorte.svc" />
+    <Content Include="FechaCorte\HPVServiciosFechaCorte_JSON.svc" />
+    <Content Include="General\HPVServiciosGen.svc" />
+    <Content Include="General\HPVServiciosGen_JSON.svc" />
+    <Content Include="HistoriaVida\HPVServiciosHistoriaVida.svc" />
+    <Content Include="HistoriaVida\HPVServiciosHistoriaVida_JSON.svc" />
+    <Content Include="Img\firmaCertificado.png" />
+    <Content Include="Img\pdfheader.png" />
+    <Content Include="EncuestasSena\HPVServicioEncuestas.svc" />
+    <Content Include="Indicadores\Indicadores.aspx" />
+    <Content Include="Liderazgo\HPVServiciosLiderazgo.svc" />
+    <Content Include="Liderazgo\HPVServiciosLiderazgo_JSON.svc" />
+    <Content Include="Reportes\Candidatos\RptCandidatos.aspx" />
+    <Content Include="Reportes\CasosExito\CasosExito.aspx" />
+    <Content Include="Reportes\Cronograma\RptCronograma.aspx" />
+    <Content Include="Reportes\EjemplosLiderazgo\EjemplosLiderazgo.aspx" />
+    <Content Include="Reportes\EntradaSalida\RptEntradaSalida.aspx" />
+    <Content Include="Reportes\EspaciosFisicos\RptEspaciosFisicos.aspx" />
+    <Content Include="Reportes\HistoriasVida\HistoriasVida.aspx" />
+    <Content Include="Reportes\RechazoGrupos\RechazoGrupos.aspx" />
+    <Content Include="Reportes\Reporte\GenerarReporte.aspx" />
+    <Content Include="Reportes\Asistencia\ListaAsistencia.aspx" />
+    <Content Include="Reportes\Certificado\GenerarCertificado.aspx" />
+    <Content Include="Reportes\HPVServiciosReportes.svc" />
+    <Content Include="Reportes\HPVServiciosReportes_JSON.svc" />
+    <Content Include="Reportes\Satisfaccion\RptSatisfaccion.aspx" />
+    <Content Include="Reportes\Trazabilidad\RptTrazabilidad.aspx" />
+    <Content Include="Reportes\UsuariosSistema\UsuariosSistema.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdmEspacioFisico\HPVServiciosAdmEspacioFisico.svc.cs">
+      <DependentUpon>HPVServiciosAdmEspacioFisico.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmEspacioFisico\HPVServiciosAdmEspacioFisico_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAdmEspacioFisico_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmEspacioFisico\IHPVServiciosAdmEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisico\IHPVServiciosAdmEspacioFisico_JSON.cs" />
+    <Compile Include="AdmParametro\HPVServiciosAdmParametro.svc.cs">
+      <DependentUpon>HPVServiciosAdmParametro.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmParametro\HPVServiciosAdmParametro_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAdmParametro_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmParametro\IHPVServiciosAdmParametro.cs" />
+    <Compile Include="AdmParametro\IHPVServiciosAdmParametro_JSON.cs" />
+    <Compile Include="AdmRol\HPVServiciosAdmRol.svc.cs">
+      <DependentUpon>HPVServiciosAdmRol.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmRol\HPVServiciosAdmRol_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAdmRol_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmRol\IHPVServiciosAdmRol.cs" />
+    <Compile Include="AdmRol\IHPVServiciosAdmRol_JSON.cs" />
+    <Compile Include="AdmUsuario\HPVServiciosAdmUsuario.svc.cs">
+      <DependentUpon>HPVServiciosAdmUsuario.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmUsuario\HPVServiciosAdmUsuario_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAdmUsuario_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AdmUsuario\IHPVServiciosAdmUsuario.cs" />
+    <Compile Include="AdmUsuario\IHPVServiciosAdmUsuario_JSON.cs" />
+    <Compile Include="Alistamiento\HPVServiciosAli.svc.cs">
+      <DependentUpon>HPVServiciosAli.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Alistamiento\HPVServiciosAli_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAli_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Alistamiento\IHPVServiciosAli.cs" />
+    <Compile Include="Alistamiento\IHPVServiciosAli_JSON.cs" />
+    <Compile Include="Asistencia\HPVServiciosAsistencia.svc.cs">
+      <DependentUpon>HPVServiciosAsistencia.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\HPVServiciosAsistencia_JSON.svc.cs">
+      <DependentUpon>HPVServiciosAsistencia_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\IHPVServiciosAsistencia.cs" />
+    <Compile Include="Asistencia\IHPVServiciosAsistencia_JSON.cs" />
+    <Compile Include="CasosDeExito\HPVServiciosCasosDeExito.svc.cs">
+      <DependentUpon>HPVServiciosCasosDeExito.svc</DependentUpon>
+    </Compile>
+    <Compile Include="CasosDeExito\HPVServiciosCasosDeExito_JSON.svc.cs">
+      <DependentUpon>HPVServiciosCasosDeExito_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="CasosDeExito\IHPVServiciosCasosDeExito.cs" />
+    <Compile Include="CasosDeExito\IHPVServiciosCasosDeExito_JSON.cs" />
+    <Compile Include="Consulta\HPVServicioConsulta.svc.cs">
+      <DependentUpon>HPVServicioConsulta.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta\HPVServiciosConsulta_JSON.svc.cs">
+      <DependentUpon>HPVServiciosConsulta_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta\IHPVServicioConsulta.cs" />
+    <Compile Include="Consulta\IHPVServiciosConsulta_JSON.cs" />
+    <Compile Include="Entregable\AdjuntarEntregable.aspx.cs">
+      <DependentUpon>AdjuntarEntregable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entregable\AdjuntarEntregable.aspx.designer.cs">
+      <DependentUpon>AdjuntarEntregable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entregable\ConsultarEntregable.aspx.cs">
+      <DependentUpon>ConsultarEntregable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entregable\ConsultarEntregable.aspx.designer.cs">
+      <DependentUpon>ConsultarEntregable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FechaCorte\HPVServiciosFechaCorte.svc.cs">
+      <DependentUpon>HPVServiciosFechaCorte.svc</DependentUpon>
+    </Compile>
+    <Compile Include="FechaCorte\HPVServiciosFechaCorte_JSON.svc.cs">
+      <DependentUpon>HPVServiciosFechaCorte_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="FechaCorte\IHPVServiciosFechaCorte.cs" />
+    <Compile Include="FechaCorte\IHPVServiciosFechaCorte_JSON.cs" />
+    <Compile Include="General\HPVServiciosGen.svc.cs">
+      <DependentUpon>HPVServiciosGen.svc</DependentUpon>
+    </Compile>
+    <Compile Include="General\HPVServiciosGen_JSON.svc.cs">
+      <DependentUpon>HPVServiciosGen_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="General\IHPVServiciosGen.cs" />
+    <Compile Include="General\IHPVServiciosGen_JSON.cs" />
+    <Compile Include="HistoriaVida\HPVServiciosHistoriaVida.svc.cs">
+      <DependentUpon>HPVServiciosHistoriaVida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="HistoriaVida\HPVServiciosHistoriaVida_JSON.svc.cs">
+      <DependentUpon>HPVServiciosHistoriaVida_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="HistoriaVida\IHPVServiciosHistoriaVida.cs" />
+    <Compile Include="HistoriaVida\IHPVServiciosHistoriaVida_JSON.cs" />
+    <Compile Include="EncuestasSena\HPVServicioEncuestas.svc.cs">
+      <DependentUpon>HPVServicioEncuestas.svc</DependentUpon>
+    </Compile>
+    <Compile Include="EncuestasSena\IHPVServicioEncuestas.cs" />
+    <Compile Include="Indicadores\Indicadores.aspx.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Indicadores\Indicadores.aspx.designer.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Liderazgo\HPVServiciosLiderazgo.svc.cs">
+      <DependentUpon>HPVServiciosLiderazgo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Liderazgo\HPVServiciosLiderazgo_JSON.svc.cs">
+      <DependentUpon>HPVServiciosLiderazgo_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Liderazgo\IHPVServiciosLiderazgo.cs" />
+    <Compile Include="Liderazgo\IHPVServiciosLiderazgo_JSON.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\Candidatos\RptCandidatos.aspx.cs">
+      <DependentUpon>RptCandidatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Candidatos\RptCandidatos.aspx.designer.cs">
+      <DependentUpon>RptCandidatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\CasosExito\CasosExito.aspx.cs">
+      <DependentUpon>CasosExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\CasosExito\CasosExito.aspx.designer.cs">
+      <DependentUpon>CasosExito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Cronograma\RptCronograma.aspx.cs">
+      <DependentUpon>RptCronograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Cronograma\RptCronograma.aspx.designer.cs">
+      <DependentUpon>RptCronograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\EjemplosLiderazgo\EjemplosLiderazgo.aspx.cs">
+      <DependentUpon>EjemplosLiderazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\EjemplosLiderazgo\EjemplosLiderazgo.aspx.designer.cs">
+      <DependentUpon>EjemplosLiderazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\EntradaSalida\RptEntradaSalida.aspx.cs">
+      <DependentUpon>RptEntradaSalida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\EntradaSalida\RptEntradaSalida.aspx.designer.cs">
+      <DependentUpon>RptEntradaSalida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\EspaciosFisicos\RptEspaciosFisicos.aspx.cs">
+      <DependentUpon>RptEspaciosFisicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\EspaciosFisicos\RptEspaciosFisicos.aspx.designer.cs">
+      <DependentUpon>RptEspaciosFisicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HistoriasVida\HistoriasVida.aspx.cs">
+      <DependentUpon>HistoriasVida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\HistoriasVida\HistoriasVida.aspx.designer.cs">
+      <DependentUpon>HistoriasVida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ManejadorExcel.cs" />
+    <Compile Include="Reportes\RechazoGrupos\RechazoGrupos.aspx.cs">
+      <DependentUpon>RechazoGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\RechazoGrupos\RechazoGrupos.aspx.designer.cs">
+      <DependentUpon>RechazoGrupos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reporte\GenerarReporte.aspx.cs">
+      <DependentUpon>GenerarReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte\GenerarReporte.aspx.designer.cs">
+      <DependentUpon>GenerarReporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Asistencia\ListaAsistencia.aspx.cs">
+      <DependentUpon>ListaAsistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Asistencia\ListaAsistencia.aspx.designer.cs">
+      <DependentUpon>ListaAsistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Certificado\GenerarCertificado.aspx.cs">
+      <DependentUpon>GenerarCertificado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Certificado\GenerarCertificado.aspx.designer.cs">
+      <DependentUpon>GenerarCertificado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HPVServiciosReportes.svc.cs">
+      <DependentUpon>HPVServiciosReportes.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HPVServiciosReportes_JSON.svc.cs">
+      <DependentUpon>HPVServiciosReportes_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\IHPVServiciosReportes.cs" />
+    <Compile Include="Reportes\IHPVServiciosReportes_JSON.cs" />
+    <Compile Include="Reportes\Satisfaccion\RptSatisfaccion.aspx.cs">
+      <DependentUpon>RptSatisfaccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Satisfaccion\RptSatisfaccion.aspx.designer.cs">
+      <DependentUpon>RptSatisfaccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Trazabilidad\RptTrazabilidad.aspx.cs">
+      <DependentUpon>RptTrazabilidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Trazabilidad\RptTrazabilidad.aspx.designer.cs">
+      <DependentUpon>RptTrazabilidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\UsuariosSistema\UsuariosSistema.aspx.cs">
+      <DependentUpon>UsuariosSistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\UsuariosSistema\UsuariosSistema.aspx.designer.cs">
+      <DependentUpon>UsuariosSistema.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Reportes\PDF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="UML_Datos.cd" />
+    <None Include="Properties\PublishProfiles\HPVServiciosDeploy.pubxml" />
+    <None Include="Properties\PublishProfiles\HPV_Back.pubxml" />
+    <Content Include="UML_Entidades.cd" />
+    <Content Include="UML_Servicios.cd" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HPV_Datos\HPV_Datos.csproj">
+      <Project>{bf5ad81d-c294-4e2d-a689-3a8431aaa153}</Project>
+      <Name>HPV_Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HPV_Entidades\HPV_Entidades\HPV_Entidades.csproj">
+      <Project>{2e8ce3bf-c2d3-41ed-af0f-179427a5b584}</Project>
+      <Name>HPV_Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3437</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3394/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

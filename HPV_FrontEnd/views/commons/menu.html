@@ -1,0 +1,269 @@
+<nav class="navbar navbar-default navbar-navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu" aria-expanded="false">
+            <span class="sr-only">{{'menu.toggle_navigation'|translate}}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-menu" ng-init="ctrl.initialize()">
+        <ul class="nav navbar-nav">
+            <li class="menu-item"
+                ng-class="{ active: ctrl.isIndex() }">
+                <a ui-sref="home" title="{{'menu.home'|translate}}">
+                    <span class="fa fa-home"></span>{{'menu.home'|translate}}
+                </a>
+            </li>
+            <li ng-if="!ctrl.isLoggedIn()"
+                ng-class="{ active: isActive('/EstadoParticipante') }">
+                <a ui-sref="participantState" title="{{'menu.participantState'|translate}}">
+                    <span class="fa fa-list"></span> {{'menu.participantState'|translate}}
+                </a>
+            </li>
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(1)"
+                ng-class="{ active: ctrl.isActive('/Administracion') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.administration'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(11)">
+                        <a ui-sref="users" title="{{'menu.users'|translate}}">
+                            {{'menu.users'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(12)">
+                        <a ui-sref="rolesList" title="{{'menu.roles'|translate}}">
+                            {{'menu.roles'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(13)">
+                        <a ui-sref="editProfile" title="{{'menu.profile'|translate}}">
+                            {{'menu.profile'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(14)">
+                        <a ui-sref="parameters" title="{{'menu.parameters'|translate}}">
+                            {{'menu.parameters'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(2)"
+                ng-class="{ active: ctrl.isActive('/Operativo') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.operative'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(21)">
+                        <a ui-sref="attendanceFacilitator" title="{{'menu.attendanceLists'|translate}}">
+                            {{'menu.attendanceLists'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(22)">
+                        <a ui-sref="allocation" title="{{'menu.physicalSpacesAllocation'|translate}}">
+                            {{'menu.physicalSpacesAllocation'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(23)">
+                        <a ui-sref="allocationAdmin" title="{{'menu.physicalSpacesAllocationAdmin'|translate}}">
+                            {{'menu.physicalSpacesAllocationApprove'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(24)">
+                        <a ui-sref="#" title="{{'menu.deliberables'|translate}}">
+                            {{'menu.deliberables'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(25)">
+                        <a ui-sref="attendanceCoordinator" title="{{'menu.deliberablesApprove'|translate}}">
+                            {{'menu.deliberablesApprove'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(26)">
+                        <a ui-sref="reallocation" title="{{'menu.reallocation'|translate}}">
+                            {{'menu.reallocation'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(27)">
+                        <a ui-sref="attendanceCoordinator" title="{{'menu.attendanceLists'|translate}}">
+                            {{'menu.attendanceLists'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(28)">
+                        <a ui-sref="uploadableListFacilitator" title="{{'menu.uploadableListFacilitator'|translate}}">
+                            {{'menu.uploadableListFacilitator'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(29)">
+                        <a ui-sref="uploadableListCoordinator" title="{{'menu.uploadableListCoordinator'|translate}}">
+                            {{'menu.uploadableListCoordinator'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(210)">
+                        <a ui-sref="uploadableListSupervisor" title="{{'menu.uploadableListSupervisor'|translate}}">
+                            {{'menu.uploadableListSupervisor'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(3)"
+                ng-class="{ active: ctrl.isActive('/Consulta') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.searches'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(31)">
+                        <a ui-sref="searches" title="{{'menu.beneficiaries'|translate}}">
+                            {{'menu.beneficiaries'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(32)">
+                        <a ui-sref="searchesSchedules" title="{{'menu.schedules'|translate}}">
+                            {{'menu.schedules'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(4)"
+                ng-class="{ active: ctrl.isActive('/HistoriasDeVida') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.experiences'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(41)">
+                        <a ui-sref="lifeStoryListFacilitator" title="{{'menu.lifeStories'|translate}}">
+                            {{'menu.lifeStories'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(42)">
+                        <a ui-sref="successCaseListFacilitator" title="{{'menu.successCases'|translate}}">
+                            {{'menu.successCases'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(43)">
+                        <a ui-sref="lifeStoryListCoordinator" title="{{'menu.lifeStoriesCoord'|translate}}">
+                            {{'menu.lifeStoriesCoord'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(44)">
+                        <a ui-sref="successCaseListCoordinator" title="{{'menu.successCasesCoord'|translate}}">
+                            {{'menu.successCasesCoord'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(45)">
+                        <a ui-sref="lifeStoryListSupervisor" title="{{'menu.lifeStoriesSup'|translate}}">
+                            {{'menu.lifeStoriesSup'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(46)">
+                        <a ui-sref="successCaseListSupervisor" title="{{'menu.successCasesSup'|translate}}">
+                            {{'menu.successCasesSup'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(47)">
+                        <a ui-sref="leadershipListFacilitator" title="{{'menu.leaderships'|translate}}">
+                            {{'menu.leaderships'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(48)">
+                        <a ui-sref="leadershipListCoordinator" title="{{'menu.leadershipsCoord'|translate}}">
+                            {{'menu.leadershipsCoord'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(49)">
+                        <a ui-sref="leadershipListSupervisor" title="{{'menu.leadershipsSup'|translate}}">
+                            {{'menu.leadershipsSup'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(5)"
+                ng-class="{ active: ctrl.isActive('/Reportes') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.reports'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(51)">
+                        <a ui-sref="reportsList" title="{{'menu.reportsList'|translate}}">
+                            {{'menu.reportsList'|translate}}
+                        </a>
+                    </li>
+
+                    <li class="menu-item" ng-if="ctrl.authorization(52)">
+                        <a ui-sref="audit" title="{{'menu.audit'|translate}}">
+                            {{'menu.audit'|translate}}
+                        </a>
+                    </li>
+
+                    <li class="menu-item" ng-if="ctrl.authorization(53)">
+                        <a ui-sref="indicatorsList" title="{{'menu.indicatorsList'|translate}}">
+                            {{'menu.indicatorsList'|translate}}
+                        </a>
+                    </li>
+
+                    <li class="menu-item" ng-if="ctrl.authorization(54)">
+                        <a ui-sref="reportsListTP" title="{{'menu.reportsListTP'|translate}}">
+                            {{'menu.reportsListTP'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-if="!ctrl.isLoggedIn() && false">
+                <a href=""
+                   ng-click="ctrl.goToSchedulePdf()"
+                   title="{{'menu.schedulePdf'|translate}}">
+                    <span class="fa fa-calendar-o"></span> {{'menu.schedulePdf'|translate}}
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-if="!ctrl.isLoggedIn() && ctrl.getParameter().code == 1"
+                ng-class="{ active: isActive('/Inscripcion') }">
+                <a ui-sref="inscription" title="{{'menu.inscription'|translate}}">
+                    <span class="fa fa-list"></span> {{'menu.inscription'|translate}}
+                </a>
+            </li>
+
+            <li>
+                <a ng-click="ctrl.logout()"
+                   title="{{'menu.logout'|translate}}"
+                   ng-if="ctrl.isLoggedIn()">
+                    <span class="fa fa-sign-out"></span>{{'menu.logout'|translate}}
+                </a>
+            </li>
+            <li ng-if="!ctrl.isLoggedIn()">
+                
+                <!--
+                <a href="http://54.201.115.130/ps2016/html/index.php/participants/certificate"
+                   title="{{'menu.certificate'|translate}}">
+                    <span class="fa fa-certificate"></span> {{'menu.certificate'|translate}}
+                </a>
+                    -->
+                <a href=""
+                   title="{{'menu.certificate'|translate}}"
+                   ui-sref="generateCertificate">
+                    <span class="fa fa-certificate"></span> {{'menu.certificate'|translate}}
+                </a>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>

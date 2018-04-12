@@ -1,0 +1,1 @@
+module.exports = require("npm:run-sequence@1.1.5/index.js");

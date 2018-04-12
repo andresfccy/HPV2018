@@ -1,0 +1,1 @@
+module.exports = require("npm:astral@0.1.0/index.js");

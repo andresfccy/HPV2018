@@ -1,0 +1,95 @@
+
+<article ng-init="ctrl.initialize()">
+    <div>
+        <div class="alert alert-warning alert-dismissible"
+             ng-show="ctrl.getParameter().code == 0">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4>¡ Atención !</h4>
+            <p>Las inscripciones se encuentran cerradas en este momento</p>
+            <p>Las inscripciones para el periodo <b>{{ctrl.getParameter().NombrePeriodo}}</b> estarán abiertas desde el 
+            <strong class="label label-warning">{{ctrl.getParameter().iniDate}}</strong>  al <strong class="label label-warning">{{ ctrl.getParameter().endDate}}</strong></p>
+        </div>
+
+        <div class="alert alert-info alert-dismissible"
+             ng-show="ctrl.getParameter().code == 1">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 translate>home.infoAlert.title</h4>
+            <h5>
+                {{"home.infoAlert.clickHere"|translate}}:
+                <a class="btn btn-default btn-inscription" ui-sref="inscription" translate>
+                    home.infoAlert.inscription
+                </a>
+            </h5>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <img src="http://pstest2016.s3.amazonaws.com/files/img/basics_home.png" class="img-responsive">
+    </div>
+    <div class="col-sm-6">
+        <h4 class="handsean" translate>home.doYouWantToImprove</h4>
+        <div class="media home-container-one">
+            <div class="col-sm-8">
+                <h4 class="media-heading" translate>home.whatIsIt</h4>
+                <p translate>home.whatIsItResponse</p>
+            </div>
+            <div class="media-left col-sm-4">
+                <img class="media-object  full-width" src="http://pstest2016.s3.amazonaws.com/files/img/wel1.png" alt="{{"home.whatIsIt"|translate}}">
+            </div>
+        </div>
+        <div class="media home-container-two">
+            <div class="media-left col-sm-4">
+                <img class="media-object full-width" src="http://pstest2016.s3.amazonaws.com/files/img/wel2.png" alt="{{"home.how"|translate}}">
+            </div>
+            <div class="col-sm-8">
+                <h4 class="media-heading" translate>home.how</h4>
+                <p translate>home.howResponse</p>
+            </div>
+        </div>
+        <div class="media home-container-three">
+            <div class="col-sm-8">
+                <h4 class="media-heading">{{"home.where"|translate}}</h4>
+                <p>{{"home.whereResponse"|translate}} <a href="#where-modal" data-toggle="modal" data-target="#where-modal" translate>home.seeMap</a>.</p>
+            </div>
+            <div class="media-left col-sm-4">
+                <img class="media-object full-width" src="http://pstest2016.s3.amazonaws.com/files/img/wel3.png" alt="{{"home.where"|translate}}">
+            </div>
+        </div>
+    </div>
+    <div class="home-container-four col-sm-12">
+        <h5 translate>home.termsTitle</h5>
+        <p>
+            {{"home.termsContent"|translate}}
+            <!--
+            <a target="_blank" href="http://pstest2016.s3.amazonaws.com/files/docs/Terminos_y_Condiciones_05.02.16.pdf" 
+               translate>home.seeDoc</a>
+                -->
+            <a href=""
+               ng-click="ctrl.goToTermsPdf()" 
+               translate>home.seeDoc</a>.
+        </p>
+        <p>Visita nuestras redes sociales:</p>
+        <a href="https://www.facebook.com/JovenesAccionCo" target="blank">
+            <span class="fa fa-4x fa-facebook-square"></span>
+        </a>&nbsp;
+        <a href="https://twitter.com/JovenesAccionCo" target="blank">
+            <span class="fa fa-4x fa-twitter-square"></span>
+        </a>
+    </div>
+    <div class="modal fade" id="where-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel" translate>home.mapTitle</h4>
+                </div>
+                <div class="modal-body">
+                    <p><img src="assets/img/mapa02.png" class="img-responsive"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

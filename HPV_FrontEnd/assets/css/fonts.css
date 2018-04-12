@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Futura Md BT Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura Md BT Medium'), url('../../assets/fonts/futura_medium_bt.woff') format('woff');
+}
+@font-face {
+    font-family: 'Hand Of Sean';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hand Of Sean'), url('../../assets/fonts/handsean.ttf') format('truetype');
+}
+h4.handsean {
+    font-family: 'Hand Of Sean';
+    padding: 15px;
+}
+h2.futura-md-bt {
+    font-family: 'Futura Md BT Medium';
+}
+.btn-inscription {
+    font-family: 'Hand Of Sean';
+    background-color: #F3541C;
+    color: #FFF;
+}

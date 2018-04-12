@@ -1,0 +1,39 @@
+{
+  "name": "angular-esri-map",
+  "version": "0.0.1-beta.1",
+  "homepage": "https://github.com/Esri/angular-esri-map",
+  "authors": [
+    "Javier Abadía <javier.abadia@esri.es> (https://github.com/jabadia)",
+    "Patrick Arlt <parlt@esri.com> (http://patrickarlt.com)",
+    "Matt Priour <mpriour@esr.com> (https://github.com/mpriour)",
+    "Tom Wayson <twayson@esri.com> (http://tomwayson.com)"
+  ],
+  "description": "A collection of directives to help you use Esri maps and services in your Angular applications",
+  "main": [
+    "dist/angular-esri-map.js",
+    "angular-esri-map.min.js"
+  ],
+  "keywords": [
+    "Angular",
+    "Esri"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "app",
+    "src",
+    "node_modules",
+    "bower_components",
+    "test",
+    "gulpfile.js"
+  ],
+  "_release": "0.0.1-beta.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1-beta.1",
+    "commit": "7e687bec05a50b5cf11c49008110f8ec6cc0e47e"
+  },
+  "_source": "https://github.com/Esri/angular-esri-map.git",
+  "_target": "v0.0.1-beta.1",
+  "_originalSource": "angular-esri-map"
+}

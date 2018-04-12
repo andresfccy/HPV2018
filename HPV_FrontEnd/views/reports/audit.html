@@ -1,0 +1,162 @@
+﻿
+<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'audit.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-lg-6 clearfix">
+                    <label class="control-label"
+                           for="functions">{{'audit.functions'|translate}}</label>
+                    <select class="form-control"
+                            id="functions"
+                            ng-model="ctrl.filter.IdFuncion"
+                            ng-disabled="!ctrl.functions || ctrl.functions.length == 0"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.functions">
+                    </select>
+                </div>
+                <div class="col-lg-6 clearfix">
+                    <label class="control-label"
+                           for="users">{{'audit.users'|translate}}</label>
+                    <select class="form-control"
+                            id="users"
+                            placeholder="{{'audit.users'|translate}}"
+                            ng-model="ctrl.filter.IdUsuario"
+                            ng-disabled="!ctrl.users || ctrl.users.length == 0"
+                            ng-options="item.IdUsuario as item.PrimerNombre + ' ' + item.PrimerApellido for item in ctrl.users | orderBy: 'PrimerNombre'" ></select>
+                </div>
+                <div class="col-lg-6 clearfix">
+                    <label for="fecIni">
+                        {{'audit.fecIni'|translate}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <p class="input-group">
+                        <input type="text"
+                               title="Ingresa la fecha inicial"
+                               name="fecIni"
+                               class="form-control"
+                               ng-model="ctrl.filter.FecIniNum"
+                               uib-datepicker-popup="yyyy/MM/dd"
+                               placeholder="aaaa/mm/dd"
+                               is-open="inDateOpen"
+                               datepicker-options="ctrl.dateOptions"
+                               ng-required="true"
+                               close-text="{{'inscription.close'|translate}}"
+                               alt-input-formats="ctrl.altInputFormats"
+                               required />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="inDateOpen=!inDateOpen">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        <!--
+                        <div class="validation-messages"
+                             ng-messages="form_validation.participantBirthDate.$error"
+                             ng-if="form_validation.participantBirthDate.$touched">
+                            <div ng-message="required">{{'inscription.error.dateIsRequired'|translate}}</div>
+                            <div ng-message="valid">{{'inscription.error.dateNoFormat'|translate}}</div>
+                        </div>
+                            -->
+                    </p>
+                </div>
+                <div class="col-lg-6 clearfix">
+                    <label for="fecIni">
+                        {{'audit.fecFin'|translate}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <p class="input-group">
+                        <input type="text"
+                               title="Ingresa la fecha inicial"
+                               name="fecIni"
+                               class="form-control"
+                               ng-model="ctrl.filter.FecFinNum"
+                               uib-datepicker-popup="yyyy/MM/dd"
+                               placeholder="aaaa/mm/dd"
+                               is-open="fiDateOpen"
+                               min-date="ctrl.filter.FecIniNum"
+                               datepicker-options="ctrl.dateOptions"
+                               ng-required="true"
+                               close-text="{{'inscription.close'|translate}}"
+                               alt-input-formats="ctrl.altInputFormats"
+                               required />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="fiDateOpen=!fiDateOpen">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        <!--
+            <div class="validation-messages"
+                 ng-messages="form_validation.participantBirthDate.$error"
+                 ng-if="form_validation.participantBirthDate.$touched">
+                <div ng-message="required">{{'inscription.error.dateIsRequired'|translate}}</div>
+                <div ng-message="valid">{{'inscription.error.dateNoFormat'|translate}}</div>
+            </div>
+                -->
+                    </p>
+                </div>
+
+                <div class="btn btn-success pull-right"
+                     ng-click="ctrl.generateAudits()">
+                    {{'audit.generate'|translate}}
+                </div>
+
+                <!--
+                <div class="pull-left">
+                    <uib-pagination boundary-links="true"
+                                    total-items="ctrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="ctrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="ctrl.currentPage">
+                    </uib-pagination>
+                </div>
+                    -->
+            </div>
+            <div class="panel-body clearfix">
+                <div class="col-lg-12">
+                    <h5>{{'audit.audit'|translate}}</h5>
+                    <hr />
+                </div>
+                <div class="alert alert-info"
+                     ng-show="!ctrl.audits">
+                    {{'audit.loading'|translate}}
+                </div>
+                <div class="alert alert-warning"
+                     ng-show="ctrl.audits && ctrl.audits.length == 0">
+                    {{'audit.noDataFound'|translate}}
+                </div>
+                <div class="col-lg-12 clearfix"
+                     ng-show="ctrl.audits && ctrl.audits.length != 0">
+
+                    <table class="table table-hover dataTable table-responsive">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-4">{{'audit.date'|translate}}</th>
+                                <th class="col-lg-8">{{'audit.function'|translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ctrl.audits">
+                                <td>{{item.Fecha}}</td>
+                                <td>{{item.Funcion}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-uglify@1.5.3/index.js");

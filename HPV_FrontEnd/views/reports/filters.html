@@ -1,0 +1,132 @@
+﻿
+<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'reports.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="season">{{'reports.season'|translate}}</label>
+                    <select class="form-control"
+                            id="season"
+                            placeholder="{{'reports.season'|translate}}"
+                            ng-model="ctrl.filter.IdPeriodo"
+                            ng-disabled="!ctrl.seasons || ctrl.seasons.length == 0"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.seasons | orderBy:'-Mostrar'"
+                            ng-change="ctrl.cargarFechaCorte()">
+                    </select>
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="cutDate">{{'reports.cutDate'|translate}}</label>
+                    <select class="form-control"
+                            id="cutDate"
+                            placeholder="{{'reports.cutDate'|translate}}"
+                            ng-model="ctrl.filter.FechaCorte"
+                            ng-disabled="!ctrl.cutDates || ctrl.cutDates.length == 0 || ctrl.filter.IdPeriodo == '0'"
+                            ng-options="item.Fecha as item.Descripcion for item in ctrl.cutDates | orderBy:'-Mostrar'"></select>
+                </div>
+                <div class="col-lg-4 clearfix"
+                     ng-show="ctrl.rolId > 5">
+                    <label class="control-label"
+                           for="coordinator">{{'reports.coordinator'|translate}}</label>
+                    <select class="form-control"
+                            id="coordinator"
+                            placeholder="{{'reports.coordinator'|translate}}"
+                            ng-model="ctrl.filter.IdCoordinador"
+                            ng-disabled="!ctrl.coordinators || ctrl.coordinators.length == 0"
+                            ng-change="ctrl.loadFacilitatorsByCoordinator(); ctrl.loadDepartments(); ctrl.loadGroupsByFacilitator();"
+                            ng-options="item.IdCoordinador as item.Nombre for item in ctrl.coordinators | orderBy:'Mostrar'"></select>
+                </div>
+                <div class="col-lg-4 clearfix"
+                            ng-show="ctrl.rolId == 2 || ctrl.rolId > 5">
+                    <label class="control-label"
+                           for="facilitator">{{'reports.facilitator'|translate}}</label>
+                    <select class="form-control"
+                            id="facilitator"
+                            placeholder="{{'reports.facilitator'|translate}}"
+                            ng-model="ctrl.filter.IdFacilitador"
+                            ng-disabled="!ctrl.facilitators || ctrl.facilitators.length == 0"
+                            ng-change="ctrl.loadGroupsByFacilitator(); ctrl.loadDepartments();"
+                            ng-options="item.IdFacilitador as item.Nombre for item in ctrl.facilitators | orderBy:'Mostrar'"></select>
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="group">{{'reports.group'|translate}}</label>
+                    <select class="form-control"
+                            id="group"
+                            placeholder="{{'reports.group'|translate}}"
+                            ng-model="ctrl.filter.IdGrupo"
+                            ng-disabled="!ctrl.groups || ctrl.groups.length == 0"
+                            ng-options="item.IdGrupoFacilitador as item.Sigla for item in ctrl.groups | orderBy:'Mostrar'">
+                    </select>
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="department">{{'reports.department'|translate}}</label>
+                    <select class="form-control"
+                            id="department"
+                            placeholder="{{'reports.department'|translate}}"
+                            ng-model="ctrl.filter.IdDepartamento"
+                            ng-disabled="!ctrl.departments || ctrl.departments.length == 0"
+                            ng-change="ctrl.citiesByDepartment()"
+                            ng-options="item.Codigo as item.Nombre for item in ctrl.departments | orderBy:'Mostrar'"></select>
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="city">{{'reports.city'|translate}}</label>
+                    <select class="form-control"
+                            id="city"
+                            placeholder="{{'reports.city'|translate}}"
+                            ng-model="ctrl.filter.IdMunicipio"
+                            ng-disabled="!ctrl.cities || ctrl.cities.length == 0"
+                            ng-options="item.Codigo as item.Nombre for item in ctrl.cities | orderBy:'Mostrar'"></select>
+                </div>
+            </div>
+            <div class="panel-body clearfix">
+                <div class="col-lg-12">
+                    <h5>{{'reports.reports'|translate}}</h5>
+                    <hr />
+                </div>
+                <div class="alert alert-info"
+                     ng-show="!ctrl.reports">
+                    {{'reports.loading'|translate}}
+                </div>
+                <div class="alert alert-warning"
+                     ng-show="ctrl.reports && ctrl.reports.length == 0">
+                    {{'reports.noDataFound'|translate}}
+                </div>
+                <div class="col-lg-12 clearfix"
+                     ng-show="ctrl.reports && ctrl.reports.length != 0">
+
+                    <div class="btn-toolbar" role="toolbar">
+                        <div ng-repeat="cat in ctrl.reports" ng-if="$index % ctrl.cols == 0" class="row little-margin-bottom">
+                            <div ng-repeat="cat in ctrl.reports | startFrom:$parent.$index | limitTo:ctrl.cols" class="col-md-{{12/ctrl.cols}}">
+                                <h5>{{cat.Categoria}}</h5>
+                                <hr />
+                                <div class="btn-group-vertical" role="group" data-toggle="buttons">
+                                    <label class="btn btn-default col-lg-7"
+                                           ng-repeat="item in cat.Lista"
+                                           ng-click="ctrl.selectReport(item)"
+                                           ng-class="{'active':ctrl.filter.IdReporte == item.IdReporte}">
+                                        {{item.Nombre}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="col-lg-12">
+                    <div class="btn btn-success pull-right"
+                         ng-click="ctrl.generateReport()">
+                        {{'reports.generate'|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

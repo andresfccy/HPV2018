@@ -1,0 +1,121 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'uploadable.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="workshop">{{'uploadable.workshop'|translate}}</label>
+                    <select class="form-control"
+                            id="workshop"
+                            placeholder="{{'uploadable.workshop'|translate}}"
+                            ng-model="ctrl.selectedWorkshop"
+                            ng-change="ctrl.submitSearch()"
+                            ng-options="item.IdTaller as item.Nombre+': '+item.Descripcion for item in ctrl.workshops"></select>
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="documentState">{{'uploadable.documentState'|translate}}</label>
+                    <select class="form-control"
+                            id="documentState"
+                            placeholder="{{'uploadable.documentState'|translate}}"
+                            ng-model="ctrl.selectedDocumentState"
+                            ng-change="ctrl.submitSearch()"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.documentsStates"></select>
+                </div>
+                <!--
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="attendanceState">{{'uploadable.attendanceState'|translate}}</label>
+                    <select class="form-control"
+                            id="attendanceState"
+                            placeholder="{{'uploadable.attendanceState'|translate}}"
+                            ng-model="ctrl.selectedAttendanceState"
+                            ng-change="ctrl.submitSearch()"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.assistanceStates"></select>
+                </div>
+                -->
+
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="search">{{'uploadable.search'|translate}}</label>
+                    <input class="form-control"
+                           id="search"
+                           type="text"
+                           placeholder="{{'uploadable.search'|translate}}"
+                           ng-model="search"
+                           ng-blur="ctrl.submitSearch()" />
+                </div>
+                <div class="pull-right">
+                    <uib-pagination boundary-links="true"
+                                    total-items="ctrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="ctrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="ctrl.currentPage">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-lg-12 text-right">
+                        <span>{{'uploadable.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'uploadable.of'|translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-info"
+                 ng-show="!ctrl.uploadableList">
+                {{'uploadable.loading'|translate}}
+
+            </div>
+            <div class="alert alert-warning"
+                 ng-show="ctrl.uploadableList && ctrl.uploadableList.length == 0">
+                {{'uploadable.noDataFound'|translate}}
+            </div>
+            <table class="table table-hover dataTable"
+                   ng-show="ctrl.uploadableList.length > 0">
+                <thead>
+                    <tr>
+                        <th>{{'uploadable.workshop'|translate}}</th>
+                        <th>{{'uploadable.group'|translate}}</th>
+                        <th>{{'uploadable.date'|translate}}</th>
+                        <th>{{'uploadable.documentState'|translate}}</th>
+                        <th>{{'uploadable.attendanceNum'|translate}}</th>
+                        <th>{{'uploadable.attendanceState'|translate}}</th>
+                        <th>{{'uploadable.detail'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in ctrl.filtered | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                    <tr>
+                        <td>{{item.NomTaller}}</td>
+                        <td>{{item.NombreGrupo}}</td>
+                        <td>{{item.FechaRealizacion}}</td>
+                        <td ng-class="{'success':item.EstadoDocumento=='A','default':item.EstadoDocumento=='P', 'danger':item.EstadoDocumento=='R'}">
+                            {{item.EstadoDocumento}}
+                        </td>
+                        <td>{{item.NumeroAsistentes}}</td>
+                        <td ng-class="{'success':item.EstadoAsistencia=='A','default':item.EstadoAsistencia=='P', 'danger':item.EstadoAsistencia=='R'}">
+                            {{item.EstadoAsistencia}}
+                        </td>
+                        <td>
+                            <a ui-sref="uploadableDetailFacilitator({idTaller:item.IdTaller, idGrupo:item.IdGrupoFacilitador})">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</article>

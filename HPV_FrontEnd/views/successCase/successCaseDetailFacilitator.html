@@ -1,0 +1,170 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12"
+                 ng-if="ctrl.isEdition()">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'successCase.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.successCase.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12"
+                 ng-if="ctrl.rechazado">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'successCase.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-bind="ctrl.successCase.MotivoRechazo"
+                              ng-disabled="true"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'successCase.group'|translate}} *</label>
+                    <select class="form-control"
+                            id="group"
+                            name="group"
+                            ng-model="ctrl.successCase.IdGrupoFacilitador"
+                            ng-change="ctrl.getParticipantsByGroup()"
+                            ng-options="item.IdGrupoFacilitador as item.Nombre for item in ctrl.groups"
+                            ng-disabled="ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.group.$error"
+                         ng-if="form.group.$touched">
+                        <div ng-message="required">{{'successCase.error.groupRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'successCase.participant'|translate}} *</label>
+                    <select class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-model="ctrl.successCase.IdInscrito"
+                            ng-options="item.IdInscrito as item.NombreInscrito for item in ctrl.participants"
+                            ng-disabled="!ctrl.participants || ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.participant.$error"
+                         ng-if="form.participant.$touched">
+                        <div ng-message="required">{{'successCase.error.participantRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="blueLabel">{{'successCase.achievement'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.verb'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.adjective'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.way'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.selected'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ctrl.achievements">
+                        <tr>
+                            <td class="no-border-top">{{item.NomLogro}}</td>
+                            <td class="no-border-top">{{item.Verbo}}</td>
+                            <td class="no-border-top">{{item.Adjetivo}}</td>
+                            <td class="no-border-top">{{item.Medio}}</td>
+                            
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="ctrl.sent && item.yesno == true">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="ctrl.sent && (item.yesno == false || !item.yesno)">
+                                    {{'no'|translate}}
+                                </div>
+                                <div class="btn-group"
+                                     ng-if="!ctrl.sent">
+                                    <div class="btn btn-default btn-xs btn-yesno"
+                                           ng-class="{'btn-success': item.yesno==true}"
+                                           ng-click="item.yesno=!item.yesno"
+                                           ng-model="item.yesno">
+                                        <span class="glyphicon" ng-class="item.yesno ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-lg-12 form-group little-margin-bottom" feedback>
+                <label for="observations" class="blueLabel">{{'successCase.observations'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="observations"
+                          ng-model="ctrl.successCase.Observaciones"
+                          ng-disabled="ctrl.editionDisabled()"
+                          required></textarea>
+                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                <div class="validation-messages"
+                     ng-messages="form.observations.$error"
+                     ng-if="form.observations.$touched">
+                    <div ng-message="required">{{'successCase.error.required'|translate}}</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="blueLabel">{{'successCase.qualities'|translate}}</label>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table">
+                    <tbody ng-repeat="item in ctrl.qualities">
+                        <tr>
+                            <td class="no-border-top">{{$index+1}}. </td>
+                            <td class="no-border-top col-lg-10">{{item.Descripcion}}</td>
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="ctrl.sent && item.yesno == 1">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="ctrl.sent && item.yesno == 0">
+                                    {{'no'|translate}}
+                                </div>
+                                <div class="btn-group"
+                                     ng-if="!ctrl.sent">
+                                    <label class="btn btn-default btn-xs btn-yesno"
+                                           ng-class="{'btn-success': item.yesno==1}"
+                                           ng-model="item.yesno"
+                                           uib-btn-radio="1">{{'yes'|translate}}</label>
+                                    <label class="btn btn-default btn-xs"
+                                           ng-class="{'btn-danger': item.yesno==0}"
+                                           ng-model="item.yesno"
+                                           uib-btn-radio="0">{{'no'|translate}}</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary pull-right"
+                    type="submit"
+                    ng-if="!ctrl.editionDisabled()"
+                    ng-click="ctrl.submit()">
+                {{ 'successCase.save' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'successCase.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

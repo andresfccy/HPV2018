@@ -1,0 +1,38 @@
+﻿{
+  "parameters": {
+    "season": "Período",
+    "number": "Número",
+    "state": "Estado",
+    "sinceDate": "Desde",
+    "untilDate": "Hasta",
+    "workshopDate": "Fecha del taller",
+    "name": "Nombre",
+    "addSeason": "Agregar período",
+    "cancel": "Cancelar/Limpiar",
+    "edit": "Editar",
+    "saveChangesSeason": "Guardar cambios del período",
+    "parameters": "Parámetros",
+    "active": "Activo",
+    "innactive": "Inactivo",
+    "value": "Valor",
+    "description": "Descripción",
+    "addParameter": "Agregar parámetro",
+    "saveChangesParameter": "Guardar cambios del parámetro",
+    "showing": "Mostrando",
+    "of": "Parámetros",
+
+    "error": {
+      "nameRequired": "El nombre es un campo requerido.",
+      "numberRequired": "El número de período es un campo requerido.",
+      "serviceNotAvailable": "El servicio no está disponible. Comuníquese con el administrador del sistema.",
+      "stateRequired": "El estado es un campo requerido. ",
+      "sinceDateDate": "Formato incorrecto de fecha.",
+      "sinceDateRequired": "La fecha inicial es un campo requerido.",
+      "untilDateDate": "Formato incorrecto de fecha.",
+      "untilDateRequired": "La fecha final es un campo requerido.",
+      "workshopDateDate": "Formato incorrecto de fecha.",
+      "valueRequired": "El valor es un campo requerido.",
+      "descriptionRequired": "La descripción es un campo requerido"
+    }
+  }
+}

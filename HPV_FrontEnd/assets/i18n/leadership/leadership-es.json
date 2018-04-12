@@ -1,0 +1,45 @@
+﻿{
+  "leadership": {
+    "panelTitle": "Ejemplos de Liderazgo",
+    "search": "Buscar",
+    "facilitatorsName": "Facilitador",
+    "showing": "Mostrando",
+    "of": "Ejemplos de Liderazgo",
+    "leadershipState": "Estado",
+    "close": "Cerrar",
+    "facilitator": "Facilitador",
+    "coordinator": "Coordinador",
+    "group": "Grupo",
+    "city": "Municipio",
+    "state": "Estado",
+    "detail": "Detalle",
+    "rejectReason": "Razón del rechazo",
+    "askForApprovement": "Solicitar aprobación",
+    "back": "Volver a la lista",
+    "loading": "Estamos cargando la información...",
+    "noDataFound": "No se encontraron datos.",
+    "participant": "Participante",
+
+    "explanation": "Apreciado facilitador, tenga en cuenta que para identificar un caso exitoso, se construye con una forma gramatical especial. Un verbo en pasado un adjetivo calificativo, el logro o el efecto y el medio:",
+    "achievements": "Logros",
+    "verb": "Verbo",
+    "adjective": "Adjetivo",
+    "way": "Medio",
+    "observations": "Observaciones",
+    "accept": "Aceptar ejemplo de liderazgo",
+    "reject": "Rechazar ejemplo de liderazgo",
+    "choose": "Elegir ejemplo de liderazgo",
+    "noChoose": "Quitar de elegidos",
+    "qualities": "Cualidades",
+
+    "save": "Guardar ejemplo de liderazgo",
+    "new": "Nuevo ejemplo de liderazgo",
+
+    "error": {
+      "groupRequired": "El grupo es un campo obligatorio.",
+      "participantRequired": "El participante es un campo obligatorio.",
+      "required": "Este campo es obligatorio.",
+      "achievementsRequired": "Debes seleccionar un logro."
+    }
+  }
+}

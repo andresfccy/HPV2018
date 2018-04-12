@@ -1,0 +1,1 @@
+module.exports = require("npm:lintspaces@0.3.3/index.js");

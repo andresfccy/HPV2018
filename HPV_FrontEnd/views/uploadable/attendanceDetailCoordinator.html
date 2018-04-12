@@ -1,0 +1,206 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="contenedor1"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="facilitator" class="blueLabel">{{'uploadable.facilitator'|translate}}</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'uploadable.facilitator'|translate}}"
+                           id="facilitator"
+                           name="facilitator"
+                           ng-value="ctrl.uploadable.NombreFacilitador"
+                           disabled>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="workshop" class="blueLabel">{{'uploadable.workshop'|translate}}</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'uploadable.workshop'|translate}}"
+                           id="workshop"
+                           name="workshop"
+                           ng-value="ctrl.uploadable.NomTaller+': '+ctrl.uploadable.DescripcionTaller"
+                           disabled>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="group" class="blueLabel">{{'uploadable.group'|translate}}</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'uploadable.group'|translate}}"
+                           id="group"
+                           name="group"
+                           ng-value="ctrl.uploadable.NombreGrupo"
+                           disabled>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="date" class="blueLabel">{{'uploadable.date'|translate}} *</label>
+                    <p class="input-group" feedback>
+                        <input type="text"
+                               id="date"
+                               name="date"
+                               class="form-control"
+                               ng-model="ctrl.uploadable.FechaRealizacion"
+                               uib-datepicker-popup="yyyy/MM/dd"
+                               placeholder="aaaa/mm/dd"
+                               is-open="dateOpened"
+                               datepicker-options="ctrl.dateOptions"
+                               ng-required="true"
+                               close-text="{{'uploadable.close'|translate}}"
+                               alt-input-formats="ctrl.altInputFormats"
+                               required
+                               disabled />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="dateOpened=!dateOpened">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12" style="padding-left:0px; padding-right:0px; padding-top:25px;">
+            <uib-accordion>
+                <uib-accordion-group is-open="status.open1">
+                    <uib-accordion-heading>
+                        {{'uploadable.tabDocument'|translate}} *
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                    </uib-accordion-heading>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="state" class="blueLabel">{{'uploadable.state'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'uploadable.state'|translate}}"
+                                   id="state"
+                                   name="state"
+                                   ng-model="ctrl.uploadable.EstadoDocumento"
+                                   disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="rejectReason" class="blueLabel">{{'uploadable.rejectReason'|translate}} *</label>
+                            <textarea class="form-control"
+                                      placeholder="{{'uploadable.rejectReason'|translate}}"
+                                      id="rejectReason"
+                                      name="rejectReason"
+                                      ng-model="ctrl.uploadable.MotivoRechazoDocumento"></textarea>
+                        </div>
+                    </div>
+
+
+                    <button class="btn btn-primary pull-left"
+                            ng-if="ctrl.uploadable.EstadoDocumento != ctrl.documentsStates[3].Descripcion"
+                            ng-click="ctrl.seeDocument()">
+                        {{'uploadable.seeFile'|translate}}
+                    </button>
+                    <div class="pull-right"
+                         ng-if="ctrl.uploadable.EstadoDocumento != self.documentStates[3].Descripcion">
+                        <button class="btn btn-success"
+                                type="submit"
+                                ng-click="ctrl.acceptDocument()">
+                            {{ 'uploadable.acceptDocument' | translate }}
+                        </button>
+                        <button class="btn btn-danger"
+                                type="submit"
+                                ng-click="ctrl.rejectDocument()">
+                            {{ 'uploadable.rejectDocument' | translate }}
+                        </button>
+                    </div>
+                </uib-accordion-group>
+
+                <uib-accordion-group is-open="status.open2">
+                    <uib-accordion-heading>
+                        {{'uploadable.attendance'|translate}} *
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+
+                    <table class="table table-hover dataTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{'uploadable.paticipantName'|translate}}</th>
+                                <th>{{'uploadable.identification'|translate}}</th>
+                                <th class="col-lg-2">
+                                    {{'uploadable.changeAttendance'|translate}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="item in ctrl.attendanceList">
+                            <tr>
+                                <td>{{$index+1}}</td>
+                                <td>{{item.NombreInscrito}}</td>
+                                <td>{{item.Documento}}</td>
+                                <td>
+                                    <div ng-if="ctrl.sent && item.IndAsistencia == 1">
+                                        {{'uploadable.attended'|translate}}
+                                    </div>
+                                    <div ng-if="ctrl.sent && item.IndAsistencia == 0">
+                                        {{'uploadable.notAttended'|translate}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="state" class="blueLabel">{{'uploadable.state'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'uploadable.state'|translate}}"
+                                   id="state"
+                                   name="state"
+                                   ng-model="ctrl.uploadable.EstadoAsistencia"
+                                   disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="rejectReason" class="blueLabel">{{'uploadable.rejectReason'|translate}} *</label>
+                            <textarea class="form-control"
+                                      placeholder="{{'uploadable.rejectReason'|translate}}"
+                                      id="rejectReason"
+                                      name="rejectReason"
+                                      ng-model="ctrl.uploadable.MotivoRechazoAsistencia"></textarea>
+                        </div>
+                    </div>
+                    <div class="pull-right"
+                         ng-if="ctrl.uploadable.EstadoAsistencia != self.assistanceStates[3].Descripcion">
+                        <button class="btn btn-success"
+                                type="submit"
+                                ng-click="ctrl.acceptAttendance()">
+                            {{ 'uploadable.acceptAttendance' | translate }}
+                        </button>
+                        <button class="btn btn-danger"
+                                type="submit"
+                                ng-click="ctrl.rejectAttendance()">
+                            {{ 'uploadable.rejectAttendance' | translate }}
+                        </button>
+                    </div>
+                </uib-accordion-group>
+
+            </uib-accordion>
+        </div>
+        <div id="butBack">
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'uploadable.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

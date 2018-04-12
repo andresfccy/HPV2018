@@ -1,0 +1,204 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'lifeStory.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.lifeStory.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12"
+                 ng-if="ctrl.rechazado">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'lifeStory.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-bind="ctrl.lifeStory.MotivoRechazo"
+                              ng-disabled="true"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'lifeStory.group'|translate}} *</label>
+                    <select class="form-control"
+                            id="group"
+                            name="group"
+                            ng-model="ctrl.lifeStory.IdGrupoFacilitador"
+                            ng-change="ctrl.getParticipantsByGroup()"
+                            ng-options="item.IdGrupoFacilitador as item.Nombre for item in ctrl.groups"
+                            ng-disabled="ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.group.$error"
+                         ng-if="form.group.$touched">
+                        <div ng-message="required">{{'lifeStory.error.groupRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'lifeStory.participant'|translate}} *</label>
+                    <select class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-model="ctrl.lifeStory.IdInscrito"
+                            ng-options="item.IdInscrito as item.NombreInscrito for item in ctrl.participants"
+                            ng-disabled="!ctrl.participants || ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.participant.$error"
+                         ng-if="form.participant.$touched">
+                        <div ng-message="required">{{'lifeStory.error.participantRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group" feedback>
+                    <label for="storyType" class="blueLabel">{{'lifeStory.storyType'|translate}} *</label>
+                    <select class="form-control"
+                            id="storyType"
+                            name="storyType"
+                            ng-model="ctrl.lifeStory.IdTipoHistoriaDeVida"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.storyTypes"
+                            ng-disabled="ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.storyType.$error"
+                         ng-if="form.storyType.$touched">
+                        <div ng-message="required">{{'lifeStory.error.storyTypeRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.reason'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="reason"
+                          ng-model="ctrl.lifeStory.RazonDeConsideracion"
+                          ng-disabled="ctrl.editionDisabled()"
+                          required></textarea>
+                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                <div class="validation-messages"
+                     ng-messages="form.reason.$error"
+                     ng-if="form.reason.$touched">
+                    <div ng-message="required">{{'lifeStory.error.required'|translate}}</div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.circunstances'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="circunstances"
+                          ng-model="ctrl.lifeStory.CircunstanciasSuperadas"
+                          ng-disabled="ctrl.editionDisabled()"
+                          required></textarea>
+                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                <div class="validation-messages"
+                     ng-messages="form.circunstances.$error"
+                     ng-if="form.circunstances.$touched">
+                    <div ng-message="required">{{'lifeStory.error.required'|translate}}</div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.abilities'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="abilities"
+                          ng-model="ctrl.lifeStory.HabilidadesPracticadas"
+                          ng-disabled="ctrl.editionDisabled()"
+                          required></textarea>
+                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                <div class="validation-messages"
+                     ng-messages="form.abilities.$error"
+                     ng-if="form.abilities.$touched">
+                    <div ng-message="required">{{'lifeStory.error.required'|translate}}</div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.lesson'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="lesson"
+                          ng-model="ctrl.lifeStory.Leccion"
+                          ng-disabled="ctrl.editionDisabled()"
+                          required></textarea>
+                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                <div class="validation-messages"
+                     ng-messages="form.lesson.$error"
+                     ng-if="form.lesson.$touched">
+                    <div ng-message="required">{{'lifeStory.error.required'|translate}}</div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group"
+                 ng-if="!ctrl.documentDisabled()">
+                <label class="blueLabel">
+                    {{'lifeStory.document'|translate}}
+                </label>
+                <div ngf-drop ngf-select
+                     ng-model="ctrl.file"
+                     class="drop-box"
+                     ngf-drag-over-class="'dragover'"
+                     ngf-multiple="false"
+                     ngf-allow-dir="true"
+                     ngf-pattern="'application/pdf'">
+                    {{'lifeStory.dragNDrop'|translate}}
+                </div>
+                <div ngf-no-file-drop>{{'lifeStory.noDragNDrop'|translate}}</div>
+            </div>
+            <div class="col-lg-6 form-group"
+                 ng-if="!ctrl.documentDisabled()">
+                <div class="form-group" feedback>
+                    <label for="file" class="blueLabel">{{'lifeStory.file'|translate}} *</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'lifeStory.file'|translate}}"
+                           value="{{ctrl.file.name}} {{ctrl.file.$error}} {{ctrl.file.$errorParam}}"
+                           id="file"
+                           name="file"
+                           disabled
+                           required>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.file.$error">
+                        <div ng-message="required">{{'lifeStory.error.fileRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group"
+                 ng-if="ctrl.documentDisabled()">
+                <button class="btn btn-info"
+                        ng-click="ctrl.seeDocument()">
+                    {{ 'lifeStory.seeDocument' | translate }}
+                </button>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary pull-right"
+                    type="submit"
+                    ng-if="!ctrl.editionDisabled()"
+                    ng-click="ctrl.submit(ctrl.file)">
+                {{ 'lifeStory.save' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'lifeStory.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

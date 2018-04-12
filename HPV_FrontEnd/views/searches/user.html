@@ -1,0 +1,67 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper ">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'searches.userTitle'|translate}}</h3>
+        </div>
+        <table class="table table-striped">
+            <tbody>
+                <tr class="warning">
+                    <td colspan="6"><b>{{'searches.table.userData'|translate}}</b></td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.name'|translate}}</b></td>
+                    <td colspan="5">{{ctrl.user.NombreInscrito}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.docType'|translate}}</b></td>
+                    <td>{{ctrl.user.TipoDocumento}}</td>
+                    <td><b>{{'searches.table.doc'|translate}}</b></td>
+                    <td class="text-right">{{ctrl.user.Documento}}</td>
+                    <td><b>{{'searches.table.benefCode'|translate}}</b></td>
+                    <td class="text-right">{{ctrl.user.CodigoBeneficiario}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.email'|translate}}</b></td>
+                    <td colspan="5">{{ctrl.user.Correo}}</td>
+                </tr>
+                <tr class="warning">
+                    <td colspan="6"><b>{{'searches.table.inscriptionData'|translate}}</b></td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.dpto'|translate}}</b></td>
+                    <td colspan="2">{{ctrl.user.NomDepartamento}}</td>
+                    <td><b>{{'searches.table.city'|translate}}</b></td>
+                    <td colspan="2">{{ctrl.user.NomMunicipio}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.facilitator'|translate}}</b></td>
+                    <td colspan="5">{{ctrl.user.NombreFacilitador}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.day'|translate}}</b></td>
+                    <td>{{ctrl.user.Dia}}</td>
+                    <td><b>{{'searches.table.schedule'|translate}}</b></td>
+                    <td>{{ctrl.user.Horario}}</td>
+                    <td><b>{{'searches.table.group'|translate}}</b></td>
+                    <td>{{ctrl.user.SiglaGrupo}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.place'|translate}}</b></td>
+                    <td colspan="2">{{ctrl.user.Lugar}}</td>
+                    <td><b>{{'searches.table.address'|translate}}</b></td>
+                    <td colspan="2">{{ctrl.user.Direccion}}</td>
+                </tr>
+                <tr>
+                    <td><b>{{'searches.table.inscriptionDate'|translate}}</b></td>
+                    <td colspan="5">{{ctrl.user.FechaRegistro}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            <button class="btn btn-info pull-right"
+                    ng-click="ctrl.goBack()">
+                {{ 'searches.back' | translate }}
+            </button>
+        </div>
+    </div>
+</article>

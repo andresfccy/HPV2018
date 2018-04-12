@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HPV_Servicios.AdmEspacioFisico.HPVServiciosAdmEspacioFisico" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgAAAgAAIAAAAAggBAACgUAAAAAigAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmEspacioFisico\HPVServiciosAdmEspacioFisico.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmEspacioFisico.HPVServiciosAdmEspacioFisico_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBiAABhABIAEoAAggBKACgUAJAAAigAAAABAAAAABA=</HashCode>
+      <FileName>AdmEspacioFisico\HPVServiciosAdmEspacioFisico_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmParametro.HPVServiciosAdmParametro" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAAAAAAAgAEAAAAkAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmParametro\HPVServiciosAdmParametro.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmParametro.HPVServiciosAdmParametro_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAEAAAQAgAGAAAAkAAAAABAAAAAgAQAAAAA=</HashCode>
+      <FileName>AdmParametro\HPVServiciosAdmParametro_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmRol.HPVServiciosAdmRol" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmRol\HPVServiciosAdmRol.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmRol.HPVServiciosAdmRol_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAIAQAABAAAAAgAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmRol\HPVServiciosAdmRol_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmUsuario.HPVServiciosAdmUsuario" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAAAAEEAAAQAAAAIAAAACAAQEQgAAAAkAAAAAEA=</HashCode>
+      <FileName>AdmUsuario\HPVServiciosAdmUsuario.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.AdmUsuario.HPVServiciosAdmUsuario_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAAAAEEgAAQQABAoAAAgCAA0EQiABAAkACBABEA=</HashCode>
+      <FileName>AdmUsuario\HPVServiciosAdmUsuario_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Alistamiento.ServiciosAli" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIhAAAAAAAQACIAAARgAAAAAAAABAAAIAAAAQAAAAA=</HashCode>
+      <FileName>Alistamiento\HPVServiciosAli.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Alistamiento.HPVServiciosAli_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJhBAAAACAQACMIAARgAACAAEQAFAAQKAAAAQAAAAE=</HashCode>
+      <FileName>Alistamiento\HPVServiciosAli_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Asistencia.HPVServiciosAsistencia" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAASAAAIBAAAAAIAQAAAAAAAAAAAAEAABgA=</HashCode>
+      <FileName>Asistencia\HPVServiciosAsistencia.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Asistencia.HPVServiciosAsistencia_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AqQACAIBAAASAAAMBAAFAAIAQAAAQAAAAAAAAEAABgA=</HashCode>
+      <FileName>Asistencia\HPVServiciosAsistencia_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.CasosDeExito.HPVServiciosCasosDeExito" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAACAAAAAAIAEQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>CasosDeExito\HPVServiciosCasosDeExito.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.CasosDeExito.HPVServiciosCasosDeExito_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAAAAAABAAACAAAAAAIAEQAAABAAAAAACIAAA=</HashCode>
+      <FileName>CasosDeExito\HPVServiciosCasosDeExito_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Consulta.HPVServicioConsulta" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Consulta\HPVServicioConsulta.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Consulta.HPVServiciosConsulta_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAIABACAAA=</HashCode>
+      <FileName>Consulta\HPVServiciosConsulta_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Entregable.AdjuntarEntregable" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Entregable\AdjuntarEntregable.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Entregable.ConsultarEntregable" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Entregable\ConsultarEntregable.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.FechaCorte.HPVServiciosFechaCorte" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FechaCorte\HPVServiciosFechaCorte.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.FechaCorte.HPVServiciosFechaCorte_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>FechaCorte\HPVServiciosFechaCorte_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.General.ServiciosGen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAEIAAAAAAAAAAAAAAAAAAAEAAI=</HashCode>
+      <FileName>General\HPVServiciosGen.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.General.HPVServiciosGen_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAEAAQAAAAEIEAEAAAAAAAAAAAAAAIAEAAI=</HashCode>
+      <FileName>General\HPVServiciosGen_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.HistoriaVida.HPVServiciosHistoriaVida" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAQAIAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>HistoriaVida\HPVServiciosHistoriaVida.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.HistoriaVida.HPVServiciosHistoriaVida_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAIAAQAIAAAAAAAAAAAAAAAAAAAAQgAAAAAABFAAA=</HashCode>
+      <FileName>HistoriaVida\HPVServiciosHistoriaVida_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Liderazgo.HPVServiciosLiderazgo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAEAAABAAAAAAAAAAAIABAAA=</HashCode>
+      <FileName>Liderazgo\HPVServiciosLiderazgo.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Liderazgo.HPVServiciosLiderazgo_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAAAAABAAAAAEAAAJAAAAAQAAAAAIABEAA=</HashCode>
+      <FileName>Liderazgo\HPVServiciosLiderazgo_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.HPVServiciosReportes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reportes\HPVServiciosReportes.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.HPVServiciosReportes_JSON" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAQAIgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reportes\HPVServiciosReportes_JSON.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.ManejadorExcel" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAAAAAAAAAABAABAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reportes\ManejadorExcel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Asistencia.ListaAsistencia" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oQAAAAAAAAIBAAVAQAAAgAABIAIAAAAAAAABCCIAAoA=</HashCode>
+      <FileName>Reportes\Asistencia\ListaAsistencia.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Candidatos.RptCandidatos" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\Candidatos\RptCandidatos.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.CasosExito.CasosExito" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\CasosExito\CasosExito.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Certificado.GenerarCertificado" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oQAAAAAAAAIBAAVAQAAAAAABIAIAAAAAAAAACCIAAoA=</HashCode>
+      <FileName>Reportes\Certificado\GenerarCertificado.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Cronograma.RptCronograma" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\Cronograma\RptCronograma.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.EjemplosLiderazgo.EjemplosLiderazgo" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\EjemplosLiderazgo\EjemplosLiderazgo.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.EntradaSalida.RptEntradaSalida" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\EntradaSalida\RptEntradaSalida.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.EspaciosFisicos.RptEspaciosFisicos" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\EspaciosFisicos\RptEspaciosFisicos.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.HistoriasVida.HistoriasVida" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\HistoriasVida\HistoriasVida.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Reporte.Reporte" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\Reporte\GenerarReporte.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Reporte.GenerarReporte" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Satisfaccion.RptSatisfaccion" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\Satisfaccion\RptSatisfaccion.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.Trazabilidad.RptTrazabilidad" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\Trazabilidad\RptTrazabilidad.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HPV_Servicios.Reportes.UsuariosSistema.UsuariosSistema" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Reportes\UsuariosSistema\UsuariosSistema.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HPV_Servicios.AdmEspacioFisico.IHPVServiciosAdmEspacioFisico" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgAAAgAAIAAAAAggBAACgUAAAAAigAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmEspacioFisico\IHPVServiciosAdmEspacioFisico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmEspacioFisico.IHPVServiciosAdmEspacioFisico_JSON" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBiAABhABIAEoAAggBKACgUAJAAAigAAAABAAAAABA=</HashCode>
+      <FileName>AdmEspacioFisico\IHPVServiciosAdmEspacioFisico_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmParametro.IHPVServiciosAdmParametro" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAAAAAAAgAEAAAAkAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmParametro\IHPVServiciosAdmParametro.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmParametro.IHPVServiciosAdmParametro_JSON" Collapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAEAAAQAgAGAAAAkAAAAABAAAAAgAQAAAAA=</HashCode>
+      <FileName>AdmParametro\IHPVServiciosAdmParametro_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmRol.IHPVServiciosAdmRol" Collapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmRol\IHPVServiciosAdmRol.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmRol.IHPVServiciosAdmRol_JSON" Collapsed="true">
+    <Position X="11" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAIAQAABAAAAAgAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdmRol\IHPVServiciosAdmRol_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmUsuario.IHPVServiciosAdmUsuario" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAAAAEEAAAQAAAAIAAAACAAQEQgAAAAkAAAAAEA=</HashCode>
+      <FileName>AdmUsuario\IHPVServiciosAdmUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.AdmUsuario.IHPVServiciosAdmUsuario_JSON" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAAAAEEgAAQQABAoAAAgCAA0EQiABAAkACBABEA=</HashCode>
+      <FileName>AdmUsuario\IHPVServiciosAdmUsuario_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Alistamiento.IHPVServiciosAli" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIhAAAAAAAQACIAAARgAAAAAAAABAAAIAAAAQAAAAA=</HashCode>
+      <FileName>Alistamiento\IHPVServiciosAli.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Alistamiento.IHPVServiciosAli_JSON" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJhBAAAACAQACMIAARgAACAAEQAFAAQKAAAAQAAAAE=</HashCode>
+      <FileName>Alistamiento\IHPVServiciosAli_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Asistencia.IHPVServiciosAsistencia" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAASAAAIBAAAAAIAQAAAAAAAAAAAAEAABgA=</HashCode>
+      <FileName>Asistencia\IHPVServiciosAsistencia.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Asistencia.IHPVServiciosAsistencia_JSON" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AqQACAIBAAASAAAMBAAFAAIAQAAAQAAAAAAAAEAABgA=</HashCode>
+      <FileName>Asistencia\IHPVServiciosAsistencia_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.CasosDeExito.IHPVServiciosCasosDeExito" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAACAAAAAAIAEQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>CasosDeExito\IHPVServiciosCasosDeExito.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.CasosDeExito.IHPVServiciosCasosDeExito_JSON" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAAAAAABAAACAAAAAAIAEQAAABAAAAAACIAAA=</HashCode>
+      <FileName>CasosDeExito\IHPVServiciosCasosDeExito_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Consulta.IHPVServicioConsulta" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Consulta\IHPVServicioConsulta.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Consulta.IHPVServiciosConsulta_JSON" Collapsed="true">
+    <Position X="2.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAIABACAAA=</HashCode>
+      <FileName>Consulta\IHPVServiciosConsulta_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.FechaCorte.IHPVServiciosFechaCorte" Collapsed="true">
+    <Position X="4" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FechaCorte\IHPVServiciosFechaCorte.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.FechaCorte.IHPVServiciosFechaCorte_JSON" Collapsed="true">
+    <Position X="5.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>FechaCorte\IHPVServiciosFechaCorte_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.General.IHPVServiciosGen" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAEIAAAAAAAAAAAAAAAAAAAEAAI=</HashCode>
+      <FileName>General\IHPVServiciosGen.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.General.IHPVServiciosGen_JSON" Collapsed="true">
+    <Position X="9.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAEAAQAAAAEIEAEAAAAAAAAAAAAAAIAEAAI=</HashCode>
+      <FileName>General\IHPVServiciosGen_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.HistoriaVida.IHPVServiciosHistoriaVida" Collapsed="true">
+    <Position X="11" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAQAIAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>HistoriaVida\IHPVServiciosHistoriaVida.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.HistoriaVida.IHPVServiciosHistoriaVida_JSON" Collapsed="true">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAIAAQAIAAAAAAAAAAAAAAAAAAAAQgAAAAAABFAAA=</HashCode>
+      <FileName>HistoriaVida\IHPVServiciosHistoriaVida_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Liderazgo.IHPVServiciosLiderazgo" Collapsed="true">
+    <Position X="2.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAEAAABAAAAAAAAAAAIABAAA=</HashCode>
+      <FileName>Liderazgo\IHPVServiciosLiderazgo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Liderazgo.IHPVServiciosLiderazgo_JSON" Collapsed="true">
+    <Position X="4" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAAAAABAAAAAEAAAJAAAAAQAAAAAIABEAA=</HashCode>
+      <FileName>Liderazgo\IHPVServiciosLiderazgo_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Reportes.IHPVServiciosReportes" Collapsed="true">
+    <Position X="5.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reportes\IHPVServiciosReportes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HPV_Servicios.Reportes.IHPVServiciosReportes_JSON" Collapsed="true">
+    <Position X="7.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAQAIgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reportes\IHPVServiciosReportes_JSON.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

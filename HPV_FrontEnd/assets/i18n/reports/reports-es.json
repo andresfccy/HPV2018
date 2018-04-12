@@ -1,0 +1,48 @@
+﻿{
+  "reports": {
+    "panelTitle": "Reportes",
+    "loading": "Estamos cargando los reportes.",
+    "noDataFound": "No se encontraron reportes disponibles.",
+
+    "season": "Período",
+    "role": "Rol",
+    "group": "Grupo",
+    "department": "Departamento",
+    "city": "Municipio",
+    "generate": "Generar Reporte",
+    "name": "Nombre",
+    "facilitator": "Facilitador",
+    "coordinator": "Coordinador",
+    "cutDate": "Fecha de corte",
+
+    "reports": "Reportes disponibles"
+  },
+  "audit": {
+    "panelTitle": "Auditoría",
+    "loading": "Agrega los filtros que requieras y consulta la auditoría haciendo clic en el botón.",
+    "noDataFound": "No se encontraron datos de auditoría disponibles.",
+
+    "functions": "Funciones",
+    "users": "Usuarios",
+
+    "fecIni": "Fecha Inicial",
+    "fecFin": "Fecha Final",
+
+    "date": "Fecha de la transacción",
+    "function": "Función realizada",
+
+    "generate": "Consultar datos",
+    "audit": "Resultados"
+  },
+  "indicators": {
+    "panelTitle": "Indicadores",
+    "loading": "Estamos cargando los indicadores.",
+    "noDataFound": "No se encontraron indicadores disponibles.",
+
+    "season": "Período",
+    "generate": "Generar Indicadores",
+    "name": "Nombre",
+
+    "indicators": "Indicadores disponibles"
+  }
+}

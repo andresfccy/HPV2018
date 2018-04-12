@@ -1,0 +1,21 @@
+﻿{
+    "reallocation": {
+        "title": "Reasignación de participantes",
+        "allocationTitle": "Lista de horarios",
+        "usersTitle": "Lista de participantes",
+        "confirmationTitle": "Confirmar",
+        "search": "Buscar",
+        "showing": "Mostrando",
+        "of": "Ubicaciones físicas",
+        "select": "Seleccionar",
+        "reallocate": "Reasignar",
+        "selectedSchedule": "Horario seleccionado",
+        "noScheduleSelected": "No ha seleccionado un horario.",
+        "selectedUser": "Participante seleccionado",
+        "noUserSelected": "No ha seleccionado un participante",
+        "reallocate": "Reasignar",
+        "table": { 
+            "toGroup": "Reasignar al grupo"
+        }
+    }
+}

@@ -1,0 +1,98 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'leadership.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-sm-3 clearfix" ng-if="ctrl.supervisor">
+                    <label class="control-label" for="search">{{'searches.seasson'|translate}}</label>
+                    <select class="form-control"
+                            id="search"
+                            type="text"
+                            ng-model="ctrl.selectedSeason"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.seasons"
+                            ng-change="ctrl.submitSearch()" />
+                </div>
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="search">{{'leadership.search'|translate}}</label>
+                    <input class="form-control"
+                           id="search"
+                           type="text"
+                           placeholder="{{'leadership.search'|translate}}"
+                           ng-model="search"
+                           ng-blur="ctrl.submitSearch()" />
+                </div>
+                <div class="pull-right">
+                    <uib-pagination boundary-links="true"
+                                    total-items="ctrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="ctrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="ctrl.currentPage">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-lg-12 text-right">
+                        <span>{{'leadership.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'leadership.of'|translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-info"
+                 ng-show="!ctrl.leadershipList">
+                {{'leadership.loading'|translate}}
+            </div>
+            <div class="alert alert-warning"
+                 ng-show="ctrl.leadershipList && ctrl.leadershipList.length == 0">
+                {{'leadership.noDataFound'|translate}}
+            </div>
+            <table class="table table-hover dataTable"
+                   ng-show="ctrl.leadershipList.length > 0">
+                <thead>
+                    <tr>
+                        <th>{{'leadership.coordinator'|translate}}</th>
+                        <th>{{'leadership.facilitator'|translate}}</th>
+                        <th>{{'leadership.participant'|translate}}</th>
+                        <th>{{'leadership.group'|translate}}</th>
+                        <th>{{'leadership.city'|translate}}</th>
+                        <th>{{'leadership.state'|translate}}</th>
+                        <th>{{'leadership.detail'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in ctrl.filtered | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                    <tr>
+                        <td>{{item.NomCoordinador}}</td>
+                        <td>{{item.NomFacilitador}}</td>
+                        <td>{{item.NomInscrito}}</td>
+                        <td>{{item.SiglaGrupo}}</td>
+                        <td>{{item.NomMunicipio}}</td>
+                        <td ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='E'}">
+                            {{item.NomEstado}}
+                        </td>
+                        <td>
+                            <a href=""
+                               ng-click="ctrl.goToLeadership(item.IdLiderazgo)">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <div class="col-lg-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

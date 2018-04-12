@@ -1,0 +1,83 @@
+﻿<div class="header">
+<header class="container">
+    <div class="row header">
+        <nav class="navbar navbar-default navbar-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ng-if="ctrl.isLoggedIn()">{{ctrl.getRoleUser()}}</a>
+                    </li>  
+                    <li>
+                        <a ui-sref="login"
+                           title="{{'menu.login'|translate}}"
+                           ng-if="!ctrl.isLoggedIn()">
+                            {{'menu.login'|translate}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="logos" style="width: 100%;">
+            <a class="navbar-brand" ui-sref="home">
+                <img alt="{{'home.logo'|translate}}"
+                     src="assets/img/logo-header.png"
+                     class="img-responsive"
+                     style="width: 100%;">
+            </a>
+        </section>
+
+        <div id="Noticias" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item"
+                     ng-repeat="item in ctrl.getNews()"
+                     ng-class="{active:!$index}">
+                    {{item.Descripcion}}
+                </div>
+            </div>
+
+            <a class="left carousel-control" href="#Noticias" role="button" data-slide="prev">
+            </a>
+            <a class="right carousel-control" href="#Noticias" role="button" data-slide="next">
+            </a>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#Noticias').carousel({
+                       interval: 3500
+                 });
+                });
+            </script>
+        </div>
+
+
+        <div ng-include="'views/commons/menu.html'"></div>
+        <!--nav class="navbar navbar-default navbar-navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+                <ul class="nav navbar-nav navbar-primary">
+                    <li class="active">
+                        <a ui-sref="home" title="Inicio">
+                            <span class="fa fa-home"></span> Inicio</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ui-sref="inscription" title="Inscripción">
+                            <span class="fa fa-list"></span> Inscripción</a>
+                    </li>
+                </ul>
+            </div>
+        </nav-->
+        <ol class="breadcrumb pull-right">
+            <li>{{ctrl.actualRoute()}}</li>
+        </ol>
+    </div>
+</header>
+</div>

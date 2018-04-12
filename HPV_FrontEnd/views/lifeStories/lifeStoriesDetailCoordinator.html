@@ -1,0 +1,116 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'lifeStory.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.lifeStory.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'lifeStory.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-model="ctrl.lifeStory.MotivoRechazo">
+                    </textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'lifeStory.group'|translate}}</label>
+                    <input class="form-control"
+                            id="group"
+                            name="group"
+                            ng-value="ctrl.lifeStory.SiglaGrupo"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'lifeStory.participant'|translate}}</label>
+                    <input class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-value="ctrl.lifeStory.NomInscrito"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group" feedback>
+                    <label for="storyType" class="blueLabel">{{'lifeStory.storyType'|translate}}</label>
+                    <input class="form-control"
+                            id="storyType"
+                            name="storyType"
+                            ng-value="ctrl.lifeStory.NomTipoHistoriaDeVida"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.reason'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="reason"
+                          ng-model="ctrl.lifeStory.RazonDeConsideracion"
+                          ng-disabled="true">
+                </textarea>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.circunstances'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="circunstances"
+                          ng-model="ctrl.lifeStory.CircunstanciasSuperadas"
+                          ng-disabled="true">
+                </textarea>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.abilities'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="abilities"
+                          ng-model="ctrl.lifeStory.HabilidadesPracticadas"
+                          ng-disabled="true">
+                </textarea>
+            </div>
+            <div class="col-lg-12 form-group" feedback>
+                <label class="blueLabel">{{'lifeStory.lesson'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="lesson"
+                          ng-model="ctrl.lifeStory.Leccion"
+                          ng-disabled="true">
+                </textarea>
+            </div>
+            <div class="col-lg-12 form-group">
+                <button class="btn btn-info"
+                        ng-click="ctrl.seeDocument()">
+                    {{ 'lifeStory.seeDocument' | translate }}
+                </button>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-success pull-right"
+                    type="submit"
+                    ng-if="ctrl.lifeStory.IdEstado != 'E'"
+                    ng-click="ctrl.accept()">
+                {{ 'lifeStory.accept' | translate }}
+            </button>
+            <button class="btn btn-danger pull-right"
+                    type="submit"
+                    ng-if="ctrl.lifeStory.IdEstado != 'E'"
+                    ng-click="ctrl.reject()">
+                {{ 'lifeStory.reject' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'lifeStory.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

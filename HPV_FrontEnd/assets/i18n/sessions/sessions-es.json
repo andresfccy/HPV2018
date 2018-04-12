@@ -1,0 +1,39 @@
+﻿{
+    "login": {
+        "user": "Usuario",
+        "password": "Contraseña",
+        "login": "Ingresar",
+        "welcome": "",
+        "logout": "Cerrar Sesión",
+
+        "messages": {
+            "invalidLoginTitle": "Usuario o contraseña incorrectos",
+            "invalidLoginDesc": "Usuario o contraseña incorrectos",
+            "serviceNotAvailable": "El servicio no está disponible. Comuníquese con el administrador del sistema."
+        }
+    },
+    "sessions": {
+        "username": "Identificación / Cédula",
+        "password": "Contraseña",
+        "error": {
+            "usernameRequired": "El campo Identificación / Cédula es obligatorio.",
+            "passwordRequired": "El campo Contraseña es obligatorio."
+        },
+        "retrievePass": {
+            "title": "Recuperar Contraseña",
+            "email": "Correo electrónico",
+            "retrieve": "¿Olvidaste tu contraseña?",
+          "submit": "Recuperar",
+          "pass": "Nueva contraseña",
+          "confirmPass": "Confirmar contraseña",
+          "changePassword": "Guardar cambios",
+
+            "emailRequired": "El correo es obligatorio.",
+            "emailFormat": "Formato de correo inválido."
+        }
+    },
+    "welcome": {
+        "welcome": "¡ Bienvenido !",
+        "loggedIn": "¡ Usted es un usuario válido en el sistema !"
+    }
+}

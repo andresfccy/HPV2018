@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-jshint@1.12.0/src/index.js");

@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E8CE3BF-C2D3-41ED-AF0F-179427A5B584}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HPV_Entidades</RootNamespace>
+    <AssemblyName>HPV_Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdmEspacioFisicoWS\OE_ActualizarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_AprobarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_ConsultarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarDeptosFacilitador.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarDireccionesLugar.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarEspacioFisicoXAprobar.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarLugaresMunicipio.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_DarMunicipiosFacilitador.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_ReasignarEspacio.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OE_RechazarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_ActualizarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_AprobarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_ConsultarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarDeptosFacilitador.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarDias.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarDireccionesLugar.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarEspacioFisicoXAprobar.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarGrupos.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarHorarios.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarLugaresMunicipio.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_DarMunicipiosFacilitador.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_ReasignarEspacio.cs" />
+    <Compile Include="AdmEspacioFisicoWS\OS_RechazarEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisico\Direccion.cs" />
+    <Compile Include="AdmEspacioFisico\EspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisico\Grupo.cs" />
+    <Compile Include="AdmEspacioFisico\LugarMunicipio.cs" />
+    <Compile Include="AdmParametroWS\OE_ActualizarPeriodo.cs" />
+    <Compile Include="AdmParametroWS\OE_ConsultarPeriodo.cs" />
+    <Compile Include="AdmParametroWS\OS_ActualizarPeriodo.cs" />
+    <Compile Include="AdmParametroWS\OS_ActualizarParametro.cs" />
+    <Compile Include="AdmParametroWS\OS_ConsultarPeriodo.cs" />
+    <Compile Include="AdmParametroWS\OS_ConsultarParametro.cs" />
+    <Compile Include="AdmParametroWS\OS_DarPeriodos.cs" />
+    <Compile Include="AdmParametroWS\OS_DarParametros.cs" />
+    <Compile Include="AdmParametro\Periodo.cs" />
+    <Compile Include="AdmRolWS\OE_DarOpcionesUsuario.cs" />
+    <Compile Include="AdmRolWS\OS_ActualizarRol.cs" />
+    <Compile Include="AdmRolWS\OS_DarOpcionesUsuario.cs" />
+    <Compile Include="AdmRolWS\OS_ConsultarRol.cs" />
+    <Compile Include="AdmRolWS\OS_DarRoles.cs" />
+    <Compile Include="AdmRol\Rol.cs" />
+    <Compile Include="AdmParametro\Parametro.cs" />
+    <Compile Include="AdmRolWS\OE_ActualizarRol.cs" />
+    <Compile Include="AdmRolWS\OE_ConsultarRol.cs" />
+    <Compile Include="AdmParametroWS\OE_ActualizarParametro.cs" />
+    <Compile Include="AdmParametroWS\OE_ConsultarParametro.cs" />
+    <Compile Include="AdmUsuarioWS\OE_ActualizarRol.cs" />
+    <Compile Include="AdmUsuarioWS\OE_ActualizarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OE_AsignarContrasenaXToken.cs" />
+    <Compile Include="AdmUsuarioWS\OE_AutenticarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OE_ConsultarRol.cs" />
+    <Compile Include="AdmUsuarioWS\OE_ConsultarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OE_DarOpcionesMenu.cs" />
+    <Compile Include="AdmUsuarioWS\OE_DarOpcionesMenuRol.cs" />
+    <Compile Include="AdmUsuarioWS\OE_DarRoles.cs" />
+    <Compile Include="AdmUsuarioWS\OE_DarUsuarios.cs" />
+    <Compile Include="AdmUsuarioWS\OE_RecuperarContrasena.cs" />
+    <Compile Include="AdmUsuarioWS\OS_ActualizarRol.cs" />
+    <Compile Include="AdmUsuarioWS\OS_ActualizarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OS_AsignarContrasenaXToken.cs" />
+    <Compile Include="AdmUsuarioWS\OS_AutenticarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OS_ConsultarRol.cs" />
+    <Compile Include="AdmUsuarioWS\OS_ConsultarUsuario.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarCoordinadores.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarMenus.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarMunicipios.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarOpcionesMenu.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarOpcionesMenuRol.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarRoles.cs" />
+    <Compile Include="AdmUsuarioWS\OS_DarUsuarios.cs" />
+    <Compile Include="AdmUsuarioWS\OS_RecuperarContrasena.cs" />
+    <Compile Include="AdmUsuario\Coordinador.cs" />
+    <Compile Include="AdmUsuario\Menu.cs" />
+    <Compile Include="AdmUsuario\Opcion.cs" />
+    <Compile Include="AdmUsuario\Rol.cs" />
+    <Compile Include="AdmUsuario\Usuario.cs" />
+    <Compile Include="EncuestasSena\OE_Pregunta.cs" />
+    <Compile Include="EncuestasSena\OE_Respuesta.cs" />
+    <Compile Include="EncuestasSena\OE_RespuestasEncuesta.cs" />
+    <Compile Include="EncuestasSena\OE_UsuarioEncuesta.cs" />
+    <Compile Include="FechaCorteWS\OE_DarFechaCorte.cs" />
+    <Compile Include="FechaCorteWS\OS_DarFechaCorte.cs" />
+    <Compile Include="FechaCorte\FechaCorte.cs" />
+    <Compile Include="IncripcionEncuestasWS\OS_ConsultarTiposDocumento.cs" />
+    <Compile Include="EncuestasSena\OE_TiposDocumento.cs" />
+    <Compile Include="IncripcionEncuestasWS\OS_Consultar_Preguntas.cs" />
+    <Compile Include="IncripcionEncuestasWS\OS_Consultar_Respuestas.cs" />
+    <Compile Include="IncripcionEncuestasWS\OS_CrearDatosBasicos.cs" />
+    <Compile Include="IncripcionEncuestasWS\OS_Guardar_Encuesta.cs" />
+    <Compile Include="ReporteWS\OE_DarDepartamentosXProfesional.cs" />
+    <Compile Include="ReporteWS\OE_DarMunicipiosXProfesional.cs" />
+    <Compile Include="ReporteWS\OE_RptRechazoGrupos.cs" />
+    <Compile Include="ReporteWS\OE_DarReportes.cs" />
+    <Compile Include="ReporteWS\OE_ConsultarAuditoria.cs" />
+    <Compile Include="ReporteWS\OE_RptEspaciosFisicos.cs" />
+    <Compile Include="ReporteWS\OE_RptSatisfaccionObservaciones.cs" />
+    <Compile Include="ReporteWS\OE_RptUsuariosSistema.cs" />
+    <Compile Include="ReporteWS\OE_RptHistoriasVida.cs" />
+    <Compile Include="ReporteWS\OE_RptEjemplosLiderazgo.cs" />
+    <Compile Include="ReporteWS\OE_RptCasosExito.cs" />
+    <Compile Include="ReporteWS\OE_RptCronograma.cs" />
+    <Compile Include="ReporteWS\OE_RptEntradaSalida.cs" />
+    <Compile Include="ReporteWS\OE_RptCandidatos.cs" />
+    <Compile Include="ReporteWS\OE_RptSatisfaccion.cs" />
+    <Compile Include="ReporteWS\OE_RptTrazabilidad.cs" />
+    <Compile Include="ReporteWS\OE_DarCoordinadoresXProfesional.cs" />
+    <Compile Include="ReporteWS\OS_DarCoordinadoresXProfesional.cs" />
+    <Compile Include="ReporteWS\OS_DarDepartamentosXProfesional.cs" />
+    <Compile Include="ReporteWS\OS_DarMunicipiosXProfesional.cs" />
+    <Compile Include="ReporteWS\OS_RptRechazoGrupos.cs" />
+    <Compile Include="ReporteWS\OS_DarReportes.cs" />
+    <Compile Include="AlistamientoWS\OE_DarDiasDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OE_DarEncuesta.cs" />
+    <Compile Include="AlistamientoWS\OE_DarHorariosDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OE_DarLugaresDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OE_DarMunicipiosXDepto.cs" />
+    <Compile Include="AlistamientoWS\OE_GenerarCertificado.cs" />
+    <Compile Include="AlistamientoWS\OE_GuardarInscripcion.cs" />
+    <Compile Include="AlistamientoWS\OE_RegistrarEncuestaFinal.cs" />
+    <Compile Include="AlistamientoWS\OE_ValidarBeneficiario.cs" />
+    <Compile Include="AlistamientoWS\OE_ValidarCorreo.cs" />
+    <Compile Include="AlistamientoWS\OS_DarDepartamentos.cs" />
+    <Compile Include="AlistamientoWS\OS_DarDiasDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OS_DarEncuesta.cs" />
+    <Compile Include="AlistamientoWS\OS_DarHorariosDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OS_DarLugaresDisponibles.cs" />
+    <Compile Include="AlistamientoWS\OS_DarMunicipiosXDepto.cs" />
+    <Compile Include="AlistamientoWS\OS_DarPeriodoVigente.cs" />
+    <Compile Include="AlistamientoWS\OS_GenerarCertificado.cs" />
+    <Compile Include="AlistamientoWS\OS_GuardarInscripcion.cs" />
+    <Compile Include="AlistamientoWS\OS_RegistrarEncuestaFinal.cs" />
+    <Compile Include="AlistamientoWS\OS_ValidarBeneficiario.cs" />
+    <Compile Include="AlistamientoWS\OS_ValidarCorreo.cs" />
+    <Compile Include="Alistamiento\Beneficiario.cs" />
+    <Compile Include="Alistamiento\Certificado.cs" />
+    <Compile Include="Alistamiento\Departamento.cs" />
+    <Compile Include="Alistamiento\Dia.cs" />
+    <Compile Include="Alistamiento\Encuesta.cs" />
+    <Compile Include="Alistamiento\Horario.cs" />
+    <Compile Include="Alistamiento\Lugar.cs" />
+    <Compile Include="Alistamiento\Municipio.cs" />
+    <Compile Include="Alistamiento\Periodo.cs" />
+    <Compile Include="AsistenciaWS\OE_DarAsistenciaDetalle.cs" />
+    <Compile Include="AsistenciaWS\OE_DarAsistenciaEncabezado.cs" />
+    <Compile Include="AsistenciaWS\OE_DarAsistenciaEstado.cs" />
+    <Compile Include="AsistenciaWS\OE_DarAsistenteXFacilitador.cs" />
+    <Compile Include="AsistenciaWS\OE_DarEntregableEstado.cs" />
+    <Compile Include="AsistenciaWS\OE_DarEntregableEstadoDetalle.cs" />
+    <Compile Include="AsistenciaWS\OE_DarFacilitadorXCoordinador.cs" />
+    <Compile Include="AsistenciaWS\OE_DarGruposXFacilitador.cs" />
+    <Compile Include="AsistenciaWS\OE_DarInscritos.cs" />
+    <Compile Include="AsistenciaWS\OE_GenerarListaAsistencia.cs" />
+    <Compile Include="AsistenciaWS\OE_RegistrarAprobacion.cs" />
+    <Compile Include="AsistenciaWS\OE_RegistrarAsistencia.cs" />
+    <Compile Include="AsistenciaWS\OS_DarAsistenciaDetalle.cs" />
+    <Compile Include="AsistenciaWS\OS_DarAsistenciaEncabezado.cs" />
+    <Compile Include="AsistenciaWS\OS_DarAsistenciaEstado.cs" />
+    <Compile Include="AsistenciaWS\OS_DarAsistenteXFacilitador.cs" />
+    <Compile Include="AsistenciaWS\OS_DarEntregableEstado.cs" />
+    <Compile Include="AsistenciaWS\OS_DarEntregableEstadoDetalle.cs" />
+    <Compile Include="AsistenciaWS\OS_DarFacilitadorXCoordinador.cs" />
+    <Compile Include="AsistenciaWS\OS_DarGruposXFacilitador.cs" />
+    <Compile Include="AsistenciaWS\OS_DarInscritos.cs" />
+    <Compile Include="AsistenciaWS\OS_DarTalleres.cs" />
+    <Compile Include="AsistenciaWS\OS_GenerarListaAsistencia.cs" />
+    <Compile Include="AsistenciaWS\OS_RegistrarAprobacion.cs" />
+    <Compile Include="AsistenciaWS\OS_RegistrarAsistencia.cs" />
+    <Compile Include="Asistencia\AsistenciaInfo.cs" />
+    <Compile Include="Asistencia\AsistenciaDetalle.cs" />
+    <Compile Include="Asistencia\AsistenciaEncabezado.cs" />
+    <Compile Include="Asistencia\AsistenciaEstado.cs" />
+    <Compile Include="Asistencia\Asistente.cs" />
+    <Compile Include="Asistencia\EntregableEstado.cs" />
+    <Compile Include="Asistencia\Facilitador.cs" />
+    <Compile Include="Asistencia\GrupoFacilitador.cs" />
+    <Compile Include="Asistencia\Taller.cs" />
+    <Compile Include="CasosDeExitoWS\OE_ActualizarCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OE_ConsultarCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OE_DarCasosDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OE_RegistrarEstadoCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OE_ValidarCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OS_ActualizarCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OS_ConsultarCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OS_DarCasosDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OS_DarLogros.cs" />
+    <Compile Include="CasosDeExitoWS\OS_RegistrarEstadoCasoDeExito.cs" />
+    <Compile Include="CasosDeExitoWS\OS_ValidarCasoDeExito.cs" />
+    <Compile Include="CasosDeExito\CasoDeExito.cs" />
+    <Compile Include="CasosDeExito\Logro.cs" />
+    <Compile Include="ConsultaWS\OE_ConsultarHorarios.cs" />
+    <Compile Include="ConsultaWS\OE_ConsultarInscrito.cs" />
+    <Compile Include="ConsultaWS\OE_ConsultarInscritos.cs" />
+    <Compile Include="ConsultaWS\OS_ConsultarHorarios.cs" />
+    <Compile Include="ConsultaWS\OS_ConsultarInscrito.cs" />
+    <Compile Include="ConsultaWS\OS_ConsultarInscritos.cs" />
+    <Compile Include="Consulta\AsistenciaTaller.cs" />
+    <Compile Include="Consulta\HorarioDisponible.cs" />
+    <Compile Include="Consulta\Inscrito.cs" />
+    <Compile Include="GeneralWS\OE_DarListaValor.cs" />
+    <Compile Include="GeneralWS\OE_EnviarCorreo.cs" />
+    <Compile Include="GeneralWS\OE_RegistrarEncuestaSatisfaccion.cs" />
+    <Compile Include="GeneralWS\OE_ValidarToken.cs" />
+    <Compile Include="GeneralWS\OS_DarListaValor.cs" />
+    <Compile Include="GeneralWS\OS_DarParametroInicial.cs" />
+    <Compile Include="GeneralWS\OS_EnviarCorreo.cs" />
+    <Compile Include="GeneralWS\OS_RegistrarEncuestaSatisfaccion.cs" />
+    <Compile Include="GeneralWS\OS_ValidarToken.cs" />
+    <Compile Include="General\Constantes.cs" />
+    <Compile Include="General\ListaValor.cs" />
+    <Compile Include="General\ParametroInicial.cs" />
+    <Compile Include="General\Respuesta.cs" />
+    <Compile Include="HistoriasDeVidaWS\OE_ActualizarHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OE_ConsultarHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OE_DarHistoriasDeVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OE_RegistrarEstadoHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OE_ValidarCantidadHistorias.cs" />
+    <Compile Include="HistoriasDeVidaWS\OS_ActualizarHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OS_ConsultarHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OS_DarHistoriasDeVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OS_RegistrarEstadoHistoriaVida.cs" />
+    <Compile Include="HistoriasDeVidaWS\OS_ValidarCantidadHistorias.cs" />
+    <Compile Include="HistoriasDeVida\HistoriaDeVida.cs" />
+    <Compile Include="LiderazgoWS\OE_ActualizarLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OE_ConsultarLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OE_DarLiderazgos.cs" />
+    <Compile Include="LiderazgoWS\OE_RegistrarEstadoLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OE_ValidarCantidadLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OS_ActualizarLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OS_ConsultarLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OS_DarLiderazgos.cs" />
+    <Compile Include="Liderazgos\Liderazgo.cs" />
+    <Compile Include="LiderazgoWS\OS_RegistrarEstadoLiderazgo.cs" />
+    <Compile Include="LiderazgoWS\OS_ValidarCantidadLiderazgo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteWS\OS_ConsultarAuditoria.cs" />
+    <Compile Include="ReporteWS\OS_RptEspaciosFisicos.cs" />
+    <Compile Include="ReporteWS\OS_RptSatisfaccionObservaciones.cs" />
+    <Compile Include="ReporteWS\OS_RptUsuariosSistema.cs" />
+    <Compile Include="ReporteWS\OS_RptHistoriasVida.cs" />
+    <Compile Include="ReporteWS\OS_RptEjemplosLiderazgo.cs" />
+    <Compile Include="ReporteWS\OS_RptCasosExito.cs" />
+    <Compile Include="ReporteWS\OS_RptCronograma.cs" />
+    <Compile Include="ReporteWS\OS_RptEntradaSalida.cs" />
+    <Compile Include="ReporteWS\OS_RptCandidatos.cs" />
+    <Compile Include="ReporteWS\OS_RptSatisfaccion.cs" />
+    <Compile Include="ReporteWS\OS_RptTrazabilidad.cs" />
+    <Compile Include="Reporte\Auditoria.cs" />
+    <Compile Include="Reporte\EncuestaSatisfaccionObservaciones.cs" />
+    <Compile Include="Reporte\EspaciosFisicos.cs" />
+    <Compile Include="Reporte\RechazoGrupos.cs" />
+    <Compile Include="Reporte\UsuariosSistema.cs" />
+    <Compile Include="Reporte\HistoriasVida.cs" />
+    <Compile Include="Reporte\EjemplosLiderazgo.cs" />
+    <Compile Include="Reporte\CasosExito.cs" />
+    <Compile Include="Reporte\CronogramaTaller.cs" />
+    <Compile Include="Reporte\EncuestaEntradaSalida.cs" />
+    <Compile Include="Reporte\Candidatos.cs" />
+    <Compile Include="Reporte\ParametroRpt.cs" />
+    <Compile Include="Reporte\Reporte.cs" />
+    <Compile Include="Reporte\EncuestaSatisfaccion.cs" />
+    <Compile Include="Reporte\Trazabilidad.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,133 @@
+﻿@using HPV_EncuestasSena.Models
+@model EncuestaModel
+
+@{
+    ViewBag.Title = "PreguntasEncuesta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>@ViewBag.Title - Habilidades para la vida</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("PreguntasEncuesta", "Encuesta", FormMethod.Post, new { @id = "contenedor1", @class = "formulario" }))
+    {
+        <div class="contenedortext" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+            <strong style=" font-weight:bolder">@Html.Label(Model.Nombre)</strong> del Curso Virtual "Habilidades para la Vida @Html.Label(Model.NombreEncuesta)"
+        </div>
+    <div class="contenedortext" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+        Lee atentamente cada una de las preguntas presentadas y selecciona la opción que consideras correcta.
+    </div>
+        <p></p>                    
+
+        foreach (var p in Model.Preguntas)
+        {
+            <div id="@p.Id" class="col-lg-12 grupo_preguntaas">
+                @string.Format("{0}. {1}",p.NumeroPregunta , p.Pregunta)
+               @* @Html.Label(p.NumeroPregunta + p.punto + " " + p.Pregunta)*@
+                @foreach (var r in p.OpcionesPorPregunta)
+                {
+                    <div class="col-lg-12" style="margin-left:50px">
+                        @Html.RadioButton("opcion" + p.Id, r.Id, r.Seleccionado, new { @id = r.Id })
+                        <span>@("(" + r.Letra + ") " + r.Nombre)</span>
+                    </div>
+                }
+            </div>
+        }
+        <div id="boton" class="col-lg-2">
+            <input type="submit" value="Enviar Encuesta" id="enviarencuesta" />
+        </div>
+    }
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#contenedor1').on('submit', function (e) {
+            e.preventDefault();
+            var datos = new Array();
+            $('#contenedor1').find('.grupo_preguntaas').each(function (ini) {
+                var OpcionesPreguntas = new Object({});
+                $(this).find('input[type="radio"]').each(function (seg) {
+                    if ($(this).is(':checked')) {
+                        OpcionesPreguntas.Id = $(this).attr('id');
+                        OpcionesPreguntas.CodPregunta = $(this).parent().parent().attr('id');
+                        datos.push(OpcionesPreguntas);
+                    }                    
+                });
+            });
+            if (datos.length < 16) {
+                $.fancybox({
+                    'content': '*Alguna(s) de las preguntas no han sido respondidas, por favor verifique para continuar.',
+                    'autoDimensions': false,
+                    'type': 'iframe',
+                    'scrolling': 'no',
+                    'autoSize': true,
+                    'closeBtn': true,
+                    'closeClick': true,
+                    helpers: {
+                        overlay: { closeClick: true }
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    url: '../Encuesta/PreguntasEncuesta',
+                    type: 'post',
+                    data: { respuestas: datos }
+                }).done(function (response) {
+                    if (response != undefined && response.Mensaje == 'OK') {
+                        window.location.href = response.url;
+                    }
+                    if (response != undefined && response.Mensaje == 'ERROR') {
+                        $.fancybox({
+                            'content': 'Se a presentado un error en el sistme, por favor lo invito a interlo nuevamente.',
+                            'autoDimensions': false,
+                            'type': 'iframe',
+                            'scrolling': 'no',
+                            'autoSize': true,
+                            'closeBtn': true,
+                            'closeClick': true,
+                            helpers: {
+                                overlay: { closeClick: true }
+                            },
+                            afterClose: function () {
+                                window.location.href = response.url;
+                            }
+                        });
+                        
+                    }
+
+                }).fail(function (responce) {
+                    if (response != undefined && response.Mensaje == 'ERROR')
+                    {
+                        $.fancybox({
+                            'content': 'Se a presentado un error en el sistme, por favor lo invitamos a volver a interlo.',
+                            'autoDimensions': false,
+                            'type': 'iframe',
+                            'scrolling': 'no',
+                            'autoSize': true,
+                            'closeBtn': true,
+                            'closeClick': true,
+                            helpers: {
+                                overlay: { closeClick: true }
+                            }
+                        });
+                        window.location.href = response.url;
+                    }
+                });
+            }                
+            //}).fail(function (response) {
+            //    alert('falló...');
+            //});
+
+        });
+
+    });   
+</script>

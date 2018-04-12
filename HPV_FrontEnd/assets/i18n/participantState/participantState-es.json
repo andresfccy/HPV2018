@@ -1,0 +1,45 @@
+﻿{
+  "participantState": {
+    "description": "Diligencia el siguiente formulario para inscribirte al <b>Módulo Presencial - Habilidades para la Vida</b>",
+    "innerPanel": "Selecciona tu tipo de documento e ingresa el número de documento o solamente el código de beneficiario con el cual te encuentras registrado en los programas <b>Jóvenes en Acción</b> o <b>Ingreso Social</b> y tu fecha de nacimiento.",
+    "explaination": "Indica un campo requerido",
+    "participantValidation": "Validar participante",
+    "documentType": "Tipo de documento",
+    "selectDocType": "Seleccione un tipo de documento",
+    "abreviation": "Abreviación",
+    "birthDate": "Fecha de nacimiento",
+    "benefCode": "Código de beneficiario",
+    "document": "Documento de identidad",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "firstName": "Primer Nombre",
+    "table": {
+      "workshop": "Taller",
+      "attendance": "Asistencias marcadas",
+      "noAttendance": "N.A."
+    },
+    "validation": "Validar inscrito",
+    "error": {
+      "specialConditionRequired": "El campo Condición Especial es obligatorio.",
+      "documentIsNumber": "El documento debe ser un número.",
+      "codeIsNumber": "El código de beneficiario debe ser un número.",
+      "dateIsRequired": "El campo Fecha es obligatorio.",
+      "dateNoFormat": "Formato de fecha no válido.",
+      "documentMin": "Documento de identidad inválido.",
+      "nameRequired": "El campo Primer Nombre es obligatorio.",
+      "firstLastnameRequired": "El campo Primer Apellido es obligatorio",
+      "emailRequired": "El campo Email es obligatorio.",
+      "mobileRequired": "El campo Celular es obligatorio.",
+      "mobileMaxlength": "El número debe tener máximo 10 dígitos.",
+      "mobileMin": "El número debe tener mínimo 10 dígitos.",
+      "inscription_select_stateRequired": "El campo Departamento es obligatorio.",
+      "inscription_select_cityRequired": "El campo Municipio es obligatorio.",
+      "inscription_select_dayRequired": "El campo Día es obligatorio.",
+      "inscription_select_scheduleRequired": "El campo Horario es obligatorio.",
+      "inscription_select_placeRequired": "El campo Lugar es obligatorio.",
+      "inscription_text_email_confirmCoincide": "No coinciden con el correo inscrito.",
+      "inscription_text_email_confirmRequired": "El campo Email es obligatorio.",
+      "surveyRequired": "Aún faltan preguntas por contestar de la encuesta."
+    }
+  }
+}

@@ -1,0 +1,737 @@
+<article ng-init="ctrl.initialize()">
+    <p translate="inscription.description" translate-compile></p>
+    <p class="text-info text-right"><span class="text-danger">*</span> {{'inscription.explaination'|translate}}</p>
+
+    <div class="alert alert-warning"
+         role="alert"
+         ng-if="!ctrl.inscriptionIsActive()">
+        <h4>¡ Atención !</h4>
+        <p>Las inscripciones se encuentran cerradas en este momento</p>
+        <p>Las inscripciones para el periodo <b>{{ctrl.getSeason().NomPeriodo}}</b> estarán/estuvieron abiertas desde el <strong class="label label-warning">{{ctrl.getSeason().FechaInicial}}</strong>  al <strong class="label label-warning">{{ ctrl.getSeason().FechaFinal}}</strong></p>
+    </div>
+    <uib-tabset class="nav nav-tabs"
+                active="ctrl.activeTab"
+                justified="true"
+                ng-if="ctrl.inscriptionIsActive()">
+        <uib-tab class="nav-item"
+                 index="0"
+                 heading="{{'inscription.participantValidation'|translate}}"
+                 ng-click="ctrl.activateView(0)"
+                 disable="!ctrl.tabList[0].active || ctrl.sentSurvey">
+            <form name="form_validation"
+                  id="form_validation">
+                <div ng-init="ctrl.initializeForm(0,form_validation)"></div>
+                <!-- Item de autocompletar para tipos de documentos -->
+                <div class="col-sm-12"><p translate>inscription.innerPanel</p></div>
+                <div class="col-sm-3">
+                    <div class="form-group" feedback>
+                        <label for="docType" class="control-label">
+                            {{'inscription.documentType'|translate}}
+                        </label>
+                        <ui-select ng-model="ctrl.participant.TipoDocumento"
+                                   theme="bootstrap"
+                                   id="docType"
+                                   name="docType">
+                            <ui-select-match placeholder="{{'inscription.selectDocType'|translate}}"
+                                             allow-clear="true">
+                                {{$select.selected.Descripcion}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in ctrl.docTypes | propsFilter: {Valor: $select.search, Descripcion: $select.search}">
+                                <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="participantDocument">{{'inscription.document'|translate}}</label>
+                        <input class="form-control"
+                               type="number"
+                               placeholder="0"
+                               id="participantDocument"
+                               name="participantDocument"
+                               ng-model="ctrl.participant.Documento">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="benefCode">{{'inscription.benefCode'|translate}}</label>
+                        <input class="form-control"
+                               type="number"
+                               placeholder="{{'inscription.benefCode'|translate}}"
+                               id="benefCode"
+                               name="benefCode"
+                               ng-model="ctrl.participant.CodigoBeneficiario">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="birthDate">
+                        {{'inscription.birthDate'|translate}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <p class="input-group" feedback>
+                        <input type="text"
+                               title="Ingresa tu fecha de nacimiento"
+                               name="participantBirthDate"
+                               class="form-control"
+                               ng-model="ctrl.participant.FechaNum"
+                               uib-datepicker-popup="yyyy/MM/dd"
+                               placeholder="aaaa/mm/dd"
+                               is-open="birthDateOpened"
+                               datepicker-options="ctrl.dateOptions"
+                               ng-required="true"
+                               close-text="{{'inscription.close'|translate}}"
+                               alt-input-formats="ctrl.altInputFormats"
+                               required />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="birthDateOpened=!birthDateOpened">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        <div class="validation-messages"
+                             ng-messages="form_validation.participantBirthDate.$error"
+                             ng-if="form_validation.participantBirthDate.$touched">
+                            <div ng-message="required">{{'inscription.error.dateIsRequired'|translate}}</div>
+                            <div ng-message="valid">{{'inscription.error.dateNoFormat'|translate}}</div>
+                        </div>
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit"
+                            class="btn btn-success pull-right"
+                            ng-click="ctrl.submitForm(0)">
+                        {{'inscription.next'|translate}}
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="1"
+                 heading="Datos básicos"
+                 ng-click="ctrl.activateView(1)"
+                 disable="!ctrl.tabList[1].active || ctrl.sentSurvey"
+                 ng-show="ctrl.tabList[1].show">
+            <form id="form_basicData"
+                  name="form_basicData">
+                <div ng-init="ctrl.initializeForm(1,form_basicData)"></div>
+                <div class="register-profile-one">
+                    <div class="row">
+                        <div class="form-group has-feedback col-sm-3" feedback>
+                            <label for="inscription_text_name_one" class="control-label">
+                                {{'inscription.firstName'|translate}}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="inscription_text_name_one"
+                                   name="firstName"
+                                   placeholder="Primer Nombre"
+                                   title="Ingresa tu Primer Nombre, únicamente letras y espacios"
+                                   aria-describedby="inscription_text_name_one_status"
+                                   ng-model="ctrl.beneficiary.PrimerNombre"
+                                   ng-disabled="!ctrl.basicDataAvailable"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form_basicData.firstName.$error"
+                                 ng-if="form_basicData.firstName.$touched">
+                                <div ng-message="required">{{'inscription.error.nameRequired'|translate}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback col-sm-3">
+                            <label for="inscription_text_name_two" class="control-label">Segundo Nombre</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="inscription_text_name_two"
+                                   name="inscription_text_name_two"
+                                   placeholder="Segundo Nombre"
+                                   title="Ingresa tu Segundo Nombre, únicamente letras y espacios"
+                                   aria-describedby="inscription_text_name_two_status"
+                                   ng-model="ctrl.beneficiary.SegundoNombre"
+                                   ng-disabled="!ctrl.basicDataAvailable">
+                        </div>
+                        <div class="form-group has-feedback col-sm-3" feedback>
+                            <label for="inscription_text_lastname_one" class="control-label">
+                                Primer Apellido
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="inscription_text_lastname_one"
+                                   name="firstLastname"
+                                   placeholder="Primer Apellido"
+                                   title="Ingresa tu Primer Apellido, únicamente letras y espacios"
+                                   aria-describedby="inscription_text_lastname_one_status"
+                                   ng-model="ctrl.beneficiary.PrimerApellido"
+                                   ng-disabled="!ctrl.basicDataAvailable"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form_basicData.firstLastname.$error"
+                                 ng-if="form_basicData.firstLastname.$touched">
+                                <div ng-message="required">{{'inscription.error.firstLastnameRequired'|translate}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback col-sm-3">
+                            <label for="inscription_text_lastname_two" class="control-label">Segundo Apellido</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="inscription_text_lastname_two"
+                                   name="inscription_text_lastname_two"
+                                   placeholder="Segundo Apellido"
+                                   title="Ingresa tu Segundo Apellido, únicamente letras y espacios"
+                                   aria-describedby="rinscription_text_lastname_two_status"
+                                   ng-model="ctrl.beneficiary.SegundoApellido"
+                                   ng-disabled="!ctrl.basicDataAvailable">
+                        </div>
+                    </div>
+                </div>
+                <div class="register-profile-two row">
+                    <div class="form-group has-feedback col-sm-6" feedback>
+                        <label for="inscription_text_email" class="control-label">
+                            Correo
+                            electrónico <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="fa fa-at"></span></div>
+                            <input type="email"
+                                   class="form-control"
+                                   id="inscription_text_email"
+                                   name="email"
+                                   placeholder="Correo electrónico"
+                                   title="Digita tu correo electrónico"
+                                   aria-describedby="inscription_text_email_status"
+                                   ng-model="ctrl.beneficiary.Correo"
+                                   required>
+                        </div>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.email.$error"
+                             ng-if="form_basicData.email.$touched">
+                            <div ng-message="required">{{'inscription.error.emailRequired'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-4">
+                        <label for="inscription_text_phone" class="control-label">
+                            Teléfono(s)
+                            fijo(s)
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="fa fa-phone"></span></div>
+                            <input type="number"
+                                   class="form-control"
+                                   id="inscription_text_phone"
+                                   name="inscription_text_phone"
+                                   placeholder="Teléfono(s) fijo(s)"
+                                   title="Ingresa tu teléfono(s) fijo(s)"
+                                   aria-describedby="inscription_text_phone_status"
+                                   ng-model="ctrl.beneficiary.Telefono">
+                        </div>
+                    </div>
+                </div>
+                <div class="register-profile-three row">
+                    <div class="form-group has-feedback col-sm-4" feedback>
+                        <label for="inscription_text_mobile" class="control-label">
+                            Celular
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="fa fa-mobile"></span></div>
+                            <input type="number"
+                                   class="form-control"
+                                   id="mobile"
+                                   name="mobile"
+                                   placeholder="Celular"
+                                   maxlength="10"
+                                   min="1000000000"
+                                   title="Ingresa tu teléfono celular, unicamente numeros, 10 digitos"
+                                   aria-describedby="inscription_text_mobile_status"
+                                   ng-model="ctrl.beneficiary.Movil"
+                                   required>
+                        </div>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.mobile.$error"
+                             ng-if="form_basicData.mobile.$touched">
+                            <div ng-message="required">{{'inscription.error.mobileRequired'|translate}}</div>
+                            <div ng-message="maxlength">{{'inscription.error.mobileMaxlength'|translate}}</div>
+                            <div ng-message="min">{{'inscription.error.mobileMin'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-4" feedback>
+                        <label for="inscription_text_mobile_alt" class="control-label">
+                            Celular
+                            alterno
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="fa fa-mobile"></span></div>
+                            <input type="number"
+                                   class="form-control"
+                                   id="mobile_alt"
+                                   name="mobile_alt"
+                                   placeholder="Celular alterno"
+                                   maxlength="10"
+                                   min="1000000000"
+                                   title="Ingresa tu teléfono celular alterno, unicamente numeros, 10 digitos"
+                                   aria-describedby="inscription_text_mobile_alt_status"
+                                   ng-model="ctrl.beneficiary.MovilAlt">
+                        </div>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.mobile_alt.$error"
+                             ng-if="form_basicData.mobile_alt.$touched">
+                            <div ng-message="maxlength">{{'inscription.error.mobileMaxlength'|translate}}</div>
+                            <div ng-message="min">{{'inscription.error.mobileMin'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-4" feedback ng-if="false">
+                        <label for="specialCondition" class="control-label">
+                            ¿Tienes alguna condición de discapacidad?
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select name="specialCondition"
+                                id="specialCondition"
+                                class="form-control"
+                                title="Selecciona la condición especial"
+                                ng-options="item.Valor as item.Descripcion for item in ctrl.specialConditions | orderBy:'Valor'"
+                                ng-model="ctrl.beneficiary.CondicionEspecial"
+                                required></select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.specialCondition.$error"
+                             ng-if="form_basicData.specialCondition.$touched">
+                            <div ng-message="required">{{'inscription.error.specialConditionRequired'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-default pull-left"
+                            ng-click="ctrl.goBack(1)">
+                        Anterior
+                    </button>
+                    <!--
+                    <button class="btn btn-default pull-left"
+                            type="reset">
+                        Reset
+                    </button>
+                        -->
+                    <button class="btn btn-success pull-right"
+                            type="submit"
+                            ng-click="ctrl.submitForm(1)">
+                        Siguiente
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="2"
+                 heading="Disponibilidad"
+                 ng-click="ctrl.activateView(2)"
+                 disable="!ctrl.tabList[2].active || ctrl.sentSurvey"
+                 ng-show="ctrl.tabList[2].show">
+            <form name="form_dispo" id="form_dispo">
+                <div ng-init="ctrl.initializeForm(2,form_dispo)"></div>
+                <div class="register-availability-one">
+                    <div class="form-group has-feedback col-sm-6" feedback>
+                        <label for="inscription_select_state" class="control-label">
+                            Departamento
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select name="inscription_select_state"
+                                id="inscription_select_state"
+                                class="form-control select2-hidden-accessible"
+                                title="Selecciona el Departamento"
+                                tabindex="-1"
+                                ng-options="item.Nombre for item in ctrl.departments | orderBy:'Nombre'"
+                                ng-change="ctrl.citiesByDepartment()"
+                                ng-model="ctrl.selectedDpmt"
+                                required>
+                            <option value="" disabled selected>Selecciona el departamento</option>
+                        </select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.inscription_select_state.$error"
+                             ng-if="form_basicData.inscription_select_state.$touched">
+                            <div ng-message="required">{{'inscription.error.inscription_select_stateRequired'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-6" feedback>
+                        <label for="inscription_select_city" class="control-label">
+                            Municipio
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select name="inscription_select_city"
+                                id="inscription_select_city"
+                                class="form-control select2-hidden-accessible"
+                                title="Selecciona el municipio"
+                                style="width: 100%"
+                                tabindex="-1"
+                                aria-hidden="true"
+                                ng-options="item.Nombre for item in ctrl.cities"
+                                ng-change="ctrl.daysByCity()"
+                                ng-model="ctrl.selectedCty"
+                                ng-disabled="!ctrl.selectedDpmt"
+                                required>
+                            <option value="" disabled>Selecciona el municipio</option>
+                        </select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.inscription_select_city.$error"
+                             ng-if="form_basicData.inscription_select_city.$touched">
+                            <div ng-message="required">{{'inscription.error.inscription_select_cityRequired'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="register-availability-two">
+                    <div class="form-group has-feedback col-sm-3" feedback>
+                        <label for="inscription_select_day" class="control-label">Día <span class="text-danger">*</span></label>
+                        <select name="inscription_select_day"
+                                id="inscription_select_day"
+                                class="form-control select2-hidden-accessible"
+                                title="Selecciona el dia disponible"
+                                style="width: 100%"
+                                disabled=""
+                                tabindex="-1"
+                                aria-hidden="true"
+                                ng-options="item.Nombre for item in ctrl.days | orderBy: 'Codigo'"
+                                ng-change="ctrl.schedulesByDay()"
+                                ng-model="ctrl.selectedDay"
+                                ng-disabled="!ctrl.selectedCty"
+                                required>
+                            <option value="" disabled>Selecciona el dia disponible</option>
+                        </select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.inscription_select_day.$error"
+                             ng-if="form_basicData.inscription_select_day.$touched">
+                            <div ng-message="required">{{'inscription.error.inscription_select_dayRequired'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-3" feedback>
+                        <label for="inscription_select_schedule" class="control-label">
+                            Horario
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select name="inscription_select_schedule"
+                                id="inscription_select_schedule"
+                                class="form-control select2-hidden-accessible"
+                                title="Selecciona el horario"
+                                style="width: 100%"
+                                disabled=""
+                                tabindex="-1"
+                                aria-hidden="true"
+                                ng-options="item.Nombre for item in ctrl.schedules"
+                                ng-change="ctrl.placesBySchedule()"
+                                ng-model="ctrl.selectedHr"
+                                ng-disabled="!ctrl.selectedDay"
+                                required>
+                            <option value="" disabled>Selecciona el horario</option>
+                        </select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.inscription_select_schedule.$error"
+                             ng-if="form_basicData.inscription_select_schedule.$touched">
+                            <div ng-message="required">{{'inscription.error.inscription_select_scheduleRequired'|translate}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-sm-6" feedback>
+                        <label for="inscription_select_place" class="control-label">Lugar <span class="text-danger">*</span></label>
+                        <select name="inscription_select_place"
+                                id="inscription_select_place"
+                                class="form-control select2-hidden-accessible"
+                                title="Selecciona el lugar"
+                                style="width: 100%"
+                                tabindex="-1"
+                                aria-hidden="true"
+                                ng-options="item.Nombre for item in ctrl.places"
+                                ng-model="ctrl.selectedPlc"
+                                ng-disabled="!ctrl.selectedHr"
+                                required>
+                            <option value="" disabled>Selecciona el lugar</option>
+                        </select>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_basicData.inscription_select_place.$error"
+                             ng-if="form_basicData.inscription_select_place.$touched">
+                            <div ng-message="required">{{'inscription.error.inscription_select_placeRequired'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="register-availability-three">
+                    <div class="form-group has-feedback col-sm-6" feedback>
+                        <label for="inscription_text_email_confirm" class="control-label">
+                            Confirmar Correo
+                            electrónico <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="fa fa-at"></span></div>
+                            <input type="email"
+                                   class="form-control"
+                                   id="inscription_text_email_confirm"
+                                   name="inscription_text_email_confirm"
+                                   placeholder="Confirmar Correo electrónico"
+                                   title="Confirma tu correo electrónico"
+                                   aria-describedby="inscription_text_email_confirm_status"
+                                   ng-model="ctrl.emailConfirmation"
+                                   ng-change="ctrl.emailChanged()"
+                                   required>
+                        </div>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form_dispo.inscription_text_email_confirm.$error"
+                             ng-if="form_dispo.inscription_text_email_confirm.$touched">
+                            <div ng-message="emailConfirm">{{'inscription.error.inscription_text_email_confirmCoincide'|translate}}</div>
+                            <div ng-message="required">{{'inscription.error.inscription_text_email_confirmRequired'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-default pull-left"
+                            ng-click="ctrl.goBack(2)">
+                        Anterior
+                    </button>
+                    <button class="btn btn-success pull-right"
+                            type="submit"
+                            ng-click="ctrl.submitForm(2)">
+                        Siguiente
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="3"
+                 heading="Encuesta"
+                 ng-click="ctrl.activateView(3)"
+                 disable="!ctrl.tabList[3].active || ctrl.sentSurvey"
+                 ng-show="ctrl.tabList[3].show">
+            <div class="alert alert-info">
+                <h5>Apreciado participante</h5>
+                <p>
+                    Apreciado estudiante, recibe un cordial saludo; somos un grupo de investigadores del Departamento de Prosperidad Social y la Organización de Estados Iberoamericanos que venimos adelantando un estudio sobre lo que piensan, sienten y hacen los jóvenes y sus familias con respecto a las habilidades para la vida. En ese sentido tu opinión es muy importante para nosotros ya que los resultados de esta encuesta permitirán definir acciones concretas para fortalecer las acciones y políticas públicas con respecto al fortalecimiento de la formación en habilidades para la vida de niños y jóvenes.
+                </p>
+                <p>
+                    Esta información será tratada de manera confidencial,
+                    agradecemos tu honestidad y participación.
+                </p>
+            </div>
+            <form name="form_encu" id="form_encu">
+                <div ng-init="ctrl.initializeForm(3,form_encu)"></div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 1}"
+                        class="form-group has-feedback">
+                        <label for="1poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}}: <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="1poll_radio_question_{{$parent.$index+1}}"
+                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="alert alert-info">
+                    <p>
+                        A continuación, expresa tu opinión sobre las siguientes afirmaciones según si estás totalmente de acuerdo, de acuerdo, ni de acuerdo ni en desacuerdo, o en desacuerdo ó
+                        selecciona la casilla que corresponda según consideres para cada afirmación, como siempre, casi siempre, algunas veces o nunca.
+                    </p>
+                </div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 2}"
+                        class="form-group has-feedback">
+                        <label for="2poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}}: <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="2poll_radio_question_{{$parent.$index+1}}"
+                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div ng-if="!ctrl.isValidForm(3)">
+                    <span class="col-sm-12 alert alert-danger ng-binding">
+                        Aún faltan preguntas por contestar de la encuesta.
+                    </span>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-default pull-left"
+                            ng-click="ctrl.goBack(3)">
+                        Anterior
+                    </button>
+                    <button class="btn btn-success pull-right"
+                            ng-click="ctrl.submitForm(3)">
+                        Siguiente
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="4"
+                 heading="Confirmar"
+                 disable="!ctrl.tabList[4].active || ctrl.sentSurvey">
+            <div class="alert alert-info"
+                 ng-if="ctrl.case==0"
+                 style="padding-left: 8vw;">
+                <p>
+                    Tus datos no se encontraron para poder avalar tu inscripción; comunícate con Prosperidad Social a los siguientes datos de contacto:<br />
+                    <ul>
+                        <li>Página Web <a href="http://www.prosperidadsocial.gov.co">www.prosperidadsocial.gov.co</a>.</li>
+                        <li>Atención al Ciudadano Bogotá: 595-44-10</li>
+                        <li>Línea Gratuita Naciona 01-8000-95-1100</li>
+                        <li>Mensajes de Texto Gratuitos 85594</li>
+                    </ul>
+
+                    <b>A continuación selecciona la opción “Guardar” para capturar tus datos.</b>
+                </p>
+            </div>
+            <div class="alert alert-info"
+                 ng-if="!ctrl.sentSurvey && ctrl.case==1">
+                Te inscribiste en el primer periodo y te identificamos con 0% de asistencia. En este segundo periodo no puedes faltar. ¡Aprovecha esta oportunidad!
+                <br /><br />
+                En los próximos días será enviado al correo electrónico que registraste, la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
+            </div>
+            <div class="alert alert-info"
+                 ng-if="!ctrl.sentSurvey && ctrl.case==2">
+                Te inscribiste en el primer periodo y te identificamos con muy baja asistencia, por eso, tu inscripción en este segundo periodo se encuentra sujeta a la disponibilidad de cupos en tu municipio.
+                <br /><br />
+                En los próximos días será enviado al correo electrónico que registraste, la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
+            </div>
+            <div class="alert alert-info"
+                 ng-if="ctrl.case==3">
+                Te inscribiste en el primer periodo e identificamos que te faltan algunos talleres para culminar exitosamente tu proceso, por eso, te invitamos a contactarte con tu facilitador para que puedas asistir a los talleres pendientes y obtener tu certificado en el Módulo Presencial de Habilidades para la Vida.
+            </div>
+            <div class="alert alert-info"
+                 ng-if="ctrl.case==4">
+                Te inscribiste en el primer periodo y te identificamos con buena asistencia. Contáctate con tu facilitador para culminar tu proceso en este periodo y recuerda que diligenciar la encuesta de salida es un requisito para obtener tu certificado en el Módulo presencial de Habilidades para la Vida.
+            </div>
+            <div class="alert alert-info"
+                 ng-if="ctrl.case==6">
+                Tus datos se encontraron registrados y haces parte de un grupo de contingencia, para poder avalar tu inscripción serás contactado por el facilitador con el cual estabas llevando el proceso anterior
+
+                Si te surge alguna inquietud puedes comunicarte con nosotros:<br />
+                <ul>
+                    <li>Página Web <a href="http://www.prosperidadsocial.gov.co">www.prosperidadsocial.gov.co</a>.</li>
+                    <li>Atención al Ciudadano Bogotá: 595-44-10</li>
+                    <li>Línea Gratuita Naciona 01-8000-95-1100</li>
+                    <li>Mensajes de Texto Gratuitos 85594</li>
+                </ul>
+            </div>
+            <div class="alert alert-info"
+                 ng-if="ctrl.case==7">
+                Tus datos se encontraron registrados, pero es necesario que esperes las inscripciones del siguiente período.
+
+                Si te surge alguna inquietud puedes comunicarte con nosotros:<br />
+                <ul>
+                    <li>Página Web <a href="http://www.prosperidadsocial.gov.co">www.prosperidadsocial.gov.co</a>.</li>
+                    <li>Atención al Ciudadano Bogotá: 595-44-10</li>
+                    <li>Línea Gratuita Naciona 01-8000-95-1100</li>
+                    <li>Mensajes de Texto Gratuitos 85594</li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12"
+                 ng-if="ctrl.sentSurvey && (ctrl.case==1 || ctrl.case==2 || ctrl.case==5)">
+                <div class="alert alert-success">
+                    <strong>REGISTRO EXITOSO</strong><br />
+                    En los próximos días será enviado al correo electrónico que registraste,
+                    la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o spam, si no lo encuentras en tu bandeja principal.<br />
+                </div>
+            </div>
+            <div class="register-confirm-agree"
+                 ng-if="(ctrl.case==1 || ctrl.case==2 || ctrl.case==5) && !ctrl.sentSurvey">
+                <div class="alert form-group has-feedback col-sm-12">
+                    <input type="checkbox"
+                           name="inscription_radio_agree"
+                           id="inscription_radio_agree"
+                           value="A"
+                           ng-model="ctrl.acceptedTerms">
+                    <label for="inscription_radio_agree">
+                        Acepto los términos y condiciones para participar en el
+                        módulo presencial de habilidades para la vida/competencias
+                        transversales.
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12"
+                 style="margin-top: 25px;">
+                <button class="btn btn-success pull-right"
+                        ng-disabled="!ctrl.acceptedTerms"
+                        ng-click="ctrl.subscribe()"
+                        ng-if="(ctrl.case==1 || ctrl.case==2 || ctrl.case==5) && !ctrl.sentSurvey">
+                    Inscribirme
+                </button>
+                <button class="btn btn-primary pull-right"
+                        ng-click="ctrl.subscribe()"
+                        ng-if="ctrl.case==0 && !ctrl.sentSurvey">
+                    Guardar
+                </button>
+                <a class="btn btn-primary pull-right"
+                   ui-sref="home"
+                   ng-if="ctrl.case==3 || ctrl.case==4 || ctrl.sentSurvey">
+                    Inicio
+                </a>
+                <a class="btn btn-default"
+                   ng-click="ctrl.goToTermsPdf()"
+                   href=""
+                   ng-if="ctrl.case==1 || ctrl.case==2 || ctrl.case==5">
+                    Ver términos
+                </a>
+                <button class="btn btn-default pull-left"
+                        ng-click="ctrl.goBack(4)"
+                        ng-if="!ctrl.sentSurvey">
+                    Anterior
+                </button>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</article>

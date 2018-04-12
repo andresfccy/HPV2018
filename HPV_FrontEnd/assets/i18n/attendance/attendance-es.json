@@ -1,0 +1,13 @@
+﻿{
+  "attendance": {
+    "season": "Período",
+    "module": "Listas de asistencia",
+    "attendance": "Generación de listas de asistencia",
+    "generate": "Generar Listas",
+    "groups": "Grupo",
+    "facilitator": "Facilitador",
+    "workshops": "Talleres",
+    "selectAllWorkshops": "Seleccionar todos los talleres",
+    "deselectAllWorkshops": "Deseleccionar todos los talleres"
+  }
+}

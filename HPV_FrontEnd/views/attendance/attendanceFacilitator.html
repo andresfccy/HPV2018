@@ -1,0 +1,48 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper ">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'attendance.attendance'|translate}}</h3>
+        </div>
+        <form name="form" class="panel-body">
+            <div class="col-md-4" ng-init="ctrl.initializeForm(form)">
+                <div class="form-group" feedback>
+                    <label for="groups" class="blueLabel">{{'attendance.groups'|translate}} *</label>
+                    <select class="form-control"
+                            id="groups"
+                            name="groups"
+                            ng-model="ctrl.selectedGroup"
+                            ng-options="item.IdGrupo as item.Nombre for item in ctrl.groups | orderBy: 'IdGrupo'"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                </div>
+            </div>
+            <div class="col-md-8" clearfix>
+                <label for="groups"
+                       class="col-sm-12 blueLabel">{{'attendance.workshops'|translate}}*</label>
+                <div class="btn-group-vertical col-lg-12" role="group">
+                    <button ng-class="{'active':ctrl.selectedWorkshops.indexOf(item.IdTaller)>=0}"
+                            ng-repeat="item in ctrl.workshops"
+                            type="button"
+                            class="btn btn-default col-md-3"
+                            ng-click="ctrl.toggleList(item.IdTaller)">
+                        {{item.Nombre}}
+                    </button>
+                </div>
+                <div class="col-lg-12">
+                    <span ng-if="!selectAll">{{'attendance.selectAllWorkshops'|translate}}</span>
+                    <span ng-if="selectAll">{{'attendance.deselectAllWorkshops'|translate}}</span>
+                    <input type="checkbox"
+                           ng-model="selectAll"
+                           ng-click="ctrl.selectAllWorkshops(selectAll)" />
+                </div>
+            </div>
+        </form>
+        <div class="panel-footer clearfix">
+            <div class="col-md-offset-9 col-md-3">
+                <a ng-click="ctrl.submit()"
+                   class="form-control btn btn-primary">{{'attendance.generate'|translate}}</a>
+            </div>
+        </div>
+    </div>
+</article>

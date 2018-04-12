@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF5AD81D-C294-4E2D-A689-3A8431AAA153}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HPV_Datos</RootNamespace>
+    <AssemblyName>HPV_Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\HPV_Entidades\HPV_Entidades\packages\Oracle.ManagedDataAccess.12.1.2400\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdmEspacioFisico\Entidad\DireccionEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\Entidad\DptoFacilitadorEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\Entidad\EspacioFisicoEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\Entidad\GrupoEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\Entidad\LugarMunicipioEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\Entidad\MunicipioFacilitadorEntidad.cs" />
+    <Compile Include="AdmEspacioFisico\FachadaAdmEspacioFisico.cs" />
+    <Compile Include="AdmEspacioFisico\InterfaceAdmEspacioFisico.cs" />
+    <Compile Include="AdmParametro\Entidad\PeriodoEntidad.cs" />
+    <Compile Include="AdmRol\Entidad\RolEntidad.cs" />
+    <Compile Include="AdmRol\FachadaAdmRol.cs" />
+    <Compile Include="AdmRol\InterfaceAdmRol.cs" />
+    <Compile Include="AdmParametro\Entidad\ParametroEntidad.cs" />
+    <Compile Include="AdmParametro\FachadaAdmParametro.cs" />
+    <Compile Include="AdmParametro\InterfaceAdmParametro.cs" />
+    <Compile Include="AdmUsuario\Entidad\AutenticarEntidad.cs" />
+    <Compile Include="AdmUsuario\Entidad\CoordinadorEntidad.cs" />
+    <Compile Include="AdmUsuario\Entidad\MenuEntidad.cs" />
+    <Compile Include="AdmUsuario\Entidad\OpcionEntidad.cs" />
+    <Compile Include="AdmUsuario\Entidad\RolEntidad.cs" />
+    <Compile Include="AdmUsuario\Entidad\UsuarioEntidad.cs" />
+    <Compile Include="AdmUsuario\FachadaAdmUsuario.cs" />
+    <Compile Include="AdmUsuario\InterfaceAdmUsuario.cs" />
+    <Compile Include="Alistamiento\Entidad\BeneficiarioEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\CorreoEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\DepartamentoEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\DiaEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\EncuestaEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\HorarioEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\InscripcionEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\LugarEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\MunicipioEntidad.cs" />
+    <Compile Include="Alistamiento\FachadaAlistamiento.cs" />
+    <Compile Include="Alistamiento\InterfaceAlistamiento.cs" />
+    <Compile Include="Alistamiento\Entidad\PeriodoEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\AsistenciaDetalleEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\AsistenciaEncabezadoEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\AsistenciaEstadoEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\AsistenteEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\EntregableEstadoEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\FacilitadorEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\GrupoFacilitadorEntidad.cs" />
+    <Compile Include="Asistencia\Entidad\TallerEntidad.cs" />
+    <Compile Include="Asistencia\FachadaAsistencia.cs" />
+    <Compile Include="Asistencia\InterfaceAsistencia.cs" />
+    <Compile Include="CasosDeExito\Entidad\CasoDeExitoEntidad.cs" />
+    <Compile Include="CasosDeExito\Entidad\LogroEntidad.cs" />
+    <Compile Include="CasosDeExito\FachadaCasoDeExito.cs" />
+    <Compile Include="CasosDeExito\InterfaceCasoDeExito.cs" />
+    <Compile Include="EncuestasSena\Entidad\PreguntasEntidad.cs" />
+    <Compile Include="EncuestasSena\Entidad\RespuestaEntidad.cs" />
+    <Compile Include="EncuestasSena\Entidad\RespuestasEncuestaEntidad.cs" />
+    <Compile Include="EncuestasSena\Entidad\UsuarioSenaEncuestaEntidad.cs" />
+    <Compile Include="EncuestasSena\Entidad\UsuariosSenaEntidad.cs" />
+    <Compile Include="FechaCorte\Entidad\FechaCorteEntidad.cs" />
+    <Compile Include="FechaCorte\FachadaFechaCorte.cs" />
+    <Compile Include="FechaCorte\InterfaceFechaCorte.cs" />
+    <Compile Include="EncuestasSena\Entidad\TiposDocumentoEntidad.cs" />
+    <Compile Include="EncuestasSena\FachadaInscripcion.cs" />
+    <Compile Include="EncuestasSena\InterfaceInscripcion.cs" />
+    <Compile Include="Reporte\Entidad\AuditoriaEntidad.cs" />
+    <Compile Include="Reporte\Entidad\EncuestaSatisfaccionObservacionesEntidad.cs" />
+    <Compile Include="Reporte\Entidad\EspaciosFisicosEntidad.cs" />
+    <Compile Include="Reporte\Entidad\RechazoGruposEntidad.cs" />
+    <Compile Include="Reporte\Entidad\UsuariosSistemaEntidad.cs" />
+    <Compile Include="Reporte\Entidad\HistoriasVidaEntidad.cs" />
+    <Compile Include="Reporte\Entidad\EjemplosLiderazgoEntidad.cs" />
+    <Compile Include="Reporte\Entidad\CasosExitoEntidad.cs" />
+    <Compile Include="Reporte\Entidad\CronogramaTallerEntidad.cs" />
+    <Compile Include="Reporte\Entidad\EncuestaEntradaSalidaEntidad.cs" />
+    <Compile Include="Reporte\Entidad\CandidatosEntidad.cs" />
+    <Compile Include="Reporte\Entidad\ReporteEntidad.cs" />
+    <Compile Include="Reporte\Entidad\EncuestaSatisfaccionEntidad.cs" />
+    <Compile Include="Reporte\Entidad\TrazabilidadEntidad.cs" />
+    <Compile Include="Reporte\FachadaReporte.cs" />
+    <Compile Include="Reporte\InterfaceReporte.cs" />
+    <Compile Include="Consulta\Entidad\HorarioDisponibleEntidad.cs" />
+    <Compile Include="Consulta\Entidad\InscritoEntidad.cs" />
+    <Compile Include="Consulta\FachadaConsulta.cs" />
+    <Compile Include="Consulta\InterfaceConsulta.cs" />
+    <Compile Include="General\Entidad\EntidadOracle.cs" />
+    <Compile Include="General\Entidad\ListaValorEntidad.cs" />
+    <Compile Include="General\Entidad\ParametroInicialEntidad.cs" />
+    <Compile Include="General\FachadaGeneral.cs" />
+    <Compile Include="General\InterfaceGeneral.cs" />
+    <Compile Include="HistoriaVida\Entidad\HistoriaVidaEntidad.cs" />
+    <Compile Include="HistoriaVida\FachadaHistoriaVida.cs" />
+    <Compile Include="HistoriaVida\InterfaceHistoriaVida.cs" />
+    <Compile Include="Liderazgos\Entidad\LiderazgoEntidad.cs" />
+    <Compile Include="Liderazgos\FachadaLiderazgo.cs" />
+    <Compile Include="Liderazgos\InterfaceLiderazgo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPV_Entidades\HPV_Entidades\HPV_Entidades.csproj">
+      <Project>{2e8ce3bf-c2d3-41ed-af0f-179427a5b584}</Project>
+      <Name>HPV_Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

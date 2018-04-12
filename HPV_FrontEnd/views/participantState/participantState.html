@@ -1,0 +1,222 @@
+﻿<article ng-init="ctrl.initialize()">
+    <p translate="inscription.description" translate-compile></p>
+    <p class="text-info text-right"><span class="text-danger">*</span> {{'inscription.explaination'|translate}}</p>
+
+    <uib-tabset class="nav nav-tabs"
+                active="ctrl.activeTab"
+                justified="true">
+        <uib-tab class="nav-item"
+                 index="0"
+                 heading="{{'participantState.validation'|translate}}"
+                 ng-click="ctrl.activateView(0)"
+                 disable="!ctrl.tabList[0].active">
+            <form name="form_validation"
+                  id="form_validation">
+                <div ng-init="ctrl.initializeForm(0,form_validation)"></div>
+                <div class="col-sm-12"><p translate>inscription.innerPanel</p></div>
+                <div class="col-sm-3">
+                    <div class="form-group" feedback>
+                        <label for="docType" class="control-label">
+                            {{'inscription.documentType'|translate}}
+                        </label>
+                        <ui-select ng-model="ctrl.participant.TipoDocumento"
+                                   theme="bootstrap"
+                                   id="docType"
+                                   name="docType">
+                            <ui-select-match placeholder="{{'inscription.selectDocType'|translate}}"
+                                             allow-clear="true">
+                                {{$select.selected.Descripcion}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in ctrl.docTypes | propsFilter: {Valor: $select.search, Descripcion: $select.search}">
+                                <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="participantDocument">{{'inscription.document'|translate}}</label>
+                        <input class="form-control"
+                               type="number"
+                               placeholder="0"
+                               id="participantDocument"
+                               name="participantDocument"
+                               ng-model="ctrl.participant.Documento">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="benefCode">{{'inscription.benefCode'|translate}}</label>
+                        <input class="form-control"
+                               type="number"
+                               placeholder="{{'inscription.benefCode'|translate}}"
+                               id="benefCode"
+                               name="benefCode"
+                               ng-model="ctrl.participant.CodigoBeneficiario">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="birthDate">
+                        {{'inscription.birthDate'|translate}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <p class="input-group" feedback>
+                        <input type="text"
+                               title="Ingresa tu fecha de nacimiento"
+                               name="participantBirthDate"
+                               class="form-control"
+                               ng-model="ctrl.participant.FechaNum"
+                               uib-datepicker-popup="yyyy/MM/dd"
+                               placeholder="aaaa/mm/dd"
+                               is-open="birthDateOpened"
+                               datepicker-options="ctrl.dateOptions"
+                               ng-required="true"
+                               close-text="{{'inscription.close'|translate}}"
+                               alt-input-formats="ctrl.altInputFormats"
+                               required />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="birthDateOpened=!birthDateOpened">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        <div class="validation-messages"
+                             ng-messages="form_validation.participantBirthDate.$error"
+                             ng-if="form_validation.participantBirthDate.$touched">
+                            <div ng-message="required">{{'inscription.error.dateIsRequired'|translate}}</div>
+                            <div ng-message="valid">{{'inscription.error.dateNoFormat'|translate}}</div>
+                        </div>
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit"
+                            class="btn btn-success pull-right"
+                            ng-click="ctrl.submitForm(0)">
+                        {{'inscription.next'|translate}}
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="1"
+                 heading="Estado del participante"
+                 ng-click="ctrl.activateView(1)"
+                 disable="!ctrl.tabList[1].active || ctrl.sentSurvey"
+                 ng-show="ctrl.tabList[1].show">
+            <table class="table table-striped">
+                <tbody>
+                    <tr class="warning">
+                        <td colspan="8"><b>{{'searches.table.userData'|translate}}</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.name'|translate}}</b></td>
+                        <td colspan="7">{{ctrl.user.NombreInscrito}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.docType'|translate}}</b></td>
+                        <td>{{ctrl.user.TipoDocumento}}</td>
+                        <td><b>{{'searches.table.doc'|translate}}</b></td>
+                        <td class="text-right" colspan="2">{{ctrl.user.Documento}}</td>
+                        <td><b>{{'searches.table.benefCode'|translate}}</b></td>
+                        <td class="text-right" colspan="2">{{ctrl.user.CodigoBeneficiario}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.email'|translate}}</b></td>
+                        <td colspan="7">{{ctrl.user.Correo}}</td>
+                    </tr>
+                    <tr class="warning">
+                        <td colspan="8"><b>{{'searches.table.inscriptionData'|translate}}</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.dpto'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.user.NomDepartamento}}</td>
+                        <td><b>{{'searches.table.city'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.user.NomMunicipio}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.facilitator'|translate}}</b></td>
+                        <td colspan="7">{{ctrl.user.NombreFacilitador}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.day'|translate}}</b></td>
+                        <td>{{ctrl.user.Dia}}</td>
+                        <td><b>{{'searches.table.schedule'|translate}}</b></td>
+                        <td>{{ctrl.user.Horario}}</td>
+                        <td><b>{{'searches.table.group'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.user.SiglaGrupo}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.place'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.user.Lugar}}</td>
+                        <td><b>{{'searches.table.address'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.user.Direccion}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'searches.table.inscriptionDate'|translate}}</b></td>
+                        <td colspan="7">{{ctrl.user.FechaRegistro}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped"
+                   ng-show="ctrl.user.ListaAsistenciaTaller.length > 0">
+                <tbody>
+                    <tr class="warning">
+                        <td colspan="8"><b>{{'participantState.table.attendance'|translate}}</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{'participantState.table.workshop'|translate}} 1</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 2</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 3</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 4</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 5</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 6</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 7</b></td>
+                        <td><b>{{'participantState.table.workshop'|translate}} 8</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[0].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[0].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[0].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[1].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[1].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[1].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[2].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[2].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[2].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[3].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[3].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[3].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[4].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[4].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[4].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[5].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[5].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[5].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[6].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[6].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[6].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                        <td>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[7].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[7].FechaRealizacion}}</span>
+                            <span ng-if="ctrl.user.ListaAsistenciaTaller[7].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <button class="btn btn-default pull-left"
+                        ng-click="ctrl.goBack(1)">
+                    Anterior
+                </button>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</article>

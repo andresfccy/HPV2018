@@ -1,0 +1,129 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'successCase.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.successCase.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <!--
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'successCase.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-model="ctrl.successCase.MotivoRechazo">
+                    </textarea>
+                </div>
+            </div>
+                -->
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'successCase.group'|translate}} *</label>
+                    <input class="form-control"
+                            id="group"
+                            name="group"
+                            ng-value="ctrl.successCase.SiglaGrupo"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'successCase.participant'|translate}} *</label>
+                    <input class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-value="ctrl.successCase.NomInscrito"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="blueLabel">{{'successCase.achievement'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.verb'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.adjective'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.way'|translate}}</th>
+                            <th class="blueLabel">{{'successCase.selected'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ctrl.achievements">
+                        <tr>
+                            <td class="no-border-top">{{item.NomLogro}}</td>
+                            <td class="no-border-top">{{item.Verbo}}</td>
+                            <td class="no-border-top">{{item.Adjetivo}}</td>
+                            <td class="no-border-top">{{item.Medio}}</td>
+
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="item.yesno == true">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="!item.yesno || item.yesno == false">
+                                    {{'no'|translate}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12 form-group little-margin-bottom" feedback>
+                <label for="observations" class="blueLabel">{{'successCase.observations'|translate}}: </label>
+                <textarea class="form-control vresize"
+                          name="observations"
+                          ng-model="ctrl.successCase.Observaciones"
+                          ng-disabled="true">
+                </textarea>
+            </div>
+            <div class="col-lg-12">
+                <label class="blueLabel">{{'successCase.qualities'|translate}}</label>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table">
+                    <tbody ng-repeat="item in ctrl.qualities">
+                        <tr>
+                            <td class="no-border-top">{{$index+1}}. </td>
+                            <td class="no-border-top col-lg-10">{{item.Descripcion}}</td>
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="item.yesno == 1">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="item.yesno == 0">
+                                    {{'no'|translate}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-warning pull-right"
+                    type="submit"
+                    ng-if="ctrl.successCase.IdEstado=='E'  && ctrl.enabled"
+                    ng-click="ctrl.noChoose()">
+                {{ 'successCase.noChoose' | translate }}
+            </button>
+            <button class="btn btn-success pull-right"
+                    type="submit"
+                    ng-if="ctrl.successCase.IdEstado=='A'  && ctrl.enabled"
+                    ng-click="ctrl.choose()">
+                {{ 'successCase.choose' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'successCase.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

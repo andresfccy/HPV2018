@@ -1,0 +1,86 @@
+<article ng-init="ctrl.initialize()">
+    <p ng-show="ctrl.response == 0" translate="feedback.description" translate-compile></p>
+    <p ng-show="ctrl.response == 0" class="text-info text-right"><span class="text-danger">*</span> {{'requiredField'|translate}}</p>
+
+    <div class="alert alert-warning"
+         role="alert"
+         ng-if="ctrl.response == 2">
+        <h4>¡ Atención !</h4>
+        <p>Ya respondiste la encuesta de satisfacción.</p>
+        <p>Gracias por participar.</p>
+    </div>
+
+    <div class="alert alert-error"
+         role="alert"
+         ng-if="ctrl.response == 1">
+        <div class="col-lg-12 text-center">
+            <i class="fa fa-exclamation-triangle fa-6x"></i>
+            <h2>Error de vínculo</h2>
+            <h4>El vínculo ha caducado</h4>
+            <h3>¡No tiene acceso a la página solicitada!</h3>
+
+        </div>
+    </div>
+
+    <div class="panel panel-ps"
+         ng-if="ctrl.response == 0">
+        <div class="panel-heading">
+            {{'feedback.module'|translate}}
+        </div>
+        <div class="panel-body">
+            <form name="form" id="form">
+                <div ng-init="ctrl.initializeForm(form)"></div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey"
+                        class="form-group has-feedback">
+                        <label for="poll_radio_question_1" class="control-label">
+                            {{question[0].DescripcionPregunta}}<span class="text-danger">*</span> :
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                                    <input type="radio"
+                                           name="poll_radio_question_{{$parent.$index+1}}"
+                                           id="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical">
+                                <label class="btn btn-left"
+                                       for="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="col-lg-12">
+                    <div class="form-group" feedback>
+                        <label>{{'feedback.comments'|translate}}</label>
+                        <textarea class="form-control vresize"
+                                  ng-model="ctrl.comments"></textarea>
+                    </div>
+                </div>
+                <div ng-if="!ctrl.isValidForm(3)">
+                    <span class="col-sm-12 alert alert-danger">
+                        {{'feedback.incomplete'|translate}}
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer clearfix">
+
+            <button class="btn btn-success pull-right"
+                    ng-disabled="!ctrl.isValidForm()"
+                    ng-click="ctrl.submit()">
+                {{'feedback.submit'|translate}}
+            </button>
+        </div>
+    </div>
+</article>

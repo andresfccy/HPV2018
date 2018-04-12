@@ -1,0 +1,107 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding:1px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding:1px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*AQUI EMPIENZAN LOS ESTILOS PERSONALIZADOS*/
+.formulario{
+    padding: 10px 100px 10px 110px;
+}
+
+.logos {
+    max-width: 100%;
+    height: 120px;
+    width: auto/9; /* Bug de ie8 */    
+}
+#logo3{
+    margin-left:1px;
+}
+
+.negrita{
+    font-weight:900;
+}
+
+#logo2{
+    margin-left:5px;
+}
+
+.contenedortext{
+    width:100%; 
+    text-align:center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:25px;
+}
+
+#boton{
+    margin-left: 420px;
+    text-align:right;
+}
+
+#enviar {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:100px;
+    height:30px;
+
+}
+
+#DescargarPdf {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:150px;
+    height:30px;
+
+}
+
+#enviarencuesta {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:150px;
+    height:30px;
+
+}
+
+#contentlogo4
+{
+    text-align: center;
+}
+
+#contentlogo3{
+    text-align:right;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+.validation-summary-valid
+{
+    display: none;
+}
+

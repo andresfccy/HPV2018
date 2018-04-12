@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-moment@1.0.0-beta.4/angular-moment.js");

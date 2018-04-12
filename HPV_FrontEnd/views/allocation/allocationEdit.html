@@ -1,0 +1,186 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps  dataTables_wrapper ">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">{{'allocation.new'|translate}}</h3>
+        </div>
+        <div class="panel panel-danger" ng-show="ctrl.allocation.CodEstado=='R'">
+            <div class="panel-heading">
+                <label>{{'allocation.rejectReason'|translate}}</label>
+                <textarea class="form-control vresize" disabled>{{ctrl.allocation.MotivoRechazo}}</textarea>
+            </div>
+        </div>
+        <form class="panel-body" name="allocationForm">
+            <div class="col-md-12 clearfix" ng-init="ctrl.initializeForm(allocationForm)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" feedback>
+                            <label for="department" class="blueLabel">{{'allocation.department'|translate}} *</label>
+                            <select class="form-control"
+                                    id="department"
+                                    name="department"
+                                    ng-model="ctrl.allocation.IdDepartamento"
+                                    ng-options="item.Codigo as item.Nombre for item in ctrl.departments | orderBy: 'Nombre'"
+                                    ng-change="ctrl.citiesByDepartment()"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages" ng-messages="allocationForm.department.$error" ng-if="allocationForm.department.$touched">
+                                <div ng-message="required">{{'allocation.error.departmentRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" feedback>
+                            <label for="city" class="blueLabel">{{'allocation.city'|translate}} *</label>
+                            <select class="form-control"
+                                    id="city"
+                                    name="city"
+                                    ng-model="ctrl.allocation.IdMunicipio"
+                                    ng-options="item.Codigo as item.Nombre for item in ctrl.cities | orderBy: 'Nombre'"
+                                    ng-disabled="!ctrl.citiesOk"
+                                    ng-change="ctrl.placesByCity()"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.city.$error" ng-if="allocationForm.city.$touched">
+                                <div ng-message="required">{{'allocation.error.cityRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" feedback>
+                            <label for="day" class="blueLabel">{{'allocation.day'|translate}} *</label>
+                            <select class="form-control"
+                                    id="day"
+                                    name="day"
+                                    ng-model="ctrl.allocation.IdDia"
+                                    ng-options="item.Codigo as item.Nombre for item in ctrl.days | orderBy: 'Codigo'"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.day.$error" ng-if="allocationForm.day.$touched">
+                                <div ng-message="required">{{'allocation.error.dayRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" feedback>
+                            <label for="schedule" class="blueLabel">{{'allocation.schedule'|translate}} *</label>
+                            <select class="form-control"
+                                    id="schedule"
+                                    name="schedule"
+                                    ng-model="ctrl.allocation.IdHorario"
+                                    ng-options="item.Codigo as item.Nombre for item in ctrl.schedules | orderBy: 'Nombre'"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.schedule.$error" ng-if="allocationForm.schedule.$touched">
+                                <div ng-message="required">{{'allocation.error.scheduleRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" feedback>
+                            <label for="group" class="blueLabel">{{'allocation.group'|translate}} *</label>
+                            <select class="form-control"
+                                    id="group"
+                                    name="group"
+                                    ng-model="ctrl.allocation.IdGrupo"
+                                    ng-options="item.IdGrupo as item.Nombre for item in ctrl.groups | orderBy: 'Codigo'"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.group.$error" ng-if="allocationForm.group.$touched">
+                                <div ng-message="required">{{'allocation.error.groupRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group" feedback>
+                            <label for="placeName" class="blueLabel">
+                                {{'allocation.placeName'|translate}}
+                            </label>
+                            <input id="placeName"
+                                   name="placeName"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="ctrl.allocation.Lugar"
+                                   placeholder="{{'allocation.placeName'|translate}}"
+                                   uib-typeahead="item.Nombre for item in ctrl.cityPlaces | filter:$viewValue | limitTo:8"
+                                   typeahead-loading="loading"
+                                   typeahead-no-results="noResults"
+                                   ng-disabled="!ctrl.placesOk"
+                                   ng-change="ctrl.addressByPlace()"
+                                   typeahead-on-select="ctrl.addressByPlace()"
+                                   required>
+                            <i ng-show="loading" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults">
+                                <i class="glyphicon glyphicon-remove"></i> No hay coincidencias.
+                            </div>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.placeNameAutocomplete.$error" ng-if="allocationForm.placeNameAutocomplete.$touched">
+                                <div ng-message="required">{{'allocation.error.placeRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group" feedback>
+                            <label for="address" class="blueLabel">
+                                {{'allocation.address'|translate}}
+                            </label>
+                            <input id="address"
+                                   name="address"
+                                   type="text"
+                                   class="form-control"
+                                   autocomplete="off"
+                                   ng-model="ctrl.allocation.Direccion"
+                                   placeholder="{{'allocation.address'|translate}}"
+                                   uib-typeahead="item.Nombre for item in ctrl.addresses | filter:$viewValue | limitTo:8"
+                                   typeahead-loading="loading2"
+                                   typeahead-no-results="noResults2"
+                                   ng-disabled="!ctrl.addressOk"
+                                   required>
+                            <i ng-show="loading2" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults2">
+                                <i class="glyphicon glyphicon-remove"></i> No hay coincidencias.
+                            </div>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="allocationForm.addressNameAutocomplete.$error" ng-if="allocationForm.addressNameAutocomplete.$touched">
+                                <div ng-message="required">{{'allocation.error.addressRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="but">
+                <button class="btn btn-primary pull-right"
+                        type="submit"
+                        ng-click="ctrl.submit()">
+                    <div ng-if="ctrl.isEdition()">{{ 'allocation.editAllocation' | translate }}</div>
+                    <div ng-if="!ctrl.isEdition()">{{ 'allocation.saveAllocation' | translate }}</div>
+                </button>
+            </div>
+            <div id="butBack">
+                <button class="btn btn-warning"
+                        ng-click="ctrl.goBack()">
+                    {{ 'allocation.back' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</article>

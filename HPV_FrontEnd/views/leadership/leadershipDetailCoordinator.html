@@ -1,0 +1,89 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'leadership.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.leadership.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'leadership.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-model="ctrl.leadership.MotivoRechazo">
+                    </textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'leadership.group'|translate}} *</label>
+                    <input class="form-control"
+                            id="group"
+                            name="group"
+                            ng-value="ctrl.leadership.SiglaGrupo"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'leadership.participant'|translate}} *</label>
+                    <input class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-value="ctrl.leadership.NomInscrito"
+                            ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="blueLabel">{{'leadership.qualities'|translate}}</label>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table">
+                    <tbody ng-repeat="item in ctrl.qualities">
+                        <tr>
+                            <td class="no-border-top">{{$index+1}}. </td>
+                            <td class="no-border-top col-lg-10">{{item.Descripcion}}</td>
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="item.yesno == 1">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="item.yesno == 0">
+                                    {{'no'|translate}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-danger pull-right"
+                    type="submit"
+                    ng-if="ctrl.leadership.IdEstado != 'E'"
+                    ng-click="ctrl.reject()">
+                {{ 'leadership.reject' | translate }}
+            </button>
+            <button class="btn btn-success pull-right"
+                    type="submit"
+                    ng-if="ctrl.leadership.IdEstado != 'E'"
+                    ng-click="ctrl.accept()">
+                {{ 'leadership.accept' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'leadership.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

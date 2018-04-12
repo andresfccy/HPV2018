@@ -1,0 +1,89 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper ">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'allocation.allocated'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-md-3 clearfix">
+                    <label class="control-label" for="search">{{'allocation.search'|translate}}</label>
+                    <input class="form-control" id="search" type="text" ng-model="search" placeholder="{{'allocation.search'|translate}}" />
+                </div>
+                <div class="pull-right">
+                    <uib-pagination boundary-links="true"
+                                    total-items="ctrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="ctrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="ctrl.currentPage">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-md-12 text-right">
+                        <span>{{'allocation.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'allocation.of'|translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover dataTable">
+                <thead>
+                    <tr>
+                        <th>{{'allocation.state' | translate}}</th>
+                        <th>{{'allocation.initials' | translate}}</th>
+                        <th>{{'allocation.department'|translate}}</th>
+                        <th>{{'allocation.city'|translate}}</th>
+                        <th>{{'allocation.day'|translate}}</th>
+                        <th>{{'allocation.schedule'|translate}}</th>
+                        <th>{{'allocation.group'|translate}}</th>
+                        <th>{{'allocation.place'|translate}}</th>
+                        <th>{{'allocation.direction'|translate}}</th>
+                        <th>{{'allocation.edit'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in ctrl.filtered | orderBy:item.Estado | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                    <tr ng-class="{'success':item.CodEstado=='A','default':item.CodEstado=='P', 'danger':item.CodEstado=='R'}">
+                        <td ng-click="seeComments=!seeComments">
+                            {{item.Estado}} <i class="fa fa-plus-square" ng-show="item.CodEstado=='R' && !seeComments"></i><i class="fa fa-minus-square" ng-show="item.CodEstado=='R' && seeComments"></i>
+                        </td>
+                        <td>{{item.SiglaGrupo}}</td>
+                        <td>{{item.NomDepartamento}}</td>
+                        <td>{{item.NomMunicipio}}</td>
+                        <td>{{item.Dia}}</td>
+                        <td>{{item.Horario}}</td>
+                        <td>{{item.Grupo}}</td>
+                        <td>{{item.Lugar}}</td>
+                        <td>{{item.Direccion}}</td>
+                        <td>
+                            <span class="glyphicon glyphicon-edit"
+                                  ng-if="item.CodEstado!='A'"
+                                  ui-sref="editAllocation({IdAllocation:item.IdEspacioFisico})"></span>
+                        </td>
+                    </tr>
+                    <tr ng-class="{'success':item.CodEstado=='A','default':item.CodEstado=='P', 'danger':item.CodEstado=='R'}">
+                        <td colspan="9"
+                            ng-show="item.CodEstado=='R' && seeComments">
+                            <div>
+                                <textarea class="form-control vresize" disabled>{{item.MotivoRechazo}}</textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <div class="col-md-offset-9 col-md-3">
+                    <a ui-sref="newAllocation"
+                       class="form-control btn btn-primary">{{'allocation.new'|translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

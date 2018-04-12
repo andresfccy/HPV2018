@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-growl-v2@0.7.5/build/angular-growl.min.js");

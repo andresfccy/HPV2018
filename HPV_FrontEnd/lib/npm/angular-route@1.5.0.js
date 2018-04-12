@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-route@1.5.0/index.js");

@@ -1,0 +1,66 @@
+﻿
+<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'indicators.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="season">{{'indicators.season'|translate}}</label>
+                    <select class="form-control"
+                            id="season"
+                            placeholder="{{'indicators.season'|translate}}"
+                            ng-model="ctrl.filter.IdPeriodo"
+                            ng-disabled="!ctrl.seasons || ctrl.seasons.length == 0"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.seasons | orderBy:'-Mostrar'"
+                            ng-change="ctrl.cargarFechaCorte()">
+                    </select>
+                </div>
+            </div>
+            <div class="panel-body clearfix">
+                <div class="col-lg-12">
+                    <h5>{{'indicators.indicators'|translate}}</h5>
+                    <hr />
+                </div>
+                <div class="alert alert-info"
+                     ng-show="!ctrl.indicators">
+                    {{'indicators.loading'|translate}}
+                </div>
+                <div class="alert alert-warning"
+                     ng-show="ctrl.indicators && ctrl.indicators.length == 0">
+                    {{'indicators.noDataFound'|translate}}
+                </div>
+                <div class="col-lg-12 clearfix"
+                     ng-show="ctrl.indicators && ctrl.indicators.length != 0">
+
+                    <div class="btn-toolbar" role="toolbar">
+                        <div ng-repeat="cat in ctrl.indicators" ng-if="$index % ctrl.cols == 0" class="row">
+                            <div ng-repeat="cat in ctrl.indicators | startFrom:$parent.$index | limitTo:ctrl.cols" class="col-md-{{12/ctrl.cols}}">
+                                <h5>{{cat.Categoria}}</h5>
+                                <hr />
+                                <div class="btn-group-vertical" role="group" data-toggle="buttons">
+                                    <label class="btn btn-default col-lg-7"
+                                           ng-repeat="item in cat.Lista"
+                                           ng-click="ctrl.selectIndicator(item)"
+                                           ng-class="{'active':ctrl.filter.IdReporte == item.IdReporte}">
+                                        {{item.Nombre}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="col-lg-12">
+                    <div class="btn btn-success pull-right"
+                         ng-click="ctrl.generateIndicator()">
+                        {{'indicators.generate'|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

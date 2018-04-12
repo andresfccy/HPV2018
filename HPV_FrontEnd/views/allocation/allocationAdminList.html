@@ -1,0 +1,136 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-default panel-ps dataTables_wrapper ">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'allocation.allocated'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="col-sm-4 clearfix" ng-if="ctrl.supervisor">
+                    <label class="control-label" for="search">{{'searches.seasson'|translate}}</label>
+                    <select class="form-control"
+                            id="search"
+                            type="text"
+                            ng-model="ctrl.selectedSeason"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.seasons"
+                            ng-change="ctrl.loadAllocation()" />
+                </div>
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label" for="search">{{'allocation.search'|translate}}</label>
+                    <input class="form-control" id="search" type="text" ng-model="search" placeholder="{{'allocation.search'|translate}}" />
+                </div>
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="filterStates">{{'allocation.filter'|translate}}</label>
+                    <select id="filterStates"
+                            class="form-control"
+                            ng-options="item.Valor as item.Descripcion for item in ctrl.physicalStates"
+                            ng-model="ctrl.searchFilter"
+                            ng-change="ctrl.filterChange()"></select>
+                </div>
+                <div class="pull-right">
+                    <uib-pagination boundary-links="true"
+                                    total-items="ctrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="ctrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="ctrl.currentPage">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-lg-12 text-right">
+                        <span>{{'allocation.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'allocation.of'|translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover dataTable table-responsive">
+                <thead>
+                    <tr>
+                        <th>{{'allocation.facilitator'|translate}}</th>
+                        <th>{{'allocation.state' | translate}}</th>
+                        <th>{{'allocation.initials' | translate}}</th>
+                        <th class="hidden-sm hidden-xs">{{'allocation.department'|translate}}</th>
+                        <th class="hidden-xs">{{'allocation.city'|translate}}</th>
+                        <th class="hidden-xs">{{'allocation.day'|translate}}</th>
+                        <th class="hidden-xs">{{'allocation.schedule'|translate}}</th>
+                        <th class="hidden-sm hidden-xs">{{'allocation.group'|translate}}</th>
+                        <th class="hidden-xs">{{'allocation.place'|translate}}</th>
+                        <th class="hidden-sm hidden-xs">{{'allocation.direction'|translate}}</th>
+                        <th ng-if="!ctrl.supervisor">{{'allocation.edit'|translate}}</th>
+                        <th ng-if="!ctrl.supervisor">{{'allocation.accept'|translate}}</th>
+                        <th ng-if="!ctrl.supervisor">{{'allocation.reject'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in ctrl.filtered | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                    <tr ng-class="{'success':item.CodEstado=='A','default':item.CodEstado=='P', 'danger':item.CodEstado=='R'}">
+                        <td>{{item.NomFacilitador}}</td>
+                        <td ng-click="seeComments=!seeComments">
+                            {{item.Estado}} <i class="fa fa-plus-square" ng-show="item.CodEstado=='R' && !seeComments"></i><i class="fa fa-minus-square" ng-show="item.CodEstado=='R' && seeComments"></i>
+                        </td>
+                        <td class="hidden-xs">{{item.SiglaGrupo}}</td>
+                        <td class="hidden-sm hidden-xs">{{item.NomDepartamento}}</td>
+                        <td class="hidden-xs">{{item.NomMunicipio}}</td>
+                        <td class="hidden-xs">{{item.Dia}}</td>
+                        <td class="hidden-xs">{{item.Horario}}</td>
+                        <td class="hidden-sm hidden-xs">{{item.Grupo}}</td>
+                        <td class="hidden-xs">{{item.Lugar}}</td>
+                        <td class="hidden-sm hidden-xs">{{item.Direccion}}</td>
+                        <td class="center-text"  ng-if="!ctrl.supervisor">
+                            <div class="glyphicon glyphicon-edit"
+                                 ui-sref="editAllocationAdmin({IdAllocation:item.IdEspacioFisico})">
+                            </div>
+                        <td  ng-show="!ctrl.supervisor">
+                            <div class="btn btn-xs btn-success"
+                                 ng-show="item.CodEstado!='A'"
+                                 ng-disabled="item.CodEstado=='A'"
+                                 ng-click="ctrl.approveAllocation(item.IdEspacioFisico)">
+                                {{'allocation.accept'|translate}}
+                            </div>
+                        </td>
+                        <td  ng-show="!ctrl.supervisor">
+                            <div class="btn btn-xs btn-danger"
+                                 ng-click="seeComments=!seeComments;">
+                                {{'allocation.reject'|translate}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-show="!ctrl.supervisor" ng-class="{'success':item.CodEstado=='A','default':item.CodEstado=='P', 'danger':item.CodEstado=='R'}">
+                        <td colspan="13"
+                            ng-show="seeComments">
+                            <div class="col-sm-offset-3 col-sm-6">
+                                <label for="rejectReason">{{'allocation.rejectReason'|translate}}</label>
+                                <select class="form-control input-sm"
+                                        id="rejectReason"
+                                        ng-model="item.rejectReason"
+                                        ng-options="item as item.Descripcion for item in ctrl.rejectReasons | orderBy: 'Valor'"></select>
+                            </div>
+                            <div class="col-sm-offset-7 col-sm-2">
+                                <div class="btn btn-xs btn-danger"
+                                     ng-class="{'disabled':!item.rejectReason}"
+                                     ng-disabled="!item.rejectReason"
+                                     ng-click="ctrl.rejectAllocation(item.IdEspacioFisico,item.rejectReason)">
+                                    {{'allocation.saveReject'|translate}}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <div ng-show="!ctrl.supervisor" class="col-lg-offset-9 col-lg-3">
+                    <a ui-sref="newAllocationAdmin"
+                       class="form-control btn btn-primary">{{'allocation.new'|translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

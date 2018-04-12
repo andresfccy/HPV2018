@@ -1,0 +1,1 @@
+module.exports = require("npm:jshint-summary@0.4.0/index.js");

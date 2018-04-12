@@ -1,0 +1,1 @@
+module.exports = require("npm:cli-table@0.3.1/lib");

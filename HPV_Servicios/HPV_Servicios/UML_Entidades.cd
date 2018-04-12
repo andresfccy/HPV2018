@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HPV_Entidades.AdmEspacioFisico.Direccion" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisico.EspacioFisico" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisico.Grupo" Collapsed="true">
+    <Position X="21.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisico.LugarMunicipio" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_ActualizarEspacioFisico" Collapsed="true">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_AprobarEspacioFisico" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_ConsultarEspacioFisico" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarDeptosFacilitador" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarDireccionesLugar" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarEspacioFisico" Collapsed="true">
+    <Position X="25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarEspacioFisicoXAprobar" Collapsed="true">
+    <Position X="26.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarLugaresMunicipio" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_DarMunicipiosFacilitador" Collapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_ReasignarEspacio" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OE_RechazarEspacioFisico" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_ActualizarEspacioFisico" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_AprobarEspacioFisico" Collapsed="true">
+    <Position X="19.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_ConsultarEspacioFisico" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarDeptosFacilitador" Collapsed="true">
+    <Position X="4" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarDias" Collapsed="true">
+    <Position X="5.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarDireccionesLugar" Collapsed="true">
+    <Position X="9.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarEspacioFisico" Collapsed="true">
+    <Position X="16.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarEspacioFisicoXAprobar" Collapsed="true">
+    <Position X="18" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarGrupos" Collapsed="true">
+    <Position X="23.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarHorarios" Collapsed="true">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarLugaresMunicipio" Collapsed="true">
+    <Position X="12.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_DarMunicipiosFacilitador" Collapsed="true">
+    <Position X="18" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_ReasignarEspacio" Collapsed="true">
+    <Position X="21.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmEspacioFisicoWS.OS_RechazarEspacioFisico" Collapsed="true">
+    <Position X="23.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametro.Periodo" Collapsed="true">
+    <Position X="18" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametro.Parametro" Collapsed="true">
+    <Position X="12.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OE_ActualizarPeriodo" Collapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OE_ConsultarPeriodo" Collapsed="true">
+    <Position X="26.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_ActualizarPeriodo" Collapsed="true">
+    <Position X="12.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_ActualizarParametro" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_ConsultarPeriodo" Collapsed="true">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_ConsultarParametro" Collapsed="true">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_DarPeriodos" Collapsed="true">
+    <Position X="2.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OS_DarParametros" Collapsed="true">
+    <Position X="0.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OE_ActualizarParametro" Collapsed="true">
+    <Position X="25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmParametroWS.OE_ConsultarParametro" Collapsed="true">
+    <Position X="25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRol.Rol" Collapsed="true">
+    <Position X="25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OE_DarOpcionesUsuario" Collapsed="true">
+    <Position X="25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OS_ActualizarRol" Collapsed="true">
+    <Position X="14.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OS_DarOpcionesUsuario" Collapsed="true">
+    <Position X="25" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OS_ConsultarRol" Collapsed="true">
+    <Position X="14.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OS_DarRoles" Collapsed="true">
+    <Position X="7.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OE_ActualizarRol" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmRolWS.OE_ConsultarRol" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuario.Coordinador" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuario.Menu" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuario.Opcion" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuario.Rol" Collapsed="true">
+    <Position X="26.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuario.Usuario" Collapsed="true">
+    <Position X="4" Y="15.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_ActualizarRol" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_ActualizarUsuario" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_AsignarContrasenaXToken" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_AutenticarUsuario" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_ConsultarRol" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_ConsultarUsuario" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_DarOpcionesMenu" Collapsed="true">
+    <Position X="21.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_DarOpcionesMenuRol" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_DarRoles" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_DarUsuarios" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OE_RecuperarContrasena" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_ActualizarRol" Collapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_ActualizarUsuario" Collapsed="true">
+    <Position X="18" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_AsignarContrasenaXToken" Collapsed="true">
+    <Position X="21.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_AutenticarUsuario" Collapsed="true">
+    <Position X="23.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_ConsultarRol" Collapsed="true">
+    <Position X="16.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_ConsultarUsuario" Collapsed="true">
+    <Position X="18" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarCoordinadores" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarMenus" Collapsed="true">
+    <Position X="14.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarMunicipios" Collapsed="true">
+    <Position X="16.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarOpcionesMenu" Collapsed="true">
+    <Position X="21.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarOpcionesMenuRol" Collapsed="true">
+    <Position X="23.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarRoles" Collapsed="true">
+    <Position X="9.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_DarUsuarios" Collapsed="true">
+    <Position X="12.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AdmUsuarioWS.OS_RecuperarContrasena" Collapsed="true">
+    <Position X="25" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Beneficiario" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Certificado" Collapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Departamento" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Dia" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Encuesta" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Horario" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Lugar" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Municipio" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Alistamiento.Periodo" Collapsed="true">
+    <Position X="19.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_DarDiasDisponibles" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_DarEncuesta" Collapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_DarHorariosDisponibles" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_DarLugaresDisponibles" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_DarMunicipiosXDepto" Collapsed="true">
+    <Position X="19.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_GenerarCertificado" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_GuardarInscripcion" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_RegistrarEncuestaFinal" Collapsed="true">
+    <Position X="19.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_ValidarBeneficiario" Collapsed="true">
+    <Position X="19.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OE_ValidarCorreo" Collapsed="true">
+    <Position X="26.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarDepartamentos" Collapsed="true">
+    <Position X="2.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarDiasDisponibles" Collapsed="true">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarEncuesta" Collapsed="true">
+    <Position X="11" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarHorariosDisponibles" Collapsed="true">
+    <Position X="2.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarLugaresDisponibles" Collapsed="true">
+    <Position X="11" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarMunicipiosXDepto" Collapsed="true">
+    <Position X="19.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_DarPeriodoVigente" Collapsed="true">
+    <Position X="4" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_GenerarCertificado" Collapsed="true">
+    <Position X="16.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_GuardarInscripcion" Collapsed="true">
+    <Position X="19.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_RegistrarEncuestaFinal" Collapsed="true">
+    <Position X="2.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_ValidarBeneficiario" Collapsed="true">
+    <Position X="2.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AlistamientoWS.OS_ValidarCorreo" Collapsed="true">
+    <Position X="9.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.AsistenciaInfo" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.AsistenciaDetalle" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.AsistenciaEncabezado" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.AsistenciaEstado" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.Asistente" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.EntregableEstado" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.Facilitador" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.GrupoFacilitador" Collapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Asistencia.Taller" Collapsed="true">
+    <Position X="0.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarAsistenciaDetalle" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarAsistenciaEncabezado" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarAsistenciaEstado" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarAsistenteXFacilitador" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarEntregableEstado" Collapsed="true">
+    <Position X="21.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarEntregableEstadoDetalle" Collapsed="true">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarFacilitadorXCoordinador" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarGruposXFacilitador" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_DarInscritos" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_GenerarListaAsistencia" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_RegistrarAprobacion" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OE_RegistrarAsistencia" Collapsed="true">
+    <Position X="18" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarAsistenciaDetalle" Collapsed="true">
+    <Position X="19.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarAsistenciaEncabezado" Collapsed="true">
+    <Position X="21.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarAsistenciaEstado" Collapsed="true">
+    <Position X="23.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarAsistenteXFacilitador" Collapsed="true">
+    <Position X="25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarEntregableEstado" Collapsed="true">
+    <Position X="12.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarEntregableEstadoDetalle" Collapsed="true">
+    <Position X="14.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarFacilitadorXCoordinador" Collapsed="true">
+    <Position X="19.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarGruposXFacilitador" Collapsed="true">
+    <Position X="25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarInscritos" Collapsed="true">
+    <Position X="4" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_DarTalleres" Collapsed="true">
+    <Position X="11" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_GenerarListaAsistencia" Collapsed="true">
+    <Position X="18" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_RegistrarAprobacion" Collapsed="true">
+    <Position X="26.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.AsistenciaWS.OS_RegistrarAsistencia" Collapsed="true">
+    <Position X="0.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExito.CasoDeExito" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExito.Logro" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OE_ActualizarCasoDeExito" Collapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OE_ConsultarCasoDeExito" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OE_DarCasosDeExito" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OE_RegistrarEstadoCasoDeExito" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OE_ValidarCasoDeExito" Collapsed="true">
+    <Position X="25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_ActualizarCasoDeExito" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_ConsultarCasoDeExito" Collapsed="true">
+    <Position X="26.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_DarCasosDeExito" Collapsed="true">
+    <Position X="26.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_DarLogros" Collapsed="true">
+    <Position X="9.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_RegistrarEstadoCasoDeExito" Collapsed="true">
+    <Position X="5.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.CasosDeExitoWS.OS_ValidarCasoDeExito" Collapsed="true">
+    <Position X="7.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Consulta.AsistenciaTaller" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Consulta.HorarioDisponible" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Consulta.Inscrito" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OE_ConsultarHorarios" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OE_ConsultarInscrito" Collapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OE_ConsultarInscritos" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OS_ConsultarHorarios" Collapsed="true">
+    <Position X="4" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OS_ConsultarInscrito" Collapsed="true">
+    <Position X="5.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ConsultaWS.OS_ConsultarInscritos" Collapsed="true">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.FechaCorte.FechaCorte" Collapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.FechaCorteWS.OE_DarFechaCorte" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.FechaCorteWS.OS_DarFechaCorte" Collapsed="true">
+    <Position X="21.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.General.Constantes" Collapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.General.ListaValor" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.General.ParametroInicial" Collapsed="true">
+    <Position X="14.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.General.Respuesta" Collapsed="true">
+    <Position X="23.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OE_DarListaValor" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OE_EnviarCorreo" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OE_RegistrarEncuestaSatisfaccion" Collapsed="true">
+    <Position X="21.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OE_ValidarToken" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OS_DarListaValor" Collapsed="true">
+    <Position X="7.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OS_DarParametroInicial" Collapsed="true">
+    <Position X="26.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OS_EnviarCorreo" Collapsed="true">
+    <Position X="14.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OS_RegistrarEncuestaSatisfaccion" Collapsed="true">
+    <Position X="4" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.GeneralWS.OS_ValidarToken" Collapsed="true">
+    <Position X="11" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVida.HistoriaDeVida" Collapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OE_ActualizarHistoriaVida" Collapsed="true">
+    <Position X="21.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OE_ConsultarHistoriaVida" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OE_DarHistoriasDeVida" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OE_RegistrarEstadoHistoriaVida" Collapsed="true">
+    <Position X="25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OE_ValidarCantidadHistorias" Collapsed="true">
+    <Position X="21.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OS_ActualizarHistoriaVida" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OS_ConsultarHistoriaVida" Collapsed="true">
+    <Position X="2.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OS_DarHistoriasDeVida" Collapsed="true">
+    <Position X="26.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OS_RegistrarEstadoHistoriaVida" Collapsed="true">
+    <Position X="7.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.HistoriasDeVidaWS.OS_ValidarCantidadHistorias" Collapsed="true">
+    <Position X="4" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Liderazgos.Liderazgo" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OE_ActualizarLiderazgo" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OE_ConsultarLiderazgo" Collapsed="true">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OE_DarLiderazgos" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OE_RegistrarEstadoLiderazgo" Collapsed="true">
+    <Position X="26.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OE_ValidarCantidadLiderazgo" Collapsed="true">
+    <Position X="23.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OS_ActualizarLiderazgo" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OS_ConsultarLiderazgo" Collapsed="true">
+    <Position X="9.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OS_DarLiderazgos" Collapsed="true">
+    <Position X="5.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OS_RegistrarEstadoLiderazgo" Collapsed="true">
+    <Position X="9.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.LiderazgoWS.OS_ValidarCantidadLiderazgo" Collapsed="true">
+    <Position X="5.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.Auditoria" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.EncuestaSatisfaccionObservaciones" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.EspaciosFisicos" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.UsuariosSistema" Collapsed="true">
+    <Position X="5.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.HistoriasVida" Collapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.EjemplosLiderazgo" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.CasosExito" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.CronogramaTaller" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.EncuestaEntradaSalida" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.Candidatos" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.ParametroRpt" Collapsed="true">
+    <Position X="16.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.Reporte" Collapsed="true">
+    <Position X="21.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.EncuestaSatisfaccion" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.Reporte.Trazabilidad" Collapsed="true">
+    <Position X="2.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_DarReportes" Collapsed="true">
+    <Position X="26.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_ConsultarAuditoria" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptEspaciosFisicos" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptSatisfaccionObservaciones" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptUsuariosSistema" Collapsed="true">
+    <Position X="18" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptHistoriasVida" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptEjemplosLiderazgo" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptCasosExito" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptCronograma" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptEntradaSalida" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptCandidatos" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptSatisfaccion" Collapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OE_RptTrazabilidad" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_DarReportes" Collapsed="true">
+    <Position X="5.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_ConsultarAuditoria" Collapsed="true">
+    <Position X="25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptEspaciosFisicos" Collapsed="true">
+    <Position X="19.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptSatisfaccionObservaciones" Collapsed="true">
+    <Position X="25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptUsuariosSistema" Collapsed="true">
+    <Position X="0.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptHistoriasVida" Collapsed="true">
+    <Position X="21.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptEjemplosLiderazgo" Collapsed="true">
+    <Position X="16.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptCasosExito" Collapsed="true">
+    <Position X="12.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptCronograma" Collapsed="true">
+    <Position X="14.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptEntradaSalida" Collapsed="true">
+    <Position X="18" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptCandidatos" Collapsed="true">
+    <Position X="11" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptSatisfaccion" Collapsed="true">
+    <Position X="23.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HPV_Entidades.ReporteWS.OS_RptTrazabilidad" Collapsed="true">
+    <Position X="26.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

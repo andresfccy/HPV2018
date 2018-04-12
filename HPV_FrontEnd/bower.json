@@ -1,0 +1,49 @@
+{
+  "name": "Materiales",
+  "devDependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-mocks": "latest",
+    "angular-route": "~1.2.x",
+    "angular-modal": "0.4.0",
+    "bootstrap": "latest",
+    "angular-bootstrap": "0.11.x",
+    "angular-ui-router": "0.2.10",
+    "angular-local-storage": "0.0.5",
+    "font-awesome": "latest",
+    "angular-translate": "2.1.0",
+    "angular-translate-loader-static-files": "latest",
+    "angular-translate-loader-partial": "latest",
+    "angular-translate-storage-cookie": "latest",
+    "angular-translate-storage-local": "latest",
+    "angular-loading-bar": "latest",
+    "angular-sanitize": "1.2.21",
+    "angular-dialog-service": "v5.1.1",
+    "angular-jquery-dialog-service": "latest",
+    "angular-validator": "0.2.5",
+    "angular-growl": "v0.4.0",
+    "angular-esri-map": "v0.0.1-beta.1",
+    "ng-file-upload": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-ui-utils": "latest",
+    "angular-i18n": "latest",
+    "file-saver": "latest",
+    "angular-ui-scroll": "latest",
+    "angular-ui-scrollpoint": "latest",
+    "angular-ui-event": "latest",
+    "angular-ui-mask": "latest",
+    "angular-ui-validate": "latest",
+    "angular-ui-indeterminate": "latest",
+    "angular-ui-uploader": "latest"
+  },
+  "resolutions": {
+    "angular": ">=1",
+    "angular-translate": "~2.11.0"
+  },
+  "dependencies": {
+    "angular-ui-utils": "*",
+    "ng-file-upload": "^12.0.4"
+  }
+}

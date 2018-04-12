@@ -1,0 +1,14 @@
+{
+  "name": "angular-jquery-dialog-service",
+  "homepage": "https://github.com/jwstadler/angular-jquery-dialog-service",
+  "version": "0.8.1",
+  "_release": "0.8.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.1",
+    "commit": "1537dfae58a1625744b8b6de3d604a080e259856"
+  },
+  "_source": "https://github.com/jwstadler/angular-jquery-dialog-service.git",
+  "_target": "*",
+  "_originalSource": "angular-jquery-dialog-service"
+}

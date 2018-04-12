@@ -1,0 +1,73 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div>
+        <form id="form"
+              name="form">
+            <div ng-init="ctrl.initializeForm(form,1)"></div>
+            <div class="col-lg-8">
+                <div class="form-group" feedback>
+                    <label for="name" class="blueLabel">{{'roles.name'|translate}} *</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'roles.name'|translate}}"
+                           id="name"
+                           name="name"
+                           ng-model="ctrl.role.Nombre"
+                           ng-disabled="!ctrl.creation"
+                           required>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.name.$error"
+                         ng-if="form.name.$touched">
+                        <div ng-message="required">{{'roles.error.nameRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label class="blueLabel col-lg-12">{{'roles.state'|translate}} *</label>
+                <div class="btn-group">
+                    <label class="btn btn-default"
+                           ng-class="{'btn-success': ctrl.role.Estado=='A'}"
+                           ng-model="ctrl.role.Estado"
+                           uib-btn-radio="'A'">{{'roles.active'|translate}}</label>
+                    <label class="btn btn-default"
+                           ng-class="{'btn-danger': ctrl.role.Estado=='I'}"
+                           ng-model="ctrl.role.Estado"
+                           uib-btn-radio="'I'">{{'roles.innactive'|translate}}</label>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="form-group rolsms"
+                     feedback>
+                    <label for="options" class="blueLabel col-lg-12">{{'roles.options'|translate}} *</label>
+                    <am-multiselect multiple="true"
+                                    ms-selected="Ha seleccionado {{ctrl.roleOptions.length}} opciones para el rol."
+                                    ng-model="ctrl.roleOptions"
+                                    ms-header="{{'roles.options'|translate}}"
+                                    options="$index as item for item in ctrl.optionsRelation | filter:''">
+                    </am-multiselect>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <button class="btn btn-danger"
+                        ng-click="ctrl.back()">
+                    {{'roles.cancel'|translate}}
+                </button>
+                <button class="btn btn-success pull-right"
+                        type="submit"
+                        ng-if="!ctrl.isEdition()"
+                        ng-click="ctrl.submit()">
+                    {{'roles.add'|translate}}
+                </button>
+                <button class="btn btn-success pull-right"
+                        type="submit"
+                        ng-if="ctrl.isEdition()"
+                        ng-click="ctrl.submit()">
+                    {{'roles.save'|translate}}
+                </button>
+            </div>
+        </form>
+    </div>
+</article>

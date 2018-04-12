@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-util@2.2.20/index.js");

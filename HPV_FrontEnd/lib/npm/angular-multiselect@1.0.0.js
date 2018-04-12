@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-multiselect@1.0.0/gulpfile.js");

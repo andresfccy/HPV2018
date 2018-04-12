@@ -1,0 +1,1 @@
+module.exports = require("npm:astral-pass@0.1.0/pass.js");

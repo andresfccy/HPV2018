@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-ui-router-title@0.0.4/angular-ui-router-title.js");

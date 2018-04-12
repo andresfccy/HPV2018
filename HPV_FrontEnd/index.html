@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="prosperidad">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <!--link href="lib/github/twbs/bootstrap@3.3.6/bootstrap.css" rel="stylesheet">
+    <link href="lib/github/twbs/bootstrap@3.3.6/bootstrap-theme.css" rel="stylesheet"-->
+    <link href="lib/github/angular-ui/ui-select@0.14.9/dist/select.min.css" rel="stylesheet" />
+    <link href="lib/github/angular/bower-material@1.0.5/angular-material.min.css" rel="stylesheet" />
+    <link href="lib/bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
+    <link href="lib/bower_components/angular-modal/modal.css" rel="stylesheet">
+    <!--link href="lib/npm/font-awesome@4.5.0/css/font-awesome.min.css" rel="stylesheet"-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="lib/npm/angular-growl-v2@0.7.5/build/angular-growl.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/npm/angular-ui-bootstrap@1.2.2/dist/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="lib/npm/ui-select@0.16.1/dist/select.min.css" rel="stylesheet" />
+    <link href="lib/npm/angular-multiselect@1.0.0/dist/multiselect.css" rel="stylesheet" />
+
+    <!-- Select2 theme -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <!--
+      Selectize theme
+      Less versions are available at https://github.com/brianreavis/selectize.js/tree/master/dist/less
+    -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap2.css"> -->
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap3.css"> -->
+
+
+    <link rel="stylesheet" href="assets/css/test.css" />
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+
+    <title ng-bind="($title || '¡Bienvenido!') + ' | Habilidades para la vida - Jóvenes en Acción - 2016'">Habilidades para la vida - Jóvenes en Acción - 2016</title>
+</head>
+<body>
+    <div class="loading-overlay" ng-show="false">
+        <div class="loading-box">
+            <img src="assets/img/loading.gif">
+            <p class="text-center text-info"><strong>Cargando...</strong></p>
+        </div>
+    </div>
+
+    <div loading></div>
+
+    <div class="header"
+         ng-controller="HeaderController as ctrl"
+         ng-include="'views/commons/header.html'"
+         ng-cloak></div>
+    <div growl></div>
+    <div class="home" ng-controller="HomeController as ctrl" ng-cloak>
+        <main class="container"
+              role="main"
+              ng-init="ctrl.initialize()">
+            <div class="row">
+                <section class="page-content clearfix">
+                    <h2 translate>home.title</h2>
+                    <h2 class="page-header text-right futura-md-bt">
+                        <!--{{"home.welcome"|translate}}-->
+                        {{$title.split('-')[0].trim()}}<br>
+                        <small>{{ctrl.getSeason().NomPeriodo}}</small>
+                    </h2>
+                    <div ui-view></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="container" ng-cloak>
+        <div class="row" ng-controller="HomeController as ctrl">
+            <strong translate>home.footer</strong> | <small>v. {{ctrl.version}}</small>
+            <span class="pull-right">{{ctrl.getSeason().NomPeriodo}}</span>
+        </div>
+    </footer>
+
+    <!-- Dependencias -->
+    <script src="lib/npm/jquery@2.2.0/dist/jquery.min.js"></script>
+    <script src="lib/github/angular/bower-angular@1.5.0/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <script src="lib/github/angular-ui/bootstrap-bower@1.1.2/ui-bootstrap.min.js"></script>
+    <script src="lib/github/angular-ui/ui-router@0.2.18/angular-ui-router.min.js"></script>
+    <script src="lib/github/angular-ui/ui-select@0.14.9/dist/select.min.js"></script>
+    <script src="lib/github/angular/bower-angular-animate@1.5.0/angular-animate.min.js"></script>
+    <script src="lib/github/angular/bower-angular-sanitize@1.5.0/angular-sanitize.min.js"></script>
+    <script src="lib/github/angular/bower-material@1.0.5/angular-material.min.js"></script>
+    <script src="lib/github/angular/bower-angular-aria@1.5.0/angular-aria.min.js"></script>
+    <script src="lib/github/angular/bower-angular-messages@1.5.0/angular-messages.min.js"></script>
+    <script src="lib/npm/angular-route@1.5.0/angular-route.min.js"></script>
+    <script src="lib/npm/angular-translate@2.9.1/dist/angular-translate.min.js"></script>
+    <script src="lib/npm/angular-translate@2.9.1/dist/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+    <script src="lib/npm/angular-translate@2.9.1/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="lib/npm/angular-translate@2.9.1/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="lib/npm/angular-translate@2.9.1/dist/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+    <script src="lib/npm/angular-growl-v2@0.7.5/build/angular-growl.min.js"></script>
+    <script src="lib/npm/angular-cookies@1.5.0/angular-cookies.min.js"></script>
+    <script src="lib/npm/angular-resource@1.5.0/angular-resource.min.js"></script>
+    <script src="lib/npm/moment@2.11.2/moment.js"></script>
+    <script src="lib/npm/angular-moment@1.0.0-beta.4/angular-moment.min.js"></script>
+    <script src="lib/npm/angular-ui-bootstrap@1.2.2/dist/ui-bootstrap-tpls.js"></script>
+    <script src="lib/npm/angular-local-storage@0.2.6/dist/angular-local-storage.min.js"></script>
+    <script src="lib/npm/angular-ui-router-title@0.0.4/angular-ui-router-title.js"></script>
+    <script src="lib/npm/ui-select@0.16.1/dist/select.min.js"></script>
+    <script src="lib/npm/angular-i18n@1.5.3/angular-locale_es-co.js"></script>
+    <script src="lib/npm/angular-multiselect@1.0.0/dist/multiselect.js"></script>
+    <script src="lib/npm/angular-multiselect@1.0.0/dist/multiselect-tpls.js"></script>
+    <script src="lib/npm/angular-md5@0.1.10/angular-md5.js"></script>
+    <script src="lib/npm/ngstorage@0.3.10/ngStorage.js"></script>
+    <script src="lib/npm/ng-file-upload@12.0.4/dist/ng-file-upload-shim.min.js"></script>
+    <script src="lib/npm/ng-file-upload@12.0.4/dist/ng-file-upload.min.js"></script>
+    <!-- Aplicación -->
+    <script src="js/app/app.js"></script>
+    <script src="js/app/routes/appRoutes.js"></script>
+    <script src="js/commons/directives/loadingDirective.js"></script>
+    <script src="js/commons/directives/addErrorsDirective.js"></script>
+    <script src="js/commons/directives/passwordMatchDirective.js"></script>
+    <script src="js/commons/directives/integerValidationDirective.js"></script>
+    <script src="js/commons/filters/propsFilter.js"></script>
+    <script src="js/commons/filters/startFromFilter.js"></script>
+    <script src="js/commons/commonsModule.js"></script>
+    <script src="js/commons/interceptors/commonInterceptor.js"></script>
+    <script src="js/commons/routes/commonsRoutes.js"></script>
+    <script src="js/commons/controllers/headerController.js"></script>
+    <script src="js/commons/controllers/homeController.js"></script>
+    <script src="js/commons/controllers/certificateController.js"></script>
+    <script src="js/commons/services/connection.js"></script>
+    <script src="js/commons/services/commonsConstants.js"></script>
+    <script src="js/commons/services/localStotrageService.js"></script>
+    <script src="js/commons/services/periodService.js"></script>
+    <script src="js/commons/services/darListasService.js"></script>
+    <script src="js/commons/services/locationService.js"></script>
+
+    <script src="js/inscription/inscriptionModule.js"></script>
+    <script src="js/inscription/routes/inscriptionRoutes.js"></script>
+    <script src="js/inscription/controllers/inscriptionController.js"></script>
+    <script src="js/inscription/services/inscriptionService.js"></script>
+
+    <script src="js/sessions/sessions.js"></script>
+    <script src="js/sessions/routes/sessionsRoutes.js"></script>
+    <script src="js/sessions/controllers/sessionsController.js"></script>
+    <script src="js/sessions/controllers/logoutController.js"></script>
+    <script src="js/sessions/controllers/loginController.js"></script>
+    <script src="js/sessions/controllers/welcomeController.js"></script>
+    <script src="js/sessions/controllers/retrievePasswordController.js"></script>
+    <script src="js/sessions/services/sessionsBusinessService.js"></script>
+    <script src="js/sessions/services/sessionsServices.js"></script>
+    <script src="js/sessions/interceptors/sessionsInterceptor.js"></script>
+
+    <script src="js/roles/rolesModule.js"></script>
+    <script src="js/roles/controllers/rolesController.js"></script>
+    <script src="js/roles/services/rolesService.js"></script>
+    <script src="js/roles/routes/rolesRoutes.js"></script>
+
+    <script src="js/users/usersModule.js"></script>
+    <script src="js/users/controllers/usersController.js"></script>
+    <script src="js/users/controllers/editUserController.js"></script>
+    <script src="js/users/services/usersService.js"></script>
+    <script src="js/users/routes/usersRoutes.js"></script>
+
+    <script src="js/allocation/allocationModule.js"></script>
+    <script src="js/allocation/controllers/allocationController.js"></script>
+    <script src="js/allocation/controllers/editAllocationController.js"></script>
+    <script src="js/allocation/controllers/allocationAdminController.js"></script>
+    <script src="js/allocation/controllers/editAllocationAdminController.js"></script>
+    <script src="js/allocation/services/allocationService.js"></script>
+    <script src="js/allocation/routes/allocationRoutes.js"></script>
+
+    <script src="js/attendance/attendanceModule.js"></script>
+    <script src="js/attendance/controllers/attendanceCoordinatorController.js"></script>
+    <script src="js/attendance/controllers/attendanceFacilitatorController.js"></script>
+    <script src="js/attendance/services/attendanceService.js"></script>
+    <script src="js/attendance/routes/attendanceRoutes.js"></script>
+
+    <script src="js/searches/searchesModule.js"></script>
+    <script src="js/searches/routes/searchesRoutes.js"></script>
+    <script src="js/searches/controllers/searchesUserController.js"></script>
+    <script src="js/searches/controllers/searchesUsersListController.js"></script>
+    <script src="js/searches/controllers/searchesSchedulesListController.js"></script>
+    <script src="js/searches/services/searchesService.js"></script>
+
+    <script src="js/reallocation/reallocationModule.js"></script>
+    <script src="js/reallocation/controllers/reallocationController.js"></script>
+    <script src="js/reallocation/services/reallocationService.js"></script>
+    <script src="js/reallocation/routes/reallocationRoutes.js"></script>
+
+    <script src="js/uploadable/uploadableModule.js"></script>
+    <script src="js/uploadable/routes/uploadableRoutes.js"></script>
+    <script src="js/uploadable/services/uploadableService.js"></script>
+    <script src="js/uploadable/controllers/uploadableListFacilitatorController.js"></script>
+    <script src="js/uploadable/controllers/uploadableListCoordinatorController.js"></script>
+    <script src="js/uploadable/controllers/uploadableListSupervisorController.js"></script>
+    <script src="js/uploadable/controllers/uploadableDetailFacilitatorController.js"></script>
+    <script src="js/uploadable/controllers/uploadableDetailCoordinatorController.js"></script>
+    <script src="js/uploadable/controllers/uploadableDetailSupervisorController.js"></script>
+
+    <script src="js/feedback/feedbackModule.js"></script>
+    <script src="js/feedback/routes/feedbackRoutes.js"></script>
+    <script src="js/feedback/controllers/feedbackController.js"></script>
+    <script src="js/feedback/services/feedbackService.js"></script>
+
+    <script src="js/participantState/participantState.js"></script>
+    <script src="js/participantState/routes/participantStateRoutes.js"></script>
+    <script src="js/participantState/controllers/participantStateController.js"></script>
+
+    <script src="js/lifeStories/lifeStoryModule.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryListFacilitatorController.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryDetailFacilitatorController.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryListCoordinatorController.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryDetailCoordinatorController.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryListSupervisorController.js"></script>
+    <script src="js/lifeStories/controllers/lifeStoryDetailSupervisorController.js"></script>
+    <script src="js/lifeStories/routes/lifeStoryRoutes.js"></script>
+    <script src="js/lifeStories/services/lifeStoryService.js"></script>
+
+    <script src="js/successCase/successCaseModule.js"></script>
+    <script src="js/successCase/controllers/successCaseListFacilitatorController.js"></script>
+    <script src="js/successCase/controllers/successCaseDetailFacilitatorController.js"></script>
+    <script src="js/successCase/controllers/successCaseListCoordinatorController.js"></script>
+    <script src="js/successCase/controllers/successCaseDetailCoordinatorController.js"></script>
+    <script src="js/successCase/controllers/successCaseListSupervisorController.js"></script>
+    <script src="js/successCase/controllers/successCaseDetailSupervisorController.js"></script>
+    <script src="js/successCase/routes/successCaseRoutes.js"></script>
+    <script src="js/successCase/services/successCaseService.js"></script>
+
+    <script src="js/leadership/leadershipModule.js"></script>
+    <script src="js/leadership/controllers/leadershipListFacilitatorController.js"></script>
+    <script src="js/leadership/controllers/leadershipDetailFacilitatorController.js"></script>
+    <script src="js/leadership/controllers/leadershipListCoordinatorController.js"></script>
+    <script src="js/leadership/controllers/leadershipDetailCoordinatorController.js"></script>
+    <script src="js/leadership/controllers/leadershipListSupervisorController.js"></script>
+    <script src="js/leadership/controllers/leadershipDetailSupervisorController.js"></script>
+    <script src="js/leadership/routes/leadershipRoutes.js"></script>
+    <script src="js/leadership/services/leadershipService.js"></script>
+
+    <script src="js/finalSurvey/finalSurveyModule.js"></script>
+    <script src="js/finalSurvey/controllers/finalSurveyController.js"></script>
+    <script src="js/finalSurvey/routes/finalSurveyRoutes.js"></script>
+    <script src="js/finalSurvey/services/finalSurveyService.js"></script>
+
+    <script src="js/parameters/parametersModule.js"></script>
+    <script src="js/parameters/controllers/parametersController.js"></script>
+    <script src="js/parameters/routes/parametersRoutes.js"></script>
+    <script src="js/parameters/services/parametersService.js"></script>
+
+    <script src="js/reports/reportsModule.js"></script>
+    <script src="js/reports/controllers/indicatorsController.js"></script>
+    <script src="js/reports/controllers/reportsController.js"></script>
+    <script src="js/reports/controllers/auditController.js"></script>
+    <script src="js/reports/controllers/reportsTerritorialProfController.js"></script>
+    <script src="js/reports/routes/reportsRoutes.js"></script>
+    <script src="js/reports/services/reportsService.js"></script>
+</body>
+</html>

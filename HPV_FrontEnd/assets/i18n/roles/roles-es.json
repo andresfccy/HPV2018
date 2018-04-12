@@ -1,0 +1,23 @@
+﻿{
+  "roles": {
+    "roles": "Roles",
+    "role": "Rol",
+    "showing": "Mostrando",
+    "of": "Roles",
+    "state": "Estado",
+    "search": "Buscar",
+    "edit": "Editar",
+    "new": "Nuevo rol",
+
+    "options": "Opciones",
+    "name": "Nombre del rol",
+    "active": "Activo",
+    "innactive": "Inactivo",
+    "cancel": "Volver a la lista",
+    "save": "Guardar cambios",
+    "add": "Crear rol",
+
+    "messages": {
+    }
+  }
+}

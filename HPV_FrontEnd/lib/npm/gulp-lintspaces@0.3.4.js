@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-lintspaces@0.3.4/index.js");

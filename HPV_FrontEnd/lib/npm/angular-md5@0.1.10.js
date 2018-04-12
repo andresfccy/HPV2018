@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-md5@0.1.10/angular-md5.js");

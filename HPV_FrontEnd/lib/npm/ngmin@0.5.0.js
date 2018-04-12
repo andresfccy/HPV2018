@@ -1,0 +1,1 @@
+module.exports = require("npm:ngmin@0.5.0/main.js");

@@ -1,0 +1,88 @@
+﻿{
+  "appName": "Habilidades para la vida - Jóvenes en Acción - 2016",
+  "home": {
+    "title": "Practicando Mis Habilidades para la Vida",
+    "welcome": "¡ Bienvenido !",
+    "logo": "Logo Habilidades para la Vida",
+    "infoAlert": {
+      "title": "¡ Estamos en proceso de inscripción !",
+      "clickHere": "Puedes inscribirte haciendo click aquí",
+      "inscription": "Inscripción"
+    },
+    "doYouWantToImprove": "¿Quieres fortalecer tus Habilidades para la Vida?",
+    "whatIsIt": "¿Qué es?",
+    "whatIsItResponse": "El Componente de Habilidades para la Vida –HpV-, de los programas Jóvenes en Acción e Ingreso Social de la Dirección de Transferencias Monetarias Condicionadas de Prosperidad Social, brinda herramientas a los participantes para facilitar la inserción laboral y abordar los desafíos de la vida diaria, contribuyendo a la formación integral.",
+    "how": "¿Cómo?",
+    "howResponse": "A través de 8 talleres experienciales el Módulo Presencial:\"Practicando mis Habilidades para la Vida\" busca fortalecer en los participantes las siguientes habilidades: Autoconocimiento, Resiliencia, Perseverancia, Gestión de conflictos, Comunicación asertiva, Adaptabilidad &amp; Empatía, Iniciativa &amp; Toma de decisiones y Actitud en el trabajo.",
+    "where": "¿En dónde?",
+    "whereResponse": "En 2016, el  módulo practicando mis habilidades para la vida se realizará en 50 municipios de Colombia.",
+    "seeMap": "Consulta el mapa",
+    "termsTitle": "TÉRMINOS Y CONDICIONES",
+    "termsContent": "Consulta los términos y condiciones para participar en el Módulo Presencial: \"Practicando mis Habilidades para la Vida\". Recuerda que los beneficiarios de los programas Jóvenes en Acción e Ingreso Social de Prosperidad Social, tienen el compromiso de participar en las actividades a las que sean convocados.",
+    "seeDoc": "Ver documento",
+    "mapTitle": "Mapa de cobertura",
+    "footer": "Módulo Presencial - Habilidades para la vida"
+  },
+  "menu": {
+    "inscription": "Inscripción",
+    "certificate": "Certificado",
+    "home": "Inicio",
+
+    "operative": "Operativo",
+    "attendanceLists": "Generar lista de asistencia",
+    "physicalSpacesAllocation": "Asignación de espacios físicos",
+    "physicalSpacesAllocationApprove": "Aprobacion de espacios físicos",
+    "deliberables": "Registro de asistencia",
+    "deliberablesApprove": "Aprobacion de asistencia",
+    "reallocation": "Reasignación de participantes",
+
+    "administration": "Administración",
+    "users": "Usuarios",
+    "roles": "Roles",
+    "parameters": "Parámetros",
+
+    "searches": "Consultas",
+    "beneficiaries": "Inscritos",
+    "schedules": "Horarios",
+
+    "uploadable": "Entregables",
+    "uploadableListFacilitator": "Marcación de asistencia",
+    "uploadableListCoordinator": "Aprobación marcación de asistencia",
+    "uploadableListSupervisor": "Aprobación marcación de asistencia",
+
+    "profile": "Mi cuenta",
+
+    "experiences": "Sistematización de experiencias",
+    "lifeStories": "Historias de vida",
+    "successCases": "Casos de éxito",
+    "leaderships": "Ejemplos de liderazgo",
+    "lifeStoriesCoord": "Historias de vida",
+    "successCasesCoord": "Casos de éxito",
+    "leadershipsCoord": "Ejemplos de liderazgo",
+    "lifeStoriesSup": "Historias de vida",
+    "successCasesSup": "Casos de éxito",
+    "leadershipsSup": "Ejemplos de liderazgo",
+    "schedulePdf": "CRONOGRAMA DE CONTINGENCIA (PDF)",
+    "reports": "Reportes",
+    "reportsList": "Lista de reportes",
+    "reportsListTP": "Lista de reportes - Profesional Territorial",
+    "audit": "Auditoría",
+    "indicatorsList": "Lista de indicadores",
+
+    "participantState": "Estado participante",
+
+    "toggle_navigation": "Cambiar navegación",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión"
+  },
+  "certificate": {
+    "title": "Generar certificado",
+    "generate": "Generar certificado"
+  },
+  "processing": "Procesando",
+  "requiredField": "Indica un campo requerido",
+  "back": "Atrás",
+  "yes": "SÍ",
+  "no": "NO"
+
+}

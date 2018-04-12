@@ -1,0 +1,407 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="contenedor1"
+          name="userForm">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(userForm)">
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="username" class="blueLabel">{{'users.user'|translate}} *</label>
+                    <input class="form-control"
+                           type="number"
+                           placeholder="{{'users.user'|translate}}"
+                           id="username"
+                           name="username"
+                           ng-model="ctrl.user.AliasUsuario"
+                           required>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="userForm.username.$error"
+                         ng-if="userForm.username.$touched">
+                        <div ng-message="required">{{'users.error.usernameRequired'|translate}}</div>
+                        <div ng-message="number">{{'users.error.usernameNumber'|translate}}</div>
+                        <div ng-message="integer">{{'users.error.integer-validation'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="password" class="blueLabel">{{'users.password'|translate}} *</label>
+                    <input class="form-control"
+                           type="password"
+                           placeholder="{{'users.password'|translate}}"
+                           id="password"
+                           name="password"
+                           ng-model="ctrl.user.Clave"
+                           required>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="userForm.password.$error"
+                         ng-if="userForm.password.$touched">
+                        <div ng-message="required">{{'users.error.passwordRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="confirmPassword" class="blueLabel">{{'users.confirmPassword'|translate}} *</label>
+                    <input class="form-control"
+                           type="password"
+                           placeholder="{{'users.confirmPassword'|translate}}"
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           ng-model="ctrl.user.ClaveConfirmacion"
+                           required
+                           pw-check="password">
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="userForm.confirmPassword.$error"
+                         ng-if="userForm.confirmPassword.$touched">
+                        <div ng-message="required">{{'users.error.confirmPasswordRequired'|translate}}</div>
+                        <div ng-message="passwordMatch" class="ng-binding ng-scope">{{'users.error.confirmPasswordMatch'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
+            <uib-accordion>
+                <uib-accordion-group is-open="status.open1">
+                    <uib-accordion-heading>
+                        {{'users.basicData'|translate}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                    </uib-accordion-heading>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group" feedback>
+                                <label for="firstName" class="blueLabel">{{'users.firstName'|translate}} *</label>
+                                <input class="form-control"
+                                       type="text"
+                                       placeholder="{{'users.firstName'|translate}}"
+                                       id="firstName"
+                                       name="firstName"
+                                       ng-model="ctrl.user.PrimerNombre"
+                                       required>
+                                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                                <div class="validation-messages"
+                                     ng-messages="userForm.firstName.$error"
+                                     ng-if="userForm.firstName.$touched">
+                                    <div ng-message="required">{{'users.error.firstNameRequired'|translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="secondName" class="blueLabel">{{'users.secondName'|translate}}</label>
+                                <input class="form-control"
+                                       type="text"
+                                       placeholder="{{'users.secondName'|translate}}"
+                                       id="secondName"
+                                       ng-model="ctrl.user.SegundoNombre">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group" feedback>
+                                <label for="firstLastname" class="blueLabel">{{'users.firstLastname'|translate}} *</label>
+                                <input class="form-control"
+                                       type="text"
+                                       placeholder="{{'users.firstLastname'|translate}}"
+                                       id="firstLastname"
+                                       name="firstLastname"
+                                       ng-model="ctrl.user.PrimerApellido"
+                                       required>
+                                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                                <div class="validation-messages"
+                                     ng-messages="userForm.firstLastname.$error"
+                                     ng-if="userForm.firstLastname.$touched">
+                                    <div ng-message="required">{{'users.error.firstLastnameRequired'|translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="secondLastname" class="blueLabel">{{'users.secondLastname'|translate}}</label>
+                                <input class="form-control"
+                                       type="text"
+                                       placeholder="{{'users.secondLastname'|translate}}"
+                                       id="secondLastname"
+                                       ng-model="ctrl.user.SegundoApellido">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group" feedback>
+                                <label for="typeId" class="blueLabel">{{'users.typeId'|translate}} *</label>
+                                <select class="form-control"
+                                        id="typeId"
+                                        name="typeId"
+                                        ng-model="ctrl.user.TipoDocumento"
+                                        ng-options="item.Valor as item.Descripcion for item in ctrl.tiposDocumentos | orderBy: 'mostrar'"
+                                        required></select>
+                                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                                <div class="validation-messages"
+                                     ng-messages="userForm.typeId.$error"
+                                     ng-if="userForm.typeId.$touched">
+                                    <div ng-message="required">{{'users.error.typeIdRequired'|translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group" feedback>
+                                <label for="document" class="blueLabel">{{'users.document'|translate}} *</label>
+                                <input class="form-control"
+                                       type="number"
+                                       placeholder="{{'users.document'|translate}}"
+                                       id="document"
+                                       name="document"
+                                       ng-model="ctrl.user.Identificacion"
+                                       required integer-validation>
+                                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                                <div class="validation-messages"
+                                     ng-messages="userForm.document.$error"
+                                     ng-if="userForm.document.$touched">
+                                    <div ng-message="required">{{'users.error.documentRequired'|translate}}</div>
+                                    <div ng-message="number">{{'users.error.documentNumber'|translate}}</div>
+                                    <div ng-message="integer">{{'users.error.documentInteger'|translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="birthDate" class="blueLabel">{{'users.birthDate'|translate}} *</label>
+                                <p class="input-group" feedback>
+                                    <input type="text"
+                                           id="birthDate"
+                                           name="birthDate"
+                                           class="form-control"
+                                           ng-model="ctrl.user.FechaNacimientoFormat"
+                                           uib-datepicker-popup="yyyy/MM/dd"
+                                           placeholder="aaaa/mm/dd"
+                                           is-open="birthDateOpened"
+                                           datepicker-options="ctrl.dateOptions"
+                                           ng-required="true"
+                                           close-text="{{'users.close'|translate}}"
+                                           alt-input-formats="ctrl.altInputFormats"
+                                           required />
+                                    <span class="input-group-btn">
+                                        <button type="button"
+                                                class="btn btn-default"
+                                                ng-click="birthDateOpened=!birthDateOpened">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                    <!--<span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>-->
+                                    <div class="validation-messages"
+                                         ng-messages="userForm.birthDate.$error"
+                                         ng-if="userForm.birthDate.$touched">
+                                        <div ng-message="required">{{'users.error.birthDateRequired'|translate}}</div>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group" feedback>
+                                <label for="mail" class="blueLabel">{{'users.mail'|translate}} *</label>
+                                <input class="form-control"
+                                       type="email"
+                                       name="email"
+                                       placeholder="{{'users.mail'|translate}}"
+                                       id="mail"
+                                       ng-model="ctrl.user.Correo"
+                                       required>
+                                <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                                <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                                <div class="validation-messages"
+                                     ng-messages="userForm.email.$error"
+                                     ng-if="userForm.email.$touched">
+                                    <div ng-message="required">{{'users.error.emailRequired'|translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-accordion-group>
+
+                <uib-accordion-group is-open="status.open2">
+                    <uib-accordion-heading>
+                        {{'users.addData'|translate}}
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <div class="col-lg-3">
+                        <div class="form-group" feedback>
+                            <label for="tel" class="blueLabel">{{'users.tel'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'users.tel'|translate}}"
+                                   id="tel"
+                                   name="tel"
+                                   ng-model="ctrl.user.Telefono"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.tel.$error"
+                                 ng-if="userForm.tel.$touched">
+                                <div ng-message="required">{{'users.error.telRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group" feedback>
+                            <label for="cel" class="blueLabel">{{'users.cel'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'users.cel'|translate}}"
+                                   id="cel"
+                                   name="cel"
+                                   ng-model="ctrl.user.Movil"
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.cel.$error"
+                                 ng-if="userForm.cel.$touched">
+                                <div ng-message="required">{{'users.error.celRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="cel2" class="blueLabel">{{'users.cel2'|translate}}</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'users.cel2'|translate}}"
+                                   id="cel2"
+                                   ng-model="ctrl.user.MovilAlt">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group"
+                             feedback>
+                            <label for="city" class="blueLabel col-lg-12">{{'users.city'|translate}} *</label>
+                            <am-multiselect class="input-lg"
+                                            multiple="true"
+                                            ms-selected="Ha seleccionado {{ctrl.selectedCities.length}} municipios."
+                                            ng-model="ctrl.selectedCities"
+                                            ms-header="{{'users.cities'|translate}}"
+                                            options="item.Codigo as item.Nombre for item in ctrl.municipios"
+                                            change="selected()"></am-multiselect>
+                            <div class="validation-messages"
+                                 ng-if="ctrl.selectedCities.length == 0">
+                                <div>{{'users.error.citiesRequired'|translate}}</div>
+                            </div>
+                            <!--<label ng-repeat="item in ctrl.municipios"
+                                   class="col-lg-12">
+                                <input type="checkbox"
+                                       name="{{'users.city'|translate}} $index"
+                                       ng-checked="ctrl.user.CiudadesList.indexOf(''+item.Codigo) > -1"
+                                       ng-click="ctrl.toggleSelection(item.Codigo+'')"> {{item.Nombre}}
+                            </label>-->
+                        </div>
+                    </div>
+
+                </uib-accordion-group>
+
+                <uib-accordion-group is-open="status.open3">
+                    <uib-accordion-heading>
+                        {{'users.systemData'|translate}}
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
+                    </uib-accordion-heading>
+                    <div class="col-lg-6">
+                        <div class="form-group" feedback>
+                            <label for="role" class="blueLabel">{{'users.role'|translate}} *</label>
+                            <select class="form-control"
+                                    id="role"
+                                    name="role"
+                                    ng-model="ctrl.user.IdRol"
+                                    ng-options="item.IdRol as item.Nombre for item in ctrl.roles | orderBy: 'Nombre'"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.role.$error"
+                                 ng-if="userForm.role.$touched">
+                                <div ng-message="required">{{'users.error.roleRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6"
+                         ng-if="ctrl.user.IdRol && ctrl.user.IdRol == 1">
+                        <div class="form-group" feedback>
+                            <label for="coord" class="blueLabel">{{'users.coord'|translate}} *</label>
+                            <select class="form-control"
+                                    id="coord"
+                                    name="coord"
+                                    ng-model="ctrl.user.IdCoordinador"
+                                    ng-options="item.IdCoordinador as item.Nombre for item in ctrl.coords | orderBy: 'Nombre'"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.coord.$error"
+                                 ng-if="userForm.coord.$touched">
+                                <div ng-message="required">{{'users.error.coordRequired'|translate}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" feedback>
+                            <label for="userState" class="blueLabel">{{'users.userState'|translate}} *</label>
+                            <select class="form-control"
+                                    id="userState"
+                                    name="userState"
+                                    ng-model="ctrl.user.CodEstado"
+                                    ng-options="item.Valor as item.Descripcion for item in ctrl.userStates"
+                                    required></select>
+
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.userState.$error"
+                                 ng-if="userForm.userState.$touched">
+                                <div ng-message="required">{{'users.error.userStateRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" feedback>
+                            <label for="profile" class="blueLabel">{{'users.profile'|translate}} *</label>
+                            <select class="form-control"
+                                    id="profile"
+                                    name="profile"
+                                    ng-model="ctrl.user.IdPerfil"
+                                    ng-options="item.Valor as item.Descripcion for item in ctrl.profiles"
+                                    required></select>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="userForm.profile.$error"
+                                 ng-if="userForm.profile.$touched">
+                                <div ng-message="required">{{'users.error.profileRequired'|translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+        </div>
+        <div id="but">
+            <button class="btn btn-primary pull-right"
+                    type="submit"
+                    ng-click="ctrl.submit()">
+                {{ 'users.save' | translate }}
+            </button>
+        </div>
+        <div id="butBack">
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'users.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

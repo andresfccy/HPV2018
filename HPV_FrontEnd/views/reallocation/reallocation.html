@@ -1,0 +1,328 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="panel panel-info panel-ps">
+        <div class="panel-heading">{{'reallocation.title'|translate}}</div>
+        <div class="panel-body">
+            <table class="table table-striped"
+                   ng-show="(ctrl.reallocation.schedule && ctrl.reallocation.schedule.NombreFacilitador != '') || (ctrl.reallocation.user && ctrl.reallocation.user.Nombre != '')">
+                <tbody>
+                    <tr class="info"
+                        ng-show="ctrl.reallocation.schedule && ctrl.reallocation.schedule.NombreFacilitador != ''">
+                        <td colspan="1"><b>{{'reallocation.selectedSchedule'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.reallocation.schedule.NombreFacilitador + ", los " + ctrl.reallocation.schedule.Dia + " de " + ctrl.reallocation.schedule.Horario.split('-')[0].trim() + " a " + ctrl.reallocation.schedule.Horario.split('-')[1].trim()}}</td>
+                    </tr>
+                    <tr ng-show="!(ctrl.reallocation.schedule && ctrl.reallocation.schedule.NombreFacilitador != '')">
+                        <td colspan="4">{{'reallocation.noScheduleSelected'|translate}}</td>
+                    </tr>
+                    <tr class="info"
+                        ng-show="ctrl.reallocation.user && ctrl.reallocation.user.Nombre != ''">
+                        <td colspan="1"><b>{{'reallocation.selectedUser'|translate}}</b></td>
+                        <td colspan="3">{{ctrl.reallocation.user.NombreInscrito + " - " + ctrl.reallocation.user.Documento}}</td>
+                    </tr>
+                    <tr ng-show="!(ctrl.reallocation.user && ctrl.reallocation.user.Nombre != '')">
+                        <td colspan="4">{{'reallocation.noUserSelected'|translate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <uib-tabset class="nav nav-tabs"
+                    active="ctrl.activeTab"
+                    justified="true">
+            <uib-tab class="nav-item"
+                     index="0"
+                     heading="{{'reallocation.allocationTitle'|translate}}">
+                <div class="panel panel-default dataTables_wrapper panel-tabset">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading clearfix">
+                            <div class="col-sm-4 little-margin-bottom">
+                                <label class="control-label" for="scheduleSearch">{{'searches.seasson'|translate}}</label>
+                                <select class="form-control"
+                                        id="scheduleSearch"
+                                        type="text"
+                                        ng-model="ctrl.scheduleSearch.IdPeriodo"
+                                        ng-options="item.Valor as item.Descripcion for item in ctrl.seasons"
+                                        ng-change="ctrl.submitScheduleSearch()" 
+                                        ng-disabled="true"/>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-12">
+                                    <label class="control-label">{{'searches.schedulesParameter'|translate}}</label>
+                                    <span class="glyphicon glyphicon-plus-sign"
+                                          ng-click="ctrl.scheduleAddParameter()"
+                                          title="{{'searches.schedulesAddParameter'|translate}}"></span>
+                                </div> 
+                                <!--<button class="btn btn-info"
+                                        ng-click="ctrl.scheduleAddParameter()">
+                                     {{'searches.schedulesAddParameter'|translate}}<span class="glyphicon glyphicon-plus-sign"></span>
+                                </button>
+                                <div class="col-sm-12 little-margin-bottom"></div>-->
+                                <div class="col-sm-3 little-margin-bottom"
+                                     ng-repeat="item in ctrl.scheduleParameters">
+                                    <div class="input-group">
+                                        <input class="form-control"
+                                               id="{{'sche
+                                           type="text"
+                                           placeholder="{{'searches.schedulesParameter'|translate}}"
+                                               ng-model="ctrl.scheduleParamsString[$index]"
+                                               ng-blur="ctrl.scheduleVerifyIfEmpty($index)" />
+                                        <span class="input-group-addon"
+                                              ng-click="ctrl.scheduleRemoveParameter($index)"><span class="glyphicon glyphicon-remove"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-info " ng-click="ctrl.scheduleSendSearch()">
+                                    {{'searches.sendSearch'|translate}}
+                                </button>
+                            </div>
+                            <div class="pull-right">
+                                <uib-pagination boundary-links="true"
+                                                total-items="ctrl.scheduleTotal"
+                                                items-per-page="scheduleMaxResultsPerPage"
+                                                max-size="ctrl.scheduleMaxSize"
+                                                previous-text="&lsaquo;"
+                                                next-text="&rsaquo;"
+                                                first-text="&laquo;"
+                                                last-text="&raquo;"
+                                                rotate="false"
+                                                ng-model="ctrl.scheduleCurrentPage">
+                                </uib-pagination>
+                            </div>
+                        </div>
+                        <div class="panel-body"
+                             ng-if="!ctrl.schedules">
+                            <div class="alert alert-success">
+                                {{'searches.messages.init'|translate}}
+                            </div>
+                        </div>
+                        <div class="panel-body"
+                             ng-if="ctrl.schedules && ctrl.schedules.length == 0">
+                            <div class="alert alert-info">
+                                {{'searches.messages.noResults'|translate}}
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12"
+                                 ng-show="ctrl.schedules && ctrl.schedules.length > 0">
+                                <div class="col-lg-12 text-right">
+                                    <span>{{'searches.showing'|translate}}</span>
+                                    <select id="cantItems"
+                                            ng-options="item.cant as item.cant for item in ctrl.scheduleOpcLimit"
+                                            ng-model="scheduleMaxResultsPerPage"></select>
+                                    <span>{{'searches.of'|translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover dataTable table-responsive"
+                               ng-show="ctrl.schedules && ctrl.schedules.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>{{'reallocation.select'|translate}}</th>
+                                    <th>{{'searches.schedules.facilitator'|translate}}</th>
+                                    <th>{{'searches.schedules.department'|translate}}</th>
+                                    <th>{{'searches.schedules.city'|translate}}</th>
+                                    <th>{{'searches.schedules.day'|translate}}</th>
+                                    <th>{{'searches.schedules.schedule'|translate}}</th>
+                                    <th>{{'searches.schedules.group'|translate}}</th>
+                                    <th>{{'searches.schedules.place'|translate}}</th>
+                                    <th>{{'searches.schedules.address'|translate}}</th>
+                                    <th>{{'searches.schedules.quota'|translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ctrl.scheduleFiltered | startFrom:(ctrl.scheduleCurrentPage-1)*scheduleMaxResultsPerPage | limitTo:scheduleMaxResultsPerPage">
+                                    <td>
+                                        <button class="btn btn-success btn-xs"
+                                                ng-if="item.CupoDisponible > 0"
+                                                ng-click="ctrl.selectSchedule(item)">
+                                            {{'reallocation.reallocate'|translate}}
+                                        </button>
+                                    </td>
+                                    <td>{{item.NombreFacilitador}}</td>
+                                    <td>{{item.NomDepartamento}}</td>
+                                    <td>{{item.NomMunicipio}}</td>
+                                    <td>{{item.Dia}}</td>
+                                    <td>{{item.Horario}}</td>
+                                    <td>{{item.SiglaGrupo}}</td>
+                                    <td>{{item.Lugar}}</td>
+                                    <td>{{item.Direccion}}</td>
+                                    <td>{{item.CupoDisponible}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab class="nav-item"
+                     index="1"
+                     heading="{{'reallocation.usersTitle'|translate}}">
+                <div class="panel panel-default dataTables_wrapper panel-tabset">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading clearfix">
+                            <div class="col-sm-8 clearfix">
+                                <label class="control-label" for="userSearch">{{'searches.search'|translate}}</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control"
+                                           id="userSearch"
+                                           type="text"
+                                           ng-model="ctrl.userSearch.FiltroBusqueda"
+                                           placeholder="{{'searches.search'|translate}}"
+                                           ng-change="ctrl.submitUserSearch()" />
+                                </div>
+                            </div>
+                            <!--
+                            <div class="col-sm-4 clearfix">
+                                <label class="control-label" for="userSeason">{{'searches.seasson'|translate}}</label>
+                                <select class="form-control"
+                                        id="userSeason"
+                                        type="text"
+                                        ng-model="ctrl.userSearch.IdPeriodo"
+                                        ng-options="item.Valor as item.Descripcion for item in ctrl.seasons"
+                                        ng-change="ctrl.submitUserSearch()" />
+                            </div>
+                                -->
+                            <div class="pull-right">
+                                <uib-pagination boundary-links="true"
+                                                total-items="ctrl.userTotal"
+                                                items-per-page="userMaxResultsPerPageus"
+                                                max-size="ctrl.userMaxSize"
+                                                previous-text="&lsaquo;"
+                                                next-text="&rsaquo;"
+                                                first-text="&laquo;"
+                                                last-text="&raquo;"
+                                                rotate="false"
+                                                ng-model="ctrl.userCurrentPage">
+                                </uib-pagination>
+                            </div>
+                        </div>
+                        <div class="panel-body"
+                             ng-if="!ctrl.users">
+                            <div class="alert alert-success">
+                                {{'searches.messages.init'|translate}}
+                            </div>
+                        </div>
+                        <div class="panel-body"
+                             ng-if="ctrl.users && ctrl.users.length == 0">
+                            <div class="alert alert-info">
+                                {{'searches.messages.noResults'|translate}}
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-lg-12 text-right">
+                                    <span>{{'searches.showing'|translate}}</span>
+                                    <select id="cantItems"
+                                            ng-options="item.cant as item.cant for item in ctrl.userOpcLimit"
+                                            ng-model="userMaxResultsPerPageus"></select>
+                                    <span>{{'searches.of'|translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover dataTable table-responsive"
+                               ng-show="ctrl.users && ctrl.users.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>{{'reallocation.select'|translate}}</th>
+                                    <th>{{'searches.docNumber'|translate}}</th>
+                                    <th>{{'searches.benefCode'|translate}}</th>
+                                    <th>{{'searches.email'|translate}}</th>
+                                    <th>{{'searches.name'|translate}}</th>
+                                    <th>{{'searches.city'|translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ctrl.userFiltered | startFrom:(ctrl.userCurrentPage-1)*userMaxResultsPerPageus | limitTo:userMaxResultsPerPageus">
+                                    <td>
+                                        <button class="btn btn-success btn-xs"
+                                                ng-click="ctrl.selectUser(item)">
+                                            {{'reallocation.reallocate'|translate}}
+                                        </button>
+                                    </td>
+                                    <td>{{item.Documento}}</td>
+                                    <td>{{item.CodigoBeneficiario}}</td>
+                                    <td>{{item.Correo}}</td>
+                                    <td>{{item.NombreInscrito}}</td>
+                                    <td>{{item.NomMunicipio}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab class="nav-item"
+                     index="2"
+                     heading="{{'reallocation.confirmationTitle'|translate}}"
+                     disabled="!ctrl.reallocation.schedule || !ctrl.reallocation.user">
+                <div class="panel panel-default panel-ps dataTables_wrapper ">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr class="warning">
+                                <td colspan="6"><b>{{'searches.table.userData'|translate}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.name'|translate}}</b></td>
+                                <td colspan="5">{{ctrl.reallocation.user.NombreInscrito}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.docType'|translate}}</b></td>
+                                <td>{{ctrl.reallocation.user.TipoDocumento}}</td>
+                                <td><b>{{'searches.table.doc'|translate}}</b></td>
+                                <td class="text-right">{{ctrl.reallocation.user.Documento}}</td>
+                                <td><b>{{'searches.table.benefCode'|translate}}</b></td>
+                                <td class="text-right">{{ctrl.reallocation.user.CodigoBeneficiario}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.email'|translate}}</b></td>
+                                <td colspan="5">{{ctrl.reallocation.user.Correo}}</td>
+                            </tr>
+                            <tr class="warning">
+                                <td colspan="6"><b>{{'searches.table.inscriptionData'|translate}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.dpto'|translate}}</b></td>
+                                <td colspan="2">{{ctrl.reallocation.user.NomDepartamento}}</td>
+                                <td><b>{{'searches.table.city'|translate}}</b></td>
+                                <td colspan="2">{{ctrl.reallocation.user.NomMunicipio}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.facilitator'|translate}}</b></td>
+                                <td colspan="5">{{ctrl.reallocation.user.NombreFacilitador}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.day'|translate}}</b></td>
+                                <td>{{ctrl.reallocation.user.Dia}}</td>
+                                <td><b>{{'searches.table.schedule'|translate}}</b></td>
+                                <td>{{ctrl.reallocation.user.Horario}}</td>
+                                <td><b>{{'searches.table.group'|translate}}</b></td>
+                                <td class="danger">{{ctrl.reallocation.user.SiglaGrupo}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.place'|translate}}</b></td>
+                                <td colspan="2">{{ctrl.reallocation.user.Lugar}}</td>
+                                <td><b>{{'searches.table.address'|translate}}</b></td>
+                                <td colspan="2">{{ctrl.reallocation.user.Direccion}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{'searches.table.inscriptionDate'|translate}}</b></td>
+                                <td colspan="5">{{ctrl.reallocation.user.FechaRegistro}}</td>
+                            </tr>
+                            <tr class="success">
+                                <td><b>{{'reallocation.table.toGroup'|translate}}</b></td>
+                                <td colspan="5">{{ctrl.reallocation.schedule.SiglaGrupo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="panel-footer clearfix">
+                        <button class="btn btn-info pull-left"
+                                ng-click="ctrl.activeTab=1">
+                            {{ 'searches.back' | translate }}
+                        </button>
+                        <button class="btn btn-success pull-right"
+                                ng-click="ctrl.submit()">
+                            {{ 'reallocation.reallocate' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</article>

@@ -1,0 +1,6 @@
+**/packages
+*.csproj.user
+**/bin
+**/obj
+*.vs
+/export_.sql

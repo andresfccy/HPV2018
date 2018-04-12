@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HPV_Entidades.IncripcionEncuestasWS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HPV_Entidades.IncripcionEncuestasWS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3394/EncuestasSena/HPVServicioEncuestas.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" />
+  <xs:import schemaLocation="http://localhost:3394/EncuestasSena/HPVServicioEncuestas.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HPV_Entidades.General" />
+  <xs:complexType name="OS_ConsultarTiposDocumento">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" minOccurs="0" name="ListaTiposDocumento" nillable="true" type="q1:ArrayOfOE_TiposDocumento" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HPV_Entidades.General" minOccurs="0" name="Respuesta" nillable="true" type="q2:Respuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OS_ConsultarTiposDocumento" nillable="true" type="tns:OS_ConsultarTiposDocumento" />
+  <xs:complexType name="OS_CrearDatosBasicos">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HPV_Entidades.General" minOccurs="0" name="Respuesta" nillable="true" type="q3:Respuesta" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" minOccurs="0" name="UsuarioEncuestaSena" nillable="true" type="q4:OE_UsuarioEncuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OS_CrearDatosBasicos" nillable="true" type="tns:OS_CrearDatosBasicos" />
+  <xs:complexType name="OS_Consultar_Preguntas">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" minOccurs="0" name="Preguntas" nillable="true" type="q5:ArrayOfOE_Pregunta" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HPV_Entidades.General" minOccurs="0" name="Respuesta" nillable="true" type="q6:Respuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OS_Consultar_Preguntas" nillable="true" type="tns:OS_Consultar_Preguntas" />
+  <xs:complexType name="OS_Guardar_Encuesta">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HPV_Entidades.General" minOccurs="0" name="Respuesta" nillable="true" type="q7:Respuesta" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" minOccurs="0" name="RespuestasEncuesta" nillable="true" type="q8:ArrayOfOE_RespuestasEncuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OS_Guardar_Encuesta" nillable="true" type="tns:OS_Guardar_Encuesta" />
+</xs:schema>

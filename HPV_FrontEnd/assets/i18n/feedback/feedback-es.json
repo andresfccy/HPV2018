@@ -1,0 +1,11 @@
+﻿{
+  "feedback": {
+    "module": "Encuesta de satisfacción",
+    "description": "<b>Apreciado participante</b><br/>Te invitamos a responder la siguiente encuesta, con el fin de conocer tu opinión frente a tu experiencia o con las actividades desarrolladas en el taller.<br/>Esta información será tratada de manera confidencial, agradecemos tu honestidad y participación.",
+    "incomplete": "Aún faltan preguntas por contestar de la encuesta.",
+    "submit": "Enviar encuesta",
+    "comments": "Observaciones",
+    "error": {
+    }
+  }
+}

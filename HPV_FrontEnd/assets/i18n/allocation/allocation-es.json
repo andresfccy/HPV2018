@@ -1,0 +1,52 @@
+﻿{
+    "allocation": {
+        "module": "Asignación de Espacios Físicos",
+        "moduleAdmin": "Asignación de Espacios Físicos - Administración",
+        "showing": "Mostrando",
+        "of": "espacios por página",
+        "elements": "ubicaciones",
+        "search": "Buscar",
+        "filter": "Filtrar por estado",
+
+        "facilitator": "Facilitador",
+        "department": "Departamento",
+        "city": "Municipio",
+        "day": "Día",
+        "schedule": "Horario",
+        "group": "Grupo",
+        "placeName": "Nombre del lugar",
+        "placeNameRequired": "Nombre del lugar es obligatorio",
+        "placeDirection": "Dirección del lugar",
+        "placeDirectionRequired": "La dirección del lugar es obligatoria",
+        "editAllocation": "Guardar Edición",
+        "saveAllocation": "Guardar Lugar",
+        "state": "Estado",
+        "allocated": "Espacios asignados",
+        "rejectReason": "Motivo del rechazo",
+        "accept": "Aceptar",
+        "reject": "Rechazar",
+        "actions": "Acciones",
+        "edit": "Editar",
+        "saveReject": "Completar Rechazo",
+      "address": "Dirección",
+      "initials": "Sigla",
+
+        "allocationListTitle": "Espacios asignados",
+        "place": "Lugar",
+        "direction": "Dirección",
+        "edit": "Editar",
+        "back": "Atrás",
+        "new": "Asignar nuevo espacio",
+
+        "error": {
+            "addressRequired": "El campo Dirección es obligatorio.",
+            "placeRequired": "El campo Lugar es obligatorio.",
+            "groupRequired": "El campo Grupo es obligatorio.",
+            "scheduleRequired": "El campo Horario es obligatorio.",
+            "dayRequired": "El campo Día es obligatorio.",
+            "cityRequired": "El campo Municipio es obligatorio.",
+            "departmentRequired": "El campo Departamento es obligatorio.",
+            "facilitatorRequired": "El campo Facilitador es obligatorio."
+        }
+    }
+}

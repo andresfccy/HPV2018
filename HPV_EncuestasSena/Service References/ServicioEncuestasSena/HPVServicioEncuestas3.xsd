@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HPV_Entidades.EncuestasSena" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfOE_TiposDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OE_TiposDocumento" nillable="true" type="tns:OE_TiposDocumento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOE_TiposDocumento" nillable="true" type="tns:ArrayOfOE_TiposDocumento" />
+  <xs:complexType name="OE_TiposDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OE_TiposDocumento" nillable="true" type="tns:OE_TiposDocumento" />
+  <xs:complexType name="OE_UsuarioEncuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Celular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Consecutivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Documento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsJovenEnAccion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdEncuestaPresentar" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUsusarioEncuestaSena" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimerApellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegundoApellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OE_UsuarioEncuesta" nillable="true" type="tns:OE_UsuarioEncuesta" />
+  <xs:complexType name="ArrayOfOE_Pregunta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OE_Pregunta" nillable="true" type="tns:OE_Pregunta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOE_Pregunta" nillable="true" type="tns:ArrayOfOE_Pregunta" />
+  <xs:complexType name="OE_Pregunta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdEncuesta" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPregunta" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroPregunta" type="xs:int" />
+      <xs:element minOccurs="0" name="Pregunta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Respuestas" nillable="true" type="tns:ArrayOfOE_Respuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OE_Pregunta" nillable="true" type="tns:OE_Pregunta" />
+  <xs:complexType name="ArrayOfOE_Respuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OE_Respuesta" nillable="true" type="tns:OE_Respuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOE_Respuesta" nillable="true" type="tns:ArrayOfOE_Respuesta" />
+  <xs:complexType name="OE_Respuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdPregunta" type="xs:int" />
+      <xs:element minOccurs="0" name="IdRespuesta" type="xs:int" />
+      <xs:element minOccurs="0" name="Letra" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Respuesta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Seleccionado" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OE_Respuesta" nillable="true" type="tns:OE_Respuesta" />
+  <xs:complexType name="ArrayOfOE_RespuestasEncuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OE_RespuestasEncuesta" nillable="true" type="tns:OE_RespuestasEncuesta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOE_RespuestasEncuesta" nillable="true" type="tns:ArrayOfOE_RespuestasEncuesta" />
+  <xs:complexType name="OE_RespuestasEncuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodEncuesta" type="xs:int" />
+      <xs:element minOccurs="0" name="CodPregunta" type="xs:int" />
+      <xs:element minOccurs="0" name="CodRespuesta" type="xs:int" />
+      <xs:element minOccurs="0" name="CodUsuarioSena" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OE_RespuestasEncuesta" nillable="true" type="tns:OE_RespuestasEncuesta" />
+</xs:schema>

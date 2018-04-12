@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T12DBC_PERIODOS">
+          <Key>
+            <PropertyRef Name="A12CODIGO" />
+          </Key>
+          <Property Name="A12CODIGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="A12NOMBRE" Type="varchar2" MaxLength="50" />
+          <Property Name="A12FECHAINICIO" Type="date" />
+          <Property Name="A12FECHAFIN" Type="date" />
+          <Property Name="A12ESTADO" Type="char" MaxLength="1" />
+          <Property Name="A12FECHACREACION" Type="date" />
+          <Property Name="A12FECHAMODIFICACION" Type="date" />
+          <Property Name="A12NOPERIODO" Type="number" Precision="38" Scale="0" />
+          <Property Name="A12USUARIOCREACION" Type="number" Precision="38" Scale="0" />
+          <Property Name="A12USUARIOMODIFICACION" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <Function Name="PK_ALI_INSCRIPCION_PR_OBTENERPERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HPV" StoreFunctionName="PK_ALI_INSCRIPCION.PR_OBTENERPERIODO">
+          <Parameter Name="P_NOMPERIODO" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="T12DBC_PERIODOS" EntityType="Self.T12DBC_PERIODOS" Schema="HPV" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HPVEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="T12DBC_PERIODOS" EntityType="Model.T12DBC_PERIODOS" />
+          <FunctionImport Name="PK_ALI_INSCRIPCION_PR_OBTENERPERIODO">
+            <Parameter Name="P_NOMPERIODO" Mode="Out" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="T12DBC_PERIODOS">
+          <Key>
+            <PropertyRef Name="A12CODIGO" />
+          </Key>
+          <Property Name="A12CODIGO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="A12NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="A12FECHAINICIO" Type="DateTime" />
+          <Property Name="A12FECHAFIN" Type="DateTime" />
+          <Property Name="A12ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="A12FECHACREACION" Type="DateTime" />
+          <Property Name="A12FECHAMODIFICACION" Type="DateTime" />
+          <Property Name="A12NOPERIODO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="A12USUARIOCREACION" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="A12USUARIOMODIFICACION" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="HPVEntities" >
+          <EntitySetMapping Name="T12DBC_PERIODOS">
+            <EntityTypeMapping TypeName="Model.T12DBC_PERIODOS">
+              <MappingFragment StoreEntitySet="T12DBC_PERIODOS">
+                <ScalarProperty Name="A12USUARIOMODIFICACION" ColumnName="A12USUARIOMODIFICACION" />
+                <ScalarProperty Name="A12USUARIOCREACION" ColumnName="A12USUARIOCREACION" />
+                <ScalarProperty Name="A12NOPERIODO" ColumnName="A12NOPERIODO" />
+                <ScalarProperty Name="A12FECHAMODIFICACION" ColumnName="A12FECHAMODIFICACION" />
+                <ScalarProperty Name="A12FECHACREACION" ColumnName="A12FECHACREACION" />
+                <ScalarProperty Name="A12ESTADO" ColumnName="A12ESTADO" />
+                <ScalarProperty Name="A12FECHAFIN" ColumnName="A12FECHAFIN" />
+                <ScalarProperty Name="A12FECHAINICIO" ColumnName="A12FECHAINICIO" />
+                <ScalarProperty Name="A12NOMBRE" ColumnName="A12NOMBRE" />
+                <ScalarProperty Name="A12CODIGO" ColumnName="A12CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PK_ALI_INSCRIPCION_PR_OBTENERPERIODO" FunctionName="Model.Store.PK_ALI_INSCRIPCION_PR_OBTENERPERIODO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

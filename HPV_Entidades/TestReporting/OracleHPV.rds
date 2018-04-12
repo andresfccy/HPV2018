@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OracleHPV">
+  <ConnectionProperties>
+    <Extension>ORACLE</Extension>
+    <ConnectString>DATA SOURCE="(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = LOCALHOST)(PORT = 1521)) (CONNECT_DATA = (SERVICE_NAME = XE) ) )"</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>5e373b1e-d0a0-412e-ae8a-0a6f4c988fed</DataSourceID>
+</RptDataSource>

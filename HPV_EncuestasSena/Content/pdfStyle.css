@@ -1,0 +1,73 @@
+﻿
+body{
+    padding: 10px 300px 10px 300px;
+}
+
+.logos {
+    max-width: 100%;
+    height: 120px;
+    width: 150px;   
+}
+
+.negrita{
+    font-weight:900;
+}
+
+
+.contenedortext{
+    width:100%; 
+    text-align:center;
+    font-family:'Californian FB';
+    font-size:25px;
+}
+
+#boton{
+    margin-left: 420px;
+    text-align:right;
+}
+
+#enviar {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:100px;
+    height:30px;
+
+}
+
+#DescargarPdf {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:150px;
+    height:30px;
+
+}
+
+#enviarencuesta {
+    background-color:#4cb129;
+    color:#fff;
+    border-radius:4px;  
+    width:150px;
+    height:30px;
+
+}
+
+#contentlogo4
+{
+    text-align: center;
+}
+
+#contentlogo3{
+    text-align:right;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+.validation-summary-valid
+{
+    display: none;
+}
+

@@ -1,0 +1,115 @@
+﻿<article ng-init="ctrl.initialize()">
+    <form id="form"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-12"
+                 ng-if="ctrl.isEdition()">
+                <div class="form-group">
+                    <label for="state" class="blueLabel">{{'leadership.state'|translate}}</label>
+                    <input class="form-control"
+                           id="state"
+                           name="state"
+                           ng-value="ctrl.leadership.NomEstado"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-12"
+                 ng-if="ctrl.rechazado">
+                <div class="form-group">
+                    <label for="rejectReason" class="blueLabel">{{'leadership.rejectReason'|translate}}</label>
+                    <textarea class="form-control vresize"
+                              name="rejectReason"
+                              ng-bind="ctrl.leadership.MotivoRechazo"
+                              ng-disabled="true"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">{{'leadership.group'|translate}} *</label>
+                    <select class="form-control"
+                            id="group"
+                            name="group"
+                            ng-model="ctrl.leadership.IdGrupoFacilitador"
+                            ng-change="ctrl.getParticipantsByGroup()"
+                            ng-options="item.IdGrupoFacilitador as item.Nombre for item in ctrl.groups"
+                            ng-disabled="ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.group.$error"
+                         ng-if="form.group.$touched">
+                        <div ng-message="required">{{'leadership.error.groupRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">{{'leadership.participant'|translate}} *</label>
+                    <select class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-model="ctrl.leadership.IdInscrito"
+                            ng-options="item.IdInscrito as item.NombreInscrito for item in ctrl.participants"
+                            ng-disabled="!ctrl.participants || ctrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.participant.$error"
+                         ng-if="form.participant.$touched">
+                        <div ng-message="required">{{'leadership.error.participantRequired'|translate}}</div>
+                    </div>
+                </div>
+            </div>           
+            <div class="col-lg-12">
+                <label class="blueLabel">{{'leadership.qualities'|translate}}</label>
+            </div>
+            <div class="col-lg-12">
+                <table class="little-margin-bottom table">
+                    <tbody ng-repeat="item in ctrl.qualities">
+                        <tr>
+                            <td class="no-border-top">{{$index+1}}. </td>
+                            <td class="no-border-top col-lg-10">{{item.Descripcion}}</td>
+                            <td class="no-border-top clearfix text-right">
+                                <div ng-if="ctrl.sent && item.yesno == 1">
+                                    {{'yes'|translate}}
+                                </div>
+                                <div ng-if="ctrl.sent && item.yesno == 0">
+                                    {{'no'|translate}}
+                                </div>
+                                <div class="btn-group"
+                                     ng-if="!ctrl.sent">
+                                    <label class="btn btn-default btn-xs btn-yesno"
+                                           ng-class="{'btn-success': item.yesno==1}"
+                                           ng-model="item.yesno"
+                                           uib-btn-radio="1">{{'yes'|translate}}</label>
+                                    <label class="btn btn-default btn-xs"
+                                           ng-class="{'btn-danger': item.yesno==0}"
+                                           ng-model="item.yesno"
+                                           uib-btn-radio="0">{{'no'|translate}}</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary pull-right"
+                    type="submit"
+                    ng-if="!ctrl.editionDisabled()"
+                    ng-click="ctrl.submit()">
+                {{ 'leadership.save' | translate }}
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'leadership.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>

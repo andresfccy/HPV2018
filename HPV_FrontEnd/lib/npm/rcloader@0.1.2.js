@@ -1,0 +1,1 @@
+module.exports = require("npm:rcloader@0.1.2/index.js");

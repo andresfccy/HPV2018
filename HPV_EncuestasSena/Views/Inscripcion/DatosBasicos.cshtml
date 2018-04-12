@@ -1,0 +1,117 @@
+﻿@using HPV_EncuestasSena.Models
+@model InscripcionModel
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>@ViewBag.Title - Habilidades para la vida</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm("DatosBasicos", "Inscripcion", FormMethod.Post, new { @id = "contenedor1", @class = "formulario" }))
+    {
+        if (ViewBag.showSuccessAlert)
+        {
+            <script>
+                $.fancybox({
+                    'content':'<p> @ViewBag.Message </p>',
+                    'autoDimensions': false,
+                    'type': 'iframe',
+                    'scrolling': 'no',
+                    'autoSize': true,
+                    'closeBtn': true,
+                    'closeClick': true,
+                    helpers: {
+                        overlay: { closeClick: true }
+                    }
+                });
+            </script>
+        }
+        
+            <div class="contenedortext">
+                Hola, por favor ingresa los siguientes datos básicos para diligenciar
+                la <strong style="font-weight:bolder">@Html.LabelFor(x => x.Mensaje, Model.Mensaje)</strong> del Curso Virtual "Habilidades para la vida".
+            </div>
+            <p></p>
+            @Html.HiddenFor(model => model.Mensaje)
+            <div class="col-xs-4" style="height: 550px">
+                <img src="~/Images/arriba IZQ.jpg" class=" img-responsive">
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="typeId" class="blueLabel">Tipo de Documento*</label>
+                    @Html.DropDownListFor(x => x.TipoDocumento, Model.TiposIdentificacion, "Seleccione..", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TipoDocumento, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="document" class="blueLabel">Documento de identidad*</label>
+                    @Html.TextBoxFor(model => model.NumeroDocumento, new { @onkeypress = "return isNumber(event)", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NumeroDocumento, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="firstName" class="blueLabel">Nombres*:</label>
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="firstLastname" class="blueLabel">Primer Apellido*:</label>
+                    @Html.TextBoxFor(model => model.PrimerApellido, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PrimerApellido, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="secondLastname" class="blueLabel">Segundo Apellido:</label>
+                    @Html.TextBoxFor(model => model.SegundoApellido, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <label for="mail" class="blueLabel"><strong style="font-weight:900">Correo Electronico* </strong> (con el cual te inscribiste al curso virtual de Habilidades para la Vida en la plataforma SOFIA PLUS del SENA):</label>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="form-group" feedback>
+                    <label for="cel" class="blueLabel">Celular*:</label>
+                    @Html.TextBoxFor(model => model.Celular, new { @onkeypress = "return isNumber(event)", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Celular, null, new { @class = "field-validation-error text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <label>¿Eres joven en Accion?: </label>
+                @Html.RadioButtonFor(model => model.Esjoven, "true") SI
+                @Html.RadioButtonFor(model => model.Esjoven, "false") NO
+
+            </div>
+            <div id="boton" class="col-lg-2">
+                <input type="submit" value="Continuar" id="enviar" />
+            </div>
+        }
+    
+</body>
+</html>
+

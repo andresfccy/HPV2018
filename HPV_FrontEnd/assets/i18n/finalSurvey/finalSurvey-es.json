@@ -1,0 +1,10 @@
+﻿{
+  "finalSurvey": {
+    "module": "Encuesta de salida",
+    "description": "",
+    "incomplete": "Aún faltan preguntas por contestar de la encuesta.",
+    "submit": "Enviar encuesta de salida",
+    "error": {
+    }
+  }
+}

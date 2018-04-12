@@ -1,0 +1,1 @@
+module.exports = require("npm:gulp-order@1.1.1/lib/index.js");
