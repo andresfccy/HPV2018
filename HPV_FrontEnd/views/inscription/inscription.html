@@ -206,6 +206,7 @@
                                    placeholder="Correo electrónico"
                                    title="Digita tu correo electrónico"
                                    aria-describedby="inscription_text_email_status"
+                                   ng-pattern="/[^@]+@[^@]+\.[a-zA-Z]{2,6}/"
                                    ng-model="ctrl.beneficiary.Correo"
                                    required>
                         </div>
@@ -485,6 +486,7 @@
                                    placeholder="Confirmar Correo electrónico"
                                    title="Confirma tu correo electrónico"
                                    aria-describedby="inscription_text_email_confirm_status"
+                                   ng-pattern="/[^@]+@[^@]+\.[a-zA-Z]{2,6}/"
                                    ng-model="ctrl.emailConfirmation"
                                    ng-change="ctrl.emailChanged()"
                                    required>
