@@ -497,11 +497,6 @@ table.dataTable tbody td.selected {
     background-color: #FFF;
 }
 
-body {
-    padding: 15px;
-    background-color:;
-}
-
 .select2 > .select2-choice.ui-select-match {
     /* Because of the inclusion of Bootstrap */
     height: 29px;
@@ -654,24 +649,22 @@ html {
 }
 
 .panel-tabset {
-    border-top:none;
+    border-top: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
 
-#Noticias{
+#Noticias {
     padding: 15px 20px;
     height: 71px;
 }
 
 .btn-no-focus :focus {
-    
 }
 
 .drop-box {
-    padding: 10px !important; 
+    padding: 10px !important;
     margin: 10px !important;
-
     background: #F8F8F8;
     border: 5px dashed #DDD;
     width: 100% !important;
@@ -680,43 +673,44 @@ html {
     padding-top: 25px;
     margin: 10px;
 }
+
 .dragover {
     border: 5px dashed blue;
 }
 
 .fa-6x {
-  font-size: 15em;
+    font-size: 15em;
 }
 
 .no-border-input {
-    border:0 solid transparent;
-    background:transparent !important;
+    border: 0 solid transparent;
+    background: transparent !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     cursor: default !important;
 }
 
-.btn-yesno{
+.btn-yesno {
     min-width: 25px;
 }
 
-.no-border-top{
+.no-border-top {
     border-top: none !important;
 }
 
-.no-padding{
+.no-padding {
     padding: 0px;
 }
 
-.rolsms am-multiselect .btn-group{
+.rolsms am-multiselect .btn-group {
     width: 100% !important;
 }
 
-.rolsms am-multiselect .btn-group>button{
-    min-width: 80% !important;
-}
+    .rolsms am-multiselect .btn-group > button {
+        min-width: 80% !important;
+    }
 
-.rolsms am-multiselect .dropdown-menu{
+.rolsms am-multiselect .dropdown-menu {
     max-height: 200px !important;
     width: 80% !important;
     overflow-y: scroll !important;

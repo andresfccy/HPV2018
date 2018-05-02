@@ -1,84 +1,349 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE HTML>
 <html lang="en" ng-app="prosperidad">
-<head>
+<head ng-controller="HeaderController as ctrl">
     <base href="/">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="($title || '¡Bienvenido!') + ' | Habilidades para la Vida - Jóvenes en Acción 2018'">¡Bienvenido! Habilidades para la Vida - Jóvenes en Acción 2018</title>
+    <!--<title>¡Bienvenido! Habilidades para la Vida - Jóvenes en Acción 2018</title>-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-    <!--link href="lib/github/twbs/bootstrap@3.3.6/bootstrap.css" rel="stylesheet">
-    <link href="lib/github/twbs/bootstrap@3.3.6/bootstrap-theme.css" rel="stylesheet"-->
-    <link href="lib/github/angular-ui/ui-select@0.14.9/dist/select.min.css" rel="stylesheet" />
-    <link href="lib/github/angular/bower-material@1.0.5/angular-material.min.css" rel="stylesheet" />
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">	 -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <link href="lib/bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
     <link href="lib/bower_components/angular-modal/modal.css" rel="stylesheet">
-    <!--link href="lib/npm/font-awesome@4.5.0/css/font-awesome.min.css" rel="stylesheet"-->
+    <link href="lib/github/angular-ui/ui-select@0.14.9/dist/select.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="lib/npm/angular-growl-v2@0.7.5/build/angular-growl.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="lib/npm/angular-ui-bootstrap@1.2.2/dist/ui-bootstrap-csp.css" rel="stylesheet" />
     <link href="lib/npm/ui-select@0.16.1/dist/select.min.css" rel="stylesheet" />
     <link href="lib/npm/angular-multiselect@1.0.0/dist/multiselect.css" rel="stylesheet" />
-
-    <!-- Select2 theme -->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
-    <!--
-      Selectize theme
-      Less versions are available at https://github.com/brianreavis/selectize.js/tree/master/dist/less
-    -->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
-    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap2.css"> -->
-    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap3.css"> -->
-
 
     <link rel="stylesheet" href="assets/css/test.css" />
     <link rel="stylesheet" href="assets/css/fonts.css" />
-    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+    <link rel="stylesheet" href="assets/css/stylesheet.css" ng-if="!ctrl.isIndex()" />
 
-    <title ng-bind="($title || '¡Bienvenido!') + ' | Habilidades para la vida - Jóvenes en Acción - 2016'">Habilidades para la vida - Jóvenes en Acción - 2016</title>
+    <link rel="stylesheet" ng-if="ctrl.isIndex()" href="assets/css/animate.css">
+    <link rel="stylesheet" ng-if="ctrl.isIndex()" href="assets/css/icomoon.css">
+    <link rel="stylesheet" ng-if="ctrl.isIndex()" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" ng-if="ctrl.isIndex()" href="assets/css/flexslider.css">
+    <link rel="stylesheet" ng-if="ctrl.isIndex()" href="assets/css/style.css">
+    <script src="assets/js/modernizr-2.6.2.min.js" ng-if="ctrl.isIndex()"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
 </head>
 <body>
-    <div class="loading-overlay" ng-show="false">
-        <div class="loading-box">
-            <img src="assets/img/loading.gif">
-            <p class="text-center text-info"><strong>Cargando...</strong></p>
-        </div>
-    </div>
-
-    <div loading></div>
-
-    <div class="header"
-         ng-controller="HeaderController as ctrl"
-         ng-include="'views/commons/header.html'"
-         ng-cloak></div>
     <div growl></div>
-    <div class="home" ng-controller="HomeController as ctrl" ng-cloak>
-        <main class="container"
-              role="main"
-              ng-init="ctrl.initialize()">
-            <div class="row">
-                <section class="page-content clearfix">
-                    <h2 translate>home.title</h2>
-                    <h2 class="page-header text-right futura-md-bt">
-                        <!--{{"home.welcome"|translate}}-->
-                        {{$title.split('-')[0].trim()}}<br>
-                        <small>{{ctrl.getSeason().NomPeriodo}}</small>
-                    </h2>
-                    <div ui-view></div>
-                </section>
-            </div>
-        </main>
-    </div>
 
-    <footer class="container" ng-cloak>
-        <div class="row" ng-controller="HomeController as ctrl">
-            <strong translate>home.footer</strong> | <small>v. {{ctrl.version}}</small>
-            <span class="pull-right">{{ctrl.getSeason().NomPeriodo}}</span>
+    <div ng-show="!ctrl.isIndex()" ng-controller="HeaderController as ctrl" ng-cloak>
+        <div loading></div>
+        <div class="header"
+             ng-controller="HeaderController as ctrl"
+             ng-include="'views/commons/header.html'"
+             ng-cloak></div>
+        <div growl></div>
+        <div class="home" ng-controller="HomeController as ctrl" ng-cloak>
+            <main class="container"
+                  role="main"
+                  ng-init="ctrl.initialize()">
+                <div class="row">
+                    <section class="page-content clearfix">
+                        <h2 translate>home.title</h2>
+                        <h2 class="page-header text-right futura-md-bt">
+                            <!--{{"home.welcome"|translate}}-->
+                            {{$title.split('-')[0].trim()}}<br>
+                            <small>{{ctrl.getSeason().NomPeriodo}}</small>
+                        </h2>
+                        <div ui-view></div>
+                    </section>
+                </div>
+            </main>
         </div>
-    </footer>
+
+        <footer class="container" ng-cloak>
+            <div class="row" ng-controller="HomeController as ctrl">
+                <strong translate>home.footer</strong> | <small>v. {{ctrl.version}}</small>
+                <span class="pull-right">{{ctrl.getSeason().NomPeriodo}}</span>
+            </div>
+        </footer>
+    </div>
+    <div ng-show="ctrl.isIndex()" ng-controller="HeaderController as ctrl" ng-cloak>
+        <div class="fh5co-loader" ng-show="false"></div>
+
+        <div class="loading-overlay" ng-show="false">
+            <div class="loading-box">
+                <img src="assets/img/loading.gif">
+                <p class="text-center text-info"><strong>Cargando...</strong></p>
+            </div>
+        </div>
+
+        <div id="page" ng-controller="HomeController as ctrl">
+            <nav class="fh5co-nav" role="navigation">
+                <div class="top-menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <div id="fh5co-logo"><a href="index.html"></a></div>
+                            </div>
+                            <div class="col-xs-10 text-right menu-1">
+                                <ul>
+                                    <li><a href="index.html">Inicio</a></li>
+
+                                    <li class="has-dropdown">
+                                        Qué es el módulo HpV
+                                        <ul class="dropdown">
+                                            <li><a href="#">Información general</a></li>
+                                            <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
+                                            <li><a href="#">¿Cómo se realiza?</a></li>
+                                            <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
+                                            <li><a href="#">¿Dónde se implementa?</a></li>
+                                            <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
+                                            <li><a href="">Términos y condiciones</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="#">Consulta tu estado</a></li>
+
+                                    <li class="btn-cta"><a ui-sref="generateCertificate"><span><i class="icon-star-full"></i> Certificación</span></a></li>
+                                    <li class="btn-cta1"><a ui-sref="inscription"><span><i class="icon-pencil"></i> ¡Inscríbete!</span></a></li>
+                                    <li class="btn-cta2"><a ui-sref="login"><span><i class="icon-user-tie"></i> Funcionarios</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+            <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+                <div class="bg-header">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-4 text-left fh5co-heading  col-lg-4">
+                                <div class="display-tc js-fullheight animate-box user-frame3" data-animate-effect="fadeIn">
+                                    <img src="assets/img/logo_construyendo.png" height="200" width="345">
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-md-offset-2 text-left fh5co-heading col-lg-6">
+                                <br></br><br></br>
+                                <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                                    <h1 class="col-lg-10 col-lg-offset-1">¡LOS LÍMITES LOS PONES TÚ!</h1>
+                                    <h2 class="col-lg-offset-0 col-lg-8">llega a donde quieras.</h2>
+                                    <a  ui-sref="inscription" class="btn btn-demo col-lg-offset-0 col-lg-4">¡INSCRÍBETE!</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </header>
+            <div id="fh5co-features">
+                <div class="container">
+                    <div class="services-padding">
+                        <div class="row">
+                            <div class="col-md-10 animate-box text-center col-lg-offset-2">
+                                <div class="feature-left">
+                                    <div class="feature-copy">
+                                        <em class="icon-happy22"></em>
+                                        <h1>¡Bienvenido!</h1>
+                                        <p>El Programa Jóvenes en Acción de Prosperidad Social a través del <strong>Módulo Presencial Construyendo Mi Camino,</strong> busca fortalecer las Habilidades para la Vida de los participantes del Programa como complemento a la formación que reciben en las Instituciones de Educación Superior, con el fin de promover  la consolidación de una trayectoria de vida favorable y el tránsito exitoso hacia las diferentes oportunidades de desarrollo que brinda el entorno, contribuyendo a su bienestar personal, familiar, social y productivo.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fh5co-wireframe">
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <i class="icon-hour-glass"></i>
+                            <h2>¿Cómo se realiza?</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 animate-box">
+                            <div class="user-frame">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <p>A través de ocho (8) talleres o sesiones de trabajo bajo la metodología de aprendizaje experiencial, explorarás las siguientes Habilidades  para la Vida: <strong>LIDERAZGO, AUTOCONOCIMIENTO, RESILIENCIA, EMPATÍA, TRABAJO EN EQUIPO, GESTIÓN DE CONFLICTOS, TOMA DE DECISIONES Y COMUNICACIÓN ASERTIVA,</strong> como insumo para definir responsablemente tu trayectoria de vida.</p>
+
+                            <hr align="left" noshade="noshade" width="70%" style="border-color: red; border-style:solid; border-width: 2px; margin-top:15%; " />
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="fh5co-wireframe" style="background-color: white;">
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <i class="icon-calendar4"></i>
+                            <h2>¿Cuándo se realiza?</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 animate-box">
+                            <p>
+                                El <strong>Módulo Presencial de Habilidades para la Vida  - Construyendo mi camino,</strong> se realizará en tres períodos de formación:
+                                La primera etapa de formación iniciará el 15 de mayo de 2018 y se extenderá hasta el día 30 de Junio de 2018.
+                            </p>
+                            <p>Para las otras dos etapas, se comunicarán previamente las fechas en las cuáles se desarrollarán éstas formaciones. </p>
+                            <hr align="left" noshade="noshade" width="70%" style="border-color: deepskyblue; border-style:solid; border-width: 2px; margin:15% 0 10%; " />
+
+                        </div>
+                        <div class="col-md-6 animate-box text-center">
+                            <div class="user-frame1">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <div id="fh5co-wireframe">
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <i class="icon-location3"></i>
+                            <h2>¿Dónde se implementa?</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 animate-box text-center">
+                            <div class="user-frame4"></div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <p>En 2018, el <strong>Módulo Presencial de Habilidades para la Vida,</strong> se realizará en 73 municipios de Colombia.</p>
+                            <hr align="left" noshade="noshade" width="70%" style="border-color: gold; border-style:solid; border-width: 2px; margin:15% 0 10%; " />
+                            <p><a href="/assets/img/mapa_cobertura.jpg" target="_blank" class="btn btn-primary btn-lg">Ver mapa</a></p>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div id="fh5co-blog">
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <i class="icon-bullhorn"></i>
+                            <h1>Noticias destacadas</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="fh5co-blog animate-box">
+                                <a href="#" class="blog-bg" style="background-image: url(assets/img/blog-1.jpg);"></a>
+                                <div class="blog-text">
+                                    <span class="posted_on">Abril 15 2018</span>
+                                    <h3><a href="#">Destacado 1</a></h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <ul class="stuff">
+
+                                        <li><a href="#">Leer más<i class="icon-arrow-right22"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="fh5co-started">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <i class="icon-pencil22"></i>
+                            <h2>Términos y condiciones</h2>
+                            <p>
+                                Consulta los términos y condiciones para participar en el Módulo Presencial de Habilidades para la Vida.
+                                Recuerda que los beneficiarios del programa Jóvenes en Acción, tienen el compromiso de participar en las
+                                actividades a las que sean convocados.
+                            </p>
+                            <p><a href="" ng-click="ctrl.goToTermsPdf()" class="btn btn-default btn-lg">Ver documento</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer id="fh5co-footer" role="contentinfo">
+                <div class="container">
+
+                    <div class="row copyright">
+
+                        <div class="col-md-12 text-center">
+                            <p><div class="user-frame2"></div></p>
+                            <p>
+                                <small class="block">&copy; 2018 Módulo Presencial - Habilidades para la Vida.</small>
+                            </p>
+                            <p>
+                                <ul class="fh5co-social-icons">
+                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-instagram"></i></a></li>
+
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="gototop js-top">
+            <a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.min.js"></script>
+    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.easing.1.3.js"></script>
+    <script ng-if="ctrl.isIndex()" src="assets/js/bootstrap.min.js"></script>
+    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.waypoints.min.js"></script>
+    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.flexslider-min.js"></script>
+    <script ng-if="ctrl.isIndex()" src="assets/js/main.js"></script>
 
     <!-- Dependencias -->
-    <script src="lib/npm/jquery@2.2.0/dist/jquery.min.js"></script>
+    <script ng-if="!ctrl.isIndex()" src="lib/npm/jquery@2.2.0/dist/jquery.min.js"></script>
     <script src="lib/github/angular/bower-angular@1.5.0/angular.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
