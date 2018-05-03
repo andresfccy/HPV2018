@@ -104,7 +104,7 @@ namespace HPV_Servicios.Reportes.Asistencia
                     {
                         CreateSection();
                         ConfigHeader(os);
-                        ConfigFooter();
+						ConfigFooter();
 
                         FillTableHeader(os);
 
@@ -187,11 +187,11 @@ namespace HPV_Servicios.Reportes.Asistencia
             section.PageSetup.PageWidth = width;
 
             ancho = width - XUnit.FromCentimeter(2).Point;
-            alto = height - XUnit.FromCentimeter(6).Point;
+            alto = height - XUnit.FromCentimeter(1).Point;
 
             section.PageSetup.LeftMargin = XUnit.FromCentimeter(1).Point;
             section.PageSetup.RightMargin = XUnit.FromCentimeter(1).Point;
-            section.PageSetup.TopMargin = XUnit.FromCentimeter(4).Point;
+            section.PageSetup.TopMargin = XUnit.FromCentimeter(5).Point;
             section.PageSetup.BottomMargin = XUnit.FromCentimeter(2).Point;
         }
 
@@ -202,25 +202,25 @@ namespace HPV_Servicios.Reportes.Asistencia
 
             Paragraph paragraph = section.Headers.Primary.AddParagraph();
             var image = paragraph.AddImage(rootPath + "Img/pdfheader.png");
-            image.Height = XUnit.FromCentimeter(1).Point;
-            image.Width = XUnit.FromCentimeter(20).Point;
+            image.Height = XUnit.FromCentimeter(2.4).Point;
+            image.Width = XUnit.FromCentimeter(18).Point;
+            paragraph.Format.Alignment = ParagraphAlignment.Center;			
 
             paragraph = section.Headers.Primary.AddParagraph();
-            paragraph.AddLineBreak();
 
-            paragraph = section.Headers.Primary.AddParagraph("MÓDULO PRESENCIAL DE HABILIDADES PARA LA VIDA/COMPETENCIAS TRANSVERSALES - CONTRATO 503");
+            paragraph = section.Headers.Primary.AddParagraph("MÓDULO PRESENCIAL DE HABILIDADES PARA LA VIDA \"CONSTRUYENDO MI CAMINO\" – CONVENIO DE COOPERACIÓN INTERNACIONAL 287 DE 2018");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 10;
             paragraph.Format.Font.Bold = true;
-            paragraph.Format.Alignment = ParagraphAlignment.Left;
+            paragraph.Format.Alignment = ParagraphAlignment.Center;
 
             MigraDoc.DocumentObjectModel.Tables.Table table = section.Headers.Primary.AddTable();
 
             table.Borders.Width = 0;
-            var column = table.AddColumn(ancho * 0.70);
-            column.Format.Alignment = ParagraphAlignment.Left;
+            var column = table.AddColumn(ancho * 0.65);
+            column.Format.Alignment = ParagraphAlignment.Right;
 
-            column = table.AddColumn(ancho * 0.30);
+            column = table.AddColumn(ancho * 0.35);
             column.Format.Alignment = ParagraphAlignment.Right;
 
             Row row = table.AddRow();
