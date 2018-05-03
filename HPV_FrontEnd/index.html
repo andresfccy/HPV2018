@@ -109,19 +109,21 @@
                                     <li><a href="index.html">Inicio</a></li>
 
                                     <li class="has-dropdown">
-                                        Qué es el módulo HpV
+                                        <a href="">Qué es el módulo HpV</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Información general</a></li>
+                                            <li><a href="#fh5co-features-id">Información general</a></li>
                                             <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
-                                            <li><a href="#">¿Cómo se realiza?</a></li>
+                                            <li><a href="#fh5co-wireframe-how-id">¿Cómo se realiza?</a></li>
                                             <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
-                                            <li><a href="#">¿Dónde se implementa?</a></li>
+                                            <li><a href="#fh5co-wireframe-when-id">¿Cuándo se implementa?</a></li>
                                             <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
-                                            <li><a href="">Términos y condiciones</a></li>
+                                            <li><a href="#fh5co-wireframe-where-id">¿Dónde se implementa?</a></li>
+                                            <hr align="left" noshade="noshade" width="100%" style="border-color: white; border-style:solid; border-width: 0.5px;" />
+                                            <li><a href="#fh5co-started-id">Términos y condiciones</a></li>
                                         </ul>
                                     </li>
 
-                                    <li><a href="#">Consulta tu estado</a></li>
+                                    <li><a ui-sref="participantState">Consulta tu estado</a></li>
 
                                     <li class="btn-cta"><a ui-sref="generateCertificate"><span><i class="icon-star-full"></i> Certificación</span></a></li>
                                     <li class="btn-cta1"><a ui-sref="inscription"><span><i class="icon-pencil"></i> ¡Inscríbete!</span></a></li>
@@ -138,25 +140,21 @@
                     <div class="overlay"></div>
                     <div class="container">
                         <div class="row">
-
                             <div class="col-md-4 text-left fh5co-heading  col-lg-4">
                                 <div class="display-tc js-fullheight animate-box user-frame3" data-animate-effect="fadeIn">
                                     <img src="assets/img/logo_construyendo.png" height="200" width="345">
                                 </div>
-
+                                <div id="fh5co-features-id"></div>
                             </div>
                             <div class="col-md-4 col-md-offset-2 text-left fh5co-heading col-lg-6">
                                 <br></br><br></br>
                                 <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
                                     <h1 class="col-lg-10 col-lg-offset-1">¡LOS LÍMITES LOS PONES TÚ!</h1>
                                     <h2 class="col-lg-offset-0 col-lg-8">llega a donde quieras.</h2>
-                                    <a  ui-sref="inscription" class="btn btn-demo col-lg-offset-0 col-lg-4">¡INSCRÍBETE!</a>
+                                    <a ui-sref="inscription" class="btn btn-demo col-lg-offset-0 col-lg-4">¡INSCRÍBETE!</a>
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </header>
@@ -176,6 +174,7 @@
                             </div>
 
                         </div>
+                        <div id="fh5co-wireframe-how-id"></div>
                     </div>
                 </div>
             </div>
@@ -202,8 +201,8 @@
                     </div>
 
                 </div>
+                <div id="fh5co-wireframe-when-id"></div>
             </div>
-
             <div id="fh5co-wireframe" style="background-color: white;">
                 <div class="container">
                     <div class="row animate-box">
@@ -228,15 +227,9 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
+                <div id="fh5co-wireframe-where-id"></div>
             </div>
-
-
-
             <div id="fh5co-wireframe">
                 <div class="container">
                     <div class="row animate-box">
@@ -256,10 +249,6 @@
                         </div>
 
                     </div>
-
-
-
-
                 </div>
             </div>
             <div id="fh5co-blog">
@@ -268,9 +257,10 @@
                         <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
                             <i class="icon-bullhorn"></i>
                             <h1>Noticias destacadas</h1>
+                            <div id="fh5co-started-id"></div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-repeat="item in ctrl.getNews()">
                         <div class="col-md-12">
                             <div class="fh5co-blog animate-box">
                                 <a href="#" class="blog-bg" style="background-image: url(assets/img/blog-1.jpg);"></a>
@@ -289,7 +279,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="fh5co-started">
                 <div class="overlay"></div>
                 <div class="container">
@@ -335,15 +324,16 @@
         </div>
     </div>
     <!-- jQuery -->
-    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.min.js"></script>
-    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.easing.1.3.js"></script>
-    <script ng-if="ctrl.isIndex()" src="assets/js/bootstrap.min.js"></script>
-    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.waypoints.min.js"></script>
-    <script ng-if="ctrl.isIndex()" src="assets/js/jquery.flexslider-min.js"></script>
-    <script ng-if="ctrl.isIndex()" src="assets/js/main.js"></script>
+    <script src="lib/npm/jquery@2.2.0/dist/jquery.min.js"></script>
+
+    <!--<script ng-controller="HeaderController as ctrl" ng-if="ctrl.isIndex()" src="assets/js/jquery.min.js"></script>-->
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <!--<script src="assets/js/bootstrap.min.js"></script>-->
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.flexslider-min.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <!-- Dependencias -->
-    <script ng-if="!ctrl.isIndex()" src="lib/npm/jquery@2.2.0/dist/jquery.min.js"></script>
     <script src="lib/github/angular/bower-angular@1.5.0/angular.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->

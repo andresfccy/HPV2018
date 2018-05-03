@@ -219,8 +219,7 @@ namespace HPV_Datos.General.Entidad
 
             OracleDataAdapter da = new OracleDataAdapter(Command);
             DataSet ds = new DataSet();
-            OracleParameter parameter = Command.Parameters[nomCursor];
-            da.Fill(ds, "nomCursor", (OracleRefCursor)parameter.Value);
+            da.Fill(ds, "nomCursor", (OracleRefCursor)Command.Parameters[nomCursor].Value);
             if (ds.Tables.Count > 0)
                 foreach (DataRow row in ds.Tables[0].Rows)
                     lista.Add(ParseFromDataRow(row));

@@ -465,8 +465,7 @@ namespace HPV_Datos.Alistamiento
                     || os.Respuesta.Codigo == 63 
                     || os.Respuesta.Codigo == 105 
                     || os.Respuesta.Codigo == 106
-                    || os.Respuesta.Codigo == 107
-                    || os.Respuesta.Codigo == 109)
+                    || os.Respuesta.Codigo == 107)
                 {
                     List<EntidadOracle> lista = entidad.CursorToList("p_resultado");
 

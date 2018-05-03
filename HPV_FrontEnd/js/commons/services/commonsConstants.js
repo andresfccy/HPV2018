@@ -52,7 +52,7 @@
             ROL_LOCALSTORAGE: 'rol',
             NAME_LOCALSTORAGE: 'name',
             CONTENT_TYPE_HEADER: { 'Content-Type': 'application/json' },
-            VERSION: '25.7.16.1'
+            VERSION: '2.05.182' // d.mm.aa#
 
             // URLs Web Services
             , URL_WS_GENERAL: '/General/HPVServiciosGen_JSON.svc'

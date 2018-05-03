@@ -4,7 +4,7 @@ angular.module('prosperidad.inscription')
     .controller('InscriptionController',
     ['$rootScope', '$scope', '$location', '$translate', 'InscriptionService', 'CommonsListasService', 'growl', '$window', '$http',
         'CommonsConstants', '$log', 'CommonsUbicaciones', '$state', 'moment', 'loading',
-    function ($rootScope, $scope, $location, $translate, InscriptionService, CommonsListasService, growl, $window,$http,
+    function ($rootScope, $scope, $location, $translate, InscriptionService, CommonsListasService, growl, $window, $http,
         CommonsConstants, $log, CommonsUbicaciones, $state, moment, loading) {
 
         var self = this;
@@ -340,8 +340,8 @@ angular.module('prosperidad.inscription')
                     }
                     break;
                 case 2:
-                    //if (self.isValidForm(index)) {
-                    if (true) {
+                    if (self.isValidForm(index)) {
+                        //if (true) {
                         validateAvailability();
                     }
                     break;
@@ -424,10 +424,9 @@ angular.module('prosperidad.inscription')
                     && o.Respuesta.Codigo != "63"
                     && o.Respuesta.Codigo != "105"
                     && o.Respuesta.Codigo != "106"
-                    && o.Respuesta.Codigo != "107"
-                    && o.Respuesta.Codigo != "109") {
+                    && o.Respuesta.Codigo != "107") {
                     growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
-                } else if (o.Respuesta.Codigo == "0" || o.Respuesta.Codigo == "109") {
+                } else if (o.Respuesta.Codigo == "0") {
                     // ok
                     self.beneficiary = o.Beneficiario;
                     delete self.beneficiary.Correo;

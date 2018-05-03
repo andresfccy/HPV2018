@@ -520,13 +520,16 @@
                  disable="!ctrl.tabList[3].active || ctrl.sentSurvey"
                  ng-show="ctrl.tabList[3].show">
             <div class="alert alert-info">
-                <h5>Apreciado participante</h5>
+                <h5>Apreciado participante:</h5>
                 <p>
-                    Apreciado estudiante, recibe un cordial saludo; somos un grupo de investigadores del Departamento de Prosperidad Social y la Organización de Estados Iberoamericanos que venimos adelantando un estudio sobre lo que piensan, sienten y hacen los jóvenes y sus familias con respecto a las habilidades para la vida. En ese sentido tu opinión es muy importante para nosotros ya que los resultados de esta encuesta permitirán definir acciones concretas para fortalecer las acciones y políticas públicas con respecto al fortalecimiento de la formación en habilidades para la vida de niños y jóvenes.
+                    Te invitamos a responder la siguiente encuesta, con el fin de conocer lo que
+                    piensas sientes y haces respecto a las Habilidades para la Vida. Lee
+                    cuidadosamente cada pregunta y selecciona una respuesta que refleje tu
+                    experiencia o con la que te identifiques.
                 </p>
                 <p>
-                    Esta información será tratada de manera confidencial,
-                    agradecemos tu honestidad y participación.
+                    Esta información será tratada de manera confidencial, agradecemos tu honestidad
+                    y participación.
                 </p>
             </div>
             <form name="form_encu" id="form_encu">
@@ -535,29 +538,26 @@
                     <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 1}"
                         class="form-group has-feedback">
                         <label for="1poll_radio_question_1" class="control-label" style="white-space:normal">
-                            {{question[0].DescripcionPregunta}}: <span class="text-danger">*</span>
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
                         </label>
                         <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    <input type="radio"
-                                           name="1poll_radio_question_{{$parent.$index+1}}"
-                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
+                            <div class="btn-group-vertical" style="width: 65vw;">
+                                <label class="btn btn-left clearfix"
                                        for="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                        ng-repeat="answer in question"
                                        ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
+                                       style="white-space:normal"
+                                       role="button"
+                                       tabindex="0">
+                                    <input type="radio"
+                                           class="col-md-1"
+                                           name="1poll_radio_question_{{$parent.$index+1}}"
+                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required="">
+                                    <span class="col-md-11">
+                                        {{answer.DescripcionRespuesta}}
+                                    </span>
                                 </label>
                             </div>
                         </div>
@@ -565,42 +565,137 @@
                 </ol>
                 <div class="alert alert-info">
                     <p>
-                        A continuación, expresa tu opinión sobre las siguientes afirmaciones según si estás totalmente de acuerdo, de acuerdo, ni de acuerdo ni en desacuerdo, o en desacuerdo ó
-                        selecciona la casilla que corresponda según consideres para cada afirmación, como siempre, casi siempre, algunas veces o nunca.
+                        <b>CONOCIMIENTOS, ACTITUDES Y PRÁCTICAS:</b> Queremos hacerte algunas
+                        preguntas acerca de lo que sabes, de cómo te sientes y te comportas en relación a las
+                        habilidades para la vida.
                     </p>
                 </div>
                 <ol class="form-questions">
                     <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 2}"
                         class="form-group has-feedback">
                         <label for="2poll_radio_question_1" class="control-label" style="white-space:normal">
-                            {{question[0].DescripcionPregunta}}: <span class="text-danger">*</span>
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
                         </label>
                         <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    <input type="radio"
-                                           name="2poll_radio_question_{{$parent.$index+1}}"
-                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
+                            <div class="btn-group-vertical" style="width: 65vw;">
+                                <label class="btn btn-left clearfix"
                                        for="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                        ng-repeat="answer in question"
                                        ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
+                                       style="white-space:normal"
+                                       role="button"
+                                       tabindex="0">
+                                    <input type="radio"
+                                           class="col-md-1"
+                                           name="2poll_radio_question_{{$parent.$index+1}}"
+                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required="">
+                                    <span class="col-md-11">
+                                        {{answer.DescripcionRespuesta}}
+                                    </span>
                                 </label>
                             </div>
                         </div>
                     </li>
                 </ol>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="alert alert-info">
+                            <p>
+                                A continuación, expresa tu opinión sobre las afirmaciones seleccionando la opción que
+                                corresponda de acuerdo a la siguiente escala:
+                            </p>
+                            <p>
+                                TA=Totalmente de acuerdo, A= de acuerdo, NA/ND=ni de acuerdo ni en desacuerdo,
+                                D= En desacuerdo y TD= Totalmente en desacuerdo
+                            </p>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-7">Pregunta</th>
+                                <th class="text-center">TA</th>
+                                <th class="text-center">A</th>
+                                <th class="text-center">NA/ND</th>
+                                <th class="text-center">D</th>
+                                <th class="text-center">TD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 3}"
+                                class="form-group has-feedback">
+                                <th class="text-center">{{$index+1}}</th>
+                                <td for="3poll_radio_question_1" class="control-label" style="white-space:normal">
+                                    {{question[0].DescripcionPregunta}}*
+                                </td>
+                                <td style="padding: 0; vertical-align: middle;"
+                                    ng-repeat="answer in question">
+                                    <label class="text-center"
+                                           for="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                           style="white-space:normal; width: 100%;"
+                                           role="button"
+                                           tabindex="0">
+                                        <input type="radio"
+                                               name="3poll_radio_question_{{$parent.$index+1}}"
+                                               id="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                               title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                               required="">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel panel panel-default">
+                    <div class="panel-body">
+                        <div class="alert alert-info">
+                            <p>
+                                Selecciona la casilla que corresponda según consideres para cada afirmación, de
+                                acuerdo a la siguiente escala:
+                            </p>
+                            <p>Siempre, casi siempre, algunas veces o nunca.</p>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-7">Pregunta</th>
+                                <th class="text-center">Siempre</th>
+                                <th class="text-center">Casi siempre</th>
+                                <th class="text-center">Algunas veces</th>
+                                <th class="text-center">Nunca</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 4}"
+                                class="form-group has-feedback">
+                                <th class="text-center">{{$index+1}}</th>
+                                <td for="4poll_radio_question_1" class="control-label" style="white-space:normal">
+                                    {{question[0].DescripcionPregunta}}*
+                                </td>
+                                <td ng-repeat="answer in question" style="padding: 0; vertical-align: middle;">
+                                    <label class="text-center"
+                                           for="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                           style="white-space:normal; width: 100%;"
+                                           role="button"
+                                           tabindex="0">
+                                        <input type="radio"
+                                               name="4poll_radio_question_{{$parent.$index+1}}"
+                                               id="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                               title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                               required="">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div ng-if="!ctrl.isValidForm(3)">
                     <span class="col-sm-12 alert alert-danger ng-binding">
                         Aún faltan preguntas por contestar de la encuesta.
@@ -640,13 +735,13 @@
                  ng-if="!ctrl.sentSurvey && ctrl.case==1">
                 Te inscribiste en el primer periodo y te identificamos con 0% de asistencia. En este segundo periodo no puedes faltar. ¡Aprovecha esta oportunidad!
                 <br /><br />
-                En los próximos días será enviado al correo electrónico que registraste, la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
+                Hemos enviado la confirmación de tu inscripción al correo electrónico que registraste. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
             </div>
             <div class="alert alert-info"
                  ng-if="!ctrl.sentSurvey && ctrl.case==2">
                 Te inscribiste en el primer periodo y te identificamos con muy baja asistencia, por eso, tu inscripción en este segundo periodo se encuentra sujeta a la disponibilidad de cupos en tu municipio.
                 <br /><br />
-                En los próximos días será enviado al correo electrónico que registraste, la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
+                Hemos enviado la confirmación de tu inscripción al correo electrónico que registraste. Recuerda revisar tu bandeja de correo no deseado o SPAM, si no lo encuentras en tu bandeja de entrada.
             </div>
             <div class="alert alert-info"
                  ng-if="ctrl.case==3">
@@ -663,9 +758,9 @@
                 Si te surge alguna inquietud puedes comunicarte con nosotros:<br />
                 <ul>
                     <li>Página Web <a href="http://www.prosperidadsocial.gov.co">www.prosperidadsocial.gov.co</a>.</li>
-                    <li>Atención al Ciudadano Bogotá: 595-44-10</li>
-                    <li>Línea Gratuita Naciona 01-8000-95-1100</li>
-                    <li>Mensajes de Texto Gratuitos 85594</li>
+                    <li>Atención al ciudadano Bogotá: 595-44-10</li>
+                    <li>Línea Gratuita Nacional 01-8000-95-1100</li>
+                    <li>Mensajes de texto gratuitos 85594</li>
                 </ul>
             </div>
             <div class="alert alert-info"
@@ -685,8 +780,7 @@
                  ng-if="ctrl.sentSurvey && (ctrl.case==1 || ctrl.case==2 || ctrl.case==5)">
                 <div class="alert alert-success">
                     <strong>REGISTRO EXITOSO</strong><br />
-                    En los próximos días será enviado al correo electrónico que registraste,
-                    la confirmación de tu inscripción. Recuerda revisar tu bandeja de correo no deseado o spam, si no lo encuentras en tu bandeja principal.<br />
+                    <p>Hemos enviado la confirmación de tu inscripción al correo electrónico que registraste. Recuerda revisar tu bandeja de correo no deseado o spam, si no lo encuentras en tu bandeja principal.</p><br />
                 </div>
             </div>
             <div class="register-confirm-agree"
