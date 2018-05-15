@@ -36,7 +36,7 @@ angular.module('prosperidad.users')
             function initialize() {
                 if (self.isEdition()) {
                     if (isProfileEdition()) {
-                        if (!SessionsBusiness.getUserIdFromLocalStorage() || SessionsBusiness.getUserIdFromLocalStorage() <= 0) {
+                        if (!SessionsBusiness.getUserIdFromLocalStorage() || SessionsBusiness.getUserIdFromLocalStorage() < 0) {
                             $state.go("home");
                         }
                         console.log(SessionsBusiness.getUserIdFromLocalStorage())
