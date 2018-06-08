@@ -843,12 +843,12 @@ angular.module('prosperidad.inscription')
                 var today = moment();
                 var initDate = moment(getSeason().FechaInicial);
                 var finalDate = moment(getSeason().FechaFinal);
-                if (initDate >= today && today <= finalDate) {
+                if (initDate <= today && today <= finalDate) {
                     return true;
                 } else {
                     // Cambiar a FALSE cuando se necesite la validación correcta.
                     // Siempre retorna TRUE para pruebas.
-                    return true;
+                    return false;
                 }
             }
         }
