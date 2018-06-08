@@ -37,6 +37,7 @@
     , 'prosperidad.leadership'
     , 'prosperidad.parameters'
     , 'prosperidad.reports'
+    , 'prosperidad.systematization'
 ])
     .run(
     ['$rootScope', '$state', '$stateParams', 
