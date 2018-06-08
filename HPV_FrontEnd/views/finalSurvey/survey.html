@@ -21,7 +21,7 @@
                 </p>
             </div>
             <form name="form_encu" id="form_encu">
-                <div ng-init="ctrl.initializeForm(form)"></div>
+                <div ng-init="ctrl.initializeForm(3,form_encu)"></div>
                 <ol class="form-questions">
                     <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 1}"
                         class="form-group has-feedback">
@@ -29,26 +29,23 @@
                             {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
                         </label>
                         <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    <input type="radio"
-                                           name="1poll_radio_question_{{$parent.$index+1}}"
-                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
+                            <div class="btn-group-vertical" style="width: 65vw;">
+                                <label class="btn btn-left clearfix"
                                        for="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                        ng-repeat="answer in question"
                                        ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
+                                       style="white-space:normal"
+                                       role="button"
+                                       tabindex="0">
+                                    <input type="radio"
+                                           class="col-md-1"
+                                           name="1poll_radio_question_{{$parent.$index+1}}"
+                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required="">
+                                    <span class="col-md-11">
+                                        {{answer.DescripcionRespuesta}}
+                                    </span>
                                 </label>
                             </div>
                         </div>
@@ -68,112 +65,125 @@
                             {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
                         </label>
                         <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    <input type="radio"
-                                           name="2poll_radio_question_{{$parent.$index+1}}"
-                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
+                            <div class="btn-group-vertical" style="width: 65vw;">
+                                <label class="btn btn-left clearfix"
                                        for="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                        ng-repeat="answer in question"
                                        ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
-                                </label>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
-                <div class="alert alert-info">
-                    <p>
-                        A continuación, expresa tu opinión sobre las afirmaciones seleccionando la opción que
-                        corresponda de acuerdo a la siguiente escala:
-                    </p>
-                    <p>
-                        TA=Totalmente de acuerdo, A= de acuerdo, NA/ND=ni de acuerdo ni en desacuerdo,
-                        D= En desacuerdo y TD= Totalmente en desacuerdo
-                    </p>
-                </div>
-                <ol class="form-questions">
-                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 3}"
-                        class="form-group has-feedback">
-                        <label for="3poll_radio_question_1" class="control-label" style="white-space:normal">
-                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
-                        </label>
-                        <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
+                                       style="white-space:normal"
+                                       role="button"
+                                       tabindex="0">
                                     <input type="radio"
-                                           name="3poll_radio_question_{{$parent.$index+1}}"
-                                           id="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           class="col-md-1"
+                                           name="2poll_radio_question_{{$parent.$index+1}}"
+                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                            title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
-                                       for="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
+                                           required="">
+                                    <span class="col-md-11">
+                                        {{answer.DescripcionRespuesta}}
+                                    </span>
                                 </label>
                             </div>
                         </div>
                     </li>
                 </ol>
-                <div class="alert alert-info">
-                    <p>
-                        Selecciona la casilla que corresponda según consideres para cada afirmación, de
-                        acuerdo a la siguiente escala:
-                    </p>
-                    <p>Siempre, casi siempre, algunas veces o nunca.</p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="alert alert-info">
+                            <p>
+                                A continuación, expresa tu opinión sobre las afirmaciones seleccionando la opción que
+                                corresponda de acuerdo a la siguiente escala:
+                            </p>
+                            <p>
+                                TA=Totalmente de acuerdo, A= de acuerdo, NA/ND=ni de acuerdo ni en desacuerdo,
+                                D= En desacuerdo y TD= Totalmente en desacuerdo
+                            </p>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-7">Pregunta</th>
+                                <th class="text-center">TA</th>
+                                <th class="text-center">A</th>
+                                <th class="text-center">NA/ND</th>
+                                <th class="text-center">D</th>
+                                <th class="text-center">TD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 3}"
+                                class="form-group has-feedback">
+                                <th class="text-center">{{$index+1}}</th>
+                                <td for="3poll_radio_question_1" class="control-label" style="white-space:normal">
+                                    {{question[0].DescripcionPregunta}}*
+                                </td>
+                                <td style="padding: 0; vertical-align: middle;"
+                                    ng-repeat="answer in question">
+                                    <label class="text-center"
+                                           for="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                           style="white-space:normal; width: 100%;"
+                                           role="button"
+                                           tabindex="0">
+                                        <input type="radio"
+                                               name="3poll_radio_question_{{$parent.$index+1}}"
+                                               id="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                               title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                               required="">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <ol class="form-questions">
-                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 4}"
-                        class="form-group has-feedback">
-                        <label for="4poll_radio_question_1" class="control-label" style="white-space:normal">
-                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
-                        </label>
-                        <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    <input type="radio"
-                                           name="4poll_radio_question_{{$parent.$index+1}}"
-                                           id="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical" style="max-width:80%">
-                                <label class="btn btn-left"
-                                       for="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
-                                       style="white-space:normal">
-                                    {{answer.DescripcionRespuesta}}
-                                </label>
-                            </div>
+                <div class="panel panel panel-default">
+                    <div class="panel-body">
+                        <div class="alert alert-info">
+                            <p>
+                                Selecciona la casilla que corresponda según consideres para cada afirmación, de
+                                acuerdo a la siguiente escala:
+                            </p>
+                            <p>Siempre, casi siempre, algunas veces o nunca.</p>
                         </div>
-                    </li>
-                </ol>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-7">Pregunta</th>
+                                <th class="text-center">Siempre</th>
+                                <th class="text-center">Casi siempre</th>
+                                <th class="text-center">Algunas veces</th>
+                                <th class="text-center">Nunca</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 4}"
+                                class="form-group has-feedback">
+                                <th class="text-center">{{$index+1}}</th>
+                                <td for="4poll_radio_question_1" class="control-label" style="white-space:normal">
+                                    {{question[0].DescripcionPregunta}}*
+                                </td>
+                                <td ng-repeat="answer in question" style="padding: 0; vertical-align: middle;">
+                                    <label class="text-center"
+                                           for="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                           style="white-space:normal; width: 100%;"
+                                           role="button"
+                                           tabindex="0">
+                                        <input type="radio"
+                                               name="4poll_radio_question_{{$parent.$index+1}}"
+                                               id="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                               title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                               required="">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div ng-if="!ctrl.isValidForm(3)">
                     <span class="col-sm-12 alert alert-danger ng-binding">
                         Aún faltan preguntas por contestar de la encuesta.
@@ -191,43 +201,43 @@
                 </div>
             </form>
             <!--<form name="form" id="form">
-                <div ng-init="ctrl.initializeForm(form)"></div>
-                <ol class="form-questions">
-                    <li ng-repeat="question in ctrl.survey"
-                        class="form-group has-finalSurvey">
-                        <label for="poll_radio_question_1" class="control-label">
-                            {{question[0].DescripcionPregunta}}<span class="text-danger">*</span> :
+        <div ng-init="ctrl.initializeForm(form)"></div>
+        <ol class="form-questions">
+            <li ng-repeat="question in ctrl.survey"
+                class="form-group has-finalSurvey">
+                <label for="poll_radio_question_1" class="control-label">
+                    {{question[0].DescripcionPregunta}}<span class="text-danger">*</span> :
+                </label>
+                <div class="padding-top-20">
+                    <div class="btn-group-vertical" data-toggle="buttons">
+                        <label class="btn btn-default"
+                               ng-repeat="answer in question"
+                               ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                            <input type="radio"
+                                   name="poll_radio_question_{{$parent.$index+1}}"
+                                   id="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                   title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                   required>
+                            {{answer.LetraPregunta}}
                         </label>
-                        <div class="padding-top-20">
-                            <div class="btn-group-vertical" data-toggle="buttons">
-                                <label class="btn btn-default"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
-                                    <input type="radio"
-                                           name="poll_radio_question_{{$parent.$index+1}}"
-                                           id="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                           required>
-                                    {{answer.LetraPregunta}}
-                                </label>
-                            </div>
-                            <div class="btn-group-vertical">
-                                <label class="btn btn-left"
-                                       for="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                       ng-repeat="answer in question"
-                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
-                                    {{answer.DescripcionRespuesta}}
-                                </label>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
-                <div ng-if="!ctrl.isValidForm(3)">
-                    <span class="col-sm-12 alert alert-danger">
-                        {{'finalSurvey.incomplete'|translate}}
-                    </span>
+                    </div>
+                    <div class="btn-group-vertical">
+                        <label class="btn btn-left"
+                               for="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                               ng-repeat="answer in question"
+                               ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                            {{answer.DescripcionRespuesta}}
+                        </label>
+                    </div>
                 </div>
-            </form>-->
+            </li>
+        </ol>
+        <div ng-if="!ctrl.isValidForm(3)">
+            <span class="col-sm-12 alert alert-danger">
+                {{'finalSurvey.incomplete'|translate}}
+            </span>
+        </div>
+    </form>-->
         </div>
         <div class="panel-footer clearfix">
 
