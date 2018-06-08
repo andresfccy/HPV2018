@@ -7,7 +7,190 @@
             {{'finalSurvey.module'|translate}}
         </div>
         <div class="panel-body">
-            <form name="form" id="form">
+            <div class="alert alert-info">
+                <h5>Apreciado participante:</h5>
+                <p>
+                    Te invitamos a responder la siguiente encuesta, con el fin de conocer lo que
+                    piensas sientes y haces respecto a las Habilidades para la Vida. Lee
+                    cuidadosamente cada pregunta y selecciona una respuesta que refleje tu
+                    experiencia o con la que te identifiques.
+                </p>
+                <p>
+                    Esta información será tratada de manera confidencial, agradecemos tu honestidad
+                    y participación.
+                </p>
+            </div>
+            <form name="form_encu" id="form_encu">
+                <div ng-init="ctrl.initializeForm(form)"></div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 1}"
+                        class="form-group has-feedback">
+                        <label for="1poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="1poll_radio_question_{{$parent.$index+1}}"
+                                           id="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="1poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="alert alert-info">
+                    <p>
+                        <b>CONOCIMIENTOS, ACTITUDES Y PRÁCTICAS:</b> Queremos hacerte algunas
+                        preguntas acerca de lo que sabes, de cómo te sientes y te comportas en relación a las
+                        habilidades para la vida.
+                    </p>
+                </div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 2}"
+                        class="form-group has-feedback">
+                        <label for="2poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="2poll_radio_question_{{$parent.$index+1}}"
+                                           id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="alert alert-info">
+                    <p>
+                        A continuación, expresa tu opinión sobre las afirmaciones seleccionando la opción que
+                        corresponda de acuerdo a la siguiente escala:
+                    </p>
+                    <p>
+                        TA=Totalmente de acuerdo, A= de acuerdo, NA/ND=ni de acuerdo ni en desacuerdo,
+                        D= En desacuerdo y TD= Totalmente en desacuerdo
+                    </p>
+                </div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 3}"
+                        class="form-group has-feedback">
+                        <label for="3poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="3poll_radio_question_{{$parent.$index+1}}"
+                                           id="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="3poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="alert alert-info">
+                    <p>
+                        Selecciona la casilla que corresponda según consideres para cada afirmación, de
+                        acuerdo a la siguiente escala:
+                    </p>
+                    <p>Siempre, casi siempre, algunas veces o nunca.</p>
+                </div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 4}"
+                        class="form-group has-feedback">
+                        <label for="4poll_radio_question_1" class="control-label" style="white-space:normal">
+                            {{question[0].DescripcionPregunta}} <span class="text-danger">*</span>
+                        </label>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    <input type="radio"
+                                           name="4poll_radio_question_{{$parent.$index+1}}"
+                                           id="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical" style="max-width:80%">
+                                <label class="btn btn-left"
+                                       for="4poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)"
+                                       style="white-space:normal">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div ng-if="!ctrl.isValidForm(3)">
+                    <span class="col-sm-12 alert alert-danger ng-binding">
+                        Aún faltan preguntas por contestar de la encuesta.
+                    </span>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-default pull-left"
+                            ng-click="ctrl.goBack(3)">
+                        Anterior
+                    </button>
+                    <button class="btn btn-success pull-right"
+                            ng-click="ctrl.submitForm(3)">
+                        Siguiente
+                    </button>
+                </div>
+            </form>
+            <!--<form name="form" id="form">
                 <div ng-init="ctrl.initializeForm(form)"></div>
                 <ol class="form-questions">
                     <li ng-repeat="question in ctrl.survey"
@@ -44,7 +227,7 @@
                         {{'finalSurvey.incomplete'|translate}}
                     </span>
                 </div>
-            </form>
+            </form>-->
         </div>
         <div class="panel-footer clearfix">
 
