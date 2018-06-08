@@ -1,0 +1,79 @@
+﻿<article>
+    <div class="panel panel-default panel-ps dataTables_wrapper">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'systematization.panelTitle'|translate}}</h3>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+
+                <div class="pull-right">
+                    <uib-pagination boundary-links="true"
+                                    total-items="sysListUpCtrl.total"
+                                    items-per-page="maxResultsPerPage"
+                                    max-size="sysListUpCtrl.maxSize"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    rotate="false"
+                                    ng-model="sysListUpCtrl.currentPage">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-lg-12 text-right">
+                        <span>{{'systematization.showing'|translate}}</span>
+                        <select id="cantItems"
+                                ng-options="item.cant as item.cant for item in sysListUpCtrl.opcLimit"
+                                ng-model="maxResultsPerPage"></select>
+                        <span>{{'systematization.of'|translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-info"
+                 ng-show="!sysListUpCtrl.sysList">
+                {{'lifeStory.loading'|translate}}
+
+            </div>
+            <div class="alert alert-warning"
+                 ng-show="sysListUpCtrl.sysList && sysListUpCtrl.sysList.length == 0">
+                {{'systematization.noDataFound'|translate}}
+            </div>
+            <table class="table table-hover dataTable"
+                   ng-show="sysListUpCtrl.sysList.length > 0">
+                <thead>
+                    <tr>
+                        <th>{{'systematization.facilitator'|translate}}</th>
+                        <th>{{'systematization.participant'|translate}}</th>
+                        <th>{{'systematization.group'|translate}}</th>
+                        <th>{{'systematization.city'|translate}}</th>
+                        <th>{{'systematization.detail'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in sysListUpCtrl.filtered | startFrom:(sysListUpCtrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                    <tr>
+                        <td>{{item.NomFacilitador}}</td>
+                        <td>{{item.NomInscrito}}</td>
+                        <td>{{item.SiglaGrupo}}</td>
+                        <td>{{item.NomMunicipio}}</td>
+                        <td>
+                            <a href=""
+                               ng-click="sysListUpCtrl.goToSystematization(item.Id)">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <div class="col-lg-12">
+                    <div class="btn btn-success pull-right"
+                         ng-click="sysListUpCtrl.createSystematization()">
+                        {{'systematization.new'|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

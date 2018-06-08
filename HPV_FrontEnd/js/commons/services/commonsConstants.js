@@ -71,6 +71,8 @@
             , URL_WS_REPORTES: '/Reportes/HPVServiciosReportes_JSON.svc'
             , URL_WS_FECHA_CORTE: '/FechaCorte/HPVServiciosFechaCorte_JSON.svc'
 
+            , URL_WS_SISTEMATIZACION: '/Sistematizacion/HPVServiciosSistematizacion_JSON.svc'
+
             , OPTIONS_RELATION: constructOptionsRelation()
         };
 

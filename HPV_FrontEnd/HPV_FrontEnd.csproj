@@ -1381,6 +1381,13 @@
     <Content Include="js\successCase\routes\successCaseRoutes.js" />
     <Content Include="js\successCase\services\successCaseService.js" />
     <Content Include="js\successCase\successCaseModule.js" />
+    <Content Include="js\systematization\controllers\systematizationDetailAdminController.js" />
+    <Content Include="js\systematization\controllers\systematizationListAdminController.js" />
+    <Content Include="js\systematization\controllers\systematizationDetailUploadController.js" />
+    <Content Include="js\systematization\controllers\systematizationListUploadController.js" />
+    <Content Include="js\systematization\routes\systematizationRoutes.js" />
+    <Content Include="js\systematization\services\systematizationService.js" />
+    <Content Include="js\systematization\systematizationModule.js" />
     <Content Include="js\uploadable\controllers\uploadableDetailSupervisorController.js" />
     <Content Include="js\uploadable\controllers\uploadableDetailCoordinatorController.js" />
     <Content Include="js\uploadable\controllers\uploadableDetailFacilitatorController.js" />
@@ -7523,6 +7530,10 @@
     <Content Include="views\successCase\successCaseListSupervisor.html" />
     <Content Include="views\successCase\successCaseListCoordinator.html" />
     <Content Include="views\successCase\successCaseListFacilitator.html" />
+    <Content Include="views\systematization\systematizationDetailAdmin.html" />
+    <Content Include="views\systematization\systematizationDetailUpload.html" />
+    <Content Include="views\systematization\systematizationListAdmin.html" />
+    <Content Include="views\systematization\systematizationListUpload.html" />
     <Content Include="views\uploadable\attendanceDetailSupervisor.html" />
     <Content Include="views\uploadable\attendanceDetailCoordinator.html" />
     <Content Include="views\uploadable\attendanceListSupervisor.html" />
@@ -10248,6 +10259,8 @@
     <Content Include="assets\fonts\icomoon\icomoon\fonts\icomoon.ttf" />
     <Content Include="assets\fonts\icomoon\icomoon\fonts\icomoon.woff" />
     <Content Include="assets\fonts\icomoon\icomoon\selection.json" />
+    <Content Include="assets\i18n\systematization\systematization-es.json" />
+    <Content Include="assets\i18n\systematization\systematization-en.json" />
     <None Include="Properties\PublishProfiles\HPV-Front.pubxml" />
     <None Include="Properties\PublishProfiles\HPV_Front.pubxml" />
   </ItemGroup>

@@ -1,0 +1,82 @@
+﻿<article ng-init="ctrl.initialize()">
+    <div class="col-lg-12 alert alert-warning"
+         ng-show="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoAsistencia == ctrl.assistanceStates[3].Descripcion">
+        <span translate>uploadable.disclaimer1</span> <a href="#" ng-click="status.open1=true">{{'uploadable.disclaimer2'|translate}}</a>
+        {{'uploadable.disclaimer3'|translate}} <a href="#" ng-click="status.open2=true">{{'uploadable.disclaimer4'|translate}}</a>.
+    </div>
+    <form id="contenedor1"
+          name="form">
+        <div class="col-lg-12"
+             style="padding-left:0px; padding-right:0px;"
+             ng-init="ctrl.initializeForm(form)">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="workshop" class="blueLabel">{{'uploadable.workshop'|translate}}</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'uploadable.workshop'|translate}}"
+                           id="workshop"
+                           name="workshop"
+                           ng-value="ctrl.uploadable.NomTaller+': '+ctrl.uploadable.DescripcionTaller"
+                           disabled>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="group" class="blueLabel">{{'uploadable.group'|translate}}</label>
+                    <input class="form-control"
+                           type="text"
+                           placeholder="{{'uploadable.group'|translate}}"
+                           id="group"
+                           name="group"
+                           ng-value="ctrl.uploadable.NombreGrupo"
+                           disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12" style="padding-left:0px; padding-right:0px; padding-top:25px;">
+            <uib-accordion>
+                <uib-accordion-group is-open="status.open1">
+                    <uib-accordion-heading>
+                        {{'uploadable.tabDocument'|translate}} *
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                    </uib-accordion-heading>
+                    <div class="col-lg-12"
+                         ng-if="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[2].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.noWhere">
+                        {{'uploadable.attendaceListDocument'|translate}}
+                        <div ngf-drop ngf-select
+                             ng-model="ctrl.file"
+                             class="drop-box"
+                             ngf-drag-over-class="'dragover'"
+                             ngf-multiple="false"
+                             ngf-allow-dir="true"
+                             ngf-pattern="'application/pdf'">
+                            {{'uploadable.dragNDrop'|translate}}
+                        </div>
+                        <div ngf-no-file-drop>{{'uploadable.noDragNDrop'|translate}}</div>
+                    </div>
+                    <div class="col-lg-6"
+                         ng-if="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[2].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.noWhere">
+                        <div class="form-group">
+                            <label for="file" class="blueLabel">{{'uploadable.file'|translate}} *</label>
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="{{'uploadable.file'|translate}}"
+                                   value="{{ctrl.file.name}} {{ctrl.file.$error}} {{ctrl.file.$errorParam}}"
+                                   id="state"
+                                   name="state"
+                                   disabled>
+                        </div>
+                    </div>
+                </uib-accordion-group>
+
+            </uib-accordion>
+        </div>
+        <div id="butBack">
+            <button class="btn btn-warning"
+                    ng-click="ctrl.goBack()">
+                {{ 'uploadable.back' | translate }}
+            </button>
+        </div>
+    </form>
+</article>
