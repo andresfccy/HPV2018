@@ -118,20 +118,20 @@ namespace HPV_Servicios.Reportes.Certificado
 
             
             Paragraph paragraph = section.Headers.Primary.AddParagraph();
-            var image = paragraph.AddImage(rootPath + "Img/pdfheader.png");
+            var image = paragraph.AddImage(rootPath + "Img/pdfheader2018-1.png");
             image.Height = XUnit.FromCentimeter(3).Point;
             image.Width = XUnit.FromCentimeter(25).Point;
 
             paragraph = section.Headers.Primary.AddParagraph();
             paragraph.AddLineBreak();
 
-            paragraph = section.Headers.Primary.AddParagraph("Prosperidad Social y su programa");
+            paragraph = section.Headers.Primary.AddParagraph("El Programa Jóvenes en Acción de Prosperidad Social en alianza con la Organización");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 16;
             paragraph.Format.Font.Bold = true;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("Jóvenes en Acción");
+            paragraph = section.Headers.Primary.AddParagraph("de Estados Iberoamericanos y la Universidad de Santander.");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 16;
             paragraph.Format.Font.Bold = true;
@@ -179,28 +179,28 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = section.Headers.Primary.AddParagraph("");
 
-            paragraph = section.Headers.Primary.AddParagraph("Asistió y participó activamente a los talleres del Módulo Presencial del Componente de Habilidades para la Vida bajo la metodología");
+            paragraph = section.Headers.Primary.AddParagraph("Asistió y participó activamente en el Módulo Presencial – “Construyendo Mi Camino”, como proceso de formación de veintiséis (26) horas,");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("de aprendizaje experiencial, desarrollando Competencias Laborales y las siguientes Competencias Transversales: Resiliencia,");
+            paragraph = section.Headers.Primary.AddParagraph("desarrollando ocho (8) talleres bajo la metodología de aprendizaje experiencial, en los cuales se fortalecieron las siguientes Habilidades");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("Perseverancia, Gestión de Conflictos, Comunicación Asertiva, Adaptabilidad, Empatía y Toma de Decisiones, realizados en 2 meses con");
+            paragraph = section.Headers.Primary.AddParagraph("para la Vida: LIDERAZGO, AUTOCONOCIMIENTO, RESILIENCIA, EMPATÍA, TRABAJO EN EQUIPO, GESTIÓN DE CONFLICTOS, ");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("una intensidad de 24 horas.");
+            paragraph = section.Headers.Primary.AddParagraph("TOMA DE DECISIONES Y COMUNICACIÓN ASERTIVA, contribuyendo así a su bienestar personal, familiar, social y productivo.");
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
@@ -240,9 +240,9 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = section.Headers.Primary.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Center;
-            var image2 = paragraph.AddImage(rootPath + "Img/firmaCertificado.png");
+            var image2 = paragraph.AddImage(rootPath + "Img/firmaCertificado2018-1.png");
             image2.Height = XUnit.FromCentimeter(5).Point;
-            image2.Width = XUnit.FromCentimeter(10).Point;
+            image2.Width = XUnit.FromCentimeter(25).Point;
 
             
 

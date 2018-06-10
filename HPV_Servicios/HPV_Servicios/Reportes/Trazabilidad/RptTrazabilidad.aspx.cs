@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Threading;
 
 namespace HPV_Servicios.Reportes.Trazabilidad
 {
@@ -97,6 +97,8 @@ namespace HPV_Servicios.Reportes.Trazabilidad
 
                 rpt.SalvarComo(rutaRpt);
                 rpt.Cerrar();
+				
+				Thread.Sleep(2000);
 
                 byte[] binaryRpt = File.ReadAllBytes(rutaRpt);
 
@@ -108,6 +110,8 @@ namespace HPV_Servicios.Reportes.Trazabilidad
                 
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
+				Response.Flush(); 
+				Response.End();
                 
 
 
