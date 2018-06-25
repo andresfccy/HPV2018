@@ -1,4 +1,4 @@
-<article ng-init="ctrl.initialize()">
+Ôªø<article ng-init="ctrl.initialize()">
     <p ng-show="ctrl.response == 0" translate="finalSurvey.description" translate-compile></p>
     <p ng-show="ctrl.response == 0" class="text-info text-right"><span class="text-danger">*</span> {{'requiredField'|translate}}</p>
 
@@ -16,8 +16,8 @@
                     experiencia o con la que te identifiques.
                 </p>
                 <p>
-                    Esta informaciÛn ser· tratada de manera confidencial, agradecemos tu honestidad
-                    y participaciÛn.
+                    Esta informaci√≥n ser√° tratada de manera confidencial, agradecemos tu honestidad
+                    y participaci√≥n.
                 </p>
             </div>
             <form name="form_encu" id="form_encu">
@@ -53,8 +53,8 @@
                 </ol>
                 <div class="alert alert-info">
                     <p>
-                        <b>CONOCIMIENTOS, ACTITUDES Y PR¡CTICAS:</b> Queremos hacerte algunas
-                        preguntas acerca de lo que sabes, de cÛmo te sientes y te comportas en relaciÛn a las
+                        <b>CONOCIMIENTOS, ACTITUDES Y PR√ÅCTICAS:</b> Queremos hacerte algunas
+                        preguntas acerca de lo que sabes, de c√≥mo te sientes y te comportas en relaci√≥n a las
                         habilidades para la vida.
                     </p>
                 </div>
@@ -79,7 +79,7 @@
                                            id="2poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
                                            title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
                                            required="">
-                                    <span class="col-md-11">
+                                    <span class="col-md-7">
                                         {{answer.DescripcionRespuesta}}
                                     </span>
                                 </label>
@@ -91,7 +91,7 @@
                     <div class="panel-body">
                         <div class="alert alert-info">
                             <p>
-                                A continuaciÛn, expresa tu opiniÛn sobre las afirmaciones seleccionando la opciÛn que
+                                A continuaci√≥n, expresa tu opini√≥n sobre las afirmaciones seleccionando la opci√≥n que
                                 corresponda de acuerdo a la siguiente escala:
                             </p>
                             <p>
@@ -142,7 +142,7 @@
                     <div class="panel-body">
                         <div class="alert alert-info">
                             <p>
-                                Selecciona la casilla que corresponda seg˙n consideres para cada afirmaciÛn, de
+                                Selecciona la casilla que corresponda seg√∫n consideres para cada afirmaci√≥n, de
                                 acuerdo a la siguiente escala:
                             </p>
                             <p>Siempre, casi siempre, algunas veces o nunca.</p>
@@ -186,18 +186,8 @@
                 </div>
                 <div ng-if="!ctrl.isValidForm(3)">
                     <span class="col-sm-12 alert alert-danger ng-binding">
-                        A˙n faltan preguntas por contestar de la encuesta.
+                        A√∫n faltan preguntas por contestar de la encuesta.
                     </span>
-                </div>
-                <div class="col-sm-12">
-                    <button class="btn btn-default pull-left"
-                            ng-click="ctrl.goBack(3)">
-                        Anterior
-                    </button>
-                    <button class="btn btn-success pull-right"
-                            ng-click="ctrl.submitForm(3)">
-                        Siguiente
-                    </button>
                 </div>
             </form>
             <!--<form name="form" id="form">
