@@ -99,13 +99,14 @@ namespace HPV_Servicios.Reportes.UsuariosSistema
 
 
                 Response.Clear();
-                
+
                 Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("Content-Disposition", "attachment;filename=UsuariosSistema-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+                Response.AddHeader("Content-Disposition", "attachment;filename=UsuariosSistema-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
-                
-
+                Response.Flush();
+                Response.End();
 
             }
             catch (Exception err)

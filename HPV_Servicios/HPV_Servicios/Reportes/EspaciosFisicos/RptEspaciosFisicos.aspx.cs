@@ -99,12 +99,14 @@ namespace HPV_Servicios.Reportes.EspaciosFisicos
 
 
                 Response.Clear();
-                
+
                 Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("Content-Disposition", "attachment;filename=EspaciosFisicos-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+                Response.AddHeader("Content-Disposition", "attachment;filename=EspaciosFisicos-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
-                
+                Response.Flush();
+                Response.End();
 
 
             }

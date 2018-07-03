@@ -98,8 +98,6 @@ namespace HPV_Servicios.Reportes.Trazabilidad
                 rpt.SalvarComo(rutaRpt);
                 rpt.Cerrar();
 				
-				Thread.Sleep(2000);
-
                 byte[] binaryRpt = File.ReadAllBytes(rutaRpt);
 
 

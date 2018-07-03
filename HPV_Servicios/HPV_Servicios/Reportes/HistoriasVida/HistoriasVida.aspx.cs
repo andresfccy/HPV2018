@@ -99,15 +99,17 @@ namespace HPV_Servicios.Reportes.HistoriasVida
 
 
                 Response.Clear();
-                
+
                 Response.ContentType = "application/vnd.ms-excel";
                 if (os.ListaHistoriasVida.Count > 0)
                     Response.AddHeader("Content-Disposition", "attachment;filename=HistoriasVida-p" + os.ListaHistoriasVida[0].Atributos[1] + "-" + os.ListaHistoriasVida[0].Atributos[os.ListaHistoriasVida[0].Atributos.Count - 1] + ".xlsx");
                 else
                     Response.AddHeader("Content-Disposition", "attachment;filename=HistoriasVida-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
-                
+                Response.Flush();
+                Response.End();
 
 
             }

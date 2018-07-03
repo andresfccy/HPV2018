@@ -98,14 +98,15 @@ namespace HPV_Servicios.Reportes.Cronograma
 
                 byte[] binaryRpt = File.ReadAllBytes(rutaRpt);
 
-
                 Response.Clear();
-                
+
                 Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("Content-Disposition", "attachment;filename=SeguimientoTalleres-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+                Response.AddHeader("Content-Disposition", "attachment;filename=SeguimientoTalleres-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
-                
+                Response.Flush();
+                Response.End();
 
 
             }

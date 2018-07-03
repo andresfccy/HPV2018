@@ -100,13 +100,14 @@ namespace HPV_Servicios.Reportes.CasosExito
 
 
                 Response.Clear();
-                
+
                 Response.ContentType = "application/vnd.ms-excel";
                 Response.AddHeader("Content-Disposition", "attachment;filename=CasosExito-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+
                 Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
-                
-
+                Response.Flush();
+                Response.End();
 
             }
             catch (Exception err)
