@@ -191,43 +191,43 @@
                 </div>
             </form>
             <!--<form name="form" id="form">
-        <div ng-init="ctrl.initializeForm(form)"></div>
-        <ol class="form-questions">
-            <li ng-repeat="question in ctrl.survey"
-                class="form-group has-finalSurvey">
-                <label for="poll_radio_question_1" class="control-label">
-                    {{question[0].DescripcionPregunta}}<span class="text-danger">*</span> :
-                </label>
-                <div class="padding-top-20">
-                    <div class="btn-group-vertical" data-toggle="buttons">
-                        <label class="btn btn-default"
-                               ng-repeat="answer in question"
-                               ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
-                            <input type="radio"
-                                   name="poll_radio_question_{{$parent.$index+1}}"
-                                   id="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                                   title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
-                                   required>
-                            {{answer.LetraPregunta}}
+                <div ng-init="ctrl.initializeForm(form)"></div>
+                <ol class="form-questions">
+                    <li ng-repeat="question in ctrl.survey"
+                        class="form-group has-finalSurvey">
+                        <label for="poll_radio_question_1" class="control-label">
+                            {{question[0].DescripcionPregunta}}<span class="text-danger">*</span> :
                         </label>
-                    </div>
-                    <div class="btn-group-vertical">
-                        <label class="btn btn-left"
-                               for="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
-                               ng-repeat="answer in question"
-                               ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
-                            {{answer.DescripcionRespuesta}}
-                        </label>
-                    </div>
+                        <div class="padding-top-20">
+                            <div class="btn-group-vertical" data-toggle="buttons">
+                                <label class="btn btn-default"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                                    <input type="radio"
+                                           name="poll_radio_question_{{$parent.$index+1}}"
+                                           id="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                           title="Selecciona la respuesta para la pregunta {{$parent.$index+1}}"
+                                           required>
+                                    {{answer.LetraPregunta}}
+                                </label>
+                            </div>
+                            <div class="btn-group-vertical">
+                                <label class="btn btn-left"
+                                       for="poll_radio_question_{{$parent.$index+1}}_{{$index+1}}"
+                                       ng-repeat="answer in question"
+                                       ng-click="ctrl.saveAnswer(answer.CodigoPregunta,answer)">
+                                    {{answer.DescripcionRespuesta}}
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div ng-if="!ctrl.isValidForm(3)">
+                    <span class="col-sm-12 alert alert-danger">
+                        {{'finalSurvey.incomplete'|translate}}
+                    </span>
                 </div>
-            </li>
-        </ol>
-        <div ng-if="!ctrl.isValidForm(3)">
-            <span class="col-sm-12 alert alert-danger">
-                {{'finalSurvey.incomplete'|translate}}
-            </span>
-        </div>
-    </form>-->
+            </form>-->
         </div>
         <div class="panel-footer clearfix">
 
