@@ -82,7 +82,7 @@ namespace HPV_Servicios.Reportes.Certificado
             catch (Exception err)
             {
                 Response.Clear();
-                Response.Write("Genero error " + err.Message);
+                Response.Write("Genero error " + err.Message + err.StackTrace);
 
             }
         }

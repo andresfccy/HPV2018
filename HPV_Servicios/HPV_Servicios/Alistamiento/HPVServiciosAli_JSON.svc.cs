@@ -121,6 +121,16 @@ namespace HPV_Servicios.Alistamiento
             return null;
         }
 
+        public OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe)
+        {
+            return (new FachadaAlistamiento().DarEncuestaInscrito(oe));
+        }
+
+        public OS_DarEncuestaInscrito DarEncuestaInscritoOptions(OE_DarEncuestaInscrito oe)
+        {
+            return null;
+        }
+
         public OS_GenerarCertificado GenerarCertificado(OE_GenerarCertificado oe)
         {
             return (new FachadaAlistamiento().GenerarCertificado(oe));
