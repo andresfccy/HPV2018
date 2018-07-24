@@ -95,8 +95,8 @@ footer > .row {
     }
 
 .logos {
-    margin-bottom: 40px;
-    height: 150px;
+    /*margin-bottom: 40px;
+    height: 150px;*/
 }
 
 .navbar-brand {
@@ -714,4 +714,13 @@ html {
     max-height: 200px !important;
     width: 80% !important;
     overflow-y: scroll !important;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand {
+    float: none;
+    padding: 0;
 }
