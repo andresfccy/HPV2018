@@ -309,6 +309,13 @@
     <Compile Include="Reporte\Reporte.cs" />
     <Compile Include="Reporte\EncuestaSatisfaccion.cs" />
     <Compile Include="Reporte\Trazabilidad.cs" />
+    <Compile Include="SistematizacionWS\OE_ActualizarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OE_ConsultarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OE_DarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_ActualizarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_ConsultarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_DarSistematizacion.cs" />
+    <Compile Include="Sistematizacion\Sistematizacion.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

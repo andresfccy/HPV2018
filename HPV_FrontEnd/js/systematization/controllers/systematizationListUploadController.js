@@ -2,13 +2,13 @@
     .controller('SystematizationListUploadController',
     ['$rootScope', '$scope', '$location', '$state', '$translate',
         'growl', 'moment', 'loading',
-        'CommonsConstants', 'CommonsListasService', 'SystematizationService',
+        'CommonsConstants', 'CommonsListasService', 'SystematizationService', 'SessionsBusiness',
         function ($rootScope, $scope, $location, $translate, $state, $translate,
             growl, moment, loading,
-            CommonsConstants, CommonListasService, SystematizationService) {
+            CommonsConstants, CommonListasService, SystematizationService, SessionsBusiness) {
 
-            //if (!SessionsBusiness.authorized(43)) {
-            if (false) {
+            if (!SessionsBusiness.authorized(410)) {
+            //if (false) {
                 $state.go("home");
                 growl.warning("Permisos insuficientes.");
             }
@@ -46,4 +46,5 @@
                     }
                 }
             }
+        }
     ]);

@@ -1,69 +1,84 @@
-﻿<article>
+﻿<article ng-init="sysListAdmCtrl.init()">
     <div class="panel panel-default panel-ps dataTables_wrapper">
         <div class="panel-heading">
-            <h3 class="panel-title">{{'lifeStory.panelTitle'|translate}}</h3>
+            <h3 class="panel-title">{{'systematization.panelTitle'|translate}}</h3>
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading clearfix">
-
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="search">{{'systematization.search'|translate}}</label>
+                    <input class="form-control"
+                           id="search"
+                           type="text"
+                           placeholder="{{'systematization.search'|translate}}"
+                           ng-model="search"
+                           ng-blur="sysListAdmCtrl.submitSearch()" />
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="sysType">{{'systematization.type'|translate}}</label>
+                    <select class="form-control"
+                            id="sysType"
+                            placeholder="{{'systematization.type'|translate}}"
+                            ng-model="sysListAdmCtrl.selectedType"
+                            ng-change="sysListAdmCtrl.submitSearch()"
+                            ng-options="item.Valor as item.Descripcion for item in sysListAdmCtrl.sysTypes"></select>
+                </div>
                 <div class="pull-right">
                     <uib-pagination boundary-links="true"
-                                    total-items="ctrl.total"
+                                    total-items="sysListAdmCtrl.total"
                                     items-per-page="maxResultsPerPage"
-                                    max-size="ctrl.maxSize"
+                                    max-size="sysListAdmCtrl.maxSize"
                                     previous-text="&lsaquo;"
                                     next-text="&rsaquo;"
                                     first-text="&laquo;"
                                     last-text="&raquo;"
                                     rotate="false"
-                                    ng-model="ctrl.currentPage">
+                                    ng-model="sysListAdmCtrl.currentPage">
                     </uib-pagination>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="col-md-12">
                     <div class="col-lg-12 text-right">
-                        <span>{{'lifeStory.showing'|translate}}</span>
+                        <span>{{'systematization.showing'|translate}}</span>
                         <select id="cantItems"
-                                ng-options="item.cant as item.cant for item in ctrl.opcLimit"
+                                ng-options="item.cant as item.cant for item in sysListAdmCtrl.opcLimit"
                                 ng-model="maxResultsPerPage"></select>
-                        <span>{{'lifeStory.of'|translate}}</span>
+                        <span>{{'systematization.of'|translate}}</span>
                     </div>
                 </div>
             </div>
             <div class="alert alert-info"
-                 ng-show="!ctrl.lifeStoryList">
-                {{'lifeStory.loading'|translate}}
+                 ng-show="!sysListAdmCtrl.sysList">
+                {{'systematization.loading'|translate}}
 
             </div>
             <div class="alert alert-warning"
-                 ng-show="ctrl.lifeStoryList && ctrl.lifeStoryList.length == 0">
-                {{'lifeStory.noDataFound'|translate}}
+                 ng-show="sysListAdmCtrl.sysList && sysListAdmCtrl.sysList.length == 0">
+                {{'systematization.noDataFound'|translate}}
             </div>
             <table class="table table-hover dataTable"
-                   ng-show="ctrl.lifeStoryList.length > 0">
+                   ng-show="sysListAdmCtrl.sysList.length > 0">
                 <thead>
                     <tr>
-                        <th>{{'lifeStory.facilitator'|translate}}</th>
-                        <th>{{'lifeStory.participant'|translate}}</th>
-                        <th>{{'lifeStory.group'|translate}}</th>
-                        <th>{{'lifeStory.city'|translate}}</th>
-                        <th>{{'lifeStory.state'|translate}}</th>
-                        <th>{{'lifeStory.detail'|translate}}</th>
+                        <th>{{'systematization.facilitator'|translate}}</th>
+                        <th>{{'systematization.group'|translate}}</th>
+                        <th>{{'systematization.city'|translate}}</th>
+                        <!--<th>{{'systematization.state'|translate}}</th>-->
+                        <th>{{'systematization.detail'|translate}}</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="item in ctrl.filtered | startFrom:(ctrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
+                <tbody ng-repeat="item in sysListAdmCtrl.filtered | startFrom:(sysListAdmCtrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
                     <tr>
                         <td>{{item.NomFacilitador}}</td>
-                        <td>{{item.NomInscrito}}</td>
                         <td>{{item.SiglaGrupo}}</td>
                         <td>{{item.NomMunicipio}}</td>
-                        <td ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='E'}">
-                            {{item.NomEstado}}
-                        </td>
+                        <!--<td>{{item.NomEstado}}</td>-->
                         <td>
                             <a href=""
-                               ng-click="ctrl.goToStoryLife(item.IdHistoriaDeVida)">
+                               ng-click="sysListAdmCtrl.goToSystematization(item.Id)">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
                         </td>
@@ -73,8 +88,8 @@
             <div class="panel-footer clearfix">
                 <div class="col-lg-12">
                     <div class="btn btn-success pull-right"
-                         ng-click="ctrl.createStoryLife()">
-                        {{'lifeStory.new'|translate}}
+                         ng-click="sysListAdmCtrl.createSystematization()">
+                        {{'systematization.new'|translate}}
                     </div>
                 </div>
             </div>

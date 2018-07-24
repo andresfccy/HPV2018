@@ -1,5 +1,22 @@
 ﻿{
   "systematization": {
-    "panelTitle": "Sistematización de experiencias"
+    "panelTitle": "Sistematización de experiencias",
+
+    "showing": "Mostrando",
+    "of": "Instrumentos de Sistematización",
+    "back": "Volver a la lista",
+    "loading": "Estamos cargando la información...",
+    "noDataFound": "No se encontraron datos.",
+    "new": "Agregar nuevo instrumento",
+    "search": "Filtro",
+    "type": "Tipo de instrumento",
+
+    "facilitator": "Facilitador",
+    "group": "Grupo",
+    "city": "Municipio",
+    "state": "Estado",
+    "detail": "ver detalle"
+
+
   }
 }

@@ -16,6 +16,14 @@ angular.module('prosperidad.sessions')
             self.initializeForm = initializeForm;
             self.loginForm = {};
 
+            self.$onInit = initialize();
+
+            function initialize() {
+                if (SessionsBusiness.isLoggedIn()) {
+                    $state.go("welcomeLoggedIn");
+                }
+            }
+
             function login() {
                 if ($scope.loginForm.$valid) {
                     var req = angular.copy(self.user);

@@ -137,7 +137,7 @@
             </li>
 
             <li class="menu-item dropdown"
-                ng-if="ctrl.isLoggedIn() && ctrl.authorization(4)"
+                ng-if="false && ctrl.isLoggedIn() && ctrl.authorization(4)"
                 ng-class="{ active: ctrl.isActive('/HistoriasDeVida') }">
                 <a href="#"
                    class="dropdown-toggle"
@@ -188,6 +188,28 @@
                     <li class="menu-item" ng-if="ctrl.authorization(49)">
                         <a ui-sref="leadershipListSupervisor" title="{{'menu.leadershipsSup'|translate}}">
                             {{'menu.leadershipsSup'|translate}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item dropdown"
+                ng-if="ctrl.isLoggedIn() && ctrl.authorization(4)"
+                ng-class="{ active: ctrl.isActive('/Sistematizacion') }">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">
+                    {{'menu.experiences'|translate}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="menu-item" ng-if="ctrl.authorization(410)">
+                        <a ui-sref="systematizationListUpload" title="{{'menu.experiencesUpload'|translate}}">
+                            {{'menu.experiencesUpload'|translate}}
+                        </a>
+                    </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(420)">
+                        <a ui-sref="systematizationListAdmin" title="{{'menu.experiencesAdmin'|translate}}">
+                            {{'menu.experiencesAdmin'|translate}}
                         </a>
                     </li>
                 </ul>

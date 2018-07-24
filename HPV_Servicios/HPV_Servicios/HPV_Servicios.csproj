@@ -129,6 +129,10 @@
     <Content Include="Img\pdfheader.png" />
     <Content Include="EncuestasSena\HPVServicioEncuestas.svc" />
     <Content Include="Indicadores\Indicadores.aspx" />
+    <Content Include="Sistematizacion\AdjuntarInstrumento.aspx" />
+    <Content Include="Sistematizacion\ConsultarInstrumento.aspx" />
+    <Content Include="Sistematizacion\HPVServiciosSistematizacion.svc" />
+    <Content Include="Sistematizacion\HPVServiciosSistematizacion_JSON.svc" />
     <Content Include="Liderazgo\HPVServiciosLiderazgo.svc" />
     <Content Include="Liderazgo\HPVServiciosLiderazgo_JSON.svc" />
     <Content Include="Reportes\Candidatos\RptCandidatos.aspx" />
@@ -265,6 +269,28 @@
     <Compile Include="Indicadores\Indicadores.aspx.designer.cs">
       <DependentUpon>Indicadores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sistematizacion\AdjuntarInstrumento.aspx.cs">
+      <DependentUpon>AdjuntarInstrumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistematizacion\AdjuntarInstrumento.aspx.designer.cs">
+      <DependentUpon>AdjuntarInstrumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistematizacion\ConsultarInstrumento.aspx.cs">
+      <DependentUpon>ConsultarInstrumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistematizacion\ConsultarInstrumento.aspx.designer.cs">
+      <DependentUpon>ConsultarInstrumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistematizacion\HPVServiciosSistematizacion.svc.cs">
+      <DependentUpon>HPVServiciosSistematizacion.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Sistematizacion\HPVServiciosSistematizacion_JSON.svc.cs">
+      <DependentUpon>HPVServiciosSistematizacion_JSON.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Sistematizacion\IHPVServiciosSistematizacion.cs" />
+    <Compile Include="Sistematizacion\IHPVServiciosSistematizacion_JSON.cs" />
     <Compile Include="Liderazgo\HPVServiciosLiderazgo.svc.cs">
       <DependentUpon>HPVServiciosLiderazgo.svc</DependentUpon>
     </Compile>

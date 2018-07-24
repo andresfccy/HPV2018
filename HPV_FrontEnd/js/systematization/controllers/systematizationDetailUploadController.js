@@ -7,8 +7,8 @@
             growl, moment, loading,
             CommonsConstants, CommonListasService, SystematizationService) {
 
-            //if (!SessionsBusiness.authorized(43)) {
-            if (false) {
+            if (!SessionsBusiness.authorized(411)) {
+            //if (false) {
                 $state.go("home");
                 growl.warning("Permisos insuficientes.");
             }
@@ -20,4 +20,5 @@
 
                 }
             }
+        }
     ]);

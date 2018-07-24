@@ -1,6 +1,5 @@
-﻿<article ng-init="ctrl.initialize()">
-    <div class="col-lg-12 alert alert-warning"
-         ng-show="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoAsistencia == ctrl.assistanceStates[3].Descripcion">
+﻿<article>
+    <div class="col-lg-12 alert alert-warning">
         <span translate>uploadable.disclaimer1</span> <a href="#" ng-click="status.open1=true">{{'uploadable.disclaimer2'|translate}}</a>
         {{'uploadable.disclaimer3'|translate}} <a href="#" ng-click="status.open2=true">{{'uploadable.disclaimer4'|translate}}</a>.
     </div>

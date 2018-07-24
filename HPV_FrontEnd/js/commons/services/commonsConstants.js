@@ -32,6 +32,10 @@
             list[47] = "Creación de ejemplos de liderazgo",
             list[48] = "Aprobación de ejemplos de liderazgo",
             list[49] = "Selección de ejemplos de liderazgo",
+            list[410] = "Lista de sistematización de experiencias",
+            list[411] = "Detalle sistematización de experiencias",
+            list[420] = "Administración sistematización de experiencias",
+            list[421] = "Administración detalle sistematización de experiencias",
             list[5] = "Reportes",
             list[51] = "Lista de reportes",
             list[52] = "Auditoría",
@@ -52,7 +56,7 @@
             ROL_LOCALSTORAGE: 'rol',
             NAME_LOCALSTORAGE: 'name',
             CONTENT_TYPE_HEADER: { 'Content-Type': 'application/json' },
-            VERSION: '2.05.182' // d.mm.aa#
+            VERSION: '9.07.182' // d.mm.aa#
 
             // URLs Web Services
             , URL_WS_GENERAL: '/General/HPVServiciosGen_JSON.svc'
