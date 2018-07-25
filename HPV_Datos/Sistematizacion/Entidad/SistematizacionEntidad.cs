@@ -44,9 +44,11 @@ namespace HPV_Datos.Sistematizacion.Entidad
             entidad.Sistematizacion.NomDepartamento = row["NomDepartamento"].ToString();
             entidad.Sistematizacion.IdEstado = row["IdEstado"].ToString();
             entidad.Sistematizacion.NomEstado = row["NomEstado"].ToString();
-            entidad.Sistematizacion.LinkVideo = row["LinkVideo"].ToString();
             entidad.Sistematizacion.IdInstrumento = Int64.Parse(row["IdInstrumento"].ToString());
             entidad.Sistematizacion.NomInstrumento = row["NomInstrumento"].ToString();
+            entidad.Sistematizacion.IdInscrito = Int64.Parse(row["IdInscrito"].ToString());
+            entidad.Sistematizacion.NomInscrito = row["NomInscrito"].ToString();
+            entidad.Sistematizacion.MotivoRechazo = row["MotivoRechazo"].ToString();
 
             return entidad;
         }

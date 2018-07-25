@@ -1,35 +1,87 @@
-﻿<article>
-    <div class="col-lg-12 alert alert-warning">
-        <span translate>uploadable.disclaimer1</span> <a href="#" ng-click="status.open1=true">{{'uploadable.disclaimer2'|translate}}</a>
-        {{'uploadable.disclaimer3'|translate}} <a href="#" ng-click="status.open2=true">{{'uploadable.disclaimer4'|translate}}</a>.
-    </div>
+﻿<article ng-init="sysDetUpCtrl.init()">
     <form id="contenedor1"
           name="form">
         <div class="col-lg-12"
              style="padding-left:0px; padding-right:0px;"
-             ng-init="ctrl.initializeForm(form)">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="workshop" class="blueLabel">{{'uploadable.workshop'|translate}}</label>
-                    <input class="form-control"
-                           type="text"
-                           placeholder="{{'uploadable.workshop'|translate}}"
-                           id="workshop"
-                           name="workshop"
-                           ng-value="ctrl.uploadable.NomTaller+': '+ctrl.uploadable.DescripcionTaller"
-                           disabled>
+             ng-init="sysDetUpCtrl.initForm(form)">
+            <div class="col-lg-12 row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="state" class="blueLabel">Estado</label>
+                        <input class="form-control"
+                               id="state"
+                               name="state"
+                               ng-value="sysDetUpCtrl.sys.NomEstado"
+                               ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-lg-6"
+                     ng-if="sysDetUpCtrl.rechazado">
+                    <div class="form-group">
+                        <label for="rejectReason" class="blueLabel">{{'lifeStory.rejectReason'|translate}}</label>
+                        <textarea class="form-control vresize"
+                                  name="rejectReason"
+                                  ng-bind="sysDetUpCtrl.sys.MotivoRechazo"
+                                  ng-disabled="true"></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="group" class="blueLabel">{{'uploadable.group'|translate}}</label>
-                    <input class="form-control"
-                           type="text"
-                           placeholder="{{'uploadable.group'|translate}}"
-                           id="group"
-                           name="group"
-                           ng-value="ctrl.uploadable.NombreGrupo"
-                           disabled>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">Instrumento de sistematizacion *</label>
+                    <select class="form-control"
+                            id="instrument"
+                            name="instrument"
+                            ng-model="sysDetUpCtrl.sys.IdInstrumento"
+                            ng-options="item.Valor as item.Descripcion for item in sysDetUpCtrl.instruments"
+                            ng-disabled="sysDetUpCtrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.instrument.$error"
+                         ng-if="form.instrument.$touched">
+                        <div ng-message="required">Este es un campo requerido</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="group" class="blueLabel">Grupo *</label>
+                    <select class="form-control"
+                            id="group"
+                            name="group"
+                            ng-model="sysDetUpCtrl.sys.IdGrupoFacilitador"
+                            ng-change="sysDetUpCtrl.getParticipantsByGroup()"
+                            ng-options="item.IdGrupoFacilitador as item.Nombre for item in sysDetUpCtrl.groups"
+                            ng-disabled="sysDetUpCtrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.group.$error"
+                         ng-if="form.group.$touched">
+                        <div ng-message="required">Este es un campo requerido</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group" feedback>
+                    <label for="participant" class="blueLabel">Inscrito *</label>
+                    <select class="form-control"
+                            id="participant"
+                            name="participant"
+                            ng-model="sysDetUpCtrl.sys.IdInscrito"
+                            ng-options="item.IdInscrito as item.NomInscrito for item in sysDetUpCtrl.participants"
+                            ng-disabled="!sysDetUpCtrl.participants || sysDetUpCtrl.editionDisabled()"
+                            required></select>
+                    <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                    <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                    <div class="validation-messages"
+                         ng-messages="form.participant.$error"
+                         ng-if="form.participant.$touched">
+                        <div ng-message="required">Este es un campo requerido</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,44 +89,67 @@
             <uib-accordion>
                 <uib-accordion-group is-open="status.open1">
                     <uib-accordion-heading>
-                        {{'uploadable.tabDocument'|translate}} *
+                        Documento del instrumento *
                         <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
                     </uib-accordion-heading>
                     <div class="col-lg-12"
-                         ng-if="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[2].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.noWhere">
-                        {{'uploadable.attendaceListDocument'|translate}}
+                         ng-if="!sysDetUpCtrl.documentDisabled()">
+                        <label class="blueLabel">
+                            Documento PDF *
+                        </label>
                         <div ngf-drop ngf-select
-                             ng-model="ctrl.file"
+                             ng-model="sysDetUpCtrl.file"
                              class="drop-box"
                              ngf-drag-over-class="'dragover'"
                              ngf-multiple="false"
                              ngf-allow-dir="true"
                              ngf-pattern="'application/pdf'">
-                            {{'uploadable.dragNDrop'|translate}}
+                            Arrastra aquí el archivo pdf o haz clic aquí para seleccionarlo del equipo.
                         </div>
-                        <div ngf-no-file-drop>{{'uploadable.noDragNDrop'|translate}}</div>
+                        <div ngf-no-file-drop>La opción de arrastrar no está disponible, haga clic en el recuadro para seleccionarlo del equipo</div>
                     </div>
                     <div class="col-lg-6"
-                         ng-if="ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[3].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.documentsStates[2].Descripcion || ctrl.uploadable.EstadoDocumento == ctrl.noWhere">
+                         ng-if="!sysDetUpCtrl.documentDisabled()">
                         <div class="form-group">
-                            <label for="file" class="blueLabel">{{'uploadable.file'|translate}} *</label>
+                            <label for="file" class="blueLabel">Documento PDF *</label>
                             <input class="form-control"
                                    type="text"
                                    placeholder="{{'uploadable.file'|translate}}"
-                                   value="{{ctrl.file.name}} {{ctrl.file.$error}} {{ctrl.file.$errorParam}}"
+                                   value="{{sysDetUpCtrl.file.name}} {{sysDetUpCtrl.file.$error}} {{sysDetUpCtrl.file.$errorParam}}"
                                    id="state"
                                    name="state"
-                                   disabled>
+                                   required>
+                            <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                            <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                            <div class="validation-messages"
+                                 ng-messages="form.file.$error">
+                                <div ng-message="required">{{'lifeStory.error.fileRequired'|translate}}</div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-lg-12 form-group"
+                         ng-if="sysDetUpCtrl.documentDisabled()">
+                        <button class="btn btn-info"
+                                ng-click="sysDetUpCtrl.seeDocument()">
+                            Ver documento
+                        </button>
                     </div>
                 </uib-accordion-group>
 
             </uib-accordion>
         </div>
+        <div>
+            <button class="btn btn-primary pull-right"
+                    type="submit"
+                    ng-if="!sysDetUpCtrl.editionDisabled()"
+                    ng-click="sysDetUpCtrl.submit(sysDetUpCtrl.file)">
+                Guardar instrumento
+            </button>
+        </div>
         <div id="butBack">
             <button class="btn btn-warning"
-                    ng-click="ctrl.goBack()">
-                {{ 'uploadable.back' | translate }}
+                    ng-click="sysDetUpCtrl.goBack()">
+                Volver
             </button>
         </div>
     </form>

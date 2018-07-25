@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="HPV_Servicios.Liderazgo.HPVServiciosLiderazgo_JSON" CodeBehind="HPVServiciosSistematizacion_JSON.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HPV_Servicios.Sistematizacion.HPVServiciosSistematizacion_JSON" CodeBehind="HPVServiciosSistematizacion_JSON.svc.cs" %>

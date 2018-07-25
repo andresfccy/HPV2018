@@ -1,4 +1,4 @@
-﻿<article>
+﻿<article ng-init="sysListUpCtrl.init()">
     <div class="panel panel-default panel-ps dataTables_wrapper">
         <div class="panel-heading">
             <h3 class="panel-title">{{'systematization.panelTitle'|translate}}</h3>
@@ -48,15 +48,17 @@
                         <th>{{'systematization.participant'|translate}}</th>
                         <th>{{'systematization.group'|translate}}</th>
                         <th>{{'systematization.city'|translate}}</th>
+                        <th>{{'systematization.state'|translate}}</th>
                         <th>{{'systematization.detail'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="item in sysListUpCtrl.filtered | startFrom:(sysListUpCtrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
-                    <tr>
+                    <tr ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='E'}">
                         <td>{{item.NomFacilitador}}</td>
                         <td>{{item.NomInscrito}}</td>
                         <td>{{item.SiglaGrupo}}</td>
                         <td>{{item.NomMunicipio}}</td>
+                        <td>{{item.NomEstado}}</td>
                         <td>
                             <a href=""
                                ng-click="sysListUpCtrl.goToSystematization(item.Id)">

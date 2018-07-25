@@ -1,5 +1,5 @@
 ﻿appSystematization
-    .controller('SystematizationDetailAdminController',
+    .controller('SystematizationDetailSuperController',
     ['$rootScope', '$scope', '$location', '$state', '$translate', '$http', '$stateParams',
         'growl', 'moment', 'loading',
         'CommonsConstants', 'CommonsListasService', 'SystematizationService', 'SessionsBusiness',
@@ -9,7 +9,7 @@
             CommonsConstants, CommonListasService, SystematizationService, SessionsBusiness,
             CommonsListasService, Connection) {
 
-            if (!SessionsBusiness.authorized(421)) {
+            if (!SessionsBusiness.authorized(431)) {
                 //if (false) {
                 $state.go("home");
                 growl.warning("Permisos insuficientes.");
@@ -37,6 +37,11 @@
                         } else {
                             self.seasons = o.ListaValor;
                             self.selectedSeason = self.identifySeasson();
+
+                            if ($rootScope.selectedSeason == self.selectedSeason) {
+                                $rootScope.selectedSeason = { p: "Se reinicia la variable para evitar que se acceda a la vista del detalle si no es por la lista." };
+                                self.enabled = true;
+                            }
                         }
                         loading.stopLoading(action);
                     }).catch(function (error) {
@@ -56,6 +61,7 @@
                             growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                         } else {
                             self.sys = o.Sistematizacion;
+                            self.selectedSeason = self.sys.IdPeriodo;
                         }
                         loading.stopLoading(action);
                     }).catch(function (error) {
@@ -64,7 +70,33 @@
                     });
                 }
 
-                function accept() {
+                function choose() {
+                    var action = getCtrlName() + ", submit - ActualizarHistoriaVida()";
+                    loading.startLoading(action);
+                    self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
+                    self.sys.IdEstado = "S";
+                    self.sys.MotivoRechazo = "";
+                    var req = {
+                        IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
+                        Sistematizacion: self.sys
+                    }
+                    var promesa = SystematizationService.actualizarSistematizacion(req).$promise;
+                    promesa.then(function (o) {
+                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                        } else {
+                            growl.success("Instrumento seleccionado exitosamente.");
+                            goBack();
+                        }
+                        loading.stopLoading(action);
+                    }).catch(function (error) {
+                        console.log(error);
+                        loading.stopLoading(action);
+                    });
+                }
+
+                function noChoose() {
                     var action = getCtrlName() + ", submit - ActualizarHistoriaVida()";
                     loading.startLoading(action);
                     self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
@@ -79,32 +111,7 @@
                         if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
                             growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                         } else {
-                            growl.success("Instrumento aceptado exitosamente.");
-                            goBack();
-                        }
-                        loading.stopLoading(action);
-                    }).catch(function (error) {
-                        console.log(error);
-                        loading.stopLoading(action);
-                    });
-                }
-
-                function reject() {
-                    var action = getCtrlName() + ", submit - ActualizarHistoriaVida()";
-                    loading.startLoading(action);
-                    self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
-                    self.sys.IdEstado = "R";
-                    var req = {
-                        IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
-                        Sistematizacion: self.sys
-                    }
-                    var promesa = SystematizationService.actualizarSistematizacion(req).$promise;
-                    promesa.then(function (o) {
-                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
-                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
-                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
-                        } else {
-                            growl.success("Instrumento rechazado exitosamente.");
+                            growl.success("Instrumento excluido exitosamente.");
                             goBack();
                         }
                         loading.stopLoading(action);
@@ -140,7 +147,7 @@
                 }
 
                 function goBack() {
-                    $state.go("systematizationListAdmin");
+                    $state.go("systematizationListSuper");
                 }
 
                 function identifySeasson() {
@@ -160,7 +167,7 @@
                 }
 
                 function getCtrlName() {
-                    return "SystematizationDetailAdminController";
+                    return "SystematizationDetailSuperController";
                 }
             }
         }

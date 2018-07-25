@@ -33,14 +33,13 @@ namespace HPV_Servicios.Sistematizacion
                     File.WriteAllText(nameLog, "Creo ruta documentos \r\n");
                 }
 
-                String idUsuario = Request.QueryString["IdUsuario"];
                 String idPeriodo = Request.QueryString["IdPeriodo"]; // Opcional
                 String idGrupoFacilitador = Request.QueryString["IdGrupoFacilitador"];
                 String idFacilitador = Request.QueryString["IdFacilitador"];
                 String idInstrumento = Request.QueryString["IdInstrumento"];
-                String linkVideo = Request.QueryString["LinkVideo"];
+                String idInscrito = Request.QueryString["IdInscrito"];
 
-                if (idFacilitador == null || idInstrumento == null || idGrupoFacilitador == null || idUsuario == null)
+                if (idFacilitador == null || idInstrumento == null || idGrupoFacilitador == null || idInscrito == null)
                 {
                     File.WriteAllText(nameLog, "HAY PARAMETROS FALTANTES \r\n");
                     Response.Write("HAY PARAMETROS FALTANTES" + "\r\n");
@@ -61,14 +60,6 @@ namespace HPV_Servicios.Sistematizacion
                     File.WriteAllText(nameLog, "Creo ruta " + pathDocument + "\r\n");
                 }
 
-                pathDocument += "/" + idInstrumento;
-
-                if (!Directory.Exists(pathDocument))
-                {
-                    Directory.CreateDirectory(pathDocument);
-                    File.WriteAllText(nameLog, "Creo ruta " + pathDocument + "\r\n");
-                }
-
                 pathDocument += "/" + idGrupoFacilitador;
 
                 if (!Directory.Exists(pathDocument))
@@ -77,8 +68,16 @@ namespace HPV_Servicios.Sistematizacion
                     File.WriteAllText(nameLog, "Creo ruta " + pathDocument + "\r\n");
                 }
 
+                pathDocument += "/" + idInstrumento;
+
+                if (!Directory.Exists(pathDocument))
+                {
+                    Directory.CreateDirectory(pathDocument);
+                    File.WriteAllText(nameLog, "Creo ruta " + pathDocument + "\r\n");
+                }
+
                 String outFile = "";
-                outFile = pathDocument + "/" + idInstrumento + "-" + idGrupoFacilitador + ".pdf";
+                outFile = pathDocument + "/" + idGrupoFacilitador + "-" + idInstrumento + "-" + idInscrito + ".pdf";
 
                 if (File.Exists(outFile))
                     File.Delete(outFile);
@@ -87,19 +86,19 @@ namespace HPV_Servicios.Sistematizacion
                 _FileStream.Write(Contents, 0, Contents.Length);
                 _FileStream.Close();
 
-                // Creación del objeto en la BD
-                OE_ActualizarSistematizacion oe = new OE_ActualizarSistematizacion()
-                {
-                    IdUsuario = Int64.Parse(idUsuario),
-                    Sistematizacion = new HPV_Entidades.Sistematizacion.Sistematizacion()
-                    {
-                        IdFacilitador = Int64.Parse(idFacilitador),
-                        IdGrupoFacilitador = Int64.Parse(idGrupoFacilitador),
-                        LinkVideo = linkVideo ?? "",
-                        IdInstrumento = Int64.Parse(idInstrumento)
-                    }
-                };
-                new FachadaSistematizacion().ActualizarSistematizacion(oe);
+                //// Creación del objeto en la BD
+                //OE_ActualizarSistematizacion oe = new OE_ActualizarSistematizacion()
+                //{
+                //    IdUsuario = Int64.Parse(idUsuario),
+                //    Sistematizacion = new HPV_Entidades.Sistematizacion.Sistematizacion()
+                //    {
+                //        IdFacilitador = Int64.Parse(idFacilitador),
+                //        IdGrupoFacilitador = Int64.Parse(idGrupoFacilitador),
+                //        IdInscrito = Int64.Parse(idInscrito),
+                //        IdInstrumento = Int64.Parse(idInstrumento)
+                //    }
+                //};
+                //new FachadaSistematizacion().ActualizarSistematizacion(oe);
 
                 Response.Write("Archivo cargado correctamente");
             }

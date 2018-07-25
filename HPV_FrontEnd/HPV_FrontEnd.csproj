@@ -1381,7 +1381,9 @@
     <Content Include="js\successCase\routes\successCaseRoutes.js" />
     <Content Include="js\successCase\services\successCaseService.js" />
     <Content Include="js\successCase\successCaseModule.js" />
+    <Content Include="js\systematization\controllers\systematizationDetailSuperController.js" />
     <Content Include="js\systematization\controllers\systematizationDetailAdminController.js" />
+    <Content Include="js\systematization\controllers\systematizationListSuperController.js" />
     <Content Include="js\systematization\controllers\systematizationListAdminController.js" />
     <Content Include="js\systematization\controllers\systematizationDetailUploadController.js" />
     <Content Include="js\systematization\controllers\systematizationListUploadController.js" />
@@ -7530,8 +7532,10 @@
     <Content Include="views\successCase\successCaseListSupervisor.html" />
     <Content Include="views\successCase\successCaseListCoordinator.html" />
     <Content Include="views\successCase\successCaseListFacilitator.html" />
+    <Content Include="views\systematization\systematizationDetailSuper.html" />
     <Content Include="views\systematization\systematizationDetailAdmin.html" />
     <Content Include="views\systematization\systematizationDetailUpload.html" />
+    <Content Include="views\systematization\systematizationListSuper.html" />
     <Content Include="views\systematization\systematizationListAdmin.html" />
     <Content Include="views\systematization\systematizationListUpload.html" />
     <Content Include="views\uploadable\attendanceDetailSupervisor.html" />

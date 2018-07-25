@@ -27,7 +27,8 @@ namespace HPV_Datos.Sistematizacion
                     new OracleParameter { ParameterName = "p_idFacilitador", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.IdFacilitador },
                     new OracleParameter { ParameterName = "p_idInstrumento", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.IdInstrumento },
                     new OracleParameter { ParameterName = "p_idEstado", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.IdEstado },
-                    new OracleParameter { ParameterName = "p_linkVideo", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.LinkVideo },
+                    new OracleParameter { ParameterName = "p_idInscrito", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.IdInscrito },
+                    new OracleParameter { ParameterName = "p_motivoRechazo", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.Sistematizacion.MotivoRechazo },
                     new OracleParameter { ParameterName = "p_codError", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Output },
                     new OracleParameter { ParameterName = "p_msjError", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Output, Size = 1000 }
                     );

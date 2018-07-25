@@ -212,6 +212,11 @@
                             {{'menu.experiencesAdmin'|translate}}
                         </a>
                     </li>
+                    <li class="menu-item" ng-if="ctrl.authorization(430)">
+                        <a ui-sref="systematizationListAdmin" title="{{'menu.experiencesSuper'|translate}}">
+                            {{'menu.experiencesSuper'|translate}}
+                        </a>
+                    </li>
                 </ul>
             </li>
 

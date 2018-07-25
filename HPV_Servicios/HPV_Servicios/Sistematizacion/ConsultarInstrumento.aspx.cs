@@ -58,14 +58,14 @@ namespace HPV_Servicios.Sistematizacion
                 File.AppendAllText(nameLog, "Entro a consultar documento \r\n");
 
                 pathDocument += "/" + buscada.Sistematizacion.IdPeriodo + "/SIS";
-                pathDocument += "/" + buscada.Sistematizacion.IdInstrumento;
                 pathDocument += "/" + buscada.Sistematizacion.IdGrupoFacilitador;
+                pathDocument += "/" + buscada.Sistematizacion.IdInstrumento;
 
                 String outFile = "";
                 String fileName = "";
 
-                outFile = pathDocument + "/" + buscada.Sistematizacion.IdInstrumento + "-" + buscada.Sistematizacion.IdGrupoFacilitador + ".pdf";
-                fileName = buscada.Sistematizacion.IdInstrumento + "-" + buscada.Sistematizacion.IdInstrumento + "-" + buscada.Sistematizacion.IdGrupoFacilitador + ".pdf";
+                fileName = buscada.Sistematizacion.IdGrupoFacilitador + "-" + buscada.Sistematizacion.IdInstrumento + "-" + buscada.Sistematizacion.IdInscrito + ".pdf";
+                outFile = pathDocument + "/" + fileName;
 
                 if (!File.Exists(outFile))
                 {

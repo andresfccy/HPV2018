@@ -14,6 +14,8 @@ angular.module('prosperidad.sessions')
         factory.authorized = function (opc) {
             if ($rootScope.permissions && $rootScope.permissions.length > 0) {
                 console.log("Authorize: ", factory.getRolFromLocalStorage() && $rootScope.permissions[factory.getRolFromLocalStorage()].indexOf(opc + "") >= 0);
+                console.log(opc);
+                console.log($rootScope.permissions[factory.getRolFromLocalStorage()])
                 return factory.getRolFromLocalStorage() && $rootScope.permissions[factory.getRolFromLocalStorage()].indexOf(opc + "") >= 0;
             }
         }

@@ -1,9 +1,9 @@
-﻿<article ng-init="sysDetAdmCtrl.init()">
+﻿<article ng-init="sysDetSprCtrl.init()">
     <form id="form"
           name="form">
         <div class="col-lg-12"
              style="padding-left:0px; padding-right:0px;"
-             ng-init="sysDetAdmCtrl.initForm(form)">
+             ng-init="sysDetSprCtrl.initForm(form)">
             <div class="col-lg-12">
                 <div class="col-lg-12">
                     <div class="form-group">
@@ -11,19 +11,19 @@
                         <input class="form-control"
                                id="state"
                                name="state"
-                               ng-value="sysDetAdmCtrl.sys.NomEstado"
+                               ng-value="sysDetSprCtrl.sys.NomEstado"
                                ng-disabled="true">
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <!--<div class="col-lg-12">
                     <div class="form-group">
                         <label for="rejectReason" class="blueLabel">Motivo de rechazo</label>
                         <textarea class="form-control vresize"
                                   name="rejectReason"
-                                  ng-model="sysDetAdmCtrl.sys.MotivoRechazo">
+                                  ng-model="sysDetSprCtrl.sys.MotivoRechazo">
                     </textarea>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="col-lg-4">
                 <div class="form-group" feedback>
@@ -31,7 +31,7 @@
                     <input class="form-control"
                            id="storyType"
                            name="storyType"
-                           ng-value="sysDetAdmCtrl.sys.NomInstrumento"
+                           ng-value="sysDetSprCtrl.sys.NomInstrumento"
                            ng-disabled="true">
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     <input class="form-control"
                            id="group"
                            name="group"
-                           ng-value="sysDetAdmCtrl.sys.SiglaGrupo"
+                           ng-value="sysDetSprCtrl.sys.SiglaGrupo"
                            ng-disabled="true">
                 </div>
             </div>
@@ -51,13 +51,13 @@
                     <input class="form-control"
                            id="participant"
                            name="participant"
-                           ng-value="sysDetAdmCtrl.sys.NomInscrito"
+                           ng-value="sysDetSprCtrl.sys.NomInscrito"
                            ng-disabled="true">
                 </div>
             </div>
             <div class="col-lg-12 form-group">
                 <button class="btn btn-info"
-                        ng-click="sysDetAdmCtrl.seeDocument()">
+                        ng-click="sysDetSprCtrl.seeDocument()">
                     Ver documento del instrumento
                 </button>
             </div>
@@ -65,20 +65,20 @@
         <div>
             <button class="btn btn-success pull-right"
                     type="submit"
-                    ng-if="sysDetAdmCtrl.sys.IdEstado != 'S'"
-                    ng-click="sysDetAdmCtrl.accept()">
-                Aceptar
+                    ng-if="sysDetSprCtrl.sys.IdEstado == 'S' && sysDetSprCtrl.enabled" 
+                    ng-click="sysDetSprCtrl.choose()">
+                Escoger
             </button>
             <button class="btn btn-danger pull-right"
                     type="submit"
-                    ng-if="sysDetAdmCtrl.sys.IdEstado != 'S'"
-                    ng-click="sysDetAdmCtrl.reject()">
-                Rechazar
+                    ng-if="sysDetSprCtrl.sys.IdEstado == 'S' && sysDetSprCtrl.enabled"
+                    ng-click="sysDetSprCtrl.noChoose()">
+                Excluír
             </button>
         </div>
         <div>
             <button class="btn btn-warning"
-                    ng-click="sysDetAdmCtrl.goBack()">
+                    ng-click="sysDetSprCtrl.goBack()">
                 Volver
             </button>
         </div>
