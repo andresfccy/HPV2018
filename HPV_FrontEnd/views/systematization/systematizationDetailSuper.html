@@ -25,6 +25,26 @@
                     </div>
                 </div>-->
             </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="coord" class="blueLabel">Coordinador</label>
+                    <input class="form-control"
+                           id="coord"
+                           name="coord"
+                           ng-value="sysDetSprCtrl.sys.NomCoordinador"
+                           ng-disabled="true">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" feedback>
+                    <label for="super" class="blueLabel">Facilitador</label>
+                    <input class="form-control"
+                           id="super"
+                           name="super"
+                           ng-value="sysDetSprCtrl.sys.NomFacilitador"
+                           ng-disabled="true">
+                </div>
+            </div>
             <div class="col-lg-4">
                 <div class="form-group" feedback>
                     <label for="storyType" class="blueLabel">Instrumento</label>
@@ -65,7 +85,7 @@
         <div>
             <button class="btn btn-success pull-right"
                     type="submit"
-                    ng-if="sysDetSprCtrl.sys.IdEstado == 'S' && sysDetSprCtrl.enabled" 
+                    ng-if="sysDetSprCtrl.sys.IdEstado == 'A' && sysDetSprCtrl.enabled"
                     ng-click="sysDetSprCtrl.choose()">
                 Escoger
             </button>
@@ -73,7 +93,7 @@
                     type="submit"
                     ng-if="sysDetSprCtrl.sys.IdEstado == 'S' && sysDetSprCtrl.enabled"
                     ng-click="sysDetSprCtrl.noChoose()">
-                Excluír
+                Excluir
             </button>
         </div>
         <div>

@@ -18,8 +18,8 @@
                 var self = this;
                 self.init = init;
                 self.initForm = initForm;
-                self.accept = accept;
-                self.reject = reject;
+                self.choose = choose;
+                self.noChoose = noChoose;
                 self.seeDocument = seeDocument;
                 self.goBack = goBack;
                 self.identifySeasson = identifySeasson;
@@ -37,10 +37,13 @@
                         } else {
                             self.seasons = o.ListaValor;
                             self.selectedSeason = self.identifySeasson();
-
+                            console.log($rootScope.selectedSeason)
+                            console.log(self.selectedSeason)
                             if ($rootScope.selectedSeason == self.selectedSeason) {
                                 $rootScope.selectedSeason = { p: "Se reinicia la variable para evitar que se acceda a la vista del detalle si no es por la lista." };
                                 self.enabled = true;
+                            } else {
+                                self.enabled = false;
                             }
                         }
                         loading.stopLoading(action);

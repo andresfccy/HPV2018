@@ -72,7 +72,7 @@
                     </tr>
                 </thead>
                 <tbody ng-repeat="item in sysListAdmCtrl.filtered | startFrom:(sysListAdmCtrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
-                    <tr ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='E'}">
+                    <tr ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='S'}">
                         <td>{{item.NomFacilitador}}</td>
                         <td>{{item.NomInscrito}}</td>
                         <td>{{item.SiglaGrupo}}</td>

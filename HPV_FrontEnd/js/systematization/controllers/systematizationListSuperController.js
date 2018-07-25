@@ -19,6 +19,7 @@
                 self.init = initialize;
                 self.goToSystematization = goToSystematization;
                 self.submitSearch = submitSearch;
+                self.identifySeasson = identifySeasson;
 
                 // Variables
                 self.opcLimit = [
@@ -129,7 +130,12 @@
                 }
 
                 function goToSystematization(id) {
+                    $rootScope.selectedSeason = self.selectedSeason;
                     $state.go("systematizationDetailSuper", { id: id });
+                }
+
+                function getSeason() {
+                    return $rootScope.actualSeason;
                 }
 
                 function getCtrlName() {
