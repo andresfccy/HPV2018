@@ -117,6 +117,7 @@
     <Compile Include="Reporte\Entidad\AuditoriaEntidad.cs" />
     <Compile Include="Reporte\Entidad\EncuestaSatisfaccionObservacionesEntidad.cs" />
     <Compile Include="Reporte\Entidad\EspaciosFisicosEntidad.cs" />
+    <Compile Include="Reporte\Entidad\SistematizacionEntidad.cs" />
     <Compile Include="Reporte\Entidad\RechazoGruposEntidad.cs" />
     <Compile Include="Reporte\Entidad\UsuariosSistemaEntidad.cs" />
     <Compile Include="Reporte\Entidad\HistoriasVidaEntidad.cs" />

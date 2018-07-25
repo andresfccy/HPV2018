@@ -139,6 +139,7 @@
     <Compile Include="IncripcionEncuestasWS\OS_Guardar_Encuesta.cs" />
     <Compile Include="ReporteWS\OE_DarDepartamentosXProfesional.cs" />
     <Compile Include="ReporteWS\OE_DarMunicipiosXProfesional.cs" />
+    <Compile Include="ReporteWS\OE_RptSistematizacion.cs" />
     <Compile Include="ReporteWS\OE_RptRechazoGrupos.cs" />
     <Compile Include="ReporteWS\OE_DarReportes.cs" />
     <Compile Include="ReporteWS\OE_ConsultarAuditoria.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="ReporteWS\OS_DarCoordinadoresXProfesional.cs" />
     <Compile Include="ReporteWS\OS_DarDepartamentosXProfesional.cs" />
     <Compile Include="ReporteWS\OS_DarMunicipiosXProfesional.cs" />
+    <Compile Include="ReporteWS\OS_RptSistematizacion.cs" />
     <Compile Include="ReporteWS\OS_RptRechazoGrupos.cs" />
     <Compile Include="ReporteWS\OS_DarReportes.cs" />
     <Compile Include="AlistamientoWS\OE_DarDiasDisponibles.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="Reporte\Auditoria.cs" />
     <Compile Include="Reporte\EncuestaSatisfaccionObservaciones.cs" />
     <Compile Include="Reporte\EspaciosFisicos.cs" />
+    <Compile Include="Reporte\Sistematizacion.cs" />
     <Compile Include="Reporte\RechazoGrupos.cs" />
     <Compile Include="Reporte\UsuariosSistema.cs" />
     <Compile Include="Reporte\HistoriasVida.cs" />

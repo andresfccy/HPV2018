@@ -31,6 +31,8 @@ namespace HPV_Datos.Reporte
 
         OS_RptHistoriasVida RptHistoriasVida(OE_RptHistoriasVida oe);
 
+        OS_RptSistematizacion RptSistematizacion(OE_RptSistematizacion oe);
+
         OS_RptUsuariosSistema RptUsuariosSistema(OE_RptUsuariosSistema oe);
 
         OS_RptEspaciosFisicos RptEspaciosFisicos(OE_RptEspaciosFisicos oe);

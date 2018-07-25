@@ -129,6 +129,7 @@
     <Content Include="Img\pdfheader.png" />
     <Content Include="EncuestasSena\HPVServicioEncuestas.svc" />
     <Content Include="Indicadores\Indicadores.aspx" />
+    <Content Include="Reportes\Sistematizacion\Sistematizacion.aspx" />
     <Content Include="Sistematizacion\AdjuntarInstrumento.aspx" />
     <Content Include="Sistematizacion\ConsultarInstrumento.aspx" />
     <Content Include="Sistematizacion\HPVServiciosSistematizacion.svc" />
@@ -268,6 +269,13 @@
     </Compile>
     <Compile Include="Indicadores\Indicadores.aspx.designer.cs">
       <DependentUpon>Indicadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\Sistematizacion.aspx.cs">
+      <DependentUpon>Sistematizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\Sistematizacion.aspx.designer.cs">
+      <DependentUpon>Sistematizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sistematizacion\AdjuntarInstrumento.aspx.cs">
       <DependentUpon>AdjuntarInstrumento.aspx</DependentUpon>

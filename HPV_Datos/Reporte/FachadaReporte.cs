@@ -756,5 +756,50 @@ namespace HPV_Datos.Reporte
 
             return os;
         }
+
+        public OS_RptSistematizacion RptSistematizacion(OE_RptSistematizacion oe)
+        {
+            OS_RptSistematizacion os = new OS_RptSistematizacion();
+            try
+            {
+                SistematizacionEntidad entidad = new SistematizacionEntidad(Constantes.HPV_NOM_CONNECTIONSTRING);
+
+                entidad.ExecuteStoreProcedure("PK_RPT_ADMREPORTE.Pr_DarRptSistematizacion",
+                    new OracleParameter { ParameterName = "p_idPeriodo", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdPeriodo },
+                    new OracleParameter { ParameterName = "p_idUsuario", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdUsuario },
+                    new OracleParameter { ParameterName = "p_idFacilitador", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdFacilitador },
+                    new OracleParameter { ParameterName = "p_idCoordinador", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdCoordinador },
+                    new OracleParameter { ParameterName = "p_idGrupo", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdGrupo },
+                    new OracleParameter { ParameterName = "p_idDepartamento", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdDepartamento },
+                    new OracleParameter { ParameterName = "p_idMunicipio", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdMunicipio },
+                    new OracleParameter { ParameterName = "p_fechaCorte", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.FechaCorte },
+                    new OracleParameter { ParameterName = "p_resultado", OracleDbType = OracleDbType.RefCursor, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_codError", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_msjError", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Output, Size = 1000 }
+                    );
+
+                os.Respuesta.Codigo = entidad.GetParameterLong("p_codError");
+                os.Respuesta.Mensaje = entidad.GetParameterString("p_msjError");
+
+                if (os.Respuesta.Codigo == 0)
+                {
+                    List<EntidadOracle> lista = entidad.CursorToList("p_resultado");
+
+                    foreach (EntidadOracle objeto in lista)
+                    {
+                        SistematizacionEntidad item = (SistematizacionEntidad)objeto;
+                        os.ListaSistematizacion.Add(item.Sistematizaciones);
+                    }
+                }
+                entidad.Dispose();
+            }
+            catch (Exception e)
+            {
+                os.Respuesta.Codigo = Constantes.COD_ERROR_GENERAL;
+                os.Respuesta.Mensaje = "Fallo en  HPV_Datos.Reporte.FachadaReporte.RptSistematizacion :" + e.Message;
+            }
+
+            return os;
+        }
     }
 }
