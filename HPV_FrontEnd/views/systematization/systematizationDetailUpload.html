@@ -72,7 +72,7 @@
                             id="participant"
                             name="participant"
                             ng-model="sysDetUpCtrl.sys.IdInscrito"
-                            ng-options="item.IdInscrito as item.NomInscrito for item in sysDetUpCtrl.participants"
+                            ng-options="item.IdInscrito as item.NombreInscrito for item in sysDetUpCtrl.participants"
                             ng-disabled="!sysDetUpCtrl.participants || sysDetUpCtrl.editionDisabled()"
                             required></select>
                     <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>

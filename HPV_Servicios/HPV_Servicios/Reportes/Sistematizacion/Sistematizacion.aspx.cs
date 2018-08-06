@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace HPV_Servicios.Reportes.HistoriasVida
+namespace HPV_Servicios.Reportes.Sistematizacion
 {
     public partial class Sistematizacion : System.Web.UI.Page
     {
