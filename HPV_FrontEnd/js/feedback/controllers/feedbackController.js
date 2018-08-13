@@ -80,9 +80,8 @@ angular.module('prosperidad.users')
                         o[l.CodigoPregunta] = o[l.CodigoPregunta] || [];
                         o[l.CodigoPregunta].push(l);
                         return o;
-                    }, {});
+                    }, []).filter(function (o) { return o ? true : false; });
                     self.survey = angular.copy(enc);
-                    console.log(self.survey)
                 }
                 loading.stopLoading("FeedbackController, querySurvey - darEncuesta");
             }).catch(function (error) {
@@ -96,9 +95,10 @@ angular.module('prosperidad.users')
         }
 
         function isValidForm() {
-            if(self.survey && self.form && self.surveysAnswers)
-                return self.survey && self.surveysAnswers && (Object.keys(self.survey).length == Object.keys(self.surveysAnswers).length);
-            return false;
+            //if(self.survey && self.form && self.surveysAnswers)
+            //    return self.survey && self.surveysAnswers && (Object.keys(self.survey).length == Object.keys(self.surveysAnswers).length);
+            //return false;
+            return self.survey && self.surveysAnswers && (self.survey.length == Object.keys(self.surveysAnswers).length);
         }
 
         function saveAnswer(qst, answr) {
