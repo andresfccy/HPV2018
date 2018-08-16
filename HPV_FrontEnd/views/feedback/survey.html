@@ -112,12 +112,13 @@
                     <div class="panel-body">
                         <div class="alert alert-info">
                             <p>
-                                A continuación, expresa tu opinión sobre las afirmaciones seleccionando la opción que
-                                corresponda de acuerdo a la siguiente escala:
+                                Apreciado(a) participante, es muy importante que los proyectos que realizamos cumplan tus
+                                expectativas, por eso tus aportes son de gran valor para nosotros. Te invitamos a expresar tu
+                                opinión frente a las cosas que hacemos, agradecemos tu sinceridad al responder el siguiente
+                                cuestionario:
                             </p>
                             <p>
-                                TA = Totalmente de acuerdo, A = de acuerdo, NA/ND = ni de acuerdo ni en desacuerdo,
-                                D = En desacuerdo y TD = Totalmente en desacuerdo
+                                Responde SI o NO de acuerdo a tu opinión frente a las siguientes afirmaciones
                             </p>
                         </div>
                     </div>
@@ -126,15 +127,12 @@
                             <tr>
                                 <th class="text-center col-md-1">#</th>
                                 <th class="text-center col-md-7">Pregunta</th>
-                                <th class="text-center">TA</th>
-                                <th class="text-center">A</th>
-                                <th class="text-center">NA/ND</th>
-                                <th class="text-center">D</th>
-                                <th class="text-center">TD</th>
+                                <th class="text-center">SÍ</th>
+                                <th class="text-center">NO</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 3}"
+                            <tr ng-repeat="question in ctrl.survey | filter:{TipoPregunta: 5}"
                                 class="form-group has-feedback">
                                 <th class="text-center">{{$index+1}}</th>
                                 <td for="3poll_radio_question_1" class="control-label" style="white-space:normal">
