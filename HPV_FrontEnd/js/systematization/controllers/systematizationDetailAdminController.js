@@ -90,28 +90,30 @@
                 }
 
                 function reject() {
-                    var action = getCtrlName() + ", submit - ActualizarHistoriaVida()";
-                    loading.startLoading(action);
-                    self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
-                    self.sys.IdEstado = "R";
-                    var req = {
-                        IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
-                        Sistematizacion: self.sys
-                    }
-                    var promesa = SystematizationService.actualizarSistematizacion(req).$promise;
-                    promesa.then(function (o) {
-                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
-                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
-                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
-                        } else {
-                            growl.success("Instrumento rechazado exitosamente.");
-                            goBack();
+                    if (self.form.$valid) {
+                        var action = getCtrlName() + ", submit - ActualizarHistoriaVida()";
+                        loading.startLoading(action);
+                        self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
+                        self.sys.IdEstado = "R";
+                        var req = {
+                            IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
+                            Sistematizacion: self.sys
                         }
-                        loading.stopLoading(action);
-                    }).catch(function (error) {
-                        console.log(error);
-                        loading.stopLoading(action);
-                    });
+                        var promesa = SystematizationService.actualizarSistematizacion(req).$promise;
+                        promesa.then(function (o) {
+                            //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                            if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                                growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                            } else {
+                                growl.success("Instrumento rechazado exitosamente.");
+                                goBack();
+                            }
+                            loading.stopLoading(action);
+                        }).catch(function (error) {
+                            console.log(error);
+                            loading.stopLoading(action);
+                        });
+                    }
                 }
 
                 function seeDocument() {
