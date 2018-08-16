@@ -286,7 +286,7 @@
                 }
 
                 function documentDisabled() {
-                    if (!self.sys || self.sys.IdEstado == "R" || !self.sys.IdEstado || self.sys.IdEstado == "") {
+                    if (!self.sys || !self.sys.IdEstado || self.sys.IdEstado == "") {
                         return false;
                     }
                     return true;

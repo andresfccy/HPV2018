@@ -20,8 +20,16 @@
                         <label for="rejectReason" class="blueLabel">Motivo de rechazo</label>
                         <textarea class="form-control vresize"
                                   name="rejectReason"
+                                  ng-required="true"
                                   ng-model="sysDetAdmCtrl.sys.MotivoRechazo">
-                    </textarea>
+                        </textarea>
+                        <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
+                        <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
+                        <div class="validation-messages"
+                             ng-messages="form.instrument.$error"
+                             ng-if="form.instrument.$touched">
+                            <div ng-message="required">Este es un campo requerido</div>
+                        </div>
                     </div>
                 </div>
             </div>

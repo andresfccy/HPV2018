@@ -5,7 +5,26 @@
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading clearfix">
-
+                <div class="col-lg-3 clearfix">
+                    <label class="control-label"
+                           for="search">{{'systematization.search'|translate}}</label>
+                    <input class="form-control"
+                           id="search"
+                           type="text"
+                           placeholder="{{'systematization.search'|translate}}"
+                           ng-model="search"
+                           ng-blur="sysListAdmCtrl.submitSearch()" />
+                </div>
+                <div class="col-lg-4 clearfix">
+                    <label class="control-label"
+                           for="sysType">{{'systematization.type'|translate}}</label>
+                    <select class="form-control"
+                            id="sysType"
+                            placeholder="{{'systematization.type'|translate}}"
+                            ng-model="sysListAdmCtrl.selectedInst"
+                            ng-change="sysListAdmCtrl.submitSearch()"
+                            ng-options="item.Valor as item.Descripcion for item in sysListAdmCtrl.instruments"></select>
+                </div>
                 <div class="pull-right">
                     <uib-pagination boundary-links="true"
                                     total-items="sysListUpCtrl.total"
@@ -47,6 +66,7 @@
                         <th>{{'systematization.facilitator'|translate}}</th>
                         <th>{{'systematization.participant'|translate}}</th>
                         <th>{{'systematization.group'|translate}}</th>
+                        <th>{{'systematization.dpto'|translate}}</th>
                         <th>{{'systematization.city'|translate}}</th>
                         <th>{{'systematization.state'|translate}}</th>
                         <th>{{'systematization.detail'|translate}}</th>
@@ -57,6 +77,7 @@
                         <td>{{item.NomFacilitador}}</td>
                         <td>{{item.NomInscrito}}</td>
                         <td>{{item.SiglaGrupo}}</td>
+                        <td>{{item.NomDepartamento}}</td>
                         <td>{{item.NomMunicipio}}</td>
                         <td>{{item.NomEstado}}</td>
                         <td>
