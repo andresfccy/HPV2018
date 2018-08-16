@@ -75,16 +75,16 @@
                                 growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                             } else {
                                 self.groups = o.ListaGrupo;
-                                var i = -1;
-                                var i2 = -1;
-                                self.groups.some(function (l, idx) { if (l.IdGrupo == 11) { i = idx; return true; } else if (l.IdGrupo == 12) { i2 = idx; return true; } })
-                                //self.groups.splice(i, 1);
-                                //self.groups.splice(i2, 1);
-                                if (i != -1)
-                                    self.groups.splice(i, 1);
-                                if (i2 != -1)
-                                    self.groups.splice(i2, 1);
-                                console.log("Después: ", self.groups);
+                                //var i = -1;
+                                //var i2 = -1;
+                                //self.groups.some(function (l, idx) { if (l.IdGrupo == 11) { i = idx; return true; } else if (l.IdGrupo == 12) { i2 = idx; return true; } })
+                                ////self.groups.splice(i, 1);
+                                ////self.groups.splice(i2, 1);
+                                //if (i != -1)
+                                //    self.groups.splice(i, 1);
+                                //if (i2 != -1)
+                                //    self.groups.splice(i2, 1);
+                                //console.log("Después: ", self.groups);
                             }
                             loading.stopLoading(action);
                         }).catch(function (error) {
@@ -121,9 +121,9 @@
                                         growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                                     } else {
                                         self.groups = o.ListaGrupo;
-                                        var i = -1;
-                                        self.groups.some(function (l, idx) { if (l.IdGrupo == 11) { i = idx; return true; } })
-                                        self.groups.splice(i, 1);
+                                        //var i = -1;
+                                        //self.groups.some(function (l, idx) { if (l.IdGrupo == 11) { i = idx; return true; } })
+                                        //self.groups.splice(i, 1);
                                         self.getParticipantsByGroup();
                                     }
                                     loading.stopLoading(action2);
@@ -279,7 +279,7 @@
                 }
 
                 function editionDisabled() {
-                    if (!self.sys || self.sys.IdEstado == "R" || !self.sys.IdEstado || self.sys.IdEstado == "") {
+                    if (!self.sys || !self.sys.IdEstado || self.sys.IdEstado == "") {
                         return false;
                     }
                     return true;
