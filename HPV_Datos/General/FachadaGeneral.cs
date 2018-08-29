@@ -113,7 +113,7 @@ namespace HPV_Datos.General
 
                 if (campo.Length > 0)
                 {
-                    
+
 
                     campo[0] = campo[0].Substring(1);
                     campo[campo.Length - 1] = campo[campo.Length - 1].Substring(0, campo[campo.Length - 1].Length - 1);
@@ -127,13 +127,13 @@ namespace HPV_Datos.General
 
                     string readText = File.ReadAllText(nameEmail);
 
-                    for (int i=0; i<campo.Length; i++)
+                    for (int i = 0; i < campo.Length; i++)
                     {
-                        if (i>0)
+                        if (i > 0)
                         {
                             char[] delimiterChars = { ':' };
 
-                            String[] parametro = campo[i].Split(delimiterChars,2);
+                            String[] parametro = campo[i].Split(delimiterChars, 2);
                             readText = readText.Replace("&" + parametro[0], parametro[1]);
 
                         }
@@ -154,12 +154,13 @@ namespace HPV_Datos.General
                     o.CC.Add(oe.Cc);
 
                 if (oe.Bcc.ToString().Length > 0)
-                    o.Bcc.Add (oe.Bcc);
+                    o.Bcc.Add(oe.Bcc);
 
                 NetworkCredential netCred = new NetworkCredential(oe.UserName, oe.Password);
                 SmtpClient smtpobj = new SmtpClient(oe.Server, oe.Port);
                 smtpobj.Credentials = netCred;
-                
+                smtpobj.EnableSsl = true;
+            
                 smtpobj.Send(o);
 
                 os.Respuesta.Codigo = 0;

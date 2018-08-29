@@ -279,7 +279,7 @@
                 }
 
                 function editionDisabled() {
-                    if (!self.sys || !self.sys.IdEstado || self.sys.IdEstado == "") {
+                    if (!self.sys || !self.sys.IdEstado || self.sys.IdEstado == "" || self.sys.IdEstado == "R") {
                         return false;
                     }
                     return true;
@@ -287,9 +287,9 @@
 
                 function documentDisabled() {
                     if (!self.sys || !self.sys.IdEstado || self.sys.IdEstado == "") {
-                        return false;
+                        return true;
                     }
-                    return true;
+                    return false;
                 }
 
                 function getCtrlName() {

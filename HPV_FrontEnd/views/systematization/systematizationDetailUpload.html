@@ -93,7 +93,7 @@
                         <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
                     </uib-accordion-heading>
                     <div class="col-lg-12"
-                         ng-if="!sysDetUpCtrl.documentDisabled()">
+                         ng-if="!sysDetUpCtrl.editionDisabled()">
                         <label class="blueLabel">
                             Documento PDF *
                         </label>
@@ -109,7 +109,7 @@
                         <div ngf-no-file-drop>La opción de arrastrar no está disponible, haga clic en el recuadro para seleccionarlo del equipo</div>
                     </div>
                     <div class="col-lg-6"
-                         ng-if="!sysDetUpCtrl.documentDisabled()">
+                         ng-if="!sysDetUpCtrl.editionDisabled()">
                         <div class="form-group">
                             <label for="file" class="blueLabel">Documento PDF *</label>
                             <input class="form-control"
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 form-group"
-                         ng-if="sysDetUpCtrl.documentDisabled()">
+                         ng-if="!sysDetUpCtrl.documentDisabled()">
                         <button class="btn btn-info"
                                 ng-click="sysDetUpCtrl.seeDocument()">
                             Ver documento
