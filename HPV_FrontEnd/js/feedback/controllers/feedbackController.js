@@ -119,7 +119,7 @@ angular.module('prosperidad.users')
                 var req = {
                     Token: $stateParams.token,
                     RespuestaEncuesta: surveyString,
-                    Observaciones: self.comments
+                    Observaciones: self.comments + " / " + self.comments2
                 };
                 var promesa = FeedbackService.registrarEncuestaSatisfaccion(req).$promise;
                 promesa.then(function (o) {
