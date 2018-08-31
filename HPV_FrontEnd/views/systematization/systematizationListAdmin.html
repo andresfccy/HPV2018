@@ -63,22 +63,24 @@
                    ng-show="sysListAdmCtrl.sysList.length > 0">
                 <thead>
                     <tr>
-                        <th>{{'systematization.facilitator'|translate}}</th>
-                        <th>{{'lifeStory.participant'|translate}}</th>
-                        <th>{{'systematization.group'|translate}}</th>
-                        <th>{{'systematization.dpto'|translate}}</th>
                         <th>{{'systematization.city'|translate}}</th>
                         <th>{{'systematization.state'|translate}}</th>
+                        <th>{{'systematization.facilitator'|translate}}</th>
+                        <th>{{'lifeStory.participant'|translate}}</th>
+                        <th>Instrumento</th>
+                        <th>{{'systematization.group'|translate}}</th>
+                        <th>{{'systematization.dpto'|translate}}</th>
                         <th>{{'systematization.detail'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="item in sysListAdmCtrl.filtered | startFrom:(sysListAdmCtrl.currentPage-1)*maxResultsPerPage | limitTo:maxResultsPerPage">
                     <tr ng-class="{'success':item.IdEstado=='A','warning':item.IdEstado=='P', 'danger':item.IdEstado=='R', 'info':item.IdEstado=='S'}">
-                        <td>{{item.NomFacilitador}}</td>
-                        <td>{{item.NomInscrito}}</td>
-                        <td>{{item.SiglaGrupo}}</td>
                         <td>{{item.NomDepartamento}}</td>
                         <td>{{item.NomMunicipio}}</td>
+                        <td>{{item.NomFacilitador}}</td>
+                        <td>{{item.NomInscrito}}</td>
+                        <td>{{item.NomInstrumento}}</td>
+                        <td>{{item.SiglaGrupo}}</td>
                         <td>{{item.NomEstado}}</td>
                         <td>
                             <a href=""
