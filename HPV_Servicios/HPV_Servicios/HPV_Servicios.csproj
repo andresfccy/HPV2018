@@ -50,6 +50,11 @@
       <HintPath>..\..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel, Version=1.32.3879.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PDFsharp-MigraDoc-GDI.1.32.3879.0\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
       <Private>True</Private>
@@ -270,6 +275,7 @@
     <Compile Include="Indicadores\Indicadores.aspx.designer.cs">
       <DependentUpon>Indicadores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ManejadorExcelOffice.cs" />
     <Compile Include="Reportes\Sistematizacion\Sistematizacion.aspx.cs">
       <DependentUpon>Sistematizacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

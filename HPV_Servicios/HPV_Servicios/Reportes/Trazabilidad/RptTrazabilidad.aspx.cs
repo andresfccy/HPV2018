@@ -16,6 +16,8 @@ namespace HPV_Servicios.Reportes.Trazabilidad
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ManejadorExcelOffice rpt = new ManejadorExcelOffice();
+
             try
             {
 
@@ -41,8 +43,7 @@ namespace HPV_Servicios.Reportes.Trazabilidad
                 String rutaPlantilla = String.Format("{0}/trazabilidad.xlsx", pathPlantilla) ;
                 String rutaRpt = String.Format("{0}/trazabilidad.xlsx", pathTmp);
 
-                ManejadorExcel rpt = new ManejadorExcel();
-
+         
                 rpt.Abrir(rutaPlantilla);
 
                 OE_RptTrazabilidad  oe = new OE_RptTrazabilidad();
@@ -116,6 +117,7 @@ namespace HPV_Servicios.Reportes.Trazabilidad
             }
             catch (Exception err)
             {
+                rpt.Cerrar();
                 Response.Clear();
                 Response.Write("Genero error " + err.Message);
 
