@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -100,7 +101,7 @@ namespace HPV_Servicios.Reportes.EspaciosFisicos
 
                 Response.Clear();
 
-                Response.ContentType = "application/vnd.ms-excel";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                 Response.AddHeader("Content-Disposition", "attachment;filename=EspaciosFisicos-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
 
                 Response.Charset = "";
@@ -112,8 +113,7 @@ namespace HPV_Servicios.Reportes.EspaciosFisicos
             }
             catch (Exception err)
             {
-                Response.Clear();
-                Response.Write("Genero error " + err.Message);
+         
             }
         }
     }

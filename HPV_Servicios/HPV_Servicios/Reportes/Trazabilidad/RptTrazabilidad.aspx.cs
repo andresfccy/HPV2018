@@ -16,7 +16,7 @@ namespace HPV_Servicios.Reportes.Trazabilidad
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ManejadorExcelOffice rpt = new ManejadorExcelOffice();
+            ManejadorExcel rpt = new ManejadorExcel();
 
             try
             {
@@ -103,23 +103,18 @@ namespace HPV_Servicios.Reportes.Trazabilidad
 
 
                 Response.Clear();
-                
-                Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("Content-Disposition", "attachment;filename=Trazabilidadxpart-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
-                
-                Response.Charset = "";
-                Response.BinaryWrite(binaryRpt);
-				Response.Flush(); 
-				Response.End();
-                
+            
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
+                Response.AddHeader("Content-Disposition", "attachment;filename=Trazabilidadxpart-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
+                
+                Response.BinaryWrite(binaryRpt);
+                Response.Flush();
+                Response.End();
 
             }
             catch (Exception err)
             {
-                rpt.Cerrar();
-                Response.Clear();
-                Response.Write("Genero error " + err.Message);
 
             }
 

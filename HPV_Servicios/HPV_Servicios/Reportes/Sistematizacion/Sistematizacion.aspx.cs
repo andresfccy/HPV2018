@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -100,21 +101,25 @@ namespace HPV_Servicios.Reportes.Sistematizacion
 
                 Response.Clear();
 
-                Response.ContentType = "application/vnd.ms-excel";
+                //Response.ContentType = "application/vnd.ms-excel";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
                 if (os.ListaSistematizacion.Count > 0)
                     Response.AddHeader("Content-Disposition", "attachment;filename=Sistematizacion-p" + os.ListaSistematizacion[0].Atributos[1] + "-" + os.ListaSistematizacion[0].Atributos[os.ListaSistematizacion[0].Atributos.Count - 1] + ".xlsx");
                 else
                     Response.AddHeader("Content-Disposition", "attachment;filename=Sistematizacion-p" + idPeriodo + "-" + FechaCorte + ".xlsx");
 
-                Response.Charset = "";
+                //Response.Charset = "";
                 Response.BinaryWrite(binaryRpt);
+
                 Response.Flush();
+
                 Response.End();
+
             }
             catch (Exception err)
             {
-                Response.Clear();
-                Response.Write("Genero error " + err.Message);
+
             }
         }
     }

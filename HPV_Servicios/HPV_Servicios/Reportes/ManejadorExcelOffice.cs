@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -10,17 +11,18 @@ namespace HPV_Servicios.Reportes
 {
     public class ManejadorExcelOffice
     {
-        private static Excel.Workbook MyBook = null;
-        private static Excel.Application MyApp = null;
-        private static Excel.Worksheet MySheet = null;
+        private Excel.Workbook MyBook = null;
+        private Excel.Application MyApp = null;
+        private Excel.Worksheet MySheet = null;
 
         public void Abrir(String archivoPlantilla)
         {
 
             MyApp = new Excel.Application();
             MyApp.Visible = false;
-        
-             MyBook = MyApp.Workbooks.Open(archivoPlantilla);
+
+            String e = archivoPlantilla.Replace("/", "\\");
+            MyBook = MyApp.Workbooks.Open(e);
       
         }
 
@@ -44,8 +46,8 @@ namespace HPV_Servicios.Reportes
         public void SalvarComo(System.IO.Stream salida)
         {
             //     sampleWorkbook.SaveAs("Output.xlsx");
-            MyBook.Close();
-            MyApp.Quit();
+            //MyBook.Close();
+            //MyApp.Quit();
 
         }
 
@@ -56,17 +58,34 @@ namespace HPV_Servicios.Reportes
             if (salida.Exists)
                 salida.Delete();
 
-            MyBook.SaveAs(archivoSalida);
-        
+            //MyBook.SaveAs(@archivoSalida);
+            object misValue = System.Reflection.Missing.Value;
+
+            String s = archivoSalida.Replace("/", "\\");
+       
+            MyBook.SaveAs(s, Excel.XlFileFormat.xlOpenXMLWorkbook, misValue,
+    misValue, false, false, Excel.XlSaveAsAccessMode.xlShared,
+    Excel.XlSaveConflictResolution.xlUserResolution, true,
+    misValue, misValue, misValue);
+
+          //  MyBook.Close(true, misValue, misValue);
+          //  MyApp.Quit();
 
         }
 
         public void Cerrar()
         {
-           if (MyBook!= null)
-                MyBook.Close();
+            //MyBook.Close();
 
-            MyApp.Quit();
+            /* if (MyBook!= null)
+              {
+                  MyBook.Close();
+                  Marshal.ReleaseComObject(MyBook);
+              }
+
+
+              //MyApp.Quit();*/
+            //Marshal.ReleaseComObject(MyApp);
         }
 
         private Excel.Worksheet darHoja (string hoja)

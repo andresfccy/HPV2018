@@ -100,7 +100,7 @@ namespace HPV_Servicios.Reportes.HistoriasVida
 
                 Response.Clear();
 
-                Response.ContentType = "application/vnd.ms-excel";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                 if (os.ListaHistoriasVida.Count > 0)
                     Response.AddHeader("Content-Disposition", "attachment;filename=HistoriasVida-p" + os.ListaHistoriasVida[0].Atributos[1] + "-" + os.ListaHistoriasVida[0].Atributos[os.ListaHistoriasVida[0].Atributos.Count - 1] + ".xlsx");
                 else
@@ -115,8 +115,7 @@ namespace HPV_Servicios.Reportes.HistoriasVida
             }
             catch (Exception err)
             {
-                Response.Clear();
-                Response.Write("Genero error " + err.Message);
+
             }
         }
     }
