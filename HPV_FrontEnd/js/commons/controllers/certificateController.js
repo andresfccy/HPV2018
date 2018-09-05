@@ -55,7 +55,7 @@ angular.module('prosperidad.commons')
                     if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0" && o.Respuesta.Codigo != "85") {
                         growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                     } else {
-                        if(o.Respuesta.Codigo == "0"){
+                        if (o.Respuesta.Codigo == "0") {
                             growl.success("Ya se había enviado la encuesta de salida, por lo tanto estamos generando tu certificado. ¡Gracias por participar!.");
                             loading.startLoading("CertificateController, generateCertificate - $http");
                             $http({
@@ -75,8 +75,12 @@ angular.module('prosperidad.commons')
                                 loading.stopLoading("CertificateController, generateCertificate - $http");
                             });
                             $state.go("home");
-                        } else if (o.Respuesta.Codigo = "85") {
+                        }
+                        else if (o.Respuesta.Codigo = "85") {
                             $state.go("finalSurvey", { id: o.IdInscrito })
+                        }
+                        else if (o.Respuesta.Codigo = "113") {
+
                         }
                     }
                     loading.stopLoading("CertificateController, generateCertificate - generarCertificado");

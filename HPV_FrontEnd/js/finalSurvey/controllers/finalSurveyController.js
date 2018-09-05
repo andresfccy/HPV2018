@@ -35,7 +35,7 @@ angular.module('prosperidad.finalSurvey')
                 IdTipoEncuesta: "F"
             }
             loading.startLoading("FinalSurveyService, querySurvey - darEncuesta");
-            var promesa = FinalSurveyService.darEncuesta(req).$promise;
+            var promesa = FinalSurveyService.darEncuestaInscrito(req).$promise;
             promesa.then(function (o) {
                 //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
                 if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {

@@ -5,7 +5,9 @@ angular.module('prosperidad.inscription')
             var validarCorreoUrl = CommonsConstants.factory.API_BASE_URL() + CommonsConstants.factory.URL_WS_ALISTAMIENTO + '/ValidarCorreo';
             var darEncuestaUrl = CommonsConstants.factory.API_BASE_URL() + CommonsConstants.factory.URL_WS_ALISTAMIENTO + '/DarEncuesta';
             var guardarInscripcionUrl = CommonsConstants.factory.API_BASE_URL() + CommonsConstants.factory.URL_WS_ALISTAMIENTO + '/GuardarInscripcion';
+
             var generarCertificadoUrl = CommonsConstants.factory.API_BASE_URL() + CommonsConstants.factory.URL_WS_ALISTAMIENTO + '/GenerarCertificado';
+            var darVigenciasInscritoUrl = CommonsConstants.factory.API_BASE_URL() + CommonsConstants.factory.URL_WS_ALISTAMIENTO + '/DarVigenciasInscrito';
             var paramDefaults = {};
 
             var actions = {
@@ -13,7 +15,9 @@ angular.module('prosperidad.inscription')
                 validarCorreo: { method: 'POST', url: validarCorreoUrl, headers: CommonsConstants.factory.CONTENT_TYPE_HEADER },
                 darEncuesta: { method: 'POST', url: darEncuestaUrl, headers: CommonsConstants.factory.CONTENT_TYPE_HEADER },
                 guardarInscripcion: { method: 'POST', url: guardarInscripcionUrl, headers: CommonsConstants.factory.CONTENT_TYPE_HEADER },
+
                 generarCertificado: { method: 'POST', url: generarCertificadoUrl, headers: CommonsConstants.factory.CONTENT_TYPE_HEADER },
+                darVigenciasInscrito: { method: 'POST', url: darVigenciasInscritoUrl, headers: CommonsConstants.factory.CONTENT_TYPE_HEADER },
             };
             return $resource(baseUrl, paramDefaults, actions);
         }
