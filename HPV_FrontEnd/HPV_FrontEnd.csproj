@@ -84,6 +84,7 @@
     <Content Include="assets\img\img_cuando.jpg" />
     <Content Include="assets\img\img_realiza.jpg" />
     <Content Include="assets\img\loading.gif" />
+    <Content Include="assets\img\logo-header-oei.png" />
     <Content Include="assets\img\logos_entidades.png" />
     <Content Include="assets\img\logo_construyendo.png" />
     <Content Include="assets\img\logo_JeA.png" />
