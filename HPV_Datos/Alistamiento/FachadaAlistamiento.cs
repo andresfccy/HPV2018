@@ -566,5 +566,44 @@ namespace HPV_Datos.Alistamiento
 
             return os;
         }
+
+        public OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe)
+        {
+            OS_DarVigenciasInscrito os = new OS_DarVigenciasInscrito();
+            try
+            {
+                VigenciaEntidad entidad = new VigenciaEntidad(Constantes.HPV_NOM_CONNECTIONSTRING);
+
+                entidad.ExecuteStoreProcedure("pk_ali_inscripcion.Pr_DarVigenciasInscrito",
+                    new OracleParameter { ParameterName = "p_IdInscrito", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.IdInscrito },
+                    new OracleParameter { ParameterName = "p_resultado", OracleDbType = OracleDbType.RefCursor, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_codError", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_msjError", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Output, Size = 1000 }
+                    );
+
+                os.Respuesta.Codigo = entidad.GetParameterLong("p_codError");
+                os.Respuesta.Mensaje = entidad.GetParameterString("p_msjError");
+
+                if (os.Respuesta.Codigo == 0)
+                {
+                    List<EntidadOracle> lista = entidad.CursorToList("p_resultado");
+
+                    foreach (EntidadOracle objeto in lista)
+                    {
+                        VigenciaEntidad item = (VigenciaEntidad)objeto;
+                        os.ListaVigencia.Add(item.Vigencia.ano);
+                    }
+
+                }
+                entidad.Dispose();
+            }
+            catch (Exception e)
+            {
+                os.Respuesta.Codigo = Constantes.COD_ERROR_GENERAL;
+                os.Respuesta.Mensaje = "Fallo en HPV_Datos.Alistamiento.FachadaAlistamiento.DarVigenciasInscrito :" + e.Message;
+            }
+
+            return os;
+        }
     }
 }

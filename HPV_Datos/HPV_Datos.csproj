@@ -86,6 +86,7 @@
     <Compile Include="Alistamiento\Entidad\InscripcionEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\LugarEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\MunicipioEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\VigenciaEntidad.cs" />
     <Compile Include="Alistamiento\FachadaAlistamiento.cs" />
     <Compile Include="Alistamiento\InterfaceAlistamiento.cs" />
     <Compile Include="Alistamiento\Entidad\PeriodoEntidad.cs" />

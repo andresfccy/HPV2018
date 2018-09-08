@@ -121,16 +121,6 @@ namespace HPV_Servicios.Alistamiento
             return null;
         }
 
-        public OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe)
-        {
-            return (new FachadaAlistamiento().DarEncuestaInscrito(oe));
-        }
-
-        public OS_DarEncuestaInscrito DarEncuestaInscritoOptions(OE_DarEncuestaInscrito oe)
-        {
-            return null;
-        }
-
         public OS_GenerarCertificado GenerarCertificado(OE_GenerarCertificado oe)
         {
             return (new FachadaAlistamiento().GenerarCertificado(oe));
@@ -149,6 +139,25 @@ namespace HPV_Servicios.Alistamiento
         public OS_RegistrarEncuestaFinal RegistrarEncuestaFinalOptions(OE_RegistrarEncuestaFinal oe)
         {
             return null;
+        }
+
+        public OS_DarVigenciasInscrito DarVigenciasInscritoOptions(OE_DarVigenciasInscrito oe)
+        {
+            return null;
+        }
+        public OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe)
+        {
+            return (new FachadaAlistamiento().DarVigenciasInscrito(oe));
+        }
+
+        public OS_DarEncuestaInscrito DarEncuestaInscritoOptions(OE_DarEncuestaInscrito oe)
+        {
+            return null;
+        }
+
+        public OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe)
+        {
+            return (new FachadaAlistamiento().DarEncuestaInscrito(oe));
         }
     }
 }

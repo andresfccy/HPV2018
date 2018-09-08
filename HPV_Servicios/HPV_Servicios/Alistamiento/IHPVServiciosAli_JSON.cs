@@ -95,14 +95,6 @@ namespace HPV_Servicios.Alistamiento
         OS_DarEncuesta DarEncuestaOptions(OE_DarEncuesta oe);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarEncuestaInscrito")]
-        OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe);
-
-        [OperationContract]
-        [WebInvoke(Method = "OPTIONS", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarEncuestaInscrito")]
-        OS_DarEncuestaInscrito DarEncuestaInscritoOptions(OE_DarEncuestaInscrito oe);
-
-        [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "GenerarCertificado")]
         OS_GenerarCertificado GenerarCertificado(OE_GenerarCertificado oe);
 
@@ -117,6 +109,22 @@ namespace HPV_Servicios.Alistamiento
         [OperationContract]
         [WebInvoke(Method = "OPTIONS", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "RegistrarEncuestaFinal")]
         OS_RegistrarEncuestaFinal RegistrarEncuestaFinalOptions(OE_RegistrarEncuestaFinal oe);
+
+        [OperationContract]
+        [WebInvoke(Method = "OPTIONS", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarVigenciasInscrito")]
+        OS_DarVigenciasInscrito DarVigenciasInscritoOptions(OE_DarVigenciasInscrito oe);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "RegistrarEncuestaFinal")]
+        OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarEncuestaInscrito")]
+        OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe);
+
+        [OperationContract]
+        [WebInvoke(Method = "OPTIONS", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarEncuestaInscrito")]
+        OS_DarEncuestaInscrito DarEncuestaInscritoOptions(OE_DarEncuestaInscrito oe);
 
     }
 }

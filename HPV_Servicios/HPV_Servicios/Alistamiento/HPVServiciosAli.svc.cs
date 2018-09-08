@@ -74,5 +74,16 @@ namespace HPV_Servicios.Alistamiento
         {
             return (new FachadaAlistamiento().RegistrarEncuestaFinal(oe));
         }
+
+        public OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe)
+        {
+            return (new FachadaAlistamiento().DarVigenciasInscrito(oe));
+        }
+
+        public OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe)
+        {
+            return (new FachadaAlistamiento().DarEncuestaInscrito(oe));
+        }
+
     }
 }

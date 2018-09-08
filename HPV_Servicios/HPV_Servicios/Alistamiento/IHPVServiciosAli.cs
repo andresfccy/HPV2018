@@ -49,6 +49,11 @@ namespace HPV_Servicios.Alistamiento
         [OperationContract]
         OS_RegistrarEncuestaFinal RegistrarEncuestaFinal(OE_RegistrarEncuestaFinal oe);
 
+        [OperationContract]
+        OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe);
+
+        [OperationContract]
+        OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe);
 
     }
 

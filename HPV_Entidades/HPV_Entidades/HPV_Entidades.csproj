@@ -123,7 +123,10 @@
     <Compile Include="AdmUsuario\Rol.cs" />
     <Compile Include="AdmUsuario\Usuario.cs" />
     <Compile Include="AlistamientoWS\OE_DarEncuestaInscrito.cs" />
+    <Compile Include="AlistamientoWS\OE_DarVigenciasInscrito.cs" />
     <Compile Include="AlistamientoWS\OS_DarEncuestaInscrito.cs" />
+    <Compile Include="AlistamientoWS\OS_DarVigenciasInscrito.cs" />
+    <Compile Include="Alistamiento\Vigencia.cs" />
     <Compile Include="EncuestasSena\OE_Pregunta.cs" />
     <Compile Include="EncuestasSena\OE_Respuesta.cs" />
     <Compile Include="EncuestasSena\OE_RespuestasEncuesta.cs" />
