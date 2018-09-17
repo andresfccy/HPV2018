@@ -15,7 +15,7 @@ namespace HPV_Datos.Alistamiento.Entidad
 
         public VigenciaEntidad()
         {
-          
+            Vigencia = new Vigencia();
         }
 
 
@@ -30,6 +30,8 @@ namespace HPV_Datos.Alistamiento.Entidad
                 return null;
 
             VigenciaEntidad entidad = new VigenciaEntidad();
+            String x = row["vigencia"].ToString();
+
             entidad.Vigencia.ano = Int32.Parse(row["vigencia"].ToString());
             
             return entidad;
