@@ -3,16 +3,23 @@
 angular.module('prosperidad.commons')
     .controller('CertificateController',
     ['$location', '$state', 'growl', 'loading', '$http', 'CommonsConstants',
-        'InscriptionService', 'CommonsListasService',
+        'InscriptionService', 'CommonsListasService', 'CommonsPeriodoActual',
     function ($location, $state, growl, loading, $http, CommonsConstants,
-        InscriptionService, CommonsListasService) {
+        InscriptionService, CommonsListasService, CommonsPeriodoActual) {
         var self = this;
         self.initialize = initialize;
         self.form;
+        self.showYearSelection = false;
+        // Años de vigencia
+        self.years;
+        self.IdInscrito;
 
         self.participant;
         self.initializeForm = initializeForm;
         self.generateCertificate = generateCertificate;
+        self.generateCerrificateYear = generateCerrificateYear;
+        // Cargar las vigencias desde el Backend
+        self.getYears = getYears;
 
         function initialize() {
             // Petición de la lista de tipos de documentos.
@@ -80,7 +87,9 @@ angular.module('prosperidad.commons')
                             $state.go("finalSurvey", { id: o.IdInscrito })
                         }
                         else if (o.Respuesta.Codigo = "113") {
-
+                            self.IdInscrito = o.IdInscrito;
+                            this.getYears(o);
+                            self.showYearSelection = true;
                         }
                     }
                     loading.stopLoading("CertificateController, generateCertificate - generarCertificado");
@@ -88,6 +97,52 @@ angular.module('prosperidad.commons')
                     console.log(error);
                     loading.stopLoading("CertificateController, generateCertificate - generarCertificado");
                 });
+            }
+        }
+
+        function getYears(ins) {
+            var action = "certificateController, getYears - darVigenciasInscrito()";
+            var req = { IdInscrito: ins.IdInscrito };
+            loading.startLoading(action);
+            var promise = CommonsPeriodoActual.darVigenciasInscrito(req).$promise;
+            promise.then(function (o) {
+                if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                    growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                } else {
+                    self.years = o.ListaVigencia;
+                }
+                loading.stopLoading(action);
+            }).catch(function (error) {
+                console.log(error);
+                loading.stopLoading(action);
+            });
+        }
+
+        function generateCerrificateYear() {
+            if (self.inscrito) {
+                if (self.form.$valid) {
+                    loading.startLoading("CertificateController, generateCertificate - $http");
+                    $http({
+                        method: 'POST',
+                        data: req,
+                        url: CommonsConstants.factory.API_BASE_URL() + "/Reportes/Certificado/GenerarCertificado.aspx"
+                            + "?idInscrito=" + self.IdInscrito
+                            + "&Vigencia=" + self.participant.Vigencia,
+                        responseType: "arraybuffer"
+                    }).success(function (data) {
+                        var file = new Blob([data], { type: 'application/pdf' });
+                        var fileURL = URL.createObjectURL(file);
+                        window.open(fileURL, "_blank");
+                        loading.stopLoading("CertificateController, generateCertificate - $http");
+                    }).error(function (data, status, headers, config) {
+                        if (status == 404) growl.error("Ha ocurrido un error al realizar la descarga: \n" + data.toUpperCase());
+                        if (status == 500) growl.error("Error del servidor, por favor consulte con el administrador.");
+                        loading.stopLoading("CertificateController, generateCertificate - $http");
+                    });
+                    $state.go("home");
+                }
+            } else {
+                growl.warning("El proceso tuvo un inconveniente, por favor recarga la página y vuelve a intentarlo");
             }
         }
     }

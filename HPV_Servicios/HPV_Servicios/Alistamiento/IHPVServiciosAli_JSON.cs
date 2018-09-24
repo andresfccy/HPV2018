@@ -115,7 +115,7 @@ namespace HPV_Servicios.Alistamiento
         OS_DarVigenciasInscrito DarVigenciasInscritoOptions(OE_DarVigenciasInscrito oe);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "RegistrarEncuestaFinal")]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "DarVigenciasInscrito")]
         OS_DarVigenciasInscrito DarVigenciasInscrito(OE_DarVigenciasInscrito oe);
 
         [OperationContract]
