@@ -82,6 +82,7 @@
     <Compile Include="Alistamiento\Entidad\DepartamentoEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\DiaEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\EncuestaEntidad.cs" />
+    <Compile Include="Alistamiento\Entidad\ParametrosCertificadoEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\HorarioEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\InscripcionEntidad.cs" />
     <Compile Include="Alistamiento\Entidad\LugarEntidad.cs" />

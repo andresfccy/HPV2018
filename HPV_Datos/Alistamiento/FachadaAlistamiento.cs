@@ -149,6 +149,55 @@ namespace HPV_Datos.Alistamiento
             return os;
         }
 
+        public OS_DarParametrosCertificado DarParametrosCertificado(OE_DarParametrosCertificado oe)
+        {
+            OS_DarEncuestaInscrito os = new OS_DarEncuestaInscrito();
+            try
+            {
+
+                EncuestaEntidad entidad = new EncuestaEntidad(Constantes.HPV_NOM_CONNECTIONSTRING);
+
+                entidad.ExecuteStoreProcedure("pk_ali_inscripcion.Pr_DarEncuestaInscrito",
+                    new OracleParameter { ParameterName = "p_tipoDocumento", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.TipoDocumento },
+                    new OracleParameter { ParameterName = "p_documento", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.Documento },
+                    new OracleParameter { ParameterName = "p_codigoBeneficiario", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.CodigoBeneficiario },
+                    new OracleParameter { ParameterName = "p_fechaNacimiento", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.FechaNacimiento },
+                    new OracleParameter { ParameterName = "p_idTipoEncuesta", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.IdTipoEncuesta },
+                    new OracleParameter { ParameterName = "p_vigencia", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.Vigencia },
+                    new OracleParameter { ParameterName = "p_resultado", OracleDbType = OracleDbType.RefCursor, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_codError", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Output },
+                    new OracleParameter { ParameterName = "p_msjError", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Output, Size = 1000 }
+                    );
+
+
+
+                os.Respuesta.Codigo = entidad.GetParameterLong("p_codError");
+                os.Respuesta.Mensaje = entidad.GetParameterString("p_msjError");
+
+                if (os.Respuesta.Codigo == 0)
+                {
+                    List<EntidadOracle> lista = entidad.CursorToList("p_resultado");
+
+                    foreach (EntidadOracle objeto in lista)
+                    {
+                        EncuestaEntidad item = (EncuestaEntidad)objeto;
+                        os.ListaEncuesta.Add(item.Encuesta);
+                    }
+
+                }
+
+                entidad.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                os.Respuesta.Codigo = Constantes.COD_ERROR_GENERAL;
+                os.Respuesta.Mensaje = "Fallo en HPV_Datos.Alistamiento.FachadaAlistamiento.DarEncuestaInscrito :" + e.Message;
+            }
+
+            return os;
+        }
+
         public OS_DarEncuestaInscrito DarEncuestaInscrito(OE_DarEncuestaInscrito oe)
         {
             OS_DarEncuestaInscrito os = new OS_DarEncuestaInscrito();

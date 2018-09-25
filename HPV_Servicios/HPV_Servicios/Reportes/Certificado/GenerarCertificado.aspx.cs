@@ -36,9 +36,9 @@ namespace HPV_Servicios.Reportes.Certificado
             {
 
                 String idInscrito = Request.QueryString["idInscrito"];
-
-                if (idInscrito == null)
-                    throw new Exception("NO HAY INFORMACION");
+                String vigencia = Request.QueryString["Vigencia"];
+                if (string.IsNullOrEmpty(idInscrito))
+                    throw new Exception("Hay parámetros faltantes en la petición.");
 
 
                 InitDocument();
@@ -51,9 +51,8 @@ namespace HPV_Servicios.Reportes.Certificado
 
                 if (os.Respuesta.Codigo == 0)
                 {
-                        CreateSection();
-                        ConfigHeader(os);
-                        
+                    CreateSection();
+                    ConfigHeader(os, vigencia);
                 }
 
 
@@ -97,8 +96,8 @@ namespace HPV_Servicios.Reportes.Certificado
 
         private void CreateSection()
         {
-            
-            
+
+
             section = document.AddSection();
             section.PageSetup.PageHeight = height;
             section.PageSetup.PageWidth = width;
@@ -112,11 +111,11 @@ namespace HPV_Servicios.Reportes.Certificado
             section.PageSetup.BottomMargin = XUnit.FromCentimeter(2).Point;
         }
 
-        private void ConfigHeader(OS_ConsultarInscrito os)
+        private void ConfigHeader(OS_ConsultarInscrito os, string vigencia = "2016")
         {
             String rootPath = Server.MapPath("~");
 
-            
+
             Paragraph paragraph = section.Headers.Primary.AddParagraph();
             var image = paragraph.AddImage(rootPath + "Img/pdfheader2018-1.png");
             image.Height = XUnit.FromCentimeter(3).Point;
@@ -167,7 +166,7 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = section.Headers.Primary.AddParagraph("");
 
-            paragraph = section.Headers.Primary.AddParagraph(os.Inscrito.NomTipoDocumento + " No. "  + os.Inscrito.Documento );
+            paragraph = section.Headers.Primary.AddParagraph(os.Inscrito.NomTipoDocumento + " No. " + os.Inscrito.Documento);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 12;
             paragraph.Format.Font.Bold = false;
@@ -227,9 +226,9 @@ namespace HPV_Servicios.Reportes.Certificado
             meses.Add("Diciembre");
 
             paragraph = section.Headers.Primary.AddParagraph(
-                "En constancia se firma a los " + fcer[2]  
-                + " días, en " + os.Inscrito.NomMunicipio 
-                + " en el mes de "  + meses[Int32.Parse(fcer[1])-1] 
+                "En constancia se firma a los " + fcer[2]
+                + " días, en " + os.Inscrito.NomMunicipio
+                + " en el mes de " + meses[Int32.Parse(fcer[1]) - 1]
                 + " de " + fcer[0]
             );
             paragraph.Format.Font.Name = "helvetica";
@@ -244,29 +243,29 @@ namespace HPV_Servicios.Reportes.Certificado
             image2.Height = XUnit.FromCentimeter(5).Point;
             image2.Width = XUnit.FromCentimeter(25).Point;
 
-            
+
 
         }
 
         private void ConfigFooter()
         {
-            
 
-           
+
+
 
             Paragraph paragraph = section.Footers.Primary.AddParagraph("Página: ");
             paragraph.AddPageField();
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Alignment = ParagraphAlignment.Right;
 
-           
+
 
         }
 
         private void FillTableHeader(OS_DarAsistenciaEncabezado os)
         {
 
-            
+
 
 
             var table = section.AddTable();
@@ -284,7 +283,7 @@ namespace HPV_Servicios.Reportes.Certificado
             column = table.AddColumn(ancho * 0.25);
             column.Format.Alignment = ParagraphAlignment.Left;
 
-            
+
             var row = table.AddRow();
             var cell = row.Cells[0];
             var paragraph = cell.AddParagraph("FECHA");
@@ -303,7 +302,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-           
+
 
 
             cell = row.Cells[2];
@@ -318,7 +317,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("DEPARTAMENTO");
@@ -349,7 +348,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("MUNICIPIO");
@@ -376,7 +375,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("FACILITADOR");
@@ -403,7 +402,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("COORDINADOR TERRITORIAL");
@@ -430,7 +429,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("NOMBRE DEL TALLER");
@@ -457,7 +456,7 @@ namespace HPV_Servicios.Reportes.Certificado
             paragraph.Format.Font.Size = 8;
             paragraph.Format.Font.Bold = false;
 
-            
+
             row = table.AddRow();
             cell = row.Cells[0];
             paragraph = cell.AddParagraph("PERIODO");
@@ -604,9 +603,9 @@ namespace HPV_Servicios.Reportes.Certificado
 
         private void CreateObservation()
         {
-            
 
-            
+
+
             section.AddParagraph("");
 
             var table = section.AddTable();
@@ -627,15 +626,15 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = cell.AddParagraph("");
             paragraph = cell.AddParagraph("");
-            
-            
-            
-            
+
+
+
+
 
             section.AddParagraph("");
-            
-            
-            
+
+
+
 
             table = section.AddTable();
 

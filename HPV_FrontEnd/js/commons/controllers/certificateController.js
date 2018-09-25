@@ -11,13 +11,13 @@ angular.module('prosperidad.commons')
         self.form;
         self.showYearSelection = false;
         // Años de vigencia
-        self.years;
+        self.years = [];
         self.IdInscrito;
 
         self.participant;
         self.initializeForm = initializeForm;
         self.generateCertificate = generateCertificate;
-        self.generateCerrificateYear = generateCerrificateYear;
+        self.generateCertificateYear = generateCertificateYear;
         // Cargar las vigencias desde el Backend
         self.getYears = getYears;
 
@@ -59,7 +59,7 @@ angular.module('prosperidad.commons')
                 var promesa = InscriptionService.generarCertificado(req).$promise;
                 promesa.then(function (o) {
                     //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
-                    if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0" && o.Respuesta.Codigo != "85") {
+                    if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0" && o.Respuesta.Codigo != "85" && o.Respuesta.Codigo != "113") {
                         growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                     } else {
                         if (o.Respuesta.Codigo == "0") {
@@ -83,12 +83,13 @@ angular.module('prosperidad.commons')
                             });
                             $state.go("home");
                         }
-                        else if (o.Respuesta.Codigo = "85") {
+                        else if (o.Respuesta.Codigo == "85") {
                             $state.go("finalSurvey", { id: o.IdInscrito })
                         }
-                        else if (o.Respuesta.Codigo = "113") {
+                        else if (o.Respuesta.Codigo == "113") {
+                            console.log("Entró 113");
                             self.IdInscrito = o.IdInscrito;
-                            this.getYears(o);
+                            getYears(o);
                             self.showYearSelection = true;
                         }
                     }
@@ -118,13 +119,12 @@ angular.module('prosperidad.commons')
             });
         }
 
-        function generateCerrificateYear() {
-            if (self.inscrito) {
+        function generateCertificateYear() {
+            if (self.IdInscrito) {
                 if (self.form.$valid) {
                     loading.startLoading("CertificateController, generateCertificate - $http");
                     $http({
                         method: 'POST',
-                        data: req,
                         url: CommonsConstants.factory.API_BASE_URL() + "/Reportes/Certificado/GenerarCertificado.aspx"
                             + "?idInscrito=" + self.IdInscrito
                             + "&Vigencia=" + self.participant.Vigencia,

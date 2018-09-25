@@ -9,7 +9,7 @@
             <h3 class="panel-title">{{'certificate.title'|translate}}</h3>
         </div>
         <div ng-init="ctrl.initializeForm(form_validation)"></div>
-        <div ng-if="!ctrl.showYears">
+        <div ng-if="!ctrl.showYearSelection">
             <div class="panel-body">
                 <div class="col-sm-12"><p translate>inscription.innerPanel</p></div>
                 <div class="col-sm-3">
@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <div ng-if="ctrl.showYears">
+        <div ng-if="ctrl.showYearSelection">
             <div class="panel-body">
                 <div class="col-sm-12">Selección de vigencia</div>
                 <div class="col-sm-12"><small>¡Hola!, hemos identificado que has participado en años anteriores en el programa de Habilidades para la Vida, 
@@ -114,7 +114,7 @@
                                 id="year"
                                 name="year"
                                 ng-model="ctrl.participant.Vigencia"
-                                ng-options="item in ctrl.years"
+                                ng-options="item for item in ctrl.years"
                                 required></select>
                         <span name="error_feedback" class="hidden glyphicon form-control-feedback glyphicon-remove"></span>
                         <span name="success_feedback" class="hidden glyphicon form-control-feedback glyphicon-ok"></span>
