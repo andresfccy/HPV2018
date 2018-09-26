@@ -21,6 +21,6 @@ namespace HPV_Datos.Alistamiento
         OS_DarEncuesta DarEncuesta(OE_DarEncuesta oe);
         OS_GenerarCertificado GenerarCertificado(OE_GenerarCertificado oe);
         OS_RegistrarEncuestaFinal RegistrarEncuestaFinal(OE_RegistrarEncuestaFinal oe);
-
+        OS_DarParametrosCertificado DarParametrosCertificado(OE_DarParametrosCertificado oe);
     }
 }

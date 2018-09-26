@@ -11,17 +11,17 @@ namespace HPV_Datos.Alistamiento.Entidad
 {
     public class ParametrosCertificadoEntidad : EntidadOracle
     {
-        public Horario Horario { get; set; }
+        public ParametrosCertificado Parametros { get; set; }
 
         public ParametrosCertificadoEntidad()
         {
-            Horario = new Horario();
+            Parametros = new ParametrosCertificado();
         }
 
 
         public ParametrosCertificadoEntidad(string connectionStringName) : base(connectionStringName)
         {
-            Horario = new Horario();
+            Parametros = new ParametrosCertificado();
         }
 
         public override EntidadOracle ParseFromDataRow(DataRow row)
@@ -29,9 +29,17 @@ namespace HPV_Datos.Alistamiento.Entidad
             if (row == null)
                 return null;
 
-            HorarioEntidad entidad = new HorarioEntidad();
-            entidad.Horario.Codigo = Int64.Parse(row["a24codigo"].ToString());
-            entidad.Horario.Nombre = row["a24horario"].ToString();
+            ParametrosCertificadoEntidad entidad = new ParametrosCertificadoEntidad();
+
+            entidad.Parametros.NomAliado = row["a31aliado"].ToString();
+            entidad.Parametros.Encabezado = row["a31encabezado"].ToString();
+            entidad.Parametros.Firma = row["a31firma"].ToString();
+            entidad.Parametros.Renglon1 = row["a31renglon1"].ToString();
+            entidad.Parametros.Renglon2 = row["a31renglon2"].ToString();
+            entidad.Parametros.Renglon3 = row["a31renglon3"].ToString();
+            entidad.Parametros.Renglon4 = row["a31renglon4"].ToString();
+            entidad.Parametros.Renglon5 = row["a31renglon5"].ToString();
+            entidad.Parametros.Renglon6 = row["a31renglon6"].ToString();
 
             return entidad;
         }

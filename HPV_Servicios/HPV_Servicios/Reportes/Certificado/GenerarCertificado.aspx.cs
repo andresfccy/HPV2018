@@ -18,6 +18,7 @@ using HPV_Entidades.AsistenciaWS;
 using HPV_Entidades.Asistencia;
 using HPV_Entidades.ConsultaWS;
 using HPV_Datos.Consulta;
+using HPV_Datos.Alistamiento;
 
 namespace HPV_Servicios.Reportes.Certificado
 {
@@ -48,11 +49,12 @@ namespace HPV_Servicios.Reportes.Certificado
                 oe.IdPeriodo = 0;
 
                 var os = new FachadaConsulta().ConsultarInscrito(oe);
+                var parametrosCert = new FachadaAlistamiento().DarParametrosCertificado(new HPV_Entidades.AlistamientoWS.OE_DarParametrosCertificado { Documento = os.Inscrito.Documento });
 
                 if (os.Respuesta.Codigo == 0)
                 {
                     CreateSection();
-                    ConfigHeader(os, vigencia);
+                    ConfigHeader(os, vigencia, parametrosCert);
                 }
 
 
@@ -111,26 +113,29 @@ namespace HPV_Servicios.Reportes.Certificado
             section.PageSetup.BottomMargin = XUnit.FromCentimeter(2).Point;
         }
 
-        private void ConfigHeader(OS_ConsultarInscrito os, string vigencia = "2016")
+        private void ConfigHeader(OS_ConsultarInscrito os, string vigencia = "2018", HPV_Entidades.AlistamientoWS.OS_DarParametrosCertificado param = null)
         {
             String rootPath = Server.MapPath("~");
 
 
             Paragraph paragraph = section.Headers.Primary.AddParagraph();
-            var image = paragraph.AddImage(rootPath + "Img/pdfheader2018-1.png");
+            var rutaImg = vigencia == "2016" ? "Img/pdfheader.png" : vigencia == "2018" && param == null ? "Img/pdfheader2018-1.png" : vigencia == "2018" && param != null ? param.Parametros.Encabezado : "Img/pdfheader2018-1.png";
+            var image = paragraph.AddImage(rootPath + rutaImg);
             image.Height = XUnit.FromCentimeter(3).Point;
             image.Width = XUnit.FromCentimeter(25).Point;
 
             paragraph = section.Headers.Primary.AddParagraph();
             paragraph.AddLineBreak();
 
-            paragraph = section.Headers.Primary.AddParagraph("El Programa Jóvenes en Acción de Prosperidad Social en alianza con la Organización");
+            var renglon1 = vigencia == "2016" ? "Prosperidad Social y su programa" : vigencia == "2018" && param == null ? "El Programa Jóvenes en Acción de Prosperidad Social en alianza con la Organización" : vigencia == "2018" && param != null ? param.Parametros.Renglon1 : "El Programa Jóvenes en Acción de Prosperidad Social en alianza con la Organización";
+            paragraph = section.Headers.Primary.AddParagraph(renglon1);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 16;
             paragraph.Format.Font.Bold = true;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("de Estados Iberoamericanos y la Universidad de Santander.");
+            var renglon2 = vigencia == "2016" ? "Jóvenes en Acción" : vigencia == "2018" && param == null ? "de Estados Iberoamericanos y la Universidad de Santander." : vigencia == "2018" && param != null ? param.Parametros.Renglon2 : "de Estados Iberoamericanos y la Universidad de Santander.";
+            paragraph = section.Headers.Primary.AddParagraph(renglon2);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 16;
             paragraph.Format.Font.Bold = true;
@@ -178,28 +183,32 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = section.Headers.Primary.AddParagraph("");
 
-            paragraph = section.Headers.Primary.AddParagraph("Asistió y participó activamente en el Módulo Presencial – “Construyendo Mi Camino”, como proceso de formación de veintiséis (26) horas,");
+            var renglon3 = vigencia == "2016" ? "Asistió y participó activamente a los talleres del Módulo Presencial del Componente de Habilidades para la Vida bajo la metodología" : vigencia == "2018" && param == null ? "Asistió y participó activamente en el Módulo Presencial – “Construyendo Mi Camino”, como proceso de formación de veintiséis (26) horas," : vigencia == "2018" && param != null ? param.Parametros.Renglon3 : "Asistió y participó activamente en el Módulo Presencial – “Construyendo Mi Camino”, como proceso de formación de veintiséis (26) horas,";
+            paragraph = section.Headers.Primary.AddParagraph(renglon3);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("desarrollando ocho (8) talleres bajo la metodología de aprendizaje experiencial, en los cuales se fortalecieron las siguientes Habilidades");
+            var renglon4 = vigencia == "2016" ? "de aprendizaje experiencial, desarrollando Competencias Laborales y las siguientes Competencias Transversales: Resiliencia," : vigencia == "2018" && param == null ? "desarrollando ocho (8) talleres bajo la metodología de aprendizaje experiencial, en los cuales se fortalecieron las siguientes Habilidades" : vigencia == "2018" && param != null ? param.Parametros.Renglon4 : "desarrollando ocho (8) talleres bajo la metodología de aprendizaje experiencial, en los cuales se fortalecieron las siguientes Habilidades";
+            paragraph = section.Headers.Primary.AddParagraph(renglon4);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("para la Vida: LIDERAZGO, AUTOCONOCIMIENTO, RESILIENCIA, EMPATÍA, TRABAJO EN EQUIPO, GESTIÓN DE CONFLICTOS, ");
+            var renglon5 = vigencia == "2016" ? "Perseverancia, Gestión de Conflictos, Comunicación Asertiva, Adaptabilidad, Empatía y Toma de Decisiones, realizados en 2 meses con" : vigencia == "2018" && param == null ? "para la Vida: LIDERAZGO, AUTOCONOCIMIENTO, RESILIENCIA, EMPATÍA, TRABAJO EN EQUIPO, GESTIÓN DE CONFLICTOS, " : vigencia == "2018" && param != null ? param.Parametros.Renglon5 : "para la Vida: LIDERAZGO, AUTOCONOCIMIENTO, RESILIENCIA, EMPATÍA, TRABAJO EN EQUIPO, GESTIÓN DE CONFLICTOS, ";
+            paragraph = section.Headers.Primary.AddParagraph(renglon5);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
-            paragraph = section.Headers.Primary.AddParagraph("TOMA DE DECISIONES Y COMUNICACIÓN ASERTIVA, contribuyendo así a su bienestar personal, familiar, social y productivo.");
+            var renglon6 = vigencia == "2016" ? "una intensidad de 24 horas." : vigencia == "2018" && param == null ? "TOMA DE DECISIONES Y COMUNICACIÓN ASERTIVA, contribuyendo así a su bienestar personal, familiar, social y productivo." : vigencia == "2018" && param != null ? param.Parametros.Renglon6 : "TOMA DE DECISIONES Y COMUNICACIÓN ASERTIVA, contribuyendo así a su bienestar personal, familiar, social y productivo.";
+            paragraph = section.Headers.Primary.AddParagraph(renglon6);
             paragraph.Format.Font.Name = "helvetica";
             paragraph.Format.Font.Size = 11;
             paragraph.Format.Font.Bold = false;
@@ -239,9 +248,11 @@ namespace HPV_Servicios.Reportes.Certificado
 
             paragraph = section.Headers.Primary.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Center;
-            var image2 = paragraph.AddImage(rootPath + "Img/firmaCertificado2018-1.png");
+            var rutaimg2 = vigencia == "2016" ? "Img/firmaCertificado.png" : vigencia == "2018" && param == null ? "Img/firmaCertificado2018-1.png" : vigencia == "2018" && param != null ? param.Parametros.Renglon6 : "Img/firmaCertificado2018-1.png";
+            var image2 = paragraph.AddImage(rootPath + rutaimg2);
             image2.Height = XUnit.FromCentimeter(5).Point;
-            image2.Width = XUnit.FromCentimeter(25).Point;
+            int ancho = vigencia == "2016" ? 10 : vigencia == "2018" && param == null ? 25 : vigencia == "2018" && param != null ? 25 : 25;
+            image2.Width = XUnit.FromCentimeter(ancho).Point;
 
 
 

@@ -122,8 +122,10 @@
     <Compile Include="AdmUsuario\Opcion.cs" />
     <Compile Include="AdmUsuario\Rol.cs" />
     <Compile Include="AdmUsuario\Usuario.cs" />
+    <Compile Include="AlistamientoWS\OE_DarParametrosCertificado.cs" />
     <Compile Include="AlistamientoWS\OE_DarEncuestaInscrito.cs" />
     <Compile Include="AlistamientoWS\OE_DarVigenciasInscrito.cs" />
+    <Compile Include="AlistamientoWS\OS_DarParametrosCertificado.cs" />
     <Compile Include="AlistamientoWS\OS_DarEncuestaInscrito.cs" />
     <Compile Include="AlistamientoWS\OS_DarVigenciasInscrito.cs" />
     <Compile Include="Alistamiento\ParametrosCertificado.cs" />
