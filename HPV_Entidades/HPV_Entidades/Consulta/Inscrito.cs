@@ -33,6 +33,7 @@ namespace HPV_Entidades.Consulta
         public String NombreCoordinador { get; set; }
         public String FechaRegistro { get; set; } // yyyy-mm-dd
         public String FechaCertificado { get; set; } // yyyy-mm-dd
+        public String Vigencia { get; set; }
 
         public List<AsistenciaTaller> ListaAsistenciaTaller { get; set; }
 

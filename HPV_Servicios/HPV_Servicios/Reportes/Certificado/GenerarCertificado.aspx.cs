@@ -54,6 +54,7 @@ namespace HPV_Servicios.Reportes.Certificado
                 if (os.Respuesta.Codigo == 0)
                 {
                     CreateSection();
+                    vigencia = vigencia == null ? os.Inscrito.Vigencia : vigencia;
                     ConfigHeader(os, vigencia, parametrosCert);
                 }
 

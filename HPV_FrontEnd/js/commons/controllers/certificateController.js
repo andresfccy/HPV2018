@@ -76,12 +76,12 @@ angular.module('prosperidad.commons')
                                 var fileURL = URL.createObjectURL(file);
                                 window.open(fileURL, "_blank");
                                 loading.stopLoading("CertificateController, generateCertificate - $http");
+                                $state.go("home");
                             }).error(function (data, status, headers, config) {
                                 if (status == 404) growl.error("Ha ocurrido un error al realizar la descarga: \n" + data.toUpperCase());
                                 if (status == 500) growl.error("Error del servidor, por favor consulte con el administrador.");
                                 loading.stopLoading("CertificateController, generateCertificate - $http");
                             });
-                            $state.go("home");
                         }
                         else if (o.Respuesta.Codigo == "85") {
                             $state.go("finalSurvey", { id: o.IdInscrito })
@@ -134,12 +134,12 @@ angular.module('prosperidad.commons')
                         var fileURL = URL.createObjectURL(file);
                         window.open(fileURL, "_blank");
                         loading.stopLoading("CertificateController, generateCertificate - $http");
+                        $state.go("home");
                     }).error(function (data, status, headers, config) {
                         if (status == 404) growl.error("Ha ocurrido un error al realizar la descarga: \n" + data.toUpperCase());
                         if (status == 500) growl.error("Error del servidor, por favor consulte con el administrador.");
                         loading.stopLoading("CertificateController, generateCertificate - $http");
                     });
-                    $state.go("home");
                 }
             } else {
                 growl.warning("El proceso tuvo un inconveniente, por favor recarga la página y vuelve a intentarlo");

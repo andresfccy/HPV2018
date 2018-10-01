@@ -64,6 +64,7 @@ namespace HPV_Datos.Consulta.Entidad
                 entidad.Inscrito.FechaRegistro = row["FechaRegistro"].ToString();
 
                 entidad.Inscrito.FechaCertificado = row["FechaCertificado"].ToString();
+                entidad.Inscrito.Vigencia = row["vigencia"].ToString();
 
                 String listaTaller = row["listaTaller"].ToString();
 
