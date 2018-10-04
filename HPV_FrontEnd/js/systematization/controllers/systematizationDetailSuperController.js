@@ -16,6 +16,8 @@
             }
             else {
                 var self = this;
+                self.categ = {};
+
                 self.init = init;
                 self.initForm = initForm;
                 self.choose = choose;
@@ -64,7 +66,48 @@
                             growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                         } else {
                             self.sys = o.Sistematizacion;
-                            self.selectedSeason = self.sys.IdPeriodo;
+
+                            // Dar Subcategorias
+                            var req = {
+                                IdTipoInstrumento: $stateParams.id,
+                                IdPeriodo: self.selectedSeason
+                            };
+                            var action = getCtrlName() + ", initialize - darSubcategoriasXInstrumento";
+                            loading.startLoading(action);
+                            var promesa = SystematizationService.darSubcategoriasXInstrumento(req).$promise;
+                            promesa.then(function (o) {
+                                //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                                if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                                    growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                                } else {
+                                    self.subcats = o.ListaSubcategorias;
+
+                                    // Dar Caracterizacion
+                                    var req = {
+                                        IdSistematizacion: $stateParams.id
+                                    };
+                                    var action = getCtrlName() + ", initialize - darCategorizacion";
+                                    loading.startLoading(action);
+                                    var promesa = SystematizationService.darCategorizacion(req).$promise;
+                                    promesa.then(function (o) {
+                                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                                        } else {
+                                            self.categ.list = o.ListaCategorizacion;
+                                            self.categ.desc = o.ListaCategorizacion.find(function (o) { if (o.Id == 0) { return o } }).DescOtra;
+                                        }
+                                        loading.stopLoading(action);
+                                    }).catch(function (error) {
+                                        console.log(error);
+                                        loading.stopLoading(action);
+                                    });
+                                }
+                                loading.stopLoading(action);
+                            }).catch(function (error) {
+                                console.log(error);
+                                loading.stopLoading(action);
+                            });
                         }
                         loading.stopLoading(action);
                     }).catch(function (error) {

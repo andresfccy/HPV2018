@@ -20,5 +20,17 @@ namespace HPV_Servicios.Sistematizacion
 
         [OperationContract]
         OS_DarSistematizacion DarSistematizacion(OE_DarSistematizacion oe);
+
+        [OperationContract]
+        OS_DarSubcategoriasXInstrumento DarSubcategoriasXInstrumento(OE_DarSubcategoriasXInstrumento oe);
+
+        [OperationContract]
+        OS_DarCategoriasXInstrumento DarCategoriasXInstrumento(OE_DarCategoriasXInstrumento oe);
+
+        [OperationContract]
+        OS_DarCategorizacion DarCategorizacion(OE_DarCategorizacion oe);
+
+        [OperationContract]
+        OS_ActualizarCategorizacion ActualizarCategorizacion(OE_ActualizarCategorizacion oe);
     }
 }

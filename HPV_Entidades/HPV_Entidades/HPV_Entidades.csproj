@@ -320,10 +320,20 @@
     <Compile Include="Reporte\Trazabilidad.cs" />
     <Compile Include="SistematizacionWS\OE_ActualizarSistematizacion.cs" />
     <Compile Include="SistematizacionWS\OE_ConsultarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OE_DarSubcategoriasXInstrumento.cs" />
+    <Compile Include="SistematizacionWS\OE_DarCategorizacion.cs" />
+    <Compile Include="SistematizacionWS\OE_ActualizarCategorizacion.cs" />
+    <Compile Include="SistematizacionWS\OE_DarCategoriasXInstrumento.cs" />
     <Compile Include="SistematizacionWS\OE_DarSistematizacion.cs" />
     <Compile Include="SistematizacionWS\OS_ActualizarSistematizacion.cs" />
     <Compile Include="SistematizacionWS\OS_ConsultarSistematizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_DarSubcategoriasXInstrumento.cs" />
+    <Compile Include="SistematizacionWS\OS_DarCategorizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_ActualizarCategorizacion.cs" />
+    <Compile Include="SistematizacionWS\OS_DarCategoriasXInstrumento.cs" />
     <Compile Include="SistematizacionWS\OS_DarSistematizacion.cs" />
+    <Compile Include="Sistematizacion\Categoria.cs" />
+    <Compile Include="Sistematizacion\Subcategoria.cs" />
     <Compile Include="Sistematizacion\Sistematizacion.cs" />
   </ItemGroup>
   <ItemGroup />

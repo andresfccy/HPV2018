@@ -149,6 +149,8 @@
     <Compile Include="Liderazgos\FachadaLiderazgo.cs" />
     <Compile Include="Liderazgos\InterfaceLiderazgo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistematizacion\Entidad\CategoriaEntidad.cs" />
+    <Compile Include="Sistematizacion\Entidad\SubcategoriaEntidad.cs" />
     <Compile Include="Sistematizacion\Entidad\SistematizacionEntidad.cs" />
     <Compile Include="Sistematizacion\FachadaSistematizacion.cs" />
     <Compile Include="Sistematizacion\InterfaceSistematizacion.cs" />
