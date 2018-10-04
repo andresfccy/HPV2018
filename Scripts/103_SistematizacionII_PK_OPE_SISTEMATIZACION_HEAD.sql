@@ -54,8 +54,9 @@ create or replace package PK_OPE_SISTEMATIZACION is
                              p_codError    OUT NUMBER,
                              p_msjError    OUT VARCHAR2);
 
-  PROCEDURE Pr_DarSubCategorias(p_categoria IN NUMBER,
-                                p_resultado OUT PK_UTILS.ty_cursor,
-                                p_codError  OUT NUMBER,
-                                p_msjError  OUT VARCHAR);
+  PROCEDURE Pr_DarSubCategorias(p_idTipoInstrumento IN NUMBER,
+                                p_periodo           IN NUMBER DEFAULT NULL,
+                                p_resultado         OUT PK_UTILS.ty_cursor,
+                                p_codError          OUT NUMBER,
+                                p_msjError          OUT VARCHAR);
 end PK_OPE_SISTEMATIZACION;

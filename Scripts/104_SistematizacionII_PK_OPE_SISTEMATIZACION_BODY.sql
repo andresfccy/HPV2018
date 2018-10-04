@@ -610,11 +610,15 @@ create or replace package body PK_OPE_SISTEMATIZACION is
   BEGIN
     OPEN p_resultado FOR
       SELECT 
-          A67SUBCATEGORIA             Subcategoria
-        , T66_CAT_SUB_SIST.A66CATPRIM Categoria
-      FROM T67_SIST_CAT, T66_CAT_SUB_SIST 
-      WHERE T67_SIST_CAT.A67INSTRUMENTO = p_idSistematizacion 
-      AND   T67_SIST_CAT.A67SUBCATEGORIA = T66_CAT_SUB_SIST.A66CODIGO;
+          sc.A67SUBCATEGORIA  IdSubcategoria
+        , s.A66DESCRIPCION    NomSubcategoria
+        , s.A66CATPRIM        IdCategoria
+        , c.A65DESCRIPCION    NomCategoria
+        , sc.A67DESCOTRA      DescripcionOtra
+      FROM T67_SIST_CAT sc, T66_CAT_SUB_SIST s, T65_CAT_PRIM_SIST c
+      WHERE sc.A67INSTRUMENTO = p_idSistematizacion 
+      AND   sc.A67SUBCATEGORIA = s.A66CODIGO
+      AND   s.A66CATPRIM = c.A65CODIGO;
      
     p_codError := PK_UTILS.COD_OPERACION_CORRECTA;
     p_msjError := PK_UTILS.MSJ_OPERACION_CORRECTA;
@@ -654,8 +658,11 @@ create or replace package body PK_OPE_SISTEMATIZACION is
     OPEN p_resultado FOR
       SELECT 
           t.A65CODIGO       Id
-        , t.A65DESCRIPCION  Descripcion
-      FROM T65_CAT_PRIM_SIST t
+        , t.A65DESCRIPCION  NomCategoria
+        , t.A65TIPOINST     IdInstrumento
+        , i.A76NOMBRE       NomInstrumento
+      FROM T65_CAT_PRIM_SIST t 
+      JOIN T76_INSTRUMENTOSSIS i ON t.A65TIPOINST = i.A76CODIGO
       WHERE t.A65TIPOINST = p_instrumento
       AND   t.A65PERIODO  = codPeriodo;
   
@@ -678,10 +685,11 @@ create or replace package body PK_OPE_SISTEMATIZACION is
       p_msjError := PK_UTILS.MSJ_EXCEPCION_GENERAL || TO_CHAR(codExcepcion);    
   END Pr_DarCategorias;
 
-  PROCEDURE Pr_DarSubCategorias(p_categoria IN NUMBER,
-                                p_resultado OUT PK_UTILS.ty_cursor,
-                                p_codError  OUT NUMBER,
-                                p_msjError  OUT VARCHAR)
+  PROCEDURE Pr_DarSubCategorias(p_idTipoInstrumento IN NUMBER,
+                                p_periodo           IN NUMBER DEFAULT NULL,
+                                p_resultado         OUT PK_UTILS.ty_cursor,
+                                p_codError          OUT NUMBER,
+                                p_msjError          OUT VARCHAR)
   IS
     codExcepcion          NUMBER;
     NOMBRE_PROCEDIMIENTO  VARCHAR2(50) := 'Pr_DarSubCategorias';
@@ -689,11 +697,14 @@ create or replace package body PK_OPE_SISTEMATIZACION is
   
     OPEN p_resultado FOR
       SELECT 
-        t.A66CODIGO         Id
-        , t.A66CATPRIM      Categoria
-        , t.A66DESCRIPCION  Descripcion
+          t.A66CODIGO       Id
+        , t.A66DESCRIPCION  NomSubcategoria
+        , t.A66CATPRIM      IdCategoria
+        , c.A65DESCRIPCION  NomCategoria
       FROM T66_CAT_SUB_SIST t
-      WHERE t.A66CATPRIM = p_categoria;    
+      JOIN T65_CAT_PRIM_SIST c ON t.A66CATPRIM = c.A65CODIGO
+      WHERE c.A65TIPOINST = p_idTipoInstrumento
+      AND   c.A65PERIODO = p_periodo;    
   
     p_codError := PK_UTILS.COD_OPERACION_CORRECTA;
     p_msjError := PK_UTILS.MSJ_OPERACION_CORRECTA;
