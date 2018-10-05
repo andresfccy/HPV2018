@@ -32,9 +32,10 @@ namespace HPV_Datos.Sistematizacion.Entidad
 
             entidad.Subcategoria.Id = Int64.Parse(row["Id"].ToString());
             entidad.Subcategoria.NomSubcategoria = row["NomSubcategoria"].ToString();
-            entidad.Subcategoria.IdCategoria = Int64.Parse(row["IdCategoria"].ToString());
+            var idCat = row["IdCategoria"].ToString();
+            entidad.Subcategoria.IdCategoria = String.IsNullOrEmpty(idCat) ? 0 : Int64.Parse(idCat);
             entidad.Subcategoria.NomCategoria = row["NomCategoria"].ToString();
-            entidad.Subcategoria.DescOtra = row["NomCategoria"]?.ToString();
+            entidad.Subcategoria.DescOtra = row["DescripcionOtra"]?.ToString();
 
             return entidad;
         }

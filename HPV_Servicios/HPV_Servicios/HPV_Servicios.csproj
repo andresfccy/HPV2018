@@ -135,6 +135,9 @@
     <Content Include="EncuestasSena\HPVServicioEncuestas.svc" />
     <Content Include="Indicadores\Indicadores.aspx" />
     <Content Include="Reportes\Sistematizacion\Sistematizacion.aspx" />
+    <Content Include="Reportes\Sistematizacion\SistematizacionEL.aspx" />
+    <Content Include="Reportes\Sistematizacion\SistematizacionHV.aspx" />
+    <Content Include="Reportes\Sistematizacion\SistematizacionPT.aspx" />
     <Content Include="Sistematizacion\AdjuntarInstrumento.aspx" />
     <Content Include="Sistematizacion\ConsultarInstrumento.aspx" />
     <Content Include="Sistematizacion\HPVServiciosSistematizacion.svc" />
@@ -282,6 +285,27 @@
     </Compile>
     <Compile Include="Reportes\Sistematizacion\Sistematizacion.aspx.designer.cs">
       <DependentUpon>Sistematizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionEL.aspx.cs">
+      <DependentUpon>SistematizacionEL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionEL.aspx.designer.cs">
+      <DependentUpon>SistematizacionEL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionHV.aspx.cs">
+      <DependentUpon>SistematizacionHV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionHV.aspx.designer.cs">
+      <DependentUpon>SistematizacionHV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionPT.aspx.cs">
+      <DependentUpon>SistematizacionPT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Sistematizacion\SistematizacionPT.aspx.designer.cs">
+      <DependentUpon>SistematizacionPT.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sistematizacion\AdjuntarInstrumento.aspx.cs">
       <DependentUpon>AdjuntarInstrumento.aspx</DependentUpon>

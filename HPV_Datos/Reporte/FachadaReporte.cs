@@ -773,6 +773,7 @@ namespace HPV_Datos.Reporte
                     new OracleParameter { ParameterName = "p_idDepartamento", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdDepartamento },
                     new OracleParameter { ParameterName = "p_idMunicipio", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdMunicipio },
                     new OracleParameter { ParameterName = "p_fechaCorte", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.FechaCorte },
+                    new OracleParameter { ParameterName = "p_idTipoInstrumento", OracleDbType = OracleDbType.Int16, Direction = ParameterDirection.Input, Value = oe.ParametroRpt.IdTipoInstrumento },
                     new OracleParameter { ParameterName = "p_resultado", OracleDbType = OracleDbType.RefCursor, Direction = ParameterDirection.Output },
                     new OracleParameter { ParameterName = "p_codError", OracleDbType = OracleDbType.Int64, Direction = ParameterDirection.Output },
                     new OracleParameter { ParameterName = "p_msjError", OracleDbType = OracleDbType.Varchar2, Direction = ParameterDirection.Output, Size = 1000 }

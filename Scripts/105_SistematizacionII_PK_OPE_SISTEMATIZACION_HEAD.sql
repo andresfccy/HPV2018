@@ -38,7 +38,7 @@ create or replace package PK_OPE_SISTEMATIZACION is
 
   PROCEDURE Pr_ActualizarCategorizacion(p_idSistematizacion     IN NUMBER,
                                         p_listaCategorizaciones IN VARCHAR2,
-                                        p_descotros             IN VARCHAR2 DEFAULT NULL,
+                                        p_descotros             IN VARCHAR2,
                                         p_idUsuario             IN NUMBER,
                                         p_codError              OUT NUMBER,
                                         p_msjError              OUT VARCHAR2);

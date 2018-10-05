@@ -559,7 +559,7 @@ create or replace package body PK_OPE_SISTEMATIZACION is
 
   PROCEDURE Pr_ActualizarCategorizacion(p_idSistematizacion     IN NUMBER,
                                         p_listaCategorizaciones IN VARCHAR2,
-                                        p_descotros             IN VARCHAR2 DEFAULT NULL,
+                                        p_descotros             IN VARCHAR2,
                                         p_idUsuario             IN NUMBER,
                                         p_codError              OUT NUMBER,
                                         p_msjError              OUT VARCHAR2)
@@ -573,12 +573,10 @@ create or replace package body PK_OPE_SISTEMATIZACION is
     listaCat := PK_UTILS.fn_splitStr(p_listaCategorizaciones, ',');
     
     FOR i in 1 .. listaCat.count LOOP
-      INSERT INTO T67_SIST_CAT(A67INSTRUMENTO, A67SUBCATEGORIA, A67FECHACREACION, A67USUARIOCREACION) VALUES(p_idSistematizacion,listaCat(i), SYSDATE(), p_idUsuario);
+      INSERT INTO T67_SIST_CAT(A67INSTRUMENTO, A67SUBCATEGORIA, A67DESCOTRA, A67FECHACREACION, A67USUARIOCREACION) VALUES(p_idSistematizacion,listaCat(i), NULL, SYSDATE, p_idUsuario);
     END LOOP;
     
-    IF(p_descotros <> NULL) THEN
-      INSERT INTO T67_SIST_CAT(A67INSTRUMENTO, A67SUBCATEGORIA, A67DESCOTRA, A67FECHACREACION, A67USUARIOCREACION) VALUES(p_idSistematizacion, 0, p_descotros, SYSDATE(), p_idUsuario);
-    END IF;
+    INSERT INTO T67_SIST_CAT(A67INSTRUMENTO, A67SUBCATEGORIA, A67DESCOTRA, A67FECHACREACION, A67USUARIOCREACION) VALUES(p_idSistematizacion, 0, p_descotros, SYSDATE, p_idUsuario);
   
     p_codError := PK_UTILS.COD_OPERACION_CORRECTA;
     p_msjError := PK_UTILS.MSJ_OPERACION_CORRECTA;
@@ -610,15 +608,15 @@ create or replace package body PK_OPE_SISTEMATIZACION is
   BEGIN
     OPEN p_resultado FOR
       SELECT 
-          sc.A67SUBCATEGORIA  IdSubcategoria
+          sc.A67SUBCATEGORIA  Id
         , s.A66DESCRIPCION    NomSubcategoria
         , s.A66CATPRIM        IdCategoria
         , c.A65DESCRIPCION    NomCategoria
         , sc.A67DESCOTRA      DescripcionOtra
-      FROM T67_SIST_CAT sc, T66_CAT_SUB_SIST s, T65_CAT_PRIM_SIST c
-      WHERE sc.A67INSTRUMENTO = p_idSistematizacion 
-      AND   sc.A67SUBCATEGORIA = s.A66CODIGO
-      AND   s.A66CATPRIM = c.A65CODIGO;
+      FROM T67_SIST_CAT sc
+      LEFT OUTER JOIN T66_CAT_SUB_SIST s ON sc.A67SUBCATEGORIA = s.A66CODIGO
+      LEFT OUTER JOIN T65_CAT_PRIM_SIST c ON s.A66CATPRIM = c.A65CODIGO
+      WHERE sc.A67INSTRUMENTO = p_idSistematizacion;
      
     p_codError := PK_UTILS.COD_OPERACION_CORRECTA;
     p_msjError := PK_UTILS.MSJ_OPERACION_CORRECTA;
@@ -701,6 +699,7 @@ create or replace package body PK_OPE_SISTEMATIZACION is
         , t.A66DESCRIPCION  NomSubcategoria
         , t.A66CATPRIM      IdCategoria
         , c.A65DESCRIPCION  NomCategoria
+        , ''                DescripcionOtra
       FROM T66_CAT_SUB_SIST t
       JOIN T65_CAT_PRIM_SIST c ON t.A66CATPRIM = c.A65CODIGO
       WHERE c.A65TIPOINST = p_idTipoInstrumento

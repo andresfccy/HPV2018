@@ -17,6 +17,7 @@
             else {
                 var self = this;
                 self.categ = {};
+                self.selectedSc = [];
 
                 self.init = init;
                 self.initForm = initForm;
@@ -26,6 +27,8 @@
                 self.goBack = goBack;
                 self.identifySeasson = identifySeasson;
                 self.goBack = goBack;
+                self.saveCat = saveCat;
+                self.toggle = toggle;
 
                 function init() {
                     var req = { Categoria: "PERIODO" };
@@ -69,8 +72,8 @@
 
                             // Dar Subcategorias
                             var req = {
-                                IdTipoInstrumento: $stateParams.id,
-                                IdPeriodo: self.selectedSeason
+                                IdTipoInstrumento: self.sys.IdInstrumento,
+                                IdPeriodo: self.sys.IdPeriodo
                             };
                             var action = getCtrlName() + ", initialize - darSubcategoriasXInstrumento";
                             loading.startLoading(action);
@@ -80,11 +83,19 @@
                                 if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
                                     growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                                 } else {
-                                    self.subcats = o.ListaSubcategorias;
+                                    var tmpsubcats = o.ListaSubcategorias;
+
+                                    tmpsubcats = tmpsubcats.reduce(function (o, l) {
+                                        o[l.IdCategoria] = o[l.IdCategoria] || [];
+                                        o[l.IdCategoria].push(l);
+                                        return o;
+                                    }, []).filter(function (o) { return o ? true : false; });
+
+                                    self.subcats = angular.copy(tmpsubcats);
 
                                     // Dar Caracterizacion
                                     var req = {
-                                        IdSistematizacion: $stateParams.id
+                                        IdSistematizacion: self.sys.Id
                                     };
                                     var action = getCtrlName() + ", initialize - darCategorizacion";
                                     loading.startLoading(action);
@@ -95,7 +106,14 @@
                                             growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                                         } else {
                                             self.categ.list = o.ListaCategorizacion;
-                                            self.categ.desc = o.ListaCategorizacion.find(function (o) { if (o.Id == 0) { return o } }).DescOtra;
+                                            self.categ.list.forEach(function (i) {
+                                                self.toggle(i.Id);
+                                                self.subcats.forEach(function (o) { o.forEach(function (k) { if (k.Id == i.Id) k.value = true; }); });
+                                            });
+
+                                            var catEsp = o.ListaCategorizacion.find(function (o) { if (o.Id == 0) { return o } });
+                                            console.log(catEsp);
+                                            self.categ.desc = catEsp ? catEsp.DescOtra : "";
                                         }
                                         loading.stopLoading(action);
                                     }).catch(function (error) {
@@ -167,6 +185,33 @@
                     });
                 }
 
+                function saveCat() {
+                    var stringCats = self.selectedSc.filter(function (o) { return o != 0; }).join(',');
+
+                    // Dar Caracterizacion
+                    var req = {
+                        IdSistematizacion: self.sys.Id,
+                        ListaCategorizaciones: stringCats,
+                        DescripcionOtros: self.categ.desc,
+                        IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
+                    };
+                    var action = getCtrlName() + ", initialize - actualizarCategorizacion";
+                    loading.startLoading(action);
+                    var promesa = SystematizationService.actualizarCategorizacion(req).$promise;
+                    promesa.then(function (o) {
+                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                        } else {
+                            growl.success("Se actualizó correctamente la categorización para este instrumento");
+                        }
+                        loading.stopLoading(action);
+                    }).catch(function (error) {
+                        console.log(error);
+                        loading.stopLoading(action);
+                    });
+                }
+
                 function seeDocument() {
                     var action = getCtrlName() + ", seeDocument - $http";
                     loading.startLoading(action);
@@ -214,6 +259,15 @@
 
                 function getCtrlName() {
                     return "SystematizationDetailSuperController";
+                }
+
+                function toggle(idSubcat) {
+                    var encontrado = self.selectedSc.indexOf(idSubcat);
+                    if (encontrado < 0) {
+                        self.selectedSc.push(idSubcat);
+                    } else {
+                        self.selectedSc.splice(encontrado, 1);
+                    }
                 }
             }
         }

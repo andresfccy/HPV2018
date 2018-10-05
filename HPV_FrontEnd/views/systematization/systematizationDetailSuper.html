@@ -5,7 +5,45 @@
              style="padding-left:0px; padding-right:0px;"
              ng-init="sysDetSprCtrl.initForm(form)">
             <div class="col-lg-12">
+                <div ng-repeat="cat in sysDetSprCtrl.subcats" class="col-lg-12">
+                    <div class="col-lg-12 row" style="margin-bottom: 5px;">
+                        <label for="state" class="blueLabel">{{cat[0].NomCategoria}}</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <div ng-repeat="subCat in cat" class="col-lg-4">
+                            <input class="form-check-input col-sm-1"
+                                   type="checkbox"
+                                   id="inlineCheckbox{{subCat.Id}}"
+                                   ng-model="subCat.value"
+                                   ng-change="sysDetSprCtrl.toggle(subCat.Id)">
+                            <label class="form-check-label col-sm-11" style="font-weight:normal !important;"
+                                   for="inlineCheckbox{{subCat.Id}}">{{subCat.NomSubcategoria}}</label>
+                        </div>
+                    </div>
+                    <hr class="clearfix col-sm-12" />
+                </div>
                 <div class="col-lg-12">
+                    <div class="col-lg-12 row" style="margin-bottom: 5px;">
+                        <label for="state" class="blueLabel">Otros</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea class="form-control vresize"
+                                  name="otherCat"
+                                  ng-model="sysDetSprCtrl.categ.desc">
+                        </textarea>
+                    </div>
+                    <hr class="clearfix col-sm-12" />
+                </div>
+                <div class="col-lg-12">
+                    <button class="btn btn-success pull-right"
+                            type="submit"
+                            ng-click="sysDetSprCtrl.saveCat()">
+                        Guardar categorización
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-4 row">
                     <div class="form-group">
                         <label for="state" class="blueLabel">Estado</label>
                         <input class="form-control"
