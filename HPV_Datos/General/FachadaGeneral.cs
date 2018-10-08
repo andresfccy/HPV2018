@@ -159,7 +159,7 @@ namespace HPV_Datos.General
                 NetworkCredential netCred = new NetworkCredential(oe.UserName, oe.Password);
                 SmtpClient smtpobj = new SmtpClient(oe.Server, oe.Port);
                 smtpobj.Credentials = netCred;
-                smtpobj.EnableSsl = true;
+                //smtpobj.EnableSsl = true;
             
                 smtpobj.Send(o);
 
