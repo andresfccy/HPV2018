@@ -53,7 +53,61 @@
                 </tr>
                 <tr>
                     <td><b>{{'searches.table.inscriptionDate'|translate}}</b></td>
-                    <td colspan="5">{{ctrl.user.FechaRegistro}}</td>
+                    <td colspan="2">{{ctrl.user.FechaRegistro}}</td>
+                    <td><b>Fecha de nacimiento</b></td>
+                    <td colspan="2">{{ctrl.user.FechaNacimiento}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped"
+               ng-show="ctrl.user.ListaAsistenciaTaller.length > 0">
+            <tbody>
+                <tr class="warning">
+                    <td colspan="8"><b>{{'participantState.table.attendance'|translate}}</b></td>
+                </tr>
+                <tr>
+                    <td><b>{{'participantState.table.workshop'|translate}} 1</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 2</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 3</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 4</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 5</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 6</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 7</b></td>
+                    <td><b>{{'participantState.table.workshop'|translate}} 8</b></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[0].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[0].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[0].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[1].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[1].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[1].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[2].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[2].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[2].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[3].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[3].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[3].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[4].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[4].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[4].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[5].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[5].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[5].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[6].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[6].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[6].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
+                    <td>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[7].IndAsistencia == 1">{{ctrl.user.ListaAsistenciaTaller[7].FechaRealizacion}}</span>
+                        <span ng-if="ctrl.user.ListaAsistenciaTaller[7].IndAsistencia == 0">{{'participantState.table.noAttendance'|translate}}</span>
+                    </td>
                 </tr>
             </tbody>
         </table>
