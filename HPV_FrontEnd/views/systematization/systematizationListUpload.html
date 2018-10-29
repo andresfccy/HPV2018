@@ -21,9 +21,9 @@
                     <select class="form-control"
                             id="sysType"
                             placeholder="{{'systematization.type'|translate}}"
-                            ng-model="sysListAdmCtrl.selectedInst"
-                            ng-change="sysListAdmCtrl.submitSearch()"
-                            ng-options="item.Valor as item.Descripcion for item in sysListAdmCtrl.instruments"></select>
+                            ng-model="sysListUpCtrl.selectedInst"
+                            ng-change="sysListUpCtrl.submitSearch()"
+                            ng-options="item.Valor as item.Descripcion for item in sysListUpCtrl.instruments"></select>
                 </div>
                 <div class="pull-right">
                     <uib-pagination boundary-links="true"

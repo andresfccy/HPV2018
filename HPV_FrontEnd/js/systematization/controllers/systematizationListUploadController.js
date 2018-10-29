@@ -2,10 +2,10 @@
     .controller('SystematizationListUploadController',
     ['$rootScope', '$scope', '$location', '$state', '$translate',
         'growl', 'moment', 'loading', 'filterFilter',
-        'CommonsConstants', 'CommonsListasService', 'SystematizationService', 'SessionsBusiness',
+        'CommonsConstants', 'CommonsListasService', 'SystematizationService', 'SessionsBusiness', 'CommonsListasService',
         function ($rootScope, $scope, $location, $state, $translate,
             growl, moment, loading, filterFilter,
-            CommonsConstants, CommonListasService, SystematizationService, SessionsBusiness) {
+            CommonsConstants, CommonListasService, SystematizationService, SessionsBusiness, CommonsListasService) {
 
             if (!SessionsBusiness.authorized(410)) {
                 //if (false) {
@@ -49,6 +49,24 @@
                 self.sysList;
 
                 function init() {
+                    var req = { Categoria: "INSTRUMENTOS" };
+                    var action = getCtrlName() + ", initialize - darLista(INSTRUMENTOS)";
+                    loading.startLoading(action);
+                    var promesa = CommonsListasService.darLista(req).$promise;
+                    promesa.then(function (o) {
+                        //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
+                        if (o.Respuesta.Codigo && o.Respuesta.Codigo != "0") {
+                            growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
+                        } else {
+                            self.instruments = o.ListaValor;
+                            self.instruments.push({ Valor: null, Descripcion: 'TODOS' });
+                        }
+                        loading.stopLoading(action);
+                    }).catch(function (error) {
+                        console.log(error);
+                        loading.stopLoading(action);
+                    });
+
                     self.submitSearch();
                 }
 
@@ -58,8 +76,10 @@
                     var req = {
                         IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
                         FiltroBusqueda: $scope.search,
-                        EstadoXConsultar: self.selectedState
+                        EstadoXConsultar: self.selectedState,
+                        InstrumentoXConsultar: self.selectedInst
                     }
+                    if (!req.InstrumentoXConsultar) delete req.InstrumentoXConsultar;
                     var promesa = SystematizationService.darSistematizacion(req).$promise;
                     promesa.then(function (o) {
                         //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.

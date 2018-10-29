@@ -62,6 +62,7 @@
                             growl.error("Ha ocurrido un error:\n" + o.Respuesta.Mensaje);
                         } else {
                             self.instruments = o.ListaValor;
+                            self.instruments.push({ Valor: null, Descripcion: 'TODOS' });
                         }
                         loading.stopLoading(action);
                     }).catch(function (error) {
@@ -111,6 +112,7 @@
                         InstrumentoXConsultar: self.selectedInst,
                         IdPeriodo: self.selectedSeason
                     }
+                    if (!req.InstrumentoXConsultar) delete req.InstrumentoXConsultar;
                     var promesa = SystematizationService.darSistematizacion(req).$promise;
                     promesa.then(function (o) {
                         //Pregunta si se recibe la respuesta del WS con error, de lo contrario procesa la respuesta.
