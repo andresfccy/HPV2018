@@ -28,6 +28,8 @@ namespace HPV_Entidades.Sistematizacion
         public String IdEstado { get; set; }
         public String NomEstado { get; set; }
 
+        public Int32 Categorizado { get; set; }
+
         public Int64 IdInscrito { get; set; }
         public String NomInscrito { get; set; }
 

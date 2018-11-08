@@ -80,6 +80,7 @@
                         <th>Instrumento</th>
                         <th>{{'systematization.group'|translate}}</th>
                         <th>{{'systematization.state'|translate}}</th>
+                        <th>Categorizado</th>
                         <th>{{'systematization.detail'|translate}}</th>
                     </tr>
                 </thead>
@@ -93,6 +94,7 @@
                         <td>{{item.NomInstrumento}}</td>
                         <td>{{item.SiglaGrupo}}</td>
                         <td>{{item.NomEstado}}</td>
+                        <td>{{item.Categorizado == 1 ? "Sí" : "No"}}</td>
                         <td>
                             <a href=""
                                ng-click="sysListSprCtrl.goToSystematization(item.Id)">

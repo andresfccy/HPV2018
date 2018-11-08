@@ -9,7 +9,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationListUpload.html',
                     controller: 'SystematizationListUploadController as sysListUpCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias'; }
+                        $title: function () { return 'Lista de instrumentos'; }
                     }
                 })
                 .state('systematizationListAdmin', {
@@ -17,7 +17,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationListAdmin.html',
                     controller: 'SystematizationListAdminController as sysListAdmCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias administración'; }
+                        $title: function () { return 'Administración de instrumentos'; }
                     }
                 })
                 .state('systematizationListSuper', {
@@ -25,7 +25,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationListSuper.html',
                     controller: 'SystematizationListSuperController as sysListSprCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias supervisión'; }
+                        $title: function () { return 'Supervisión de instrumentos'; }
                     }
                 })
                 .state('systematizationDetailCreateUpload', {
@@ -33,7 +33,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationDetailUpload.html',
                     controller: 'SystematizationDetailUploadController as sysDetUpCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias creación'; }
+                        $title: function () { return 'Creación de instrumentos'; }
                     }
                 })
                 .state('systematizationDetailUpload', {
@@ -41,7 +41,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationDetailUpload.html',
                     controller: 'SystematizationDetailUploadController as sysDetUpCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias detalle'; }
+                        $title: function () { return 'Detalle de instrumentos'; }
                     }
                 })
                 .state('systematizationDetailAdmin', {
@@ -49,7 +49,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationDetailAdmin.html',
                     controller: 'SystematizationDetailAdminController as sysDetAdmCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias detalle administración'; }
+                        $title: function () { return 'Aprobación de instrumentos'; }
                     }
                 })
                 .state('systematizationDetailSuper', {
@@ -57,7 +57,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationDetailSuper.html',
                     controller: 'SystematizationDetailSuperController as sysDetSprCtrl',
                     resolve: {
-                        $title: function () { return 'Sistematización de experiencias detalle supervisión'; }
+                        $title: function () { return 'Supervición de instrumentos'; }
                     }
                 })
                 ;

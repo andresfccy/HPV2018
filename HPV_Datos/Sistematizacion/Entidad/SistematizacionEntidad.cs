@@ -49,6 +49,7 @@ namespace HPV_Datos.Sistematizacion.Entidad
             entidad.Sistematizacion.IdInscrito = Int64.Parse(row["IdInscrito"].ToString());
             entidad.Sistematizacion.NomInscrito = row["NomInscrito"].ToString();
             entidad.Sistematizacion.MotivoRechazo = row["MotivoRechazo"].ToString();
+            entidad.Sistematizacion.Categorizado = Int32.Parse(row["Categorizado"].ToString());
 
             return entidad;
         }
