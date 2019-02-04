@@ -165,12 +165,13 @@
 
                             if (self.form.$valid || true) {
                                 var action2 = getCtrlName() + ", submit - ActualizarSistematizacion()";
-                                loading.startLoading(action2);
-                                self.sys.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
-                                self.sys.IdEstado = "P";
+                                var sysSend = angular.copy(self.sys);
+
+                                sysSend.IdFacilitador = SessionsBusiness.getUserIdFromLocalStorage();
+                                sysSend.IdEstado = "P";
                                 var req = {
                                     IdUsuario: SessionsBusiness.getUserIdFromLocalStorage(),
-                                    Sistematizacion: self.sys
+                                    Sistematizacion: sysSend
                                 }
                                 var promesa = SystematizationService.actualizarSistematizacion(req).$promise;
                                 promesa.then(function (o) {
