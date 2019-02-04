@@ -57,7 +57,7 @@ appSystematization
                     templateUrl: 'views/systematization/systematizationDetailSuper.html',
                     controller: 'SystematizationDetailSuperController as sysDetSprCtrl',
                     resolve: {
-                        $title: function () { return 'Supervición de instrumentos'; }
+                        $title: function () { return 'Supervisión de instrumentos'; }
                     }
                 })
                 ;
