@@ -58,7 +58,7 @@
                 ROL_LOCALSTORAGE: 'rol',
                 NAME_LOCALSTORAGE: 'name',
                 CONTENT_TYPE_HEADER: { 'Content-Type': 'application/json' },
-                VERSION: '8.11.181' // d.mm.aa#
+                VERSION: '08.02.2019' // d.mm.aa#
 
                 // URLs Web Services
                 , URL_WS_GENERAL: '/General/HPVServiciosGen_JSON.svc'
