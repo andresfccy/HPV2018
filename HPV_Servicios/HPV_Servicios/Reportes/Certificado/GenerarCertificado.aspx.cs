@@ -36,10 +36,30 @@ namespace HPV_Servicios.Reportes.Certificado
             try
             {
 
+                String pathLog = System.Configuration.ConfigurationManager.AppSettings["pathLog"];
+                String nameLog = pathLog + @"/logHPVCerti.txt";
+
+                if (!Directory.Exists(pathLog))
+                {
+                    Directory.CreateDirectory(pathLog);
+                    File.AppendAllText(nameLog, "Creo log ok \r\n");
+                }
+
+
                 String idInscrito = Request.QueryString["idInscrito"];
                 String vigencia = Request.QueryString["Vigencia"];
+
+                //File.AppendAllText(nameLog, "fecha : " + DateTime.Now + "\r\n");
+
+                //File.AppendAllText(nameLog, "id inscrito: " + idInscrito + "\r\n");
+                //File.AppendAllText(nameLog, "vigencia: " + vigencia + "\r\n");
+
                 if (string.IsNullOrEmpty(idInscrito))
+                {
+                    File.AppendAllText(nameLog, "Hay parámetros faltantes en la petición" + "\r\n");
                     throw new Exception("Hay parámetros faltantes en la petición.");
+
+                }
 
 
                 InitDocument();
@@ -49,7 +69,27 @@ namespace HPV_Servicios.Reportes.Certificado
                 oe.IdPeriodo = 0;
 
                 var os = new FachadaConsulta().ConsultarInscrito(oe);
+
+                //File.AppendAllText(nameLog, "consultar inscrito cod:" + os.Respuesta.Codigo + "\r\n");
+                //File.AppendAllText(nameLog, "consultar inscrito msg:" + os.Respuesta.Mensaje + "\r\n");
+                //File.AppendAllText(nameLog, "consultar inscrito doc:" + os.Inscrito.Documento + "\r\n");
+                //File.AppendAllText(nameLog, "consultar inscrito vig:" + os.Inscrito.Vigencia + "\r\n");
+
+
                 var parametrosCert = new FachadaAlistamiento().DarParametrosCertificado(new HPV_Entidades.AlistamientoWS.OE_DarParametrosCertificado { Documento = os.Inscrito.Documento });
+
+                /*File.AppendAllText(nameLog, "consultar par cod:" + parametrosCert.Respuesta.Codigo + "\r\n");
+                File.AppendAllText(nameLog, "consultar par msg:" + parametrosCert.Respuesta.Mensaje + "\r\n");
+                File.AppendAllText(nameLog, "consultar par enc:" + parametrosCert.Parametros.Encabezado + "\r\n");
+                File.AppendAllText(nameLog, "consultar par ali:" + parametrosCert.Parametros.NomAliado + "\r\n");
+                File.AppendAllText(nameLog, "consultar par per:" + parametrosCert.Parametros.Periodo + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r1:" + parametrosCert.Parametros.Renglon1 + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r2:" + parametrosCert.Parametros.Renglon2 + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r3:" + parametrosCert.Parametros.Renglon3 + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r4:" + parametrosCert.Parametros.Renglon4 + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r5:" + parametrosCert.Parametros.Renglon5 + "\r\n");
+                File.AppendAllText(nameLog, "consultar par r6:" + parametrosCert.Parametros.Renglon6 + "\r\n");
+                */
 
                 if (os.Respuesta.Codigo == 0)
                 {
@@ -83,8 +123,8 @@ namespace HPV_Servicios.Reportes.Certificado
             }
             catch (Exception err)
             {
-                Response.Clear();
-                Response.Write("Genero error " + err.Message + err.StackTrace);
+              //  Response.Clear();
+              //  Response.Write("Genero error " + err.Message + err.StackTrace);
 
             }
         }
@@ -116,6 +156,31 @@ namespace HPV_Servicios.Reportes.Certificado
 
         private void ConfigHeader(OS_ConsultarInscrito os, string vigencia = "2018", HPV_Entidades.AlistamientoWS.OS_DarParametrosCertificado param = null)
         {
+
+            String pathLog = System.Configuration.ConfigurationManager.AppSettings["pathLog"];
+            String nameLog = pathLog + @"/logHPVCerti.txt";
+
+
+            /*File.AppendAllText(nameLog, "ConfigHeader inscrito cod:" + os.Respuesta.Codigo + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader inscrito msg:" + os.Respuesta.Mensaje + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader inscrito doc:" + os.Inscrito.Documento + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader inscrito vig:" + os.Inscrito.Vigencia + "\r\n");
+
+            File.AppendAllText(nameLog, "ConfigHeader par vig:" + vigencia + "\r\n");
+
+            File.AppendAllText(nameLog, "ConfigHeader par cod:" + param.Respuesta.Codigo + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par msg:" + param.Respuesta.Mensaje + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par enc:" + param.Parametros.Encabezado + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par ali:" + param.Parametros.NomAliado + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par per:" + param.Parametros.Periodo + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r1:" + param.Parametros.Renglon1 + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r2:" + param.Parametros.Renglon2 + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r3:" + param.Parametros.Renglon3 + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r4:" + param.Parametros.Renglon4 + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r5:" + param.Parametros.Renglon5 + "\r\n");
+            File.AppendAllText(nameLog, "ConfigHeader par r6:" + param.Parametros.Renglon6 + "\r\n");
+            */
+
             String rootPath = Server.MapPath("~");
 
 
