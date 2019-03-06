@@ -81,6 +81,12 @@
     <Content Include="assets\img\bg-header.jpg" />
     <Content Include="assets\img\blog-1.jpg" />
     <Content Include="assets\img\ciudad.jpg" />
+    <Content Include="assets\img\ico_caribe.png" />
+    <Content Include="assets\img\ico_centro.png" />
+    <Content Include="assets\img\ico_eje.png" />
+    <Content Include="assets\img\ico_llanos.png" />
+    <Content Include="assets\img\ico_pacifico.png" />
+    <Content Include="assets\img\ico_sur.png" />
     <Content Include="assets\img\img_cuando.jpg" />
     <Content Include="assets\img\img_realiza.jpg" />
     <Content Include="assets\img\loading.gif" />
@@ -1825,6 +1831,13 @@
     <Content Include="assets\fonts\icomoon\icomoon\selection.json" />
     <Content Include="assets\i18n\systematization\systematization-es.json" />
     <Content Include="assets\i18n\systematization\systematization-en.json" />
+    <Content Include="assets\files\Programación talleres Barrancabermeja  P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Bogotá  P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Caribe  P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Centro Sur  P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Eje Cafetero P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Llanos  P-IV.pdf" />
+    <Content Include="assets\files\Programación talleres Pacifico P-IV.pdf" />
     <None Include="Properties\PublishProfiles\HPV-Front.pubxml" />
     <None Include="Properties\PublishProfiles\HPV_Front.pubxml" />
   </ItemGroup>
